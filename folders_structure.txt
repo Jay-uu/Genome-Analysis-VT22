@@ -1,12 +1,12 @@
 I will keep data and code separate and work in individual folders for the specific analyses I'll be doing.
 
-Genome-Analysis-Project
- - Data
-   - Raw Data
-   - Meta data
-   - Trimmed data
- - Code
- - Analyses
+Genome-Analysis-VT22
+ - data
+   - raw_data
+   - meta_data
+   - trimmed_data
+ - code
+ - analyses
    - 01_preprocessing
    - 02_genome_assembly
    - 03_binning
