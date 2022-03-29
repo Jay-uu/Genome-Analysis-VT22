@@ -1,0 +1,18 @@
+I will keep data and code separate and work in individual folders for the specific analyses I'll be doing.
+
+Genome-Analysis-Project
+ - Data
+   - Raw Data
+   - Meta data
+   - Trimmed data
+ - Code
+ - Analyses
+   - 01_preprocessing
+   - 02_genome_assembly
+   - 03_binning
+   - 04_structural_annotation
+   - 05_functional_annotation
+   - 06_RNA_mapping
+   - 07_phylogenetic_analysis
+   - 08_ORFs
+   - 09_read_count
