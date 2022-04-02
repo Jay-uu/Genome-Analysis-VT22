@@ -3,8 +3,11 @@ I will keep data and code separate and work in individual folders for the specif
 Genome-Analysis-VT22
  - data
    - raw_data
+     - DNA_trimmed
+     - RNA_untrimmed
    - meta_data
    - trimmed_data
+     - DNA_trimmed
  - code
  - analyses
    - 01_preprocessing
