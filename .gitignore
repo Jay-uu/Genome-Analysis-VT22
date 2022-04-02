@@ -1,2 +1,5 @@
 # ignore all files in the raw_data folder
 raw_data/
+
+#ignore the trimmed data as well
+trimmed_data
