@@ -1,0 +1,2 @@
+I had to do some changes because the ssh-key wasnt working and github asked for my password instead.
+Now I'm testing to see if it works.
