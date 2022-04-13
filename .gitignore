@@ -4,8 +4,9 @@ raw_data/
 #ignore the trimmed data as well
 trimmed_data
 
-#Ignore the fastqc zip-files
+#Ignore the fastqc zip-files and only copy the html ones.
 Genome-Analysis-VT22/analyses/01_preprocessing/fastqc_raw/*.zip
 Genome-Analysis-VT22/analyses/01_preprocessing/fastqc_trim/RNA_08-04/*.zip
 Genome-Analysis-VT22/analyses/01_preprocessing/fastqc_trim/DNA_08-04/*.zip
+Genome-Analysis-VT22/analyses/01_preprocessing/fastqc_trim/RNA_12-04/*.zip
 
