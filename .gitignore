@@ -6,4 +6,6 @@ trimmed_data
 
 #Ignore the fastqc zip-files
 Genome-Analysis-VT22/analyses/01_preprocessing/fastqc_raw/*.zip
-Genome-Analysis-VT22/analyses/01_preprocessing/fastqc_trim/*.zip
+Genome-Analysis-VT22/analyses/01_preprocessing/fastqc_trim/RNA_08-04/*.zip
+Genome-Analysis-VT22/analyses/01_preprocessing/fastqc_trim/DNA_08-04/*.zip
+

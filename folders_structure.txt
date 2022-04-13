@@ -8,9 +8,15 @@ Genome-Analysis-VT22
    - meta_data
    - trimmed_data
      - DNA_trimmed
+     - RNA_trimmed_date
  - code
+   - slurm-files
  - analyses
    - 01_preprocessing
+     - fastqc_raw
+     - fastqc_trim
+       - DNA_date
+       - RNA_date
    - 02_genome_assembly
    - 03_binning
    - 04_structural_annotation

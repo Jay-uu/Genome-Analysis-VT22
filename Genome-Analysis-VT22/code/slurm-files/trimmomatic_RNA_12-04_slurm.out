@@ -1,0 +1,98 @@
++ cat /var/spool/slurmd/job6127853/slurm_script
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -J RNA_trim_GA
+#SBATCH -t 4:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+#for troubleshooting
+set -x
+
+cat $0
+echo QOS = $SLURM_JOB_QOS
+
+#work in node-local storage
+cd $SNIC_TMP
+
+#Load modules
+module load bioinfo-tools trimmomatic
+
+#Copy adapter file here
+cp $HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/01_preprocessing/illumina_adapters.fa illumina_adapters.fa
+
+#For D1RNA
+java -jar /sw/bioinfo/trimmomatic/0.39/snowy/trimmomatic-0.39.jar PE -threads 16 -trimlog D1RNA_trim.log /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/RNA_untrimmed/SRR4342137.1.fastq.gz /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/RNA_untrimmed/SRR4342137.2.fastq.gz -baseout D1RNA_trimmed.fq.gz ILLUMINACLIP:illumina_adapters.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+#For D3RNA
+java -jar /sw/bioinfo/trimmomatic/0.39/snowy/trimmomatic-0.39.jar PE -threads 16 -trimlog D3RNA_trim.log /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/RNA_untrimmed/SRR4342139.1.fastq.gz /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/RNA_untrimmed/SRR4342139.2.fastq.gz -baseout D3RNA_trimmed.fq.gz ILLUMINACLIP:illumina_adapters.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+#Copy outfiles to correct folder
+cp *.gz $HOME/genome_analysis_project/Genome-Analysis-VT22/data/trimmed_data/RNA_trimmed_12-04
++ echo QOS = normal
+QOS = normal
++ cd /scratch/6127853
++ module load bioinfo-tools trimmomatic
+++ /usr/share/lmod/lmod/libexec/lmod bash load bioinfo-tools trimmomatic
++ eval '__LMOD_REF_COUNT_LOADEDMODULES=uppmax:2\;bioinfo-tools:1\;trimmomatic/0.39:1;' export '__LMOD_REF_COUNT_LOADEDMODULES;' 'LOADEDMODULES=uppmax:bioinfo-tools:trimmomatic/0.39;' export 'LOADEDMODULES;' '__LMOD_REF_COUNT_MODULEPATH=/sw/mf/snowy/bioinfo-tools/annotation:1\;/sw/mf/snowy/bioinfo-tools/alignment:1\;/sw/mf/snowy/bioinfo-tools/assembly:1\;/sw/mf/snowy/bioinfo-tools/misc:1\;/sw/mf/snowy/bioinfo-tools/phylogeny:1\;/sw/mf/snowy/bioinfo-tools/pipelines:1\;/sw/mf/snowy/bioinfo-tools/sw_collections:1\;/sw/mf/snowy/applications:1\;/sw/mf/snowy/build-tools:1\;/sw/mf/snowy/compilers:1\;/sw/mf/snowy/data:1\;/sw/mf/snowy/environment:1\;/sw/mf/snowy/libraries:1\;/sw/mf/snowy/parallel:1;' export '__LMOD_REF_COUNT_MODULEPATH;' 'MODULEPATH=/sw/mf/snowy/bioinfo-tools/annotation:/sw/mf/snowy/bioinfo-tools/alignment:/sw/mf/snowy/bioinfo-tools/assembly:/sw/mf/snowy/bioinfo-tools/misc:/sw/mf/snowy/bioinfo-tools/phylogeny:/sw/mf/snowy/bioinfo-tools/pipelines:/sw/mf/snowy/bioinfo-tools/sw_collections:/sw/mf/snowy/applications:/sw/mf/snowy/build-tools:/sw/mf/snowy/compilers:/sw/mf/snowy/data:/sw/mf/snowy/environment:/sw/mf/snowy/libraries:/sw/mf/snowy/parallel;' export 'MODULEPATH;' '__LMOD_REF_COUNT_PATH=/sw/bioinfo/trimmomatic/0.39/snowy:1\;/home/jay/bin:2\;/usr/local/bin:1\;/usr/bin:1\;/usr/local/sbin:1\;/usr/sbin:1\;/sw/uppmax/bin:2;' export '__LMOD_REF_COUNT_PATH;' 'PATH=/sw/bioinfo/trimmomatic/0.39/snowy:/home/jay/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sw/uppmax/bin;' export 'PATH;' 'TRIMMOMATIC_ROOT=/sw/bioinfo/trimmomatic/0.39/snowy;' export 'TRIMMOMATIC_ROOT;' '__LMOD_REF_COUNT__LMFILES_=/sw/mf/snowy/environment/bioinfo-tools:1\;/sw/mf/snowy/bioinfo-tools/misc/trimmomatic/0.39:1;' export '__LMOD_REF_COUNT__LMFILES_;' '_LMFILES_=/sw/mf/snowy/environment/bioinfo-tools:/sw/mf/snowy/bioinfo-tools/misc/trimmomatic/0.39;' export '_LMFILES_;' '_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXt9LG1UPXtbImJpb2luZm8tdG9vbHMiXT17WyJmbiJdPSIvc3cvbWYvc25vd3kvZW52aXJvbm1lbnQvYmlvaW5mby10b29scyIsWyJmdWxsTmFtZSJdPSJiaW9pbmZvLXRvb2xzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYmlvaW5mby10b29scyIsfSx0cmltbW9tYXRpYz17WyJmbiJdPSIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9taXNjL3RyaW1tb21hdGljLzAuMzkiLFsiZnVsbE5hbWUiXT0idHJpbW1vbWF0;' export '_ModuleTable001_;' '_ModuleTable002_=aWMvMC4zOSIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09InRyaW1tb21hdGljIix9LH0sbXBhdGhBPXsiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvYW5ub3RhdGlvbiIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL2FsaWdubWVudCIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL2Fzc2VtYmx5IiwiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvbWlzYyIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL3BoeWxvZ2VueSIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL3BpcGVsaW5lcyIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL3N3X2NvbGxlY3Rpb25zIiwi;' export '_ModuleTable002_;' '_ModuleTable003_=L3N3L21mL3Nub3d5L2FwcGxpY2F0aW9ucyIsIi9zdy9tZi9zbm93eS9idWlsZC10b29scyIsIi9zdy9tZi9zbm93eS9jb21waWxlcnMiLCIvc3cvbWYvc25vd3kvZGF0YSIsIi9zdy9tZi9zbm93eS9lbnZpcm9ubWVudCIsIi9zdy9tZi9zbm93eS9saWJyYXJpZXMiLCIvc3cvbWYvc25vd3kvcGFyYWxsZWwiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL3N3L21mL3Nub3d5L2FwcGxpY2F0aW9uczovc3cvbWYvc25vd3kvYnVpbGQtdG9vbHM6L3N3L21mL3Nub3d5L2NvbXBpbGVyczovc3cvbWYvc25vd3kvZGF0YTovc3cvbWYvc25vd3kvZW52aXJvbm1lbnQ6L3N3L21mL3Nub3d5L2xpYnJhcmllczovc3cvbWYvc25vd3kvcGFyYWxsZWwiLH0=;' export '_ModuleTable003_;' '_ModuleTable_Sz_=3;' export '_ModuleTable_Sz_;'
+++ __LMOD_REF_COUNT_LOADEDMODULES='uppmax:2;bioinfo-tools:1;trimmomatic/0.39:1'
+++ export __LMOD_REF_COUNT_LOADEDMODULES
+++ LOADEDMODULES=uppmax:bioinfo-tools:trimmomatic/0.39
+++ export LOADEDMODULES
+++ __LMOD_REF_COUNT_MODULEPATH='/sw/mf/snowy/bioinfo-tools/annotation:1;/sw/mf/snowy/bioinfo-tools/alignment:1;/sw/mf/snowy/bioinfo-tools/assembly:1;/sw/mf/snowy/bioinfo-tools/misc:1;/sw/mf/snowy/bioinfo-tools/phylogeny:1;/sw/mf/snowy/bioinfo-tools/pipelines:1;/sw/mf/snowy/bioinfo-tools/sw_collections:1;/sw/mf/snowy/applications:1;/sw/mf/snowy/build-tools:1;/sw/mf/snowy/compilers:1;/sw/mf/snowy/data:1;/sw/mf/snowy/environment:1;/sw/mf/snowy/libraries:1;/sw/mf/snowy/parallel:1'
+++ export __LMOD_REF_COUNT_MODULEPATH
+++ MODULEPATH=/sw/mf/snowy/bioinfo-tools/annotation:/sw/mf/snowy/bioinfo-tools/alignment:/sw/mf/snowy/bioinfo-tools/assembly:/sw/mf/snowy/bioinfo-tools/misc:/sw/mf/snowy/bioinfo-tools/phylogeny:/sw/mf/snowy/bioinfo-tools/pipelines:/sw/mf/snowy/bioinfo-tools/sw_collections:/sw/mf/snowy/applications:/sw/mf/snowy/build-tools:/sw/mf/snowy/compilers:/sw/mf/snowy/data:/sw/mf/snowy/environment:/sw/mf/snowy/libraries:/sw/mf/snowy/parallel
+++ export MODULEPATH
+++ __LMOD_REF_COUNT_PATH='/sw/bioinfo/trimmomatic/0.39/snowy:1;/home/jay/bin:2;/usr/local/bin:1;/usr/bin:1;/usr/local/sbin:1;/usr/sbin:1;/sw/uppmax/bin:2'
+++ export __LMOD_REF_COUNT_PATH
+++ PATH=/sw/bioinfo/trimmomatic/0.39/snowy:/home/jay/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sw/uppmax/bin
+++ export PATH
+++ TRIMMOMATIC_ROOT=/sw/bioinfo/trimmomatic/0.39/snowy
+++ export TRIMMOMATIC_ROOT
+++ __LMOD_REF_COUNT__LMFILES_='/sw/mf/snowy/environment/bioinfo-tools:1;/sw/mf/snowy/bioinfo-tools/misc/trimmomatic/0.39:1'
+++ export __LMOD_REF_COUNT__LMFILES_
+++ _LMFILES_=/sw/mf/snowy/environment/bioinfo-tools:/sw/mf/snowy/bioinfo-tools/misc/trimmomatic/0.39
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXt9LG1UPXtbImJpb2luZm8tdG9vbHMiXT17WyJmbiJdPSIvc3cvbWYvc25vd3kvZW52aXJvbm1lbnQvYmlvaW5mby10b29scyIsWyJmdWxsTmFtZSJdPSJiaW9pbmZvLXRvb2xzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYmlvaW5mby10b29scyIsfSx0cmltbW9tYXRpYz17WyJmbiJdPSIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9taXNjL3RyaW1tb21hdGljLzAuMzkiLFsiZnVsbE5hbWUiXT0idHJpbW1vbWF0
+++ export _ModuleTable001_
+++ _ModuleTable002_=aWMvMC4zOSIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09InRyaW1tb21hdGljIix9LH0sbXBhdGhBPXsiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvYW5ub3RhdGlvbiIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL2FsaWdubWVudCIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL2Fzc2VtYmx5IiwiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvbWlzYyIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL3BoeWxvZ2VueSIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL3BpcGVsaW5lcyIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL3N3X2NvbGxlY3Rpb25zIiwi
+++ export _ModuleTable002_
+++ _ModuleTable003_=L3N3L21mL3Nub3d5L2FwcGxpY2F0aW9ucyIsIi9zdy9tZi9zbm93eS9idWlsZC10b29scyIsIi9zdy9tZi9zbm93eS9jb21waWxlcnMiLCIvc3cvbWYvc25vd3kvZGF0YSIsIi9zdy9tZi9zbm93eS9lbnZpcm9ubWVudCIsIi9zdy9tZi9zbm93eS9saWJyYXJpZXMiLCIvc3cvbWYvc25vd3kvcGFyYWxsZWwiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL3N3L21mL3Nub3d5L2FwcGxpY2F0aW9uczovc3cvbWYvc25vd3kvYnVpbGQtdG9vbHM6L3N3L21mL3Nub3d5L2NvbXBpbGVyczovc3cvbWYvc25vd3kvZGF0YTovc3cvbWYvc25vd3kvZW52aXJvbm1lbnQ6L3N3L21mL3Nub3d5L2xpYnJhcmllczovc3cvbWYvc25vd3kvcGFyYWxsZWwiLH0=
+++ export _ModuleTable003_
+++ _ModuleTable_Sz_=3
+++ export _ModuleTable_Sz_
+++ : -s sh
++ eval
++ cp /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/01_preprocessing/illumina_adapters.fa illumina_adapters.fa
++ java -jar /sw/bioinfo/trimmomatic/0.39/snowy/trimmomatic-0.39.jar PE -threads 16 -trimlog D1RNA_trim.log /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/RNA_untrimmed/SRR4342137.1.fastq.gz /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/RNA_untrimmed/SRR4342137.2.fastq.gz -baseout D1RNA_trimmed.fq.gz ILLUMINACLIP:illumina_adapters.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+TrimmomaticPE: Started with arguments:
+ -threads 16 -trimlog D1RNA_trim.log /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/RNA_untrimmed/SRR4342137.1.fastq.gz /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/RNA_untrimmed/SRR4342137.2.fastq.gz -baseout D1RNA_trimmed.fq.gz ILLUMINACLIP:illumina_adapters.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+Using templated Output files: D1RNA_trimmed_1P.fq.gz D1RNA_trimmed_1U.fq.gz D1RNA_trimmed_2P.fq.gz D1RNA_trimmed_2U.fq.gz
+Using Medium Clipping Sequence: 'GATCGGAAGAGCACACGTCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 7 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 1304686 Both Surviving: 879453 (67.41%) Forward Only Surviving: 105627 (8.10%) Reverse Only Surviving: 30801 (2.36%) Dropped: 288805 (22.14%)
+TrimmomaticPE: Completed successfully
++ java -jar /sw/bioinfo/trimmomatic/0.39/snowy/trimmomatic-0.39.jar PE -threads 16 -trimlog D3RNA_trim.log /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/RNA_untrimmed/SRR4342139.1.fastq.gz /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/RNA_untrimmed/SRR4342139.2.fastq.gz -baseout D3RNA_trimmed.fq.gz ILLUMINACLIP:illumina_adapters.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+TrimmomaticPE: Started with arguments:
+ -threads 16 -trimlog D3RNA_trim.log /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/RNA_untrimmed/SRR4342139.1.fastq.gz /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/RNA_untrimmed/SRR4342139.2.fastq.gz -baseout D3RNA_trimmed.fq.gz ILLUMINACLIP:illumina_adapters.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+Using templated Output files: D3RNA_trimmed_1P.fq.gz D3RNA_trimmed_1U.fq.gz D3RNA_trimmed_2P.fq.gz D3RNA_trimmed_2U.fq.gz
+Using Medium Clipping Sequence: 'GATCGGAAGAGCACACGTCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 7 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 1213040 Both Surviving: 724229 (59.70%) Forward Only Surviving: 86846 (7.16%) Reverse Only Surviving: 32675 (2.69%) Dropped: 369290 (30.44%)
+TrimmomaticPE: Completed successfully
++ cp D1RNA_trimmed_1P.fq.gz D1RNA_trimmed_1U.fq.gz D1RNA_trimmed_2P.fq.gz D1RNA_trimmed_2U.fq.gz D3RNA_trimmed_1P.fq.gz D3RNA_trimmed_1U.fq.gz D3RNA_trimmed_2P.fq.gz D3RNA_trimmed_2U.fq.gz /home/jay/genome_analysis_project/Genome-Analysis-VT22/data/trimmed_data/RNA_trimmed_12-04
