@@ -1,0 +1,24 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -J 02_quast_D1DNA_assembly
+#SBATCH -t 1:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+
+#for troubleshooting
+set -x
+
+cat $0
+echo QOS = $SLURM_JOB_QOS
+
+#work in node-local storage
+cd $SNIC_TMP
+module load bioinfo-tools quast
+
+#To aquire reference genomes
+metaquast.py --test-no-ref
+
+metaquast.py $HOME/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D1DNA_assembly/megahit_04-18/final.contigs.fa -o $HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA

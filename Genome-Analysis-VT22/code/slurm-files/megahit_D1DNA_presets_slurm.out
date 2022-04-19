@@ -1,0 +1,81 @@
++ cat /var/spool/slurmd/job6132664/slurm_script
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -J megahit_D1DNA_preset
+#SBATCH -t 7:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+
+#for troubleshooting
+set -x
+
+cat $0
+echo QOS = $SLURM_JOB_QOS
+
+#work in node-local storage
+cd $SNIC_TMP
+module load bioinfo-tools megahit
+
+cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342129_1.paired.trimmed.fastq.gz D1DNA_trimmed_1.fastq.gz
+cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342129_2.paired.trimmed.fastq.gz D1DNA_trimmed_2.fastq.gz
+
+gzip -d D1DNA_trimmed_1.fastq.gz
+gzip -d D1DNA_trimmed_2.fastq.gz
+
+megahit --kmin-1pass --presets meta-large -1 D1DNA_trimmed_1.fastq -2 D1DNA_trimmed_2.fastq -o $HOME/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D1DNA_assembly/presets_04-18/
++ echo QOS = normal
+QOS = normal
++ cd /scratch/6132664
++ module load bioinfo-tools megahit
+++ /usr/share/lmod/lmod/libexec/lmod bash load bioinfo-tools megahit
++ eval '__LMOD_REF_COUNT_LOADEDMODULES=uppmax:2\;bioinfo-tools:2\;megahit/1.2.9:2;' export '__LMOD_REF_COUNT_LOADEDMODULES;' 'LOADEDMODULES=uppmax:bioinfo-tools:megahit/1.2.9;' export 'LOADEDMODULES;' '__LMOD_REF_COUNT_MODULEPATH=/sw/mf/snowy/bioinfo-tools/annotation:1\;/sw/mf/snowy/bioinfo-tools/alignment:1\;/sw/mf/snowy/bioinfo-tools/assembly:1\;/sw/mf/snowy/bioinfo-tools/misc:1\;/sw/mf/snowy/bioinfo-tools/phylogeny:1\;/sw/mf/snowy/bioinfo-tools/pipelines:1\;/sw/mf/snowy/bioinfo-tools/sw_collections:1\;/sw/mf/snowy/applications:1\;/sw/mf/snowy/build-tools:1\;/sw/mf/snowy/compilers:1\;/sw/mf/snowy/data:1\;/sw/mf/snowy/environment:1\;/sw/mf/snowy/libraries:1\;/sw/mf/snowy/parallel:1;' export '__LMOD_REF_COUNT_MODULEPATH;' 'MODULEPATH=/sw/mf/snowy/bioinfo-tools/annotation:/sw/mf/snowy/bioinfo-tools/alignment:/sw/mf/snowy/bioinfo-tools/assembly:/sw/mf/snowy/bioinfo-tools/misc:/sw/mf/snowy/bioinfo-tools/phylogeny:/sw/mf/snowy/bioinfo-tools/pipelines:/sw/mf/snowy/bioinfo-tools/sw_collections:/sw/mf/snowy/applications:/sw/mf/snowy/build-tools:/sw/mf/snowy/compilers:/sw/mf/snowy/data:/sw/mf/snowy/environment:/sw/mf/snowy/libraries:/sw/mf/snowy/parallel;' export 'MODULEPATH;' '__LMOD_REF_COUNT_PATH=/sw/apps/bioinfo/megahit/1.2.9/snowy:1\;/home/jay/bin:2\;/sw/apps/bioinfo/megahit/1.2.9/rackham:1\;/usr/local/bin:1\;/usr/bin:1\;/usr/local/sbin:1\;/usr/sbin:1\;/sw/uppmax/bin:2;' export '__LMOD_REF_COUNT_PATH;' 'PATH=/sw/apps/bioinfo/megahit/1.2.9/snowy:/home/jay/bin:/sw/apps/bioinfo/megahit/1.2.9/rackham:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sw/uppmax/bin;' export 'PATH;' '__LMOD_REF_COUNT__LMFILES_=/sw/mf/snowy/environment/bioinfo-tools:1\;/sw/mf/snowy/bioinfo-tools/assembly/megahit/1.2.9:1;' export '__LMOD_REF_COUNT__LMFILES_;' '_LMFILES_=/sw/mf/snowy/environment/bioinfo-tools:/sw/mf/snowy/bioinfo-tools/assembly/megahit/1.2.9;' export '_LMFILES_;' '_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXt9LG1UPXtbImJpb2luZm8tdG9vbHMiXT17WyJmbiJdPSIvc3cvbWYvc25vd3kvZW52aXJvbm1lbnQvYmlvaW5mby10b29scyIsWyJmdWxsTmFtZSJdPSJiaW9pbmZvLXRvb2xzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYmlvaW5mby10b29scyIsfSxtZWdhaGl0PXtbImZuIl09Ii9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL2Fzc2VtYmx5L21lZ2FoaXQvMS4yLjkiLFsiZnVsbE5hbWUiXT0ibWVnYWhpdC8xLjIu;' export '_ModuleTable001_;' '_ModuleTable002_=OSIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09Im1lZ2FoaXQiLH0sfSxtcGF0aEE9eyIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9hbm5vdGF0aW9uIiwiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvYWxpZ25tZW50IiwiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvYXNzZW1ibHkiLCIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9taXNjIiwiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvcGh5bG9nZW55IiwiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvcGlwZWxpbmVzIiwiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvc3dfY29sbGVjdGlvbnMiLCIvc3cvbWYvc25v;' export '_ModuleTable002_;' '_ModuleTable003_=d3kvYXBwbGljYXRpb25zIiwiL3N3L21mL3Nub3d5L2J1aWxkLXRvb2xzIiwiL3N3L21mL3Nub3d5L2NvbXBpbGVycyIsIi9zdy9tZi9zbm93eS9kYXRhIiwiL3N3L21mL3Nub3d5L2Vudmlyb25tZW50IiwiL3N3L21mL3Nub3d5L2xpYnJhcmllcyIsIi9zdy9tZi9zbm93eS9wYXJhbGxlbCIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvc3cvbWYvc25vd3kvYXBwbGljYXRpb25zOi9zdy9tZi9zbm93eS9idWlsZC10b29sczovc3cvbWYvc25vd3kvY29tcGlsZXJzOi9zdy9tZi9zbm93eS9kYXRhOi9zdy9tZi9zbm93eS9lbnZpcm9ubWVudDovc3cvbWYvc25vd3kvbGlicmFyaWVzOi9zdy9tZi9zbm93eS9wYXJhbGxlbCIsfQ==;' export '_ModuleTable003_;' '_ModuleTable_Sz_=3;' export '_ModuleTable_Sz_;'
+++ __LMOD_REF_COUNT_LOADEDMODULES='uppmax:2;bioinfo-tools:2;megahit/1.2.9:2'
+++ export __LMOD_REF_COUNT_LOADEDMODULES
+++ LOADEDMODULES=uppmax:bioinfo-tools:megahit/1.2.9
+++ export LOADEDMODULES
+++ __LMOD_REF_COUNT_MODULEPATH='/sw/mf/snowy/bioinfo-tools/annotation:1;/sw/mf/snowy/bioinfo-tools/alignment:1;/sw/mf/snowy/bioinfo-tools/assembly:1;/sw/mf/snowy/bioinfo-tools/misc:1;/sw/mf/snowy/bioinfo-tools/phylogeny:1;/sw/mf/snowy/bioinfo-tools/pipelines:1;/sw/mf/snowy/bioinfo-tools/sw_collections:1;/sw/mf/snowy/applications:1;/sw/mf/snowy/build-tools:1;/sw/mf/snowy/compilers:1;/sw/mf/snowy/data:1;/sw/mf/snowy/environment:1;/sw/mf/snowy/libraries:1;/sw/mf/snowy/parallel:1'
+++ export __LMOD_REF_COUNT_MODULEPATH
+++ MODULEPATH=/sw/mf/snowy/bioinfo-tools/annotation:/sw/mf/snowy/bioinfo-tools/alignment:/sw/mf/snowy/bioinfo-tools/assembly:/sw/mf/snowy/bioinfo-tools/misc:/sw/mf/snowy/bioinfo-tools/phylogeny:/sw/mf/snowy/bioinfo-tools/pipelines:/sw/mf/snowy/bioinfo-tools/sw_collections:/sw/mf/snowy/applications:/sw/mf/snowy/build-tools:/sw/mf/snowy/compilers:/sw/mf/snowy/data:/sw/mf/snowy/environment:/sw/mf/snowy/libraries:/sw/mf/snowy/parallel
+++ export MODULEPATH
+++ __LMOD_REF_COUNT_PATH='/sw/apps/bioinfo/megahit/1.2.9/snowy:1;/home/jay/bin:2;/sw/apps/bioinfo/megahit/1.2.9/rackham:1;/usr/local/bin:1;/usr/bin:1;/usr/local/sbin:1;/usr/sbin:1;/sw/uppmax/bin:2'
+++ export __LMOD_REF_COUNT_PATH
+++ PATH=/sw/apps/bioinfo/megahit/1.2.9/snowy:/home/jay/bin:/sw/apps/bioinfo/megahit/1.2.9/rackham:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sw/uppmax/bin
+++ export PATH
+++ __LMOD_REF_COUNT__LMFILES_='/sw/mf/snowy/environment/bioinfo-tools:1;/sw/mf/snowy/bioinfo-tools/assembly/megahit/1.2.9:1'
+++ export __LMOD_REF_COUNT__LMFILES_
+++ _LMFILES_=/sw/mf/snowy/environment/bioinfo-tools:/sw/mf/snowy/bioinfo-tools/assembly/megahit/1.2.9
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXt9LG1UPXtbImJpb2luZm8tdG9vbHMiXT17WyJmbiJdPSIvc3cvbWYvc25vd3kvZW52aXJvbm1lbnQvYmlvaW5mby10b29scyIsWyJmdWxsTmFtZSJdPSJiaW9pbmZvLXRvb2xzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYmlvaW5mby10b29scyIsfSxtZWdhaGl0PXtbImZuIl09Ii9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL2Fzc2VtYmx5L21lZ2FoaXQvMS4yLjkiLFsiZnVsbE5hbWUiXT0ibWVnYWhpdC8xLjIu
+++ export _ModuleTable001_
+++ _ModuleTable002_=OSIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09Im1lZ2FoaXQiLH0sfSxtcGF0aEE9eyIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9hbm5vdGF0aW9uIiwiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvYWxpZ25tZW50IiwiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvYXNzZW1ibHkiLCIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9taXNjIiwiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvcGh5bG9nZW55IiwiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvcGlwZWxpbmVzIiwiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvc3dfY29sbGVjdGlvbnMiLCIvc3cvbWYvc25v
+++ export _ModuleTable002_
+++ _ModuleTable003_=d3kvYXBwbGljYXRpb25zIiwiL3N3L21mL3Nub3d5L2J1aWxkLXRvb2xzIiwiL3N3L21mL3Nub3d5L2NvbXBpbGVycyIsIi9zdy9tZi9zbm93eS9kYXRhIiwiL3N3L21mL3Nub3d5L2Vudmlyb25tZW50IiwiL3N3L21mL3Nub3d5L2xpYnJhcmllcyIsIi9zdy9tZi9zbm93eS9wYXJhbGxlbCIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvc3cvbWYvc25vd3kvYXBwbGljYXRpb25zOi9zdy9tZi9zbm93eS9idWlsZC10b29sczovc3cvbWYvc25vd3kvY29tcGlsZXJzOi9zdy9tZi9zbm93eS9kYXRhOi9zdy9tZi9zbm93eS9lbnZpcm9ubWVudDovc3cvbWYvc25vd3kvbGlicmFyaWVzOi9zdy9tZi9zbm93eS9wYXJhbGxlbCIsfQ==
+++ export _ModuleTable003_
+++ _ModuleTable_Sz_=3
+++ export _ModuleTable_Sz_
+++ : -s sh
++ eval
++ cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342129_1.paired.trimmed.fastq.gz D1DNA_trimmed_1.fastq.gz
++ cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342129_2.paired.trimmed.fastq.gz D1DNA_trimmed_2.fastq.gz
++ gzip -d D1DNA_trimmed_1.fastq.gz
++ gzip -d D1DNA_trimmed_2.fastq.gz
++ megahit --kmin-1pass --presets meta-large -1 D1DNA_trimmed_1.fastq -2 D1DNA_trimmed_2.fastq -o /home/jay/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D1DNA_assembly/presets_04-18/
+2022-04-18 14:13:51 - MEGAHIT v1.2.9
+2022-04-18 14:13:51 - Using megahit_core with POPCNT support
+2022-04-18 14:13:51 - Convert reads to binary library
+2022-04-18 14:14:52 - INFO  sequence/io/sequence_lib.cpp  :   75 - Lib 0 (/scratch/6132664/D1DNA_trimmed_1.fastq,/scratch/6132664/D1DNA_trimmed_2.fastq): pe, 48110692 reads, 101 max length
+2022-04-18 14:14:58 - INFO  utils/utils.h                 :  152 - Real: 66.8176	user: 46.8859	sys: 8.8724	maxrss: 273448
+2022-04-18 14:14:58 - k-max reset to: 117 
+2022-04-18 14:14:58 - Start assembly. Number of CPU threads 16 
+2022-04-18 14:14:58 - k list: 27,37,47,57,67,77,87,97,107,117 
+2022-04-18 14:14:58 - Memory used: 121485610598
+2022-04-18 14:14:58 - Extracting solid (k+1)-mers and building sdbg for k = 27
+2022-04-18 14:43:42 - Assemble contigs from SdBG for k = 27
+2022-04-18 18:15:25 - Local assembly for k = 27
+2022-04-18 18:22:14 - Extract iterative edges from k = 27 to 37 
+2022-04-18 18:36:10 - Build graph for k = 37 
+2022-04-18 18:54:00 - Assemble contigs from SdBG for k = 37
+slurmstepd: error: *** JOB 6132664 ON s15 CANCELLED AT 2022-04-18T21:11:16 DUE TO TIME LIMIT ***
