@@ -1,0 +1,18 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -J 03_bwa_D1DNA_read_map
+#SBATCH -t 6:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+
+#work in node-local storage
+cd $SNIC_TMP
+export DATA=$HOME/genome_analysis_project/Genome-Analysis-VT22/data/
+module load bioinfo-tools bwa samtools
+
+#assuming index has been created and is in same folder as assembly
+bwa mem -t 2 $DATA/assembly/D1DNA_assembly/megahit_04-18/final.contigs.fa $DATA/trimmed_data/DNA_trimmed/SRR4342129_1.paired.trimmed.fastq.gz  $DATA/trimmed_data/DNA_trimmed/SRR4342129_2.paired.trimmed.fastq.gz | samtools view -@ 2 -b - > $DATA/assembly/D1DNA_assembly/read_map/D1DNA_map.bam
+
