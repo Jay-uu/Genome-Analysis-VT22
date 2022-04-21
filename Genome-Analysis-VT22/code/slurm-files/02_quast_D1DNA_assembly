@@ -1,0 +1,678 @@
++ cat /var/spool/slurmd/job6134785/slurm_script
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -J 02_quast_D1DNA_assembly
+#SBATCH -t 1:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+
+#for troubleshooting
+set -x
+
+cat $0
+echo QOS = $SLURM_JOB_QOS
+
+#work in node-local storage
+cd $SNIC_TMP
+module load bioinfo-tools quast
+
+metaquast.py $HOME/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D1DNA_assembly/megahit_04-18/final.contigs.fa -o $HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA
++ echo QOS = normal
+QOS = normal
++ cd /scratch/6134785
++ module load bioinfo-tools quast
+++ /usr/share/lmod/lmod/libexec/lmod bash load bioinfo-tools quast
++ eval '__LMOD_REF_COUNT_LD_LIBRARY_PATH=/sw/libs/wxWidgets/lib:1;' export '__LMOD_REF_COUNT_LD_LIBRARY_PATH;' 'LD_LIBRARY_PATH=/sw/libs/wxWidgets/lib;' export 'LD_LIBRARY_PATH;' '__LMOD_REF_COUNT_LOADEDMODULES=uppmax:2\;bioinfo-tools:1\;python/3.7.2:1\;quast/5.0.2:1;' export '__LMOD_REF_COUNT_LOADEDMODULES;' 'LOADEDMODULES=uppmax:bioinfo-tools:python/3.7.2:quast/5.0.2;' export 'LOADEDMODULES;' '__LMOD_REF_COUNT_MANPATH=/sw/comp/python/3.7.2_snowy/share/man:1\;/usr/share/man:2\;/sw/uppmax/man:2\;/opt/thinlinc/share/man:2;' export '__LMOD_REF_COUNT_MANPATH;' 'MANPATH=/sw/comp/python/3.7.2_snowy/share/man:/usr/share/man:/sw/uppmax/man:/opt/thinlinc/share/man;' export 'MANPATH;' '__LMOD_REF_COUNT_MODULEPATH=/sw/mf/snowy/bioinfo-tools/annotation:1\;/sw/mf/snowy/bioinfo-tools/alignment:1\;/sw/mf/snowy/bioinfo-tools/assembly:1\;/sw/mf/snowy/bioinfo-tools/misc:1\;/sw/mf/snowy/bioinfo-tools/phylogeny:1\;/sw/mf/snowy/bioinfo-tools/pipelines:1\;/sw/mf/snowy/bioinfo-tools/sw_collections:1\;/sw/mf/snowy/applications:1\;/sw/mf/snowy/build-tools:1\;/sw/mf/snowy/compilers:1\;/sw/mf/snowy/data:1\;/sw/mf/snowy/environment:1\;/sw/mf/snowy/libraries:1\;/sw/mf/snowy/parallel:1;' export '__LMOD_REF_COUNT_MODULEPATH;' 'MODULEPATH=/sw/mf/snowy/bioinfo-tools/annotation:/sw/mf/snowy/bioinfo-tools/alignment:/sw/mf/snowy/bioinfo-tools/assembly:/sw/mf/snowy/bioinfo-tools/misc:/sw/mf/snowy/bioinfo-tools/phylogeny:/sw/mf/snowy/bioinfo-tools/pipelines:/sw/mf/snowy/bioinfo-tools/sw_collections:/sw/mf/snowy/applications:/sw/mf/snowy/build-tools:/sw/mf/snowy/compilers:/sw/mf/snowy/data:/sw/mf/snowy/environment:/sw/mf/snowy/libraries:/sw/mf/snowy/parallel;' export 'MODULEPATH;' '__LMOD_REF_COUNT_PATH=/sw/apps/bioinfo/quast/5.0.2/snowy/bin:1\;/sw/comp/python/3.7.2_snowy/bin:1\;/home/jay/bin:2\;/usr/local/bin:1\;/usr/bin:1\;/usr/local/sbin:1\;/usr/sbin:1\;/sw/uppmax/bin:2;' export '__LMOD_REF_COUNT_PATH;' 'PATH=/sw/apps/bioinfo/quast/5.0.2/snowy/bin:/sw/comp/python/3.7.2_snowy/bin:/home/jay/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sw/uppmax/bin;' export 'PATH;' '__LMOD_REF_COUNT_PKG_CONFIG_PATH=/sw/comp/python/3.7.2_snowy/lib/pkgconfig:1;' export '__LMOD_REF_COUNT_PKG_CONFIG_PATH;' 'PKG_CONFIG_PATH=/sw/comp/python/3.7.2_snowy/lib/pkgconfig;' export 'PKG_CONFIG_PATH;' '__LMOD_REF_COUNT_PYTHONPATH=/sw/apps/bioinfo/quast/5.0.2/snowy/lib/python3.7/site-packages:1;' export '__LMOD_REF_COUNT_PYTHONPATH;' 'PYTHONPATH=/sw/apps/bioinfo/quast/5.0.2/snowy/lib/python3.7/site-packages;' export 'PYTHONPATH;' 'PYTHON_ROOT=/sw/comp/python/3.7.2_snowy;' export 'PYTHON_ROOT;' '__LMOD_REF_COUNT__LMFILES_=/sw/mf/snowy/environment/bioinfo-tools:1\;/sw/mf/snowy/compilers/python/3.7.2:1\;/sw/mf/snowy/bioinfo-tools/misc/quast/5.0.2:1;' export '__LMOD_REF_COUNT__LMFILES_;' '_LMFILES_=/sw/mf/snowy/environment/bioinfo-tools:/sw/mf/snowy/compilers/python/3.7.2:/sw/mf/snowy/bioinfo-tools/misc/quast/5.0.2;' export '_LMFILES_;' '_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXt9LG1UPXtbImJpb2luZm8tdG9vbHMiXT17WyJmbiJdPSIvc3cvbWYvc25vd3kvZW52aXJvbm1lbnQvYmlvaW5mby10b29scyIsWyJmdWxsTmFtZSJdPSJiaW9pbmZvLXRvb2xzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYmlvaW5mby10b29scyIsfSxweXRob249e1siZm4iXT0iL3N3L21mL3Nub3d5L2NvbXBpbGVycy9weXRob24vMy43LjIiLFsiZnVsbE5hbWUiXT0icHl0aG9uLzMuNy4yIixbImxvYWRPcmRlciJd;' export '_ModuleTable001_;' '_ModuleTable002_=PTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0icHl0aG9uLzMuNy4yIix9LHF1YXN0PXtbImZuIl09Ii9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL21pc2MvcXVhc3QvNS4wLjIiLFsiZnVsbE5hbWUiXT0icXVhc3QvNS4wLjIiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJxdWFzdCIsfSx9LG1wYXRoQT17Ii9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL2Fubm90YXRpb24iLCIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9hbGlnbm1lbnQiLCIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9hc3NlbWJseSIsIi9zdy9t;' export '_ModuleTable002_;' '_ModuleTable003_=Zi9zbm93eS9iaW9pbmZvLXRvb2xzL21pc2MiLCIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9waHlsb2dlbnkiLCIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9waXBlbGluZXMiLCIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9zd19jb2xsZWN0aW9ucyIsIi9zdy9tZi9zbm93eS9hcHBsaWNhdGlvbnMiLCIvc3cvbWYvc25vd3kvYnVpbGQtdG9vbHMiLCIvc3cvbWYvc25vd3kvY29tcGlsZXJzIiwiL3N3L21mL3Nub3d5L2RhdGEiLCIvc3cvbWYvc25vd3kvZW52aXJvbm1lbnQiLCIvc3cvbWYvc25vd3kvbGlicmFyaWVzIiwiL3N3L21mL3Nub3d5L3BhcmFsbGVsIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9zdy9tZi9zbm93eS9hcHBsaWNhdGlvbnM6L3N3L21mL3Nu;' export '_ModuleTable003_;' '_ModuleTable004_=b3d5L2J1aWxkLXRvb2xzOi9zdy9tZi9zbm93eS9jb21waWxlcnM6L3N3L21mL3Nub3d5L2RhdGE6L3N3L21mL3Nub3d5L2Vudmlyb25tZW50Oi9zdy9tZi9zbm93eS9saWJyYXJpZXM6L3N3L21mL3Nub3d5L3BhcmFsbGVsIix9;' export '_ModuleTable004_;' '_ModuleTable_Sz_=4;' export '_ModuleTable_Sz_;'
+++ __LMOD_REF_COUNT_LD_LIBRARY_PATH=/sw/libs/wxWidgets/lib:1
+++ export __LMOD_REF_COUNT_LD_LIBRARY_PATH
+++ LD_LIBRARY_PATH=/sw/libs/wxWidgets/lib
+++ export LD_LIBRARY_PATH
+++ __LMOD_REF_COUNT_LOADEDMODULES='uppmax:2;bioinfo-tools:1;python/3.7.2:1;quast/5.0.2:1'
+++ export __LMOD_REF_COUNT_LOADEDMODULES
+++ LOADEDMODULES=uppmax:bioinfo-tools:python/3.7.2:quast/5.0.2
+++ export LOADEDMODULES
+++ __LMOD_REF_COUNT_MANPATH='/sw/comp/python/3.7.2_snowy/share/man:1;/usr/share/man:2;/sw/uppmax/man:2;/opt/thinlinc/share/man:2'
+++ export __LMOD_REF_COUNT_MANPATH
+++ MANPATH=/sw/comp/python/3.7.2_snowy/share/man:/usr/share/man:/sw/uppmax/man:/opt/thinlinc/share/man
+++ export MANPATH
+++ __LMOD_REF_COUNT_MODULEPATH='/sw/mf/snowy/bioinfo-tools/annotation:1;/sw/mf/snowy/bioinfo-tools/alignment:1;/sw/mf/snowy/bioinfo-tools/assembly:1;/sw/mf/snowy/bioinfo-tools/misc:1;/sw/mf/snowy/bioinfo-tools/phylogeny:1;/sw/mf/snowy/bioinfo-tools/pipelines:1;/sw/mf/snowy/bioinfo-tools/sw_collections:1;/sw/mf/snowy/applications:1;/sw/mf/snowy/build-tools:1;/sw/mf/snowy/compilers:1;/sw/mf/snowy/data:1;/sw/mf/snowy/environment:1;/sw/mf/snowy/libraries:1;/sw/mf/snowy/parallel:1'
+++ export __LMOD_REF_COUNT_MODULEPATH
+++ MODULEPATH=/sw/mf/snowy/bioinfo-tools/annotation:/sw/mf/snowy/bioinfo-tools/alignment:/sw/mf/snowy/bioinfo-tools/assembly:/sw/mf/snowy/bioinfo-tools/misc:/sw/mf/snowy/bioinfo-tools/phylogeny:/sw/mf/snowy/bioinfo-tools/pipelines:/sw/mf/snowy/bioinfo-tools/sw_collections:/sw/mf/snowy/applications:/sw/mf/snowy/build-tools:/sw/mf/snowy/compilers:/sw/mf/snowy/data:/sw/mf/snowy/environment:/sw/mf/snowy/libraries:/sw/mf/snowy/parallel
+++ export MODULEPATH
+++ __LMOD_REF_COUNT_PATH='/sw/apps/bioinfo/quast/5.0.2/snowy/bin:1;/sw/comp/python/3.7.2_snowy/bin:1;/home/jay/bin:2;/usr/local/bin:1;/usr/bin:1;/usr/local/sbin:1;/usr/sbin:1;/sw/uppmax/bin:2'
+++ export __LMOD_REF_COUNT_PATH
+++ PATH=/sw/apps/bioinfo/quast/5.0.2/snowy/bin:/sw/comp/python/3.7.2_snowy/bin:/home/jay/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sw/uppmax/bin
+++ export PATH
+++ __LMOD_REF_COUNT_PKG_CONFIG_PATH=/sw/comp/python/3.7.2_snowy/lib/pkgconfig:1
+++ export __LMOD_REF_COUNT_PKG_CONFIG_PATH
+++ PKG_CONFIG_PATH=/sw/comp/python/3.7.2_snowy/lib/pkgconfig
+++ export PKG_CONFIG_PATH
+++ __LMOD_REF_COUNT_PYTHONPATH=/sw/apps/bioinfo/quast/5.0.2/snowy/lib/python3.7/site-packages:1
+++ export __LMOD_REF_COUNT_PYTHONPATH
+++ PYTHONPATH=/sw/apps/bioinfo/quast/5.0.2/snowy/lib/python3.7/site-packages
+++ export PYTHONPATH
+++ PYTHON_ROOT=/sw/comp/python/3.7.2_snowy
+++ export PYTHON_ROOT
+++ __LMOD_REF_COUNT__LMFILES_='/sw/mf/snowy/environment/bioinfo-tools:1;/sw/mf/snowy/compilers/python/3.7.2:1;/sw/mf/snowy/bioinfo-tools/misc/quast/5.0.2:1'
+++ export __LMOD_REF_COUNT__LMFILES_
+++ _LMFILES_=/sw/mf/snowy/environment/bioinfo-tools:/sw/mf/snowy/compilers/python/3.7.2:/sw/mf/snowy/bioinfo-tools/misc/quast/5.0.2
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXt9LG1UPXtbImJpb2luZm8tdG9vbHMiXT17WyJmbiJdPSIvc3cvbWYvc25vd3kvZW52aXJvbm1lbnQvYmlvaW5mby10b29scyIsWyJmdWxsTmFtZSJdPSJiaW9pbmZvLXRvb2xzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYmlvaW5mby10b29scyIsfSxweXRob249e1siZm4iXT0iL3N3L21mL3Nub3d5L2NvbXBpbGVycy9weXRob24vMy43LjIiLFsiZnVsbE5hbWUiXT0icHl0aG9uLzMuNy4yIixbImxvYWRPcmRlciJd
+++ export _ModuleTable001_
+++ _ModuleTable002_=PTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0icHl0aG9uLzMuNy4yIix9LHF1YXN0PXtbImZuIl09Ii9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL21pc2MvcXVhc3QvNS4wLjIiLFsiZnVsbE5hbWUiXT0icXVhc3QvNS4wLjIiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJxdWFzdCIsfSx9LG1wYXRoQT17Ii9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL2Fubm90YXRpb24iLCIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9hbGlnbm1lbnQiLCIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9hc3NlbWJseSIsIi9zdy9t
+++ export _ModuleTable002_
+++ _ModuleTable003_=Zi9zbm93eS9iaW9pbmZvLXRvb2xzL21pc2MiLCIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9waHlsb2dlbnkiLCIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9waXBlbGluZXMiLCIvc3cvbWYvc25vd3kvYmlvaW5mby10b29scy9zd19jb2xsZWN0aW9ucyIsIi9zdy9tZi9zbm93eS9hcHBsaWNhdGlvbnMiLCIvc3cvbWYvc25vd3kvYnVpbGQtdG9vbHMiLCIvc3cvbWYvc25vd3kvY29tcGlsZXJzIiwiL3N3L21mL3Nub3d5L2RhdGEiLCIvc3cvbWYvc25vd3kvZW52aXJvbm1lbnQiLCIvc3cvbWYvc25vd3kvbGlicmFyaWVzIiwiL3N3L21mL3Nub3d5L3BhcmFsbGVsIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9zdy9tZi9zbm93eS9hcHBsaWNhdGlvbnM6L3N3L21mL3Nu
+++ export _ModuleTable003_
+++ _ModuleTable004_=b3d5L2J1aWxkLXRvb2xzOi9zdy9tZi9zbm93eS9jb21waWxlcnM6L3N3L21mL3Nub3d5L2RhdGE6L3N3L21mL3Nub3d5L2Vudmlyb25tZW50Oi9zdy9tZi9zbm93eS9saWJyYXJpZXM6L3N3L21mL3Nub3d5L3BhcmFsbGVsIix9
+++ export _ModuleTable004_
+++ _ModuleTable_Sz_=4
+++ export _ModuleTable_Sz_
+++ : -s sh
++ eval
++ metaquast.py /home/jay/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D1DNA_assembly/megahit_04-18/final.contigs.fa -o /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA
+/sw/bioinfo/quast/5.0.2/rackham/bin/metaquast.py /home/jay/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D1DNA_assembly/megahit_04-18/final.contigs.fa -o /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA
+
+Version: 5.0.2
+
+System information:
+  OS: Linux-3.10.0-1160.59.1.el7.x86_64-x86_64-with-centos-7.9.2009-Core (linux_64)
+  Python version: 3.7.2
+  CPUs number: 16
+
+Started: 2022-04-21 08:33:28
+
+Logging to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/metaquast.log
+NOTICE: Maximum number of threads is set to 4 (use --threads option to set it manually)
+
+Contigs:
+  Pre-processing...
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D1DNA_assembly/megahit_04-18/final.contigs.fa ==> final.contigs
+
+No references are provided, starting to search for reference genomes in SILVA 16S rRNA database and to download them from NCBI...
+
+2022-04-21 08:33:37
+Running BlastN..
+  processing final.contigs
+  BLAST results for final.contigs are saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/blast.res_final-contigs...
+
+
+2022-04-21 08:47:39
+Trying to download found references from NCBI. Totally 50 organisms to try.
+  unidentified_marine_bacterioplankton                                      | not found in the NCBI database
+  unidentified_marine_bacterioplankton was not found in NCBI database, trying to download the next best match
+  Streptomyces_cyaneogriseus_subsp._noncyanogenus                           | successfully downloaded (total 1, 49 more to go)
+  marine_metagenome                                                         | successfully downloaded (total 2, 48 more to go)
+  marine_gamma_proteobacterium_HTCC2080                                     | successfully downloaded (total 3, 47 more to go)
+  marine_bacterium_NAMAF003                                                 | not found in the NCBI database
+  marine_bacterium_NAMAF003 was not found in NCBI database, trying to download the next best match
+  Lishizhenia_caseinilytica                                                 | not found in the NCBI database
+  Lishizhenia_caseinilytica was not found in NCBI database, trying to download the next best match
+  Weeksella_virosa_DSM_16922                                                | successfully downloaded (total 4, 46 more to go)
+  magnetic_coccus_MP17                                                      | not found in the NCBI database
+  magnetic_coccus_MP17 was not found in NCBI database, trying to download the next best match
+  Aurantimonas_manganoxydans_SI85-9A1                                       | successfully downloaded (total 5, 45 more to go)
+  heterotrophic_extracellular_symbiont_BG-C2_of_Benthomodiolus_geikotsucola | not found in the NCBI database
+  heterotrophic_extracellular_symbiont_BG-C2_of_Benthomodiolus_geikotsucola was not found in NCBI database, trying to download the next best match
+  Arenicella_chitinivorans                                                  | successfully downloaded (total 6, 44 more to go)
+  gamma_proteobacterium_SCGC_AB-629-P17                                     | successfully downloaded (total 7, 43 more to go)
+  endosymbiont_of_Ridgeia_piscesae                                          | successfully downloaded (total 8, 42 more to go)
+  denitrifying_bacterium_enrichment_culture_clone_NOB_2_C9                  | not found in the NCBI database
+  denitrifying_bacterium_enrichment_culture_clone_NOB_2_C9 was not found in NCBI database, trying to download the next best match
+  Desulfocurvus_vexinensis                                                  | successfully downloaded (total 9, 41 more to go)
+  bacterium_symbiont_of_Idas_sp                                             | not found in the NCBI database
+  bacterium_symbiont_of_Idas_sp was not found in NCBI database, trying to download the next best match
+  Formosa_algae                                                             | successfully downloaded (total 10, 40 more to go)
+  bacterium_rJ7                                                             | not found in the NCBI database
+  bacterium_rJ7 was not found in NCBI database, trying to download the next best match
+  bacterium_rJ14                                                            | not found in the NCBI database
+  bacterium_rJ14 was not found in NCBI database, trying to download the next best match
+  actinobacterium_GP-6                                                      | not found in the NCBI database
+  actinobacterium_GP-6 was not found in NCBI database, trying to download the next best match
+  Actinomycetales_bacterium_GP-5                                            | not found in the NCBI database
+  bacterium_endosymbiont_of_Abyssogena_southwardae                          | not found in the NCBI database
+  bacterium_endosymbiont_of_Abyssogena_southwardae was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_M114                                   | not found in the NCBI database
+  bacterium_enrichment_culture_clone_M114 was not found in NCBI database, trying to download the next best match
+  bacterium_enrichment_culture_clone_58                                     | not found in the NCBI database
+  bacterium_K2-75                                                           | not found in the NCBI database
+  bacterium_K2-75 was not found in NCBI database, trying to download the next best match
+  Nisaea_denitrificans_DSM_18348                                            | successfully downloaded (total 11, 37 more to go)
+  bacterium_DG890                                                           | not found in the NCBI database
+  bacterium_DG890 was not found in NCBI database, trying to download the next best match
+  Owenweeksia_hongkongensis_DSM_17368                                       | successfully downloaded (total 12, 36 more to go)
+  bacterium_D78                                                             | not found in the NCBI database
+  bacterium_D78 was not found in NCBI database, trying to download the next best match
+  Oceanibaculum_pacificum                                                   | successfully downloaded (total 13, 35 more to go)
+  alpha_proteobacterium_SCGC_AAA015-O19                                     | successfully downloaded (total 14, 34 more to go)
+  Zymomonas_mobilis                                                         | successfully downloaded (total 15, 33 more to go)
+  Vibrio_sinaloensis                                                        | successfully downloaded (total 16, 32 more to go)
+  Vesicomya_sp._mt-II_symbiont                                              | not found in the NCBI database
+  Vesicomya_sp._mt-II_symbiont was not found in NCBI database, trying to download the next best match
+  Calyptogena_sp._Florida_gill_symbiont                                     | not found in the NCBI database
+  Calyptogena_sp._Florida_gill_symbiont was not found in NCBI database, trying to download the next best match
+  Calyptogena_fossajaponica_gill_thioautotophic_symbiont                    | not found in the NCBI database
+  Verrucomicrobia_bacterium_WY51                                            | not found in the NCBI database
+  Verrucomicrobia_bacterium_WY51 was not found in NCBI database, trying to download the next best match
+  Haloferula_harenae                                                        | not found in the NCBI database
+  Haloferula_harenae was not found in NCBI database, trying to download the next best match
+  Haloferula_phyci                                                          | not found in the NCBI database
+  Haloferula_phyci was not found in NCBI database, trying to download the next best match
+  Verrucomicrobium_sp._KLE1210                                              | not found in the NCBI database
+  Ureaplasma_sp._ES2783-GEN                                                 | not found in the NCBI database
+  Uncultured_Pseudospirillum_sp                                             | not found in the NCBI database
+  Uncultured_Pseudospirillum_sp was not found in NCBI database, trying to download the next best match
+  Haliea_sp._ETY-M                                                          | not found in the NCBI database
+  Haliea_sp._ETY-M was not found in NCBI database, trying to download the next best match
+  Pseudohongiella_spirulinae                                                | successfully downloaded (total 17, 28 more to go)
+  Thiodictyon_elegans                                                       | not found in the NCBI database
+  Thiodictyon_elegans was not found in NCBI database, trying to download the next best match
+  Thiodictyon_bacillosum                                                    | not found in the NCBI database
+  Thiodictyon_bacillosum was not found in NCBI database, trying to download the next best match
+  Pseudoalteromonas_tunicata_D2                                             | successfully downloaded (total 18, 27 more to go)
+  Thioalkalivibrio_sulfidiphilus_HL-EbGr7                                   | successfully downloaded (total 19, 26 more to go)
+  Thermoplasmatales_archaeon_A-plasma                                       | successfully downloaded (total 20, 25 more to go)
+  Thalassobaculum_salexigens_DSM_19539                                      | successfully downloaded (total 21, 24 more to go)
+  Syntrophus_aciditrophicus                                                 | successfully downloaded (total 22, 23 more to go)
+  Synechococcus_sp._RCC307                                                  | successfully downloaded (total 23, 22 more to go)
+  Synechococcus_sp._KORDI-49                                                | successfully downloaded (total 24, 21 more to go)
+  Spongiibacter_tropicus_DSM_19543                                          | successfully downloaded (total 25, 20 more to go)
+  Sphingobium_sp._GR1                                                       | not found in the NCBI database
+  Sphingobium_sp._GR1 was not found in NCBI database, trying to download the next best match
+  Sphingobium_sp._FL24                                                      | not found in the NCBI database
+  Sphingobium_sp._FL24 was not found in NCBI database, trying to download the next best match
+  Sphingobium_sp._IT-4                                                      | not found in the NCBI database
+  Sphingobium_sp._IT-4 was not found in NCBI database, trying to download the next best match
+  Sphingobium_czechense_LL01                                                | successfully downloaded (total 26, 19 more to go)
+  Sinobacterium_caligoides                                                  | successfully downloaded (total 27, 18 more to go)
+  Shewanella_amazonensis_SB2B                                               | successfully downloaded (total 28, 17 more to go)
+  Serratia_symbiotica                                                       | successfully downloaded (total 29, 16 more to go)
+  Ruegeria_sp._enrichment_culture_clone_KSE55-3                             | not found in the NCBI database
+  Ruegeria_sp._enrichment_culture_clone_KSE55-3 was not found in NCBI database, trying to download the next best match
+  Thalassobacter_sp._W-2-2                                                  | not found in the NCBI database
+  Thalassobacter_sp._W-2-2 was not found in NCBI database, trying to download the next best match
+  Tateyamaria_sp._ANG-S1                                                    | successfully downloaded (total 30, 15 more to go)
+  Roseobacter_sp._SK209-2-6                                                 | successfully downloaded (total 31, 14 more to go)
+  Roseibacterium_elongatum_DSM_19469                                        | successfully downloaded (total 32, 13 more to go)
+  Rhodobacteraceae_bacterium_HIMB11                                         | successfully downloaded (total 33, 12 more to go)
+  Puniceicoccus_vermicola                                                   | successfully downloaded (total 34, 11 more to go)
+  Psychroserpens_sp._PAMC_27130                                             | successfully downloaded (total 35, 10 more to go)
+  Pseudoalteromonas_atlantica_T6c                                           | successfully downloaded (total 36, 9 more to go)
+  Prosthecobacter_debontii                                                  | successfully downloaded (total 37, 8 more to go)
+  Porticoccus_hydrocarbonoclasticus_MCTG13d                                 | successfully downloaded (total 38, 7 more to go)
+  Polaribacter_sp._KYW_601                                                  | not found in the NCBI database
+  Polaribacter_sp._KYW_601 was not found in NCBI database, trying to download the next best match
+  Polaribacter_sp._KYW612                                                   | not found in the NCBI database
+  Polaribacter_sp._KYW612 was not found in NCBI database, trying to download the next best match
+  Polaribacter_sp._SM1202                                                   | not found in the NCBI database
+  Polaribacter_sp._SM1202 was not found in NCBI database, trying to download the next best match
+  Polaribacter_sp._USW115                                                   | not found in the NCBI database
+  Planctomyces_maris_DSM_8797                                               | successfully downloaded (total 39, 5 more to go)
+  Pirellula_sp                                                              | not found in the NCBI database
+  Pirellula_sp was not found in NCBI database, trying to download the next best match
+  Blastopirellula_marina                                                    | successfully downloaded (total 40, 4 more to go)
+  Photobacterium_halotolerans                                               | successfully downloaded (total 41, 3 more to go)
+  Pelagicoccus_croceus                                                      | not found in the NCBI database
+  Pelagicoccus_croceus was not found in NCBI database, trying to download the next best match
+  marine_bacterium_RS.Sph.002                                               | not found in the NCBI database
+  marine_bacterium_RS.Sph.002 was not found in NCBI database, trying to download the next best match
+  Pelagicoccus_mobilis                                                      | successfully downloaded (total 42, 2 more to go)
+  Pararhodospirillum_sulfurexigens                                          | not found in the NCBI database
+  Pararhodospirillum_sulfurexigens was not found in NCBI database, trying to download the next best match
+  Rhodothalassium_salexigens                                                | successfully downloaded (total 43, 1 more to go)
+  Paenibacillus_sp._SJH06                                                   | not found in the NCBI database
+  Paenibacillus_sp._SJH06 was not found in NCBI database, trying to download the next best match
+  Dehalobacter_restrictus_DSM_9455                                          | successfully downloaded (total 44, 0 more to go)
+
+Downloaded reference(s):
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Arenicella_chitinivorans.fasta ==> Arenicella_chitinivorans
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Aurantimonas_manganoxydans_SI85_9A1.fasta ==> Aurantimonas_manganoxydans_SI85_9A1
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Blastopirellula_marina.fasta ==> Blastopirellula_marina
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Dehalobacter_restrictus_DSM_9455.fasta ==> Dehalobacter_restrictus_DSM_9455
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Desulfocurvus_vexinensis.fasta ==> Desulfocurvus_vexinensis
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Formosa_algae.fasta ==> Formosa_algae
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Nisaea_denitrificans_DSM_18348.fasta ==> Nisaea_denitrificans_DSM_18348
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Oceanibaculum_pacificum.fasta ==> Oceanibaculum_pacificum
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Owenweeksia_hongkongensis_DSM_17368.fasta ==> Owenweeksia_hongkongensis_DSM_17368
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Pelagicoccus_mobilis.fasta ==> Pelagicoccus_mobilis
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Photobacterium_halotolerans.fasta ==> Photobacterium_halotolerans
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Planctomyces_maris_DSM_8797.fasta ==> Planctomyces_maris_DSM_8797
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Porticoccus_hydrocarbonoclasticus_MCTG13d.fasta ==> Porticoccus_hydrocarbonoclasticus_MCTG13d
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Prosthecobacter_debontii.fasta ==> Prosthecobacter_debontii
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Pseudoalteromonas_atlantica_T6c.fasta ==> Pseudoalteromonas_atlantica_T6c
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Pseudoalteromonas_tunicata_D2.fasta ==> Pseudoalteromonas_tunicata_D2
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Pseudohongiella_spirulinae.fasta ==> Pseudohongiella_spirulinae
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Psychroserpens_sp._PAMC_27130.fasta ==> Psychroserpens_sp._PAMC_27130
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Puniceicoccus_vermicola.fasta ==> Puniceicoccus_vermicola
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Rhodobacteraceae_bacterium_HIMB11.fasta ==> Rhodobacteraceae_bacterium_HIMB11
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Rhodothalassium_salexigens.fasta ==> Rhodothalassium_salexigens
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Roseibacterium_elongatum_DSM_19469.fasta ==> Roseibacterium_elongatum_DSM_19469
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Roseobacter_sp._SK209_2_6.fasta ==> Roseobacter_sp._SK209_2_6
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Serratia_symbiotica.fasta ==> Serratia_symbiotica
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Shewanella_amazonensis_SB2B.fasta ==> Shewanella_amazonensis_SB2B
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Sinobacterium_caligoides.fasta ==> Sinobacterium_caligoides
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Sphingobium_czechense_LL01.fasta ==> Sphingobium_czechense_LL01
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Spongiibacter_tropicus_DSM_19543.fasta ==> Spongiibacter_tropicus_DSM_19543
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Streptomyces_cyaneogriseus_subsp._noncyanogenus.fasta ==> Streptomyces_cyaneogriseus_subsp._noncyanogenus
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Synechococcus_sp._KORDI_49.fasta ==> Synechococcus_sp._KORDI_49
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Synechococcus_sp._RCC307.fasta ==> Synechococcus_sp._RCC307
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Syntrophus_aciditrophicus.fasta ==> Syntrophus_aciditrophicus
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Tateyamaria_sp._ANG_S1.fasta ==> Tateyamaria_sp._ANG_S1
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Thalassobaculum_salexigens_DSM_19539.fasta ==> Thalassobaculum_salexigens_DSM_19539
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Thermoplasmatales_archaeon_A_plasma.fasta ==> Thermoplasmatales_archaeon_A_plasma
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Thioalkalivibrio_sulfidiphilus_HL_EbGr7.fasta ==> Thioalkalivibrio_sulfidiphilus_HL_EbGr7
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Vibrio_sinaloensis.fasta ==> Vibrio_sinaloensis
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Weeksella_virosa_DSM_16922.fasta ==> Weeksella_virosa_DSM_16922
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Zymomonas_mobilis.fasta ==> Zymomonas_mobilis
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/alpha_proteobacterium_SCGC_AAA015_O19.fasta ==> alpha_proteobacterium_SCGC_AAA015_O19
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/endosymbiont_of_Ridgeia_piscesae.fasta ==> endosymbiont_of_Ridgeia_piscesae
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/gamma_proteobacterium_SCGC_AB_629_P17.fasta ==> gamma_proteobacterium_SCGC_AB_629_P17
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/marine_gamma_proteobacterium_HTCC2080.fasta ==> marine_gamma_proteobacterium_HTCC2080
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/marine_metagenome.fasta ==> marine_metagenome
+  All references were combined in combined_reference.fasta
+
+Starting quast.py for the combined reference...
+/sw/bioinfo/quast/5.0.2/rackham/bin/quast.py --combined-ref --colors #E31A1C --ls solid --ambiguity-usage all /home/jay/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D1DNA_assembly/megahit_04-18/final.contigs.fa -R /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_corrected_input/combined_reference.fasta -o /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference --labels final.contigs
+
+Started: 2022-04-21 09:21:21
+
+Logging to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/quast.log
+NOTICE: Maximum number of threads is set to 4 (use --threads option to set it manually)
+
+CWD: /scratch/6134785
+Main parameters: 
+  MODE: meta, threads: 4, minimum contig length: 500, minimum alignment length: 65, ambiguity: all, \
+  threshold for extensive misassembly size: 1000
+
+Reference:
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_corrected_input/combined_reference.fasta ==> combined_reference
+
+Contigs:
+  Pre-processing...
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D1DNA_assembly/megahit_04-18/final.contigs.fa ==> final.contigs
+
+2022-04-21 09:21:28
+Running Basic statistics processor...
+  Reference genome:
+    combined_reference.fasta, length = 176301800, num fragments = 1655, GC % = 54.38
+WARNING:   Reference genome is fragmented. You may consider rerunning QUAST using --fragmented option. QUAST will try to detect misassemblies caused by the fragmentation and mark them fake (will be excluded from # misassemblies).
+  Contig files: 
+    final.contigs
+  Calculating N50 and L50...
+    final.contigs, N50 = 1095, L50 = 21215, Total length = 95542768, GC % = 46.53, # N's per 100 kbp =  0.00
+  Drawing Nx plot...
+/sw/apps/bioinfo/quast/5.0.2/snowy/bin/metaquast.py:136: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  import imp
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/basic_stats/Nx_plot.pdf
+  Drawing cumulative plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/basic_stats/GC_content_plot.pdf
+  Drawing final.contigs GC content plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/basic_stats/final.contigs_GC_content_plot.pdf
+Done.
+
+2022-04-21 09:22:00
+Running Contig analyzer...
+  final.contigs
+  Logging to files /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/contigs_report_final-contigs.stdout and contigs_report_final-contigs.stderr...
+  Aligning contigs to the reference
+  Analysis is finished.
+  Information about interspecies translocations by references for final_contigs is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/interspecies_translocations_by_refs_final_contigs.info
+  Drawing Intergenomic misassemblies (found and supposed) metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/intergenomic_misassemblies.pdf
+  Creating total report...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/misassemblies_report.txt, misassemblies_report.tsv, and misassemblies_report.tex
+  Transposed version of total report...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/transposed_report_misassemblies.txt, transposed_report_misassemblies.tsv, and transposed_report_misassemblies.tex
+  Creating total report...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/unaligned_report.txt, unaligned_report.tsv, and unaligned_report.tex
+  Drawing misassemblies by types plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/misassemblies_plot.pdf
+  Drawing misassemblies FRCurve plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/misassemblies_frcurve_plot.pdf
+Done.
+
+2022-04-21 09:22:49
+Running NA-NGA calculation...
+  final.contigs, Largest alignment = 3896, NA50 = None, LA50 = None
+  Drawing cumulative plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/aligned_stats/cumulative_plot.pdf
+  Drawing NAx plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/aligned_stats/NAx_plot.pdf
+Done.
+
+2022-04-21 09:22:57
+Running Genome analyzer...
+  NOTICE: No file with genomic features were provided. Use the --features option if you want to specify it.
+
+  NOTICE: No file with operons were provided. Use the -O option if you want to specify it.
+  final.contigs
+  Analysis is finished.
+  Skipping drawing Genome fraction, % histogram... (less than 2 columns histogram makes no sense)
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2022-04-21 09:23:55
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating Icarus viewers...
+  2 of 2: Creating PDF with all tables and plots...
+Done
+
+2022-04-21 09:24:07
+RESULTS:
+  Text versions of total report are saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/report.html
+  PDF version (tables and plots) is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/report.pdf
+  Icarus (contig browser) is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/icarus.html
+
+Excluding downloaded references with low genome fraction from further analysis..
+
+Filtered reference(s):
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_downloaded_references/Synechococcus_sp._RCC307.fasta ==> Synechococcus_sp._RCC307
+  All references were combined in combined_reference.fasta
+  Pre-processing...
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D1DNA_assembly/megahit_04-18/final.contigs.fa ==> final.contigs
+
+Starting quast.py for the corrected combined reference...
+/sw/bioinfo/quast/5.0.2/rackham/bin/quast.py --combined-ref --colors #E31A1C --ls solid --ambiguity-usage all /home/jay/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D1DNA_assembly/megahit_04-18/final.contigs.fa -R /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_corrected_input/combined_reference.fasta -o /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference --labels final.contigs
+
+Started: 2022-04-21 09:24:16
+
+Logging to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/quast.log
+NOTICE: Output directory already exists and looks like a QUAST output dir. Existing results can be reused (e.g. previously generated alignments)!
+NOTICE: Maximum number of threads is set to 4 (use --threads option to set it manually)
+
+CWD: /scratch/6134785
+Main parameters: 
+  MODE: meta, threads: 4, minimum contig length: 500, minimum alignment length: 65, ambiguity: all, \
+  threshold for extensive misassembly size: 1000
+
+Reference:
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_corrected_input/combined_reference.fasta ==> combined_reference
+
+Contigs:
+  Pre-processing...
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D1DNA_assembly/megahit_04-18/final.contigs.fa ==> final.contigs
+
+2022-04-21 09:24:23
+Running Basic statistics processor...
+  Reference genome:
+    combined_reference.fasta, length = 2224914, num fragments = 1, GC % = 60.84
+  Contig files: 
+    final.contigs
+  Calculating N50 and L50...
+    final.contigs, N50 = 1095, L50 = 21215, Total length = 95542768, GC % = 46.53, # N's per 100 kbp =  0.00
+  Drawing Nx plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/basic_stats/Nx_plot.pdf
+  Drawing cumulative plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/basic_stats/GC_content_plot.pdf
+  Drawing final.contigs GC content plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/basic_stats/final.contigs_GC_content_plot.pdf
+Done.
+
+2022-04-21 09:24:32
+Running Contig analyzer...
+  final.contigs
+  Logging to files /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/contigs_report_final-contigs.stdout and contigs_report_final-contigs.stderr...
+  Aligning contigs to the reference
+  Analysis is finished.
+  Information about interspecies translocations by references for final_contigs is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/interspecies_translocations_by_refs_final_contigs.info
+  Drawing Intergenomic misassemblies (found and supposed) metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/intergenomic_misassemblies.pdf
+  Creating total report...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/misassemblies_report.txt, misassemblies_report.tsv, and misassemblies_report.tex
+  Transposed version of total report...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/transposed_report_misassemblies.txt, transposed_report_misassemblies.tsv, and transposed_report_misassemblies.tex
+  Creating total report...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/unaligned_report.txt, unaligned_report.tsv, and unaligned_report.tex
+  Drawing misassemblies by types plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/misassemblies_plot.pdf
+  Drawing misassemblies FRCurve plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/contigs_reports/misassemblies_frcurve_plot.pdf
+Done.
+
+2022-04-21 09:24:40
+Running NA-NGA calculation...
+  final.contigs, Largest alignment = 3896, NA50 = None, LA50 = None
+  Drawing cumulative plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/aligned_stats/cumulative_plot.pdf
+  Drawing NAx plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/aligned_stats/NAx_plot.pdf
+Done.
+
+2022-04-21 09:24:43
+Running Genome analyzer...
+  NOTICE: No file with genomic features were provided. Use the --features option if you want to specify it.
+
+  NOTICE: No file with operons were provided. Use the -O option if you want to specify it.
+  final.contigs
+  Analysis is finished.
+  Skipping drawing Genome fraction, % histogram... (less than 2 columns histogram makes no sense)
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2022-04-21 09:24:45
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating Icarus viewers...
+  2 of 2: Creating PDF with all tables and plots...
+Done
+
+2022-04-21 09:24:48
+RESULTS:
+  Text versions of total report are saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/report.html
+  PDF version (tables and plots) is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/report.pdf
+  Icarus (contig browser) is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/icarus.html
+
+Partitioning contigs into bins aligned to each reference..
+  processing final.contigs
+
+Starting quast.py for the contigs aligned to Synechococcus_sp._RCC307... (logging to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/quast.log)
+/sw/bioinfo/quast/5.0.2/rackham/bin/quast.py --colors #E31A1C --ls solid --no-check-meta --contig-thresholds 1000,5000,10000,25000,50000 /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_corrected_input/final-contigs_to_Synechococcus_sp._RCC307.fasta -R /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_corrected_input/Synechococcus_sp._RCC307.fasta__1 -o /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307 --labels final.contigs
+
+Started: 2022-04-21 09:24:55
+
+Logging to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/quast.log
+NOTICE: Maximum number of threads is set to 4 (use --threads option to set it manually)
+
+CWD: /scratch/6134785
+Main parameters: 
+  MODE: meta, threads: 4, minimum contig length: 500, minimum alignment length: 65, ambiguity: one, \
+  threshold for extensive misassembly size: 1000
+
+Reference:
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_corrected_input/Synechococcus_sp._RCC307.fasta__1 ==> Synechococcus_sp._RCC307
+
+Contigs:
+  Pre-processing...
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_corrected_input/final-contigs_to_Synechococcus_sp._RCC307.fasta ==> final.contigs
+
+2022-04-21 09:24:55
+Running Basic statistics processor...
+  Reference genome:
+    Synechococcus_sp._RCC307.fasta__1, length = 2224914, num fragments = 1, GC % = 60.84
+  Contig files: 
+    final.contigs
+  Calculating N50 and L50...
+    final.contigs, N50 = 1040, L50 = 429, Total length = 1358321, GC % = 61.38, # N's per 100 kbp =  0.00
+  Drawing Nx plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/basic_stats/Nx_plot.pdf
+  Drawing NGx plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/basic_stats/NGx_plot.pdf
+  Drawing cumulative plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/basic_stats/GC_content_plot.pdf
+  Drawing final.contigs GC content plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/basic_stats/final.contigs_GC_content_plot.pdf
+Done.
+
+2022-04-21 09:24:57
+Running Contig analyzer...
+  final.contigs
+  Logging to files /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/contigs_reports/contigs_report_final-contigs.stdout and contigs_report_final-contigs.stderr...
+  Aligning contigs to the reference
+  Analysis is finished.
+  Creating total report...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/contigs_reports/misassemblies_report.txt, misassemblies_report.tsv, and misassemblies_report.tex
+  Transposed version of total report...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/contigs_reports/transposed_report_misassemblies.txt, transposed_report_misassemblies.tsv, and transposed_report_misassemblies.tex
+  Creating total report...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/contigs_reports/unaligned_report.txt, unaligned_report.tsv, and unaligned_report.tex
+  Drawing misassemblies by types plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/contigs_reports/misassemblies_plot.pdf
+  Drawing misassemblies FRCurve plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/contigs_reports/misassemblies_frcurve_plot.pdf
+Done.
+
+2022-04-21 09:24:59
+Running NA-NGA calculation...
+  final.contigs, Largest alignment = 3896, NA50 = 981, NGA50 = 621, LA50 = 457, LGA50 = 1020
+  Drawing cumulative plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/aligned_stats/cumulative_plot.pdf
+  Drawing NAx plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/aligned_stats/NAx_plot.pdf
+  Drawing NGAx plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/aligned_stats/NGAx_plot.pdf
+Done.
+
+2022-04-21 09:25:00
+Running Genome analyzer...
+  NOTICE: No file with genomic features were provided. Use the --features option if you want to specify it.
+
+  NOTICE: No file with operons were provided. Use the -O option if you want to specify it.
+  final.contigs
+  Analysis is finished.
+  Skipping drawing Genome fraction, % histogram... (less than 2 columns histogram makes no sense)
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2022-04-21 09:25:01
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating Icarus viewers...
+  2 of 2: Creating PDF with all tables and plots...
+Done
+
+2022-04-21 09:25:02
+RESULTS:
+  Text versions of total report are saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/report.html
+  PDF version (tables and plots) is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/report.pdf
+  Icarus (contig browser) is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/runs_per_reference/Synechococcus_sp._RCC307/icarus.html
+
+Starting quast.py for the contigs not aligned anywhere... (logging to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/not_aligned/quast.log)
+/sw/bioinfo/quast/5.0.2/rackham/bin/quast.py --colors #E31A1C --ls solid --no-check-meta --contig-thresholds 1000,5000,10000,25000,50000 -t 4 /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_corrected_input/final-contigs_not_aligned_anywhere.fasta -o /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/not_aligned --labels final.contigs
+
+Started: 2022-04-21 09:25:02
+
+Logging to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/not_aligned/quast.log
+
+CWD: /scratch/6134785
+Main parameters: 
+  MODE: meta, threads: 4, minimum contig length: 500, minimum alignment length: 65, ambiguity: one, \
+  threshold for extensive misassembly size: 1000
+
+Contigs:
+  Pre-processing...
+  /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_corrected_input/final-contigs_not_aligned_anywhere.fasta ==> final.contigs
+
+2022-04-21 09:25:07
+Running Basic statistics processor...
+  Contig files: 
+    final.contigs
+  Calculating N50 and L50...
+    final.contigs, N50 = 1097, L50 = 20787, Total length = 94184447, GC % = 46.31, # N's per 100 kbp =  0.00
+  Drawing Nx plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/not_aligned/basic_stats/Nx_plot.pdf
+  Drawing cumulative plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/not_aligned/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/not_aligned/basic_stats/GC_content_plot.pdf
+  Drawing final.contigs GC content plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/not_aligned/basic_stats/final.contigs_GC_content_plot.pdf
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2022-04-21 09:25:15
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating Icarus viewers...
+  2 of 2: Creating PDF with all tables and plots...
+Done
+
+2022-04-21 09:25:18
+RESULTS:
+  Text versions of total report are saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/not_aligned/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/not_aligned/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/not_aligned/report.html
+  PDF version (tables and plots) is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/not_aligned/report.pdf
+  Icarus (contig browser) is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/not_aligned/icarus.html
+
+2022-04-21 09:25:18
+Summarizing results...
+  Drawing # contigs metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/num_contigs.pdf
+  Drawing Largest contig metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/Largest_contig.pdf
+  Drawing Total length metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/Total_length.pdf
+  Drawing Largest alignment metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/Largest_alignment.pdf
+  Drawing Total aligned length metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/Total_aligned_length.pdf
+  Drawing Total length (>= 1000 bp) metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/Total_length_(ge_1000_bp).pdf
+  Drawing Total length (>= 10000 bp) metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/Total_length_(ge_10000_bp).pdf
+  Drawing Total length (>= 50000 bp) metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/Total_length_(ge_50000_bp).pdf
+  Drawing # misassemblies metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/num_misassemblies.pdf
+  Drawing metaQUAST summary misassemblies plot for final.contigs...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/final-contigs_misassemblies.pdf
+  Drawing Misassembled contigs length metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/Misassembled_contigs_length.pdf
+  Drawing # mismatches per 100 kbp metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/num_mismatches_per_100_kbp.pdf
+  Drawing # indels per 100 kbp metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/num_indels_per_100_kbp.pdf
+  Drawing # N's per 100 kbp metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/num_Ns_per_100_kbp.pdf
+  Drawing Genome fraction (%) metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/Genome_fraction.pdf
+  Drawing Duplication ratio metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/Duplication_ratio.pdf
+  Drawing NGA50 metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/NGA50.pdf
+  Drawing LGA50 metaQUAST summary plot...
+    saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/PDF/LGA50.pdf
+
+  Text versions of reports and plots for each metric (for all references and assemblies) are saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/summary/
+  Icarus (contig browser) is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/icarus.html
+  Drawing interactive Krona plots...
+  Krona chart for final.contigs is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/krona_charts/final.contigs_taxonomy_chart.html
+  Extended version of HTML-report (for all references and assemblies) is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/report.html
+
+MetaQUAST finished.
+  Log is saved to /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/metaquast.log
+
+Finished: 2022-04-21 09:25:22
+Elapsed time: 0:51:53.673539
+Total NOTICEs: 10; WARNINGs: 1; non-fatal ERRORs: 0
+
+Thank you for using QUAST!
