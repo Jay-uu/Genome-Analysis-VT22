@@ -1,0 +1,24 @@
+#                                                                            --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord
+# target name        accession   tlen query name           accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target
+#------------------- ---------- ----- -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------
+k105_75839_3         -            327 Ribosomal_S2         PF00318.15   211   6.1e-79  258.7   0.0   1   1   2.2e-81   7.2e-79  258.4   0.0     1   211     9   225     9   225 0.99 # 1383 # 2363 # 1 # ID=70_3;partial=00;start_type=GTG;rbs_motif=AGGAG;rbs_spacer=5-10bp;gc_cont=0.708
+k105_20777_4         -            133 Ribosomal_S9         PF00380.14   121   3.9e-44  144.4   0.2   1   1   1.4e-46   4.5e-44  144.2   0.2     1   121    12   132    12   132 1.00 # 2193 # 2591 # 1 # ID=72_4;partial=00;start_type=ATG;rbs_motif=AGGA;rbs_spacer=5-10bp;gc_cont=0.709
+k105_157888_5        -            133 Ribosomal_S11        PF00411.14   110   4.2e-48  156.7   0.5   1   1   1.6e-50   5.3e-48  156.4   0.5     1   110    22   131    22   131 0.99 # 2606 # 3004 # -1 # ID=38_5;partial=00;start_type=ATG;rbs_motif=AGxAGG/AGGxGG;rbs_spacer=5-10bp;gc_cont=0.699
+k105_20777_3         -            156 Ribosomal_L13        PF00572.13   128   1.5e-54  178.1   0.0   1   1   5.3e-57   1.7e-54  177.9   0.0     1   126    22   147    22   149 0.99 # 1729 # 2196 # 1 # ID=72_3;partial=00;start_type=GTG;rbs_motif=GGA/GAG/AGG;rbs_spacer=5-10bp;gc_cont=0.684
+k105_138784_8        -            172 RNA_pol_Rpb6         PF01192.17    57   0.00015   16.0   0.1   1   1   1.9e-06   0.00061   14.1   0.0     8    24    16    32    11    34 0.94 # 4268 # 4783 # -1 # ID=54_8;partial=00;start_type=ATG;rbs_motif=GGAGG;rbs_spacer=3-4bp;gc_cont=0.719
+k105_78862_1         -            594 TIGR00344            TIGR00344    847   1.3e-07   24.4   0.0   1   1   5.8e-10   1.9e-07   23.9   0.0   557   680    32   163    13   172 0.74 # 2 # 1783 # 1 # ID=22_1;partial=10;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.685
+k105_123921_3        -            177 TIGR00422            TIGR00422    863   9.5e-73  239.7   0.0   1   1   9.6e-75     1e-72  239.6   0.0    16   191     2   177     1   177 0.99 # 2958 # 3488 # 1 # ID=30_3;partial=01;start_type=GTG;rbs_motif=GGAG/GAGG;rbs_spacer=5-10bp;gc_cont=0.697
+k105_18612_1         -            472 TIGR00422            TIGR00422    863   4.3e-08   25.8   0.0   1   2   0.00068     0.074    5.2   0.0    42    73    49    80    33    85 0.88 # 3 # 1418 # 1 # ID=55_1;partial=10;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.730
+k105_18612_1         -            472 TIGR00422            TIGR00422    863   4.3e-08   25.8   0.0   2   2     6e-08   6.6e-06   18.6   0.0   515   575   291   352   282   404 0.88 # 3 # 1418 # 1 # ID=55_1;partial=10;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.730
+k105_67326_4         -            333 TIGR00422            TIGR00422    863    0.0011   11.2   0.2   1   2      0.02       2.2    0.3   0.2    44    54    17    27    15    33 0.88 # 2307 # 3305 # 1 # ID=15_4;partial=00;start_type=GTG;rbs_motif=None;rbs_spacer=None;gc_cont=0.683
+k105_67326_4         -            333 TIGR00422            TIGR00422    863    0.0011   11.2   0.2   2   2   7.5e-05    0.0081    8.3   0.0   517   535   190   208   178   212 0.87 # 2307 # 3305 # 1 # ID=15_4;partial=00;start_type=GTG;rbs_motif=None;rbs_spacer=None;gc_cont=0.683
+#
+# Program:         hmmsearch
+# Version:         3.3.1 (Jul 2020)
+# Pipeline mode:   SEARCH
+# Query file:      /scratch/6167614/92ce52f1-cae4-4ac6-b2c2-c0e7f8faff02
+# Target file:     /home/jay/genome_analysis_project/Genome-Analysis-VT22//analyses/03_binning/D3DNA_bins/bins_eval/bins/bin.11/genes.faa
+# Option settings: hmmsearch --domtblout /home/jay/genome_analysis_project/Genome-Analysis-VT22//analyses/03_binning/D3DNA_bins/bins_eval/bins/bin.11/hmmer.tree.txt --noali --notextw -E 0.1 --domE 0.1 --cpu 1 /scratch/6167614/92ce52f1-cae4-4ac6-b2c2-c0e7f8faff02 /home/jay/genome_analysis_project/Genome-Analysis-VT22//analyses/03_binning/D3DNA_bins/bins_eval/bins/bin.11/genes.faa 
+# Current dir:     /scratch/6167614/CheckM_data
+# Date:            Wed Apr 27 15:37:43 2022
+# [ok]

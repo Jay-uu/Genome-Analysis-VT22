@@ -1,0 +1,19 @@
+#                                                                            --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord
+# target name        accession   tlen query name           accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target
+#------------------- ---------- ----- -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------
+k105_65919_4         -            128 Ribosomal_L22        PF00237.14   105   0.00042   15.6   0.2   1   1   1.1e-06    0.0006   15.1   0.2    15    58    43    92    39   104 0.84 # 1131 # 1514 # -1 # ID=10_4;partial=00;start_type=GTG;rbs_motif=None;rbs_spacer=None;gc_cont=0.349
+k105_88668_3         -            399 Ribosomal_L11        PF00298.14    69     0.072    8.6   5.6   1   2    0.0007      0.38    6.3   0.3    14    41    24    51    14    62 0.80 # 909 # 2105 # -1 # ID=17_3;partial=00;start_type=ATG;rbs_motif=None;rbs_spacer=None;gc_cont=0.348
+k105_88668_3         -            399 Ribosomal_L11        PF00298.14    69     0.072    8.6   5.6   2   2      0.01       5.5    2.6   0.0    25    56   184   215   170   216 0.88 # 909 # 2105 # -1 # ID=17_3;partial=00;start_type=ATG;rbs_motif=None;rbs_spacer=None;gc_cont=0.348
+k105_163663_1        -             25 Ribosomal_S9         PF00380.14   121   2.2e-07   26.5   3.9   1   1   4.1e-10   2.2e-07   26.4   3.9    98   121     1    24     1    24 0.99 # 3 # 77 # 1 # ID=11_1;partial=10;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.440
+k105_3989_7          -            183 RNA_pol_Rpb6         PF01192.17    57   4.7e-14   47.2   0.1   1   1   8.5e-17   4.7e-14   47.2   0.1     5    57   110   163   107   163 0.95 # 3489 # 4037 # 1 # ID=32_7;partial=00;start_type=ATG;rbs_motif=None;rbs_spacer=None;gc_cont=0.359
+k105_55126_10        -            142 RNA_pol_Rpb2_2       PF04561.9    190    0.0011   13.7   0.8   1   1   2.7e-06    0.0015   13.3   0.5    31    80    12    64     4    95 0.80 # 3986 # 4411 # -1 # ID=12_10;partial=00;start_type=ATG;rbs_motif=None;rbs_spacer=None;gc_cont=0.340
+#
+# Program:         hmmsearch
+# Version:         3.3.1 (Jul 2020)
+# Pipeline mode:   SEARCH
+# Query file:      /scratch/6167614/d0adbc6d-60e9-4171-92a1-c61c653ec98d
+# Target file:     /home/jay/genome_analysis_project/Genome-Analysis-VT22//analyses/03_binning/D3DNA_bins/bins_eval/bins/bin.22/genes.faa
+# Option settings: hmmsearch --domtblout /home/jay/genome_analysis_project/Genome-Analysis-VT22//analyses/03_binning/D3DNA_bins/bins_eval/bins/bin.22/hmmer.tree.txt --noali --notextw -E 0.1 --domE 0.1 --cpu 1 /scratch/6167614/d0adbc6d-60e9-4171-92a1-c61c653ec98d /home/jay/genome_analysis_project/Genome-Analysis-VT22//analyses/03_binning/D3DNA_bins/bins_eval/bins/bin.22/genes.faa 
+# Current dir:     /scratch/6167614/CheckM_data
+# Date:            Wed Apr 27 15:38:36 2022
+# [ok]

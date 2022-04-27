@@ -1,0 +1,26 @@
+#                                                                            --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord
+# target name        accession   tlen query name           accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target
+#------------------- ---------- ----- -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------
+k105_66973_3         -            152 Ribosomal_S15        PF00312.17    83   3.7e-17   57.3   0.6   1   1   9.4e-20   5.5e-17   56.8   0.6     2    74    66   142    65   150 0.90 # 2641 # 3096 # 1 # ID=23_3;partial=00;start_type=TTG;rbs_motif=GGAG/GAGG;rbs_spacer=5-10bp;gc_cont=0.441
+k105_51858_2         -             87 RNA_pol_Rpb6         PF01192.17    57   6.5e-13   43.7   0.2   1   2   2.2e-13   1.3e-10   36.3   0.0     9    36     9    36     6    41 0.91 # 698 # 958 # 1 # ID=105_2;partial=00;start_type=ATG;rbs_motif=None;rbs_spacer=None;gc_cont=0.460
+k105_51858_2         -             87 RNA_pol_Rpb6         PF01192.17    57   6.5e-13   43.7   0.2   2   2   0.00091      0.53    5.5   0.0    39    57    61    79    52    79 0.85 # 698 # 958 # 1 # ID=105_2;partial=00;start_type=ATG;rbs_motif=None;rbs_spacer=None;gc_cont=0.460
+k105_123240_2        -            322 TruB_N               PF01509.13   149   2.8e-25   84.6   0.4   1   2     8e-20   2.3e-17   58.9   0.2     1    54    50   103    50   107 0.96 # 1823 # 2788 # -1 # ID=48_2;partial=00;start_type=TTG;rbs_motif=GGAGG;rbs_spacer=5-10bp;gc_cont=0.444
+k105_123240_2        -            322 TruB_N               PF01509.13   149   2.8e-25   84.6   0.4   2   2   7.1e-08   2.1e-05   20.1   0.0    72   149   103   165   101   165 0.89 # 1823 # 2788 # -1 # ID=48_2;partial=00;start_type=TTG;rbs_motif=GGAGG;rbs_spacer=5-10bp;gc_cont=0.444
+k105_70580_3         -            477 TruB_N               PF01509.13   149   0.00089   14.8   0.1   1   1   5.6e-06    0.0016   14.0   0.1   116   149   407   440   385   440 0.89 # 3203 # 4633 # 1 # ID=66_3;partial=00;start_type=ATG;rbs_motif=GGxGG;rbs_spacer=5-10bp;gc_cont=0.493
+k105_22946_2         -            953 TIGR00344            TIGR00344    847  2.8e-178  589.9   0.0   1   1  1.1e-179  6.6e-177  585.4   0.0     2   847    68   933    67   933 0.93 # 285 # 3143 # -1 # ID=16_2;partial=00;start_type=ATG;rbs_motif=GGAGG;rbs_spacer=5-10bp;gc_cont=0.471
+k105_133218_1        -            958 TIGR00422            TIGR00422    863   6.7e-74  244.4   0.9   1   6   5.5e-36   3.2e-33  109.8   0.1     5   190     3   172     1   173 0.91 # 21 # 2894 # -1 # ID=42_1;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer=5-10bp;gc_cont=0.476
+k105_133218_1        -            958 TIGR00422            TIGR00422    863   6.7e-74  244.4   0.9   2   6   2.5e-05     0.015    8.3   0.2   343   396   173   222   170   226 0.89 # 21 # 2894 # -1 # ID=42_1;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer=5-10bp;gc_cont=0.476
+k105_133218_1        -            958 TIGR00422            TIGR00422    863   6.7e-74  244.4   0.9   3   6   0.00068       0.4    3.6   0.0   209   234   241   266   223   275 0.73 # 21 # 2894 # -1 # ID=42_1;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer=5-10bp;gc_cont=0.476
+k105_133218_1        -            958 TIGR00422            TIGR00422    863   6.7e-74  244.4   0.9   4   6   1.1e-15   6.4e-13   42.6   0.0   242   330   310   414   307   422 0.89 # 21 # 2894 # -1 # ID=42_1;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer=5-10bp;gc_cont=0.476
+k105_133218_1        -            958 TIGR00422            TIGR00422    863   6.7e-74  244.4   0.9   5   6   5.5e-10   3.2e-07   23.7   0.1   397   461   422   510   419   581 0.79 # 21 # 2894 # -1 # ID=42_1;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer=5-10bp;gc_cont=0.476
+k105_133218_1        -            958 TIGR00422            TIGR00422    863   6.7e-74  244.4   0.9   6   6   6.3e-17   3.7e-14   46.7   0.0   523   761   614   831   608   864 0.86 # 21 # 2894 # -1 # ID=42_1;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer=5-10bp;gc_cont=0.476
+#
+# Program:         hmmsearch
+# Version:         3.3.1 (Jul 2020)
+# Pipeline mode:   SEARCH
+# Query file:      /scratch/6167614/c65d80a4-a98d-4ed4-9aaf-61496fd055f6
+# Target file:     /home/jay/genome_analysis_project/Genome-Analysis-VT22//analyses/03_binning/D3DNA_bins/bins_eval/bins/bin.8/genes.faa
+# Option settings: hmmsearch --domtblout /home/jay/genome_analysis_project/Genome-Analysis-VT22//analyses/03_binning/D3DNA_bins/bins_eval/bins/bin.8/hmmer.tree.txt --noali --notextw -E 0.1 --domE 0.1 --cpu 1 /scratch/6167614/c65d80a4-a98d-4ed4-9aaf-61496fd055f6 /home/jay/genome_analysis_project/Genome-Analysis-VT22//analyses/03_binning/D3DNA_bins/bins_eval/bins/bin.8/genes.faa 
+# Current dir:     /scratch/6167614/CheckM_data
+# Date:            Wed Apr 27 15:39:26 2022
+# [ok]
