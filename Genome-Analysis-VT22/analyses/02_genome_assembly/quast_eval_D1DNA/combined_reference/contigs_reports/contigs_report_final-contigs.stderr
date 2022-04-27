@@ -1,0 +1,20 @@
+[M::mm_idx_gen::4.451*1.35] collected minimizers
+[M::mm_idx_gen::5.356*1.41] sorted minimizers
+[M::main::5.356*1.41] loaded/built the index for 1655 target sequence(s)
+[M::mm_mapopt_update::5.627*1.39] mid_occ = 200
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 1655
+[M::mm_idx_stat::5.814*1.38] distinct minimizers: 17327887 (98.92% are singletons); average occurrences: 1.017; average spacing: 10.003
+[M::worker_pipeline::11.129*1.63] mapped 89614 sequences
+[M::main] Version: 2.11-r797
+[M::main] CMD: /sw/bioinfo/quast/5.0.2/rackham/lib/python3.7/site-packages/quast_libs/minimap2/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 85 -N 100 -s 65 -z 200 --mask-level 1 --min-occ 200 -g 2500 --score-N 2 --cs -t 4 /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_corrected_input/combined_reference.fasta /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/../quast_corrected_input/final_contigs.fa
+[M::main] Real time: 11.189 sec; CPU: 18.214 sec
+[M::mm_idx_gen::0.078*1.04] collected minimizers
+[M::mm_idx_gen::0.095*1.17] sorted minimizers
+[M::main::0.095*1.17] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.099*1.17] mid_occ = 200
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::0.102*1.16] distinct minimizers: 221774 (99.76% are singletons); average occurrences: 1.003; average spacing: 10.001
+[M::worker_pipeline::2.154*1.79] mapped 89614 sequences
+[M::main] Version: 2.11-r797
+[M::main] CMD: /sw/bioinfo/quast/5.0.2/rackham/lib/python3.7/site-packages/quast_libs/minimap2/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 85 -N 100 -s 65 -z 200 --mask-level 1 --min-occ 200 -g 2500 --score-N 2 --cs -t 4 /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/quast_corrected_input/combined_reference.fasta /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA/combined_reference/../quast_corrected_input/final_contigs.fa__2
+[M::main] Real time: 2.160 sec; CPU: 3.867 sec

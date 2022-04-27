@@ -1,0 +1,133 @@
+Aligning contigs to reference...
+	Aligning contigs to the reference
+Filtering alignments...
+Parsing coords...
+Loading reference...
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000001.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000002.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000003.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000004.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000005.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000006.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000007.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000008.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000009.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000010.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000011.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000012.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000013.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000014.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000015.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000016.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000017.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000018.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000019.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000020.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000021.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000022.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000023.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000024.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000025.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000026.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000027.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000028.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000029.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000030.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000031.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000032.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000033.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000034.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000035.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000036.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000037.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000038.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000039.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000040.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000041.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000042.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000043.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000044.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000045.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000046.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000047.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000048.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000049.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000050.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000051.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000052.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000053.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000054.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000055.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000056.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000057.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000058.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000059.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000060.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000061.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000062.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000063.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000064.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000065.1]
+	Loaded [Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000066.1]
+	Total Regions: 66
+	Total Region Length: 1669890
+Analyzing contigs...
+CONTIG: k105_60332 (1855bp)
+Best alignment score: 73.0 (LEN: 74, IDY: 98.65), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 73.0, number of alignments: 1, unaligned bases: 1781
+		This contig is partially unaligned. (Aligned 74 out of 1855 non-N bases (3.99%))
+		Alignment: 16714 16787 | 370 443 | 74 74 | 98.65 | Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000030.1 k105_60332
+		Unaligned bases: 1 to 369 (369)
+		Unaligned bases: 444 to 1855 (1412)
+
+CONTIG: k105_149677 (1773bp)
+Best alignment score: 76.0 (LEN: 78, IDY: 97.44), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 76.0, number of alignments: 1, unaligned bases: 1695
+		This contig is partially unaligned. (Aligned 78 out of 1773 non-N bases (4.40%))
+		Alignment: 52727 52804 | 293 216 | 78 78 | 97.44 | Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000022.1 k105_149677
+		Unaligned bases: 1 to 215 (215)
+		Unaligned bases: 294 to 1773 (1480)
+
+CONTIG: k105_96839 (4179bp)
+Best alignment score: 89.0 (LEN: 92, IDY: 96.74), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 89.0, number of alignments: 1, unaligned bases: 4087
+		This contig is partially unaligned. (Aligned 92 out of 4179 non-N bases (2.20%))
+		Alignment: 124285 124376 | 282 191 | 92 92 | 96.74 | Flavobacterium_sp._SCGC_AAA160_P02_CAJJCD010000016.1 k105_96839
+		Unaligned bases: 1 to 190 (190)
+		Unaligned bases: 283 to 4179 (3897)
+
+Analyzing coverage...
+Writing SNPs into /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D3DNA/runs_per_reference/Flavobacterium_sp._SCGC_AAA160_P02/contigs_reports/minimap_output/final-contigs.used_snps.gz
+
+Analysis is finished!
+Founded SNPs were written into /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D3DNA/runs_per_reference/Flavobacterium_sp._SCGC_AAA160_P02/contigs_reports/minimap_output/final-contigs.used_snps.gz
+
+Results:
+	Local Misassemblies: 0
+	Misassemblies: 0
+		Relocations: 0
+		Translocations: 0
+		Inversions: 0
+	Scaffold gap extensive misassemblies: 0
+	Scaffold gap local misassemblies: 0
+	Misassembled Contigs: 0
+	Misassembled Contig Bases: 0
+	Misassemblies Inter-Contig Overlap: 0
+Unaligned Contigs: 0 + 3 part
+Half Unaligned Contigs with Misassemblies: 0
+Unaligned Contig Bases: 7563
+
+Ambiguously Mapped Contigs: 0
+Total Bases in Ambiguously Mapped Contigs: 0
+Extra Bases in Ambiguously Mapped Contigs: 0
+Note that --allow-ambiguity option was set to "one" and only first alignment per each of these contigs was used.
+
+	Covered Bases: 244
+
+	SNPs: 6
+	Insertions: 0
+	Deletions: 0
+

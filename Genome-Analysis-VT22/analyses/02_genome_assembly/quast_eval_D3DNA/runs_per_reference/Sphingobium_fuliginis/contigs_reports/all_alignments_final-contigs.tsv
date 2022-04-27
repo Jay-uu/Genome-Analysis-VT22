@@ -1,0 +1,19 @@
+S1	E1	S2	E2	Reference	Contig	IDY	Ambiguous	Best_group
+1624063	1624142	302	223	Sphingobium_fuliginis_NZ_CP060035.1	k105_65315	97.5		True
+CONTIG	k105_65315	32249	correct_unaligned
+788778	788879	263	162	Sphingobium_fuliginis_NZ_CP060036.1	k105_21890	95.1		True
+CONTIG	k105_21890	891	correct_unaligned
+2772028	2772114	439	353	Sphingobium_fuliginis_NZ_CP060035.1	k105_110656	96.55		True
+CONTIG	k105_110656	603	correct
+CONTIG	k105_156991	1056	unaligned
+CONTIG	k105_91935	1678	unaligned
+791505	791569	401	337	Sphingobium_fuliginis_NZ_CP060036.1	k105_92767	95.38		True
+CONTIG	k105_92767	593	correct
+515138	515212	2013	1939	Sphingobium_fuliginis_NZ_CP060035.1	k105_60114	98.67		True
+CONTIG	k105_60114	2184	correct_unaligned
+CONTIG	k105_81769	1299	unaligned
+CONTIG	k105_60415	597	unaligned
+788050	788154	105	1	Sphingobium_fuliginis_NZ_CP060036.1	k105_83164	99.05		True
+CONTIG	k105_83164	655	correct_unaligned
+2771745	2771818	873	946	Sphingobium_fuliginis_NZ_CP060035.1	k105_151791	95.95		True
+CONTIG	k105_151791	973	correct_unaligned

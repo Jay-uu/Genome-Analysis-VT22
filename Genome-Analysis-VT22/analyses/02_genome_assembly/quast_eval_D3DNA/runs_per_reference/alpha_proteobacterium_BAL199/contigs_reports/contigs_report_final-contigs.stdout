@@ -1,0 +1,308 @@
+Aligning contigs to reference...
+	Aligning contigs to the reference
+Filtering alignments...
+Parsing coords...
+Loading reference...
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000001.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000002.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000003.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000004.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000005.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000006.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000007.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000008.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000009.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000010.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000011.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000012.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000013.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000014.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000015.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000016.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000017.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000018.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000019.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000020.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000021.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000022.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000023.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000024.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000025.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000026.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000027.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000028.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000029.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000030.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000031.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000032.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000033.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000034.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000035.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000036.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000037.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000038.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000039.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000040.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000041.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000042.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000043.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000044.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000045.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000046.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000047.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000048.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000049.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000050.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000051.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000052.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000053.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000054.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000055.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000056.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000057.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000058.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000059.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000060.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000061.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000062.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000063.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000064.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000065.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000066.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000067.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000068.1]
+	Loaded [alpha_proteobacterium_BAL199_ABHC01000069.1]
+	Total Regions: 69
+	Total Region Length: 6102701
+Analyzing contigs...
+CONTIG: k105_45416 (4157bp)
+Best alignment score: 131.0 (LEN: 136, IDY: 96.32), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 131.0, number of alignments: 1, unaligned bases: 4021
+		This contig is partially unaligned. (Aligned 136 out of 4157 non-N bases (3.27%))
+		Alignment: 55067 55202 | 4013 4148 | 136 136 | 96.32 | alpha_proteobacterium_BAL199_ABHC01000021.1 k105_45416
+		Unaligned bases: 1 to 4012 (4012)
+		Unaligned bases: 4149 to 4157 (9)
+
+CONTIG: k105_2911 (9836bp)
+Best alignment score: 124.0 (LEN: 127, IDY: 97.64), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 59413 59539 | 1 127 | 127 127 | 97.64 | alpha_proteobacterium_BAL199_ABHC01000021.1 k105_2911
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 124.0, number of alignments: 1, unaligned bases: 9709
+		This contig is partially unaligned. (Aligned 127 out of 9836 non-N bases (1.29%))
+		Alignment: 171 297 | 1 127 | 127 127 | 97.64 | alpha_proteobacterium_BAL199_ABHC01000033.1 k105_2911
+		Unaligned bases: 128 to 9836 (9709)
+
+CONTIG: k105_144008 (577bp)
+Best alignment score: 99.0 (LEN: 102, IDY: 97.06), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 99.0, number of alignments: 1, unaligned bases: 475
+		Alignment: 58682 58783 | 514 413 | 102 102 | 97.06 | alpha_proteobacterium_BAL199_ABHC01000021.1 k105_144008
+
+CONTIG: k105_144145 (2248bp)
+Best alignment score: 72.0 (LEN: 72, IDY: 100.00), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 72.0, number of alignments: 1, unaligned bases: 2176
+		This contig is partially unaligned. (Aligned 72 out of 2248 non-N bases (3.20%))
+		Alignment: 58682 58753 | 834 905 | 72 72 | 100.0 | alpha_proteobacterium_BAL199_ABHC01000021.1 k105_144145
+		Unaligned bases: 1 to 833 (833)
+		Unaligned bases: 906 to 2248 (1343)
+
+CONTIG: k105_68250 (546bp)
+		This contig is unaligned. (546 bp)
+		Unaligned bases: 546 (number of Ns: 0)
+
+CONTIG: k105_156139 (536bp)
+		This contig is unaligned. (536 bp)
+		Unaligned bases: 536 (number of Ns: 0)
+
+CONTIG: k105_124065 (1975bp)
+Best alignment score: 142.0 (LEN: 149, IDY: 95.30), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 213.0, number of alignments: 2, unaligned bases: 1755
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 220 out of 1975 non-N bases (11.14%))
+			Warning! This contig is more unaligned than misassembled. Contig length is 1975 (number of Ns: 0) and total length of all aligns is 220
+		Alignment: 59334 59482 | 149 1 | 149 149 | 95.3 | alpha_proteobacterium_BAL199_ABHC01000021.1 k105_124065
+		Alignment: 58683 58753 | 821 751 | 71 71 | 100.0 | alpha_proteobacterium_BAL199_ABHC01000021.1 k105_124065
+		Unaligned bases: 1755
+
+CONTIG: k105_79843 (3303bp)
+Best alignment score: 143.0 (LEN: 149, IDY: 95.97), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 59385 59533 | 1 149 | 149 149 | 95.97 | alpha_proteobacterium_BAL199_ABHC01000021.1 k105_79843
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 143.0, number of alignments: 1, unaligned bases: 3154
+		This contig is partially unaligned. (Aligned 149 out of 3303 non-N bases (4.51%))
+		Alignment: 143 291 | 1 149 | 149 149 | 95.97 | alpha_proteobacterium_BAL199_ABHC01000033.1 k105_79843
+		Unaligned bases: 150 to 3303 (3154)
+
+CONTIG: k105_93023 (1494bp)
+		This contig is unaligned. (1494 bp)
+		Unaligned bases: 1494 (number of Ns: 0)
+
+CONTIG: k105_115100 (515bp)
+Best alignment score: 181.0 (LEN: 190, IDY: 95.26), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 181.0, number of alignments: 1, unaligned bases: 325
+		Alignment: 55081 55270 | 326 515 | 190 190 | 95.26 | alpha_proteobacterium_BAL199_ABHC01000021.1 k105_115100
+
+CONTIG: k105_105344 (594bp)
+		This contig is unaligned. (594 bp)
+		Unaligned bases: 594 (number of Ns: 0)
+
+CONTIG: k105_115862 (13641bp)
+Best alignment score: 122.0 (LEN: 127, IDY: 96.06), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 59413 59539 | 1 127 | 127 127 | 96.06 | alpha_proteobacterium_BAL199_ABHC01000021.1 k105_115862
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 122.0, number of alignments: 1, unaligned bases: 13514
+		This contig is partially unaligned. (Aligned 127 out of 13641 non-N bases (0.93%))
+		Alignment: 171 297 | 1 127 | 127 127 | 96.06 | alpha_proteobacterium_BAL199_ABHC01000033.1 k105_115862
+		Unaligned bases: 128 to 13641 (13514)
+
+CONTIG: k105_84694 (679bp)
+Best alignment score: 242.0 (LEN: 254, IDY: 95.28), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 242.0, number of alignments: 1, unaligned bases: 425
+		Alignment: 58250 58503 | 78 331 | 254 254 | 95.28 | alpha_proteobacterium_BAL199_ABHC01000021.1 k105_84694
+
+CONTIG: k105_129353 (663bp)
+Best alignment score: 124.0 (LEN: 130, IDY: 95.38), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 59410 59539 | 8 137 | 130 130 | 95.38 | alpha_proteobacterium_BAL199_ABHC01000021.1 k105_129353
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 124.0, number of alignments: 1, unaligned bases: 533
+		This contig is partially unaligned. (Aligned 130 out of 663 non-N bases (19.61%))
+		Alignment: 168 297 | 8 137 | 130 130 | 95.38 | alpha_proteobacterium_BAL199_ABHC01000033.1 k105_129353
+		Unaligned bases: 1 to 7 (7)
+		Unaligned bases: 138 to 663 (526)
+
+CONTIG: k105_173440 (887bp)
+		This contig is unaligned. (887 bp)
+		Unaligned bases: 887 (number of Ns: 0)
+
+CONTIG: k105_151791 (973bp)
+Best alignment score: 74.0 (LEN: 76, IDY: 97.37), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 74.0, number of alignments: 1, unaligned bases: 897
+		This contig is partially unaligned. (Aligned 76 out of 973 non-N bases (7.81%))
+		Alignment: 58679 58754 | 872 947 | 76 76 | 97.37 | alpha_proteobacterium_BAL199_ABHC01000021.1 k105_151791
+		Unaligned bases: 1 to 871 (871)
+		Unaligned bases: 948 to 973 (26)
+
+CONTIG: k105_60415 (597bp)
+Best alignment score: 133.0 (LEN: 140, IDY: 95.00), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 133.0, number of alignments: 1, unaligned bases: 457
+		Alignment: 101 240 | 140 1 | 140 140 | 95.0 | alpha_proteobacterium_BAL199_ABHC01000033.1 k105_60415
+
+CONTIG: k105_9912 (1651bp)
+Best alignment score: 122.0 (LEN: 128, IDY: 95.31), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 164 291 | 1266 1139 | 128 128 | 95.31 | alpha_proteobacterium_BAL199_ABHC01000033.1 k105_9912
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 122.0, number of alignments: 1, unaligned bases: 1523
+		This contig is partially unaligned. (Aligned 128 out of 1651 non-N bases (7.75%))
+		Alignment: 59406 59533 | 1266 1139 | 128 128 | 95.31 | alpha_proteobacterium_BAL199_ABHC01000021.1 k105_9912
+		Unaligned bases: 1 to 1138 (1138)
+		Unaligned bases: 1267 to 1651 (385)
+
+CONTIG: k105_45882 (18858bp)
+Best alignment score: 75.0 (LEN: 76, IDY: 98.68), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 75.0, number of alignments: 1, unaligned bases: 18782
+		This contig is partially unaligned. (Aligned 76 out of 18858 non-N bases (0.40%))
+		Alignment: 143071 143146 | 688 613 | 76 76 | 98.68 | alpha_proteobacterium_BAL199_ABHC01000006.1 k105_45882
+		Unaligned bases: 1 to 612 (612)
+		Unaligned bases: 689 to 18858 (18170)
+
+CONTIG: k105_67926 (1204bp)
+Best alignment score: 81.0 (LEN: 81, IDY: 100.00), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 115879 115957 | 336 258 | 79 79 | 100.0 | alpha_proteobacterium_BAL199_ABHC01000016.1 k105_67926
+			The best set is below. Score: 81.0, number of alignments: 1, unaligned bases: 1123
+		This contig is partially unaligned. (Aligned 81 out of 1204 non-N bases (6.73%))
+		Alignment: 19094 19174 | 256 336 | 81 81 | 100.0 | alpha_proteobacterium_BAL199_ABHC01000011.1 k105_67926
+		Unaligned bases: 1 to 255 (255)
+		Unaligned bases: 337 to 1204 (868)
+
+CONTIG: k105_133858 (1382bp)
+Best alignment score: 79.0 (LEN: 79, IDY: 100.00), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 115880 115957 | 852 775 | 78 78 | 100.0 | alpha_proteobacterium_BAL199_ABHC01000016.1 k105_133858
+			The best set is below. Score: 79.0, number of alignments: 1, unaligned bases: 1303
+		This contig is partially unaligned. (Aligned 79 out of 1382 non-N bases (5.72%))
+		Alignment: 19095 19173 | 774 852 | 79 79 | 100.0 | alpha_proteobacterium_BAL199_ABHC01000011.1 k105_133858
+		Unaligned bases: 1 to 773 (773)
+		Unaligned bases: 853 to 1382 (530)
+
+CONTIG: k105_146437 (8313bp)
+Best alignment score: 83.0 (LEN: 83, IDY: 100.00), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 115879 115957 | 3827 3905 | 79 79 | 100.0 | alpha_proteobacterium_BAL199_ABHC01000016.1 k105_146437
+			The best set is below. Score: 83.0, number of alignments: 1, unaligned bases: 8230
+		This contig is partially unaligned. (Aligned 83 out of 8313 non-N bases (1.00%))
+		Alignment: 19092 19174 | 3909 3827 | 83 83 | 100.0 | alpha_proteobacterium_BAL199_ABHC01000011.1 k105_146437
+		Unaligned bases: 1 to 3826 (3826)
+		Unaligned bases: 3910 to 8313 (4404)
+
+CONTIG: k105_126252 (1183bp)
+Best alignment score: 78.0 (LEN: 78, IDY: 100.00), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 19096 19173 | 475 552 | 78 78 | 100.0 | alpha_proteobacterium_BAL199_ABHC01000011.1 k105_126252
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 78.0, number of alignments: 1, unaligned bases: 1105
+		This contig is partially unaligned. (Aligned 78 out of 1183 non-N bases (6.59%))
+		Alignment: 115880 115957 | 552 475 | 78 78 | 100.0 | alpha_proteobacterium_BAL199_ABHC01000016.1 k105_126252
+		Unaligned bases: 1 to 474 (474)
+		Unaligned bases: 553 to 1183 (631)
+
+Analyzing coverage...
+Writing SNPs into /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D3DNA/runs_per_reference/alpha_proteobacterium_BAL199/contigs_reports/minimap_output/final-contigs.used_snps.gz
+
+Analysis is finished!
+Founded SNPs were written into /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D3DNA/runs_per_reference/alpha_proteobacterium_BAL199/contigs_reports/minimap_output/final-contigs.used_snps.gz
+
+Results:
+	Local Misassemblies: 0
+	Misassemblies: 0
+		Relocations: 0
+		Translocations: 0
+		Inversions: 0
+	Scaffold gap extensive misassemblies: 0
+	Scaffold gap local misassemblies: 0
+	Misassembled Contigs: 0
+	Misassembled Contig Bases: 0
+	Misassemblies Inter-Contig Overlap: 0
+Unaligned Contigs: 5 + 14 part
+Half Unaligned Contigs with Misassemblies: 1
+Unaligned Contig Bases: 71882
+
+Ambiguously Mapped Contigs: 6
+Total Bases in Ambiguously Mapped Contigs: 30277
+Extra Bases in Ambiguously Mapped Contigs: 0
+Note that --allow-ambiguity option was set to "one" and only first alignment per each of these contigs was used.
+
+	Covered Bases: 1197
+
+	SNPs: 72
+	Insertions: 0
+	Deletions: 0
+

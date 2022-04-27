@@ -1,0 +1,97 @@
+Aligning contigs to reference...
+	Aligning contigs to the reference
+Filtering alignments...
+Parsing coords...
+Loading reference...
+	Loaded [Geobacter_sulfurreducens_KN400_NC_017454.1]
+	Total Regions: 1
+	Total Region Length: 3714272
+Analyzing contigs...
+CONTIG: k105_45720 (562bp)
+		This contig is unaligned. (562 bp)
+		Unaligned bases: 562 (number of Ns: 0)
+
+CONTIG: k105_13777 (842bp)
+Best alignment score: 82.0 (LEN: 85, IDY: 96.47), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 1198852 1198936 | 127 43 | 85 85 | 96.47 | Geobacter_sulfurreducens_KN400_NC_017454.1 k105_13777
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 82.0, number of alignments: 1, unaligned bases: 757
+		This contig is partially unaligned. (Aligned 85 out of 842 non-N bases (10.10%))
+		Alignment: 667353 667437 | 127 43 | 85 85 | 96.47 | Geobacter_sulfurreducens_KN400_NC_017454.1 k105_13777
+		Unaligned bases: 1 to 42 (42)
+		Unaligned bases: 128 to 842 (715)
+
+CONTIG: k105_91935 (1678bp)
+Best alignment score: 121.0 (LEN: 127, IDY: 95.28), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 1196326 1196452 | 1656 1530 | 127 127 | 95.28 | Geobacter_sulfurreducens_KN400_NC_017454.1 k105_91935
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 121.0, number of alignments: 1, unaligned bases: 1551
+		This contig is partially unaligned. (Aligned 127 out of 1678 non-N bases (7.57%))
+		Alignment: 664827 664953 | 1656 1530 | 127 127 | 95.28 | Geobacter_sulfurreducens_KN400_NC_017454.1 k105_91935
+		Unaligned bases: 1 to 1529 (1529)
+		Unaligned bases: 1657 to 1678 (22)
+
+CONTIG: k105_93023 (1494bp)
+		This contig is unaligned. (1494 bp)
+		Unaligned bases: 1494 (number of Ns: 0)
+
+CONTIG: k105_7576 (13479bp)
+Best alignment score: 86.0 (LEN: 86, IDY: 100.00), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 86.0, number of alignments: 1, unaligned bases: 13393
+		This contig is partially unaligned. (Aligned 86 out of 13479 non-N bases (0.64%))
+		Alignment: 48692 48777 | 10926 11011 | 86 86 | 100.0 | Geobacter_sulfurreducens_KN400_NC_017454.1 k105_7576
+		Unaligned bases: 1 to 10925 (10925)
+		Unaligned bases: 11012 to 13479 (2468)
+
+CONTIG: k105_116751 (628bp)
+Best alignment score: 70.0 (LEN: 72, IDY: 97.22), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 1196077 1196148 | 51 122 | 72 72 | 97.22 | Geobacter_sulfurreducens_KN400_NC_017454.1 k105_116751
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 70.0, number of alignments: 1, unaligned bases: 556
+		This contig is partially unaligned. (Aligned 72 out of 628 non-N bases (11.46%))
+		Alignment: 664578 664649 | 51 122 | 72 72 | 97.22 | Geobacter_sulfurreducens_KN400_NC_017454.1 k105_116751
+		Unaligned bases: 1 to 50 (50)
+		Unaligned bases: 123 to 628 (506)
+
+Analyzing coverage...
+Writing SNPs into /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D3DNA/runs_per_reference/Geobacter_sulfurreducens_KN400/contigs_reports/minimap_output/final-contigs.used_snps.gz
+
+Analysis is finished!
+Founded SNPs were written into /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D3DNA/runs_per_reference/Geobacter_sulfurreducens_KN400/contigs_reports/minimap_output/final-contigs.used_snps.gz
+
+Results:
+	Local Misassemblies: 0
+	Misassemblies: 0
+		Relocations: 0
+		Translocations: 0
+		Inversions: 0
+	Scaffold gap extensive misassemblies: 0
+	Scaffold gap local misassemblies: 0
+	Misassembled Contigs: 0
+	Misassembled Contig Bases: 0
+	Misassemblies Inter-Contig Overlap: 0
+Unaligned Contigs: 2 + 4 part
+Half Unaligned Contigs with Misassemblies: 0
+Unaligned Contig Bases: 18313
+
+Ambiguously Mapped Contigs: 3
+Total Bases in Ambiguously Mapped Contigs: 3148
+Extra Bases in Ambiguously Mapped Contigs: 0
+Note that --allow-ambiguity option was set to "one" and only first alignment per each of these contigs was used.
+
+	Covered Bases: 370
+
+	SNPs: 11
+	Insertions: 0
+	Deletions: 0
+

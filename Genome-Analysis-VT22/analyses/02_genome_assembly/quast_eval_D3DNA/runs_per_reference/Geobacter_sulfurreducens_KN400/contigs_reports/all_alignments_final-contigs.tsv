@@ -1,0 +1,11 @@
+S1	E1	S2	E2	Reference	Contig	IDY	Ambiguous	Best_group
+CONTIG	k105_45720	562	unaligned
+667353	667437	127	43	Geobacter_sulfurreducens_KN400_NC_017454.1	k105_13777	96.47		True
+CONTIG	k105_13777	842	correct_unaligned
+664827	664953	1656	1530	Geobacter_sulfurreducens_KN400_NC_017454.1	k105_91935	95.28		True
+CONTIG	k105_91935	1678	correct_unaligned
+CONTIG	k105_93023	1494	unaligned
+48692	48777	10926	11011	Geobacter_sulfurreducens_KN400_NC_017454.1	k105_7576	100.0		True
+CONTIG	k105_7576	13479	correct_unaligned
+664578	664649	51	122	Geobacter_sulfurreducens_KN400_NC_017454.1	k105_116751	97.22		True
+CONTIG	k105_116751	628	correct_unaligned

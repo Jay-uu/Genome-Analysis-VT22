@@ -1,0 +1,17 @@
+S1	E1	S2	E2	Reference	Contig	IDY	Ambiguous	Best_group
+3623497	3623580	661	578	Magnetococcus_marinus_MC_1_NC_008576.1	k105_610	97.62		True
+CONTIG	k105_610	666	correct_unaligned
+3620182	3620302	1042	922	Magnetococcus_marinus_MC_1_NC_008576.1	k105_11612	95.04		True
+CONTIG	k105_11612	1046	correct_unaligned
+275527	275610	613	696	Magnetococcus_marinus_MC_1_NC_008576.1	k105_167849	97.62		True
+CONTIG	k105_167849	701	correct_unaligned
+3620197	3620290	100	7	Magnetococcus_marinus_MC_1_NC_008576.1	k105_48152	98.94		True
+CONTIG	k105_48152	2862	correct_unaligned
+CONTIG	k105_81769	1299	unaligned
+3373345	3373415	121	51	Magnetococcus_marinus_MC_1_NC_008576.1	k105_116751	97.18		True
+unknown
+3373096	3373162	371	305	Magnetococcus_marinus_MC_1_NC_008576.1	k105_116751	95.52		True
+unknown
+CONTIG	k105_116751	628	mis_unaligned
+3622780	3622853	873	946	Magnetococcus_marinus_MC_1_NC_008576.1	k105_151791	95.95		True
+CONTIG	k105_151791	973	correct_unaligned

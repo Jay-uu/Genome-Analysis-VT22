@@ -1,0 +1,25 @@
+S1	E1	S2	E2	Reference	Contig	IDY	Ambiguous	Best_group
+58443	58519	520	596	Paracoccus_aminophilus_NC_022041.1	k105_120542	97.4		True
+CONTIG	k105_120542	1052	correct_unaligned
+2911025	2911480	1	456	Paracoccus_aminophilus_NC_022041.1	k105_121249	96.49		True
+CONTIG	k105_121249	575	correct
+CONTIG	k105_132590	704	unaligned
+2912172	2912377	365	570	Paracoccus_aminophilus_NC_022041.1	k105_13777	96.6		True
+CONTIG	k105_13777	842	correct
+2911415	2911497	655	737	Paracoccus_aminophilus_NC_022041.1	k105_156991	97.59		True
+CONTIG	k105_156991	1056	correct_unaligned
+2512665	2512751	298	384	Paracoccus_aminophilus_NC_022041.1	k105_157186	97.7		True
+CONTIG	k105_157186	516	correct
+71645	71824	197	18	Paracoccus_aminophilus_NC_022041.1	k105_91935	95.0		True
+unknown
+71260	71417	585	428	Paracoccus_aminophilus_NC_022041.1	k105_91935	96.84		True
+unknown
+70703	70784	1275	1194	Paracoccus_aminophilus_NC_022041.1	k105_91935	98.78		True
+unknown
+CONTIG	k105_91935	1678	mis_unaligned
+CONTIG	k105_93023	1494	unaligned
+2911840	2911934	580	486	Paracoccus_aminophilus_NC_022041.1	k105_147715	96.84		True
+unknown
+2911732	2911837	699	594	Paracoccus_aminophilus_NC_022041.1	k105_147715	98.11		True
+unknown
+CONTIG	k105_147715	700	mis_unaligned

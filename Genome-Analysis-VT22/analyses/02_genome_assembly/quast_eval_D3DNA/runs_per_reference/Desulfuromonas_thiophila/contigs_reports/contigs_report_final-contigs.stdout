@@ -1,0 +1,156 @@
+Aligning contigs to reference...
+	Aligning contigs to the reference
+Filtering alignments...
+Parsing coords...
+Loading reference...
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000001.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000002.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000003.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000004.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000005.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000006.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000007.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000008.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000009.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000010.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000011.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000012.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000013.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000014.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000015.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000016.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000017.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000018.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000019.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000020.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000021.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000022.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000023.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000024.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000025.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000026.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000027.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000028.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000029.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000030.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000031.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000032.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000033.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000034.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000035.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000036.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000037.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000038.1]
+	Loaded [Desulfuromonas_thiophila_NZ_FNAQ01000039.1]
+	Total Regions: 39
+	Total Region Length: 2789967
+Analyzing contigs...
+CONTIG: k105_88560 (1651bp)
+Best alignment score: 97.0 (LEN: 98, IDY: 98.98), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 97.0, number of alignments: 1, unaligned bases: 1553
+		This contig is partially unaligned. (Aligned 98 out of 1651 non-N bases (5.94%))
+		Alignment: 3245 3342 | 1554 1651 | 98 98 | 98.98 | Desulfuromonas_thiophila_NZ_FNAQ01000032.1 k105_88560
+		Unaligned bases: 1 to 1553 (1553)
+
+CONTIG: k105_88640 (1649bp)
+Best alignment score: 111.0 (LEN: 113, IDY: 98.23), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 111.0, number of alignments: 1, unaligned bases: 1536
+		This contig is partially unaligned. (Aligned 113 out of 1649 non-N bases (6.85%))
+		Alignment: 3230 3342 | 1642 1530 | 113 113 | 98.23 | Desulfuromonas_thiophila_NZ_FNAQ01000032.1 k105_88640
+		Unaligned bases: 1 to 1529 (1529)
+		Unaligned bases: 1643 to 1649 (7)
+
+CONTIG: k105_34516 (1051bp)
+Best alignment score: 69.0 (LEN: 72, IDY: 95.83), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 69.0, number of alignments: 1, unaligned bases: 979
+		This contig is partially unaligned. (Aligned 72 out of 1051 non-N bases (6.85%))
+		Alignment: 38 109 | 821 892 | 72 72 | 95.83 | Desulfuromonas_thiophila_NZ_FNAQ01000032.1 k105_34516
+		Unaligned bases: 1 to 820 (820)
+		Unaligned bases: 893 to 1051 (159)
+
+CONTIG: k105_23655 (2135bp)
+Best alignment score: 68.0 (LEN: 71, IDY: 95.77), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 68.0, number of alignments: 1, unaligned bases: 2064
+		This contig is partially unaligned. (Aligned 71 out of 2135 non-N bases (3.33%))
+		Alignment: 322 392 | 798 728 | 71 71 | 95.77 | Desulfuromonas_thiophila_NZ_FNAQ01000032.1 k105_23655
+		Unaligned bases: 1 to 727 (727)
+		Unaligned bases: 799 to 2135 (1337)
+
+CONTIG: k105_123686 (2659bp)
+		This contig is unaligned. (2659 bp)
+		Unaligned bases: 2659 (number of Ns: 0)
+
+CONTIG: k105_92767 (593bp)
+Best alignment score: 73.0 (LEN: 74, IDY: 98.65), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 73.0, number of alignments: 1, unaligned bases: 519
+		Alignment: 22 95 | 414 487 | 74 74 | 98.65 | Desulfuromonas_thiophila_NZ_FNAQ01000032.1 k105_92767
+
+CONTIG: k105_83166 (651bp)
+Best alignment score: 115.0 (LEN: 121, IDY: 95.04), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 115.0, number of alignments: 1, unaligned bases: 530
+		This contig is partially unaligned. (Aligned 121 out of 651 non-N bases (18.59%))
+		Alignment: 3245 3365 | 8 128 | 121 121 | 95.04 | Desulfuromonas_thiophila_NZ_FNAQ01000032.1 k105_83166
+		Unaligned bases: 1 to 7 (7)
+		Unaligned bases: 129 to 651 (523)
+
+CONTIG: k105_30207 (627bp)
+Best alignment score: 66.0 (LEN: 67, IDY: 98.51), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 66.0, number of alignments: 1, unaligned bases: 560
+		This contig is partially unaligned. (Aligned 67 out of 627 non-N bases (10.69%))
+		Alignment: 345 411 | 1 67 | 67 67 | 98.51 | Desulfuromonas_thiophila_NZ_FNAQ01000032.1 k105_30207
+		Unaligned bases: 68 to 627 (560)
+
+CONTIG: k105_51544 (501bp)
+Best alignment score: 62.0 (LEN: 65, IDY: 95.38), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 62.0, number of alignments: 1, unaligned bases: 436
+		Alignment: 4057 4121 | 290 354 | 65 65 | 95.38 | Desulfuromonas_thiophila_NZ_FNAQ01000032.1 k105_51544
+
+CONTIG: k105_160050 (39648bp)
+Best alignment score: 77.0 (LEN: 79, IDY: 97.47), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 77.0, number of alignments: 1, unaligned bases: 39569
+		This contig is partially unaligned. (Aligned 79 out of 39648 non-N bases (0.20%))
+		Alignment: 120494 120572 | 34504 34426 | 79 79 | 97.47 | Desulfuromonas_thiophila_NZ_FNAQ01000002.1 k105_160050
+		Unaligned bases: 1 to 34425 (34425)
+		Unaligned bases: 34505 to 39648 (5144)
+
+Analyzing coverage...
+Writing SNPs into /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D3DNA/runs_per_reference/Desulfuromonas_thiophila/contigs_reports/minimap_output/final-contigs.used_snps.gz
+
+Analysis is finished!
+Founded SNPs were written into /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D3DNA/runs_per_reference/Desulfuromonas_thiophila/contigs_reports/minimap_output/final-contigs.used_snps.gz
+
+Results:
+	Local Misassemblies: 0
+	Misassemblies: 0
+		Relocations: 0
+		Translocations: 0
+		Inversions: 0
+	Scaffold gap extensive misassemblies: 0
+	Scaffold gap local misassemblies: 0
+	Misassembled Contigs: 0
+	Misassembled Contig Bases: 0
+	Misassemblies Inter-Contig Overlap: 0
+Unaligned Contigs: 1 + 7 part
+Half Unaligned Contigs with Misassemblies: 0
+Unaligned Contig Bases: 49450
+
+Ambiguously Mapped Contigs: 0
+Total Bases in Ambiguously Mapped Contigs: 0
+Extra Bases in Ambiguously Mapped Contigs: 0
+Note that --allow-ambiguity option was set to "one" and only first alignment per each of these contigs was used.
+
+	Covered Bases: 458
+
+	SNPs: 22
+	Insertions: 0
+	Deletions: 0
+

@@ -1,0 +1,14 @@
+reference chromosomes:
+	Geobacter_sulfurreducens_KN400_NC_017454.1 (total length: 3714272 bp, total length without N's: 3714272 bp, maximal covered length: 370 bp)
+
+total genome size: 3714272
+
+gap min size: 50
+partial gene/operon min size: 100
+
+
+
+assembly                 | genome    | duplication | gaps      | genes     | partial   | operons   | partial   |
+                         | fraction  | ratio       | number    |           | genes     |           | operons   |
+========================================================================================================================
+final-contigs_to_Geobact | 0.010     | 1.000       | 5         | -         | -         | -         | -         |

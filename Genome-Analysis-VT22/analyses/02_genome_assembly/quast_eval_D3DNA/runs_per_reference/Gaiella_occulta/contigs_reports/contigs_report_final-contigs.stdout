@@ -1,0 +1,162 @@
+Aligning contigs to reference...
+	Aligning contigs to the reference
+Filtering alignments...
+Parsing coords...
+Loading reference...
+	Loaded [Gaiella_occulta_NZ_QQZY01000001.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000002.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000003.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000004.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000005.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000006.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000007.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000008.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000009.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000010.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000011.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000012.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000013.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000014.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000015.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000016.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000017.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000018.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000019.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000020.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000021.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000022.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000023.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000024.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000025.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000026.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000027.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000028.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000029.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000030.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000031.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000032.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000033.1]
+	Loaded [Gaiella_occulta_NZ_QQZY01000034.1]
+	Total Regions: 34
+	Total Region Length: 3028529
+Analyzing contigs...
+CONTIG: k105_90410 (1965bp)
+Best alignment score: 89.0 (LEN: 89, IDY: 100.00), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 89.0, number of alignments: 1, unaligned bases: 1876
+		This contig is partially unaligned. (Aligned 89 out of 1965 non-N bases (4.53%))
+		Alignment: 367843 367931 | 1172 1084 | 89 89 | 100.0 | Gaiella_occulta_NZ_QQZY01000002.1 k105_90410
+		Unaligned bases: 1 to 1083 (1083)
+		Unaligned bases: 1173 to 1965 (793)
+
+CONTIG: k105_79842 (789bp)
+Best alignment score: 100.0 (LEN: 103, IDY: 97.09), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 100.0, number of alignments: 1, unaligned bases: 686
+		This contig is partially unaligned. (Aligned 103 out of 789 non-N bases (13.05%))
+		Alignment: 368585 368687 | 2 104 | 103 103 | 97.09 | Gaiella_occulta_NZ_QQZY01000002.1 k105_79842
+		Unaligned bases: 1 to 1 (1)
+		Unaligned bases: 105 to 789 (685)
+
+CONTIG: k105_92767 (593bp)
+Best alignment score: 75.0 (LEN: 77, IDY: 97.40), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 75.0, number of alignments: 1, unaligned bases: 516
+		Alignment: 368154 368230 | 487 411 | 77 77 | 97.4 | Gaiella_occulta_NZ_QQZY01000002.1 k105_92767
+
+CONTIG: k105_93023 (1494bp)
+Best alignment score: 76.0 (LEN: 78, IDY: 97.44), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 76.0, number of alignments: 1, unaligned bases: 1416
+		This contig is partially unaligned. (Aligned 78 out of 1494 non-N bases (5.22%))
+		Alignment: 367855 367932 | 95 18 | 78 78 | 97.44 | Gaiella_occulta_NZ_QQZY01000002.1 k105_93023
+		Unaligned bases: 1 to 17 (17)
+		Unaligned bases: 96 to 1494 (1399)
+
+CONTIG: k105_49421 (603bp)
+Best alignment score: 151.0 (LEN: 156, IDY: 96.79), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 151.0, number of alignments: 1, unaligned bases: 447
+		Alignment: 368532 368687 | 35 190 | 156 156 | 96.79 | Gaiella_occulta_NZ_QQZY01000002.1 k105_49421
+
+CONTIG: k105_49763 (19166bp)
+		This contig is unaligned. (19166 bp)
+		Unaligned bases: 19166 (number of Ns: 0)
+
+CONTIG: k105_28949 (590bp)
+Best alignment score: 209.0 (LEN: 218, IDY: 95.87), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 209.0, number of alignments: 1, unaligned bases: 372
+		Alignment: 367715 367932 | 325 108 | 218 218 | 95.87 | Gaiella_occulta_NZ_QQZY01000002.1 k105_28949
+
+CONTIG: k105_123921 (3488bp)
+Best alignment score: 75.0 (LEN: 78, IDY: 96.15), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 75.0, number of alignments: 1, unaligned bases: 3410
+		This contig is partially unaligned. (Aligned 78 out of 3488 non-N bases (2.24%))
+		Alignment: 49129 49206 | 1672 1749 | 78 78 | 96.15 | Gaiella_occulta_NZ_QQZY01000003.1 k105_123921
+		Unaligned bases: 1 to 1671 (1671)
+		Unaligned bases: 1750 to 3488 (1739)
+
+CONTIG: k105_20197 (5845bp)
+Best alignment score: 100.0 (LEN: 104, IDY: 96.15), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 100.0, number of alignments: 1, unaligned bases: 5741
+		This contig is partially unaligned. (Aligned 104 out of 5845 non-N bases (1.78%))
+		Alignment: 143292 143395 | 4539 4642 | 104 104 | 96.15 | Gaiella_occulta_NZ_QQZY01000003.1 k105_20197
+		Unaligned bases: 1 to 4538 (4538)
+		Unaligned bases: 4643 to 5845 (1203)
+
+CONTIG: k105_146598 (1250bp)
+Best alignment score: 72.0 (LEN: 74, IDY: 97.30), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 72.0, number of alignments: 1, unaligned bases: 1176
+		This contig is partially unaligned. (Aligned 74 out of 1250 non-N bases (5.92%))
+		Alignment: 252407 252480 | 792 865 | 74 74 | 97.3 | Gaiella_occulta_NZ_QQZY01000004.1 k105_146598
+		Unaligned bases: 1 to 791 (791)
+		Unaligned bases: 866 to 1250 (385)
+
+CONTIG: k105_61549 (628bp)
+Best alignment score: 75.0 (LEN: 77, IDY: 97.40), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 75.0, number of alignments: 1, unaligned bases: 551
+		Alignment: 116967 117043 | 509 433 | 77 77 | 97.4 | Gaiella_occulta_NZ_QQZY01000009.1 k105_61549
+
+CONTIG: k105_63518 (639bp)
+Best alignment score: 75.0 (LEN: 77, IDY: 97.40), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 75.0, number of alignments: 1, unaligned bases: 562
+		Alignment: 116968 117044 | 70 146 | 77 77 | 97.4 | Gaiella_occulta_NZ_QQZY01000009.1 k105_63518
+
+Analyzing coverage...
+Writing SNPs into /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D3DNA/runs_per_reference/Gaiella_occulta/contigs_reports/minimap_output/final-contigs.used_snps.gz
+
+Analysis is finished!
+Founded SNPs were written into /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D3DNA/runs_per_reference/Gaiella_occulta/contigs_reports/minimap_output/final-contigs.used_snps.gz
+
+Results:
+	Local Misassemblies: 0
+	Misassemblies: 0
+		Relocations: 0
+		Translocations: 0
+		Inversions: 0
+	Scaffold gap extensive misassemblies: 0
+	Scaffold gap local misassemblies: 0
+	Misassembled Contigs: 0
+	Misassembled Contig Bases: 0
+	Misassemblies Inter-Contig Overlap: 0
+Unaligned Contigs: 1 + 6 part
+Half Unaligned Contigs with Misassemblies: 0
+Unaligned Contig Bases: 33471
+
+Ambiguously Mapped Contigs: 0
+Total Bases in Ambiguously Mapped Contigs: 0
+Extra Bases in Ambiguously Mapped Contigs: 0
+Note that --allow-ambiguity option was set to "one" and only first alignment per each of these contigs was used.
+
+	Covered Bases: 785
+
+	SNPs: 34
+	Insertions: 0
+	Deletions: 0
+

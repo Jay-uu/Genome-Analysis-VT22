@@ -1,0 +1,10 @@
+[M::mm_idx_gen::0.637*0.28] collected minimizers
+[M::mm_idx_gen::0.773*0.29] sorted minimizers
+[M::main::0.773*0.29] loaded/built the index for 29 target sequence(s)
+[M::mm_mapopt_update::0.801*0.29] mid_occ = 200
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 29
+[M::mm_idx_stat::0.808*0.29] distinct minimizers: 449268 (99.40% are singletons); average occurrences: 1.015; average spacing: 9.995
+[M::worker_pipeline::0.931*0.29] mapped 17 sequences
+[M::main] Version: 2.11-r797
+[M::main] CMD: /sw/bioinfo/quast/5.0.2/rackham/lib/python3.7/site-packages/quast_libs/minimap2/minimap2 -c -x asm5 -B5 -O4,16 --no-long-join -r 85 -N 50 -s 65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D3DNA/quast_corrected_input/Roseobacter_sp._SK209_2_6.fasta /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D3DNA/quast_corrected_input/final-contigs_to_Roseobacter_sp._SK209_2_6.fasta
+[M::main] Real time: 0.938 sec; CPU: 0.274 sec

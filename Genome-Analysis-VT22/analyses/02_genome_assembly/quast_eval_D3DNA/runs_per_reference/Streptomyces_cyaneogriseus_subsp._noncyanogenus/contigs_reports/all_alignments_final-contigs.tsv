@@ -1,0 +1,38 @@
+S1	E1	S2	E2	Reference	Contig	IDY	Ambiguous	Best_group
+1912167	1912368	756	957	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_119519	96.53		True
+CONTIG	k105_119519	3858	correct_unaligned
+3549972	3550064	1173	1081	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_90410	95.7		True
+CONTIG	k105_90410	1965	correct_unaligned
+CONTIG	k105_112464	878	unaligned
+3704447	3704531	1859	1775	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_47626	97.65		True
+CONTIG	k105_47626	2963	correct_unaligned
+3547045	3547158	1171	1284	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_70734	99.12		True
+unknown
+3548712	3548801	2827	2916	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_70734	95.56		True
+unknown
+3549542	3549778	3708	3942	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_70734	96.2		True
+unknown
+CONTIG	k105_70734	3942	mis_unaligned
+1491083	1491225	160	18	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_60415	95.8		True
+CONTIG	k105_60415	597	correct
+3204047	3204283	235	1	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_147638	97.47		True
+unknown
+3203210	3203299	1090	1001	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_147638	96.67		True
+unknown
+3203125	3203209	1176	1092	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_147638	97.65		True
+unknown
+3201543	3201655	2757	2645	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_147638	97.35		True
+unknown
+CONTIG	k105_147638	4306	mis_unaligned
+CONTIG	k105_8428	658	unaligned
+3204475	3204567	364	456	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_162779	95.7		True
+CONTIG	k105_162779	504	correct
+3549970	3550061	855	946	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_151791	96.74		True
+CONTIG	k105_151791	973	correct_unaligned
+1490097	1490182	481	566	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_151793	95.35		True
+unknown
+1490422	1490511	797	886	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_151793	96.67		True
+unknown
+CONTIG	k105_151793	913	mis_unaligned
+4224423	4224490	306	373	Streptomyces_cyaneogriseus_subsp._noncyanogenus_NZ_CP010849.1	k105_21047	98.53		True
+CONTIG	k105_21047	1238	correct_unaligned

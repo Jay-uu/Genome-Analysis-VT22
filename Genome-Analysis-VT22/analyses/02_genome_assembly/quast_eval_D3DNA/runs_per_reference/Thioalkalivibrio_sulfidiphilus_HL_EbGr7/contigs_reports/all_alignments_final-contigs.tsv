@@ -1,0 +1,38 @@
+S1	E1	S2	E2	Reference	Contig	IDY	Ambiguous	Best_group
+2547919	2547994	428	503	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_33316	97.37		True
+CONTIG	k105_33316	841	correct
+2545532	2545605	460	533	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_12126	95.95		True
+CONTIG	k105_12126	1377	correct_unaligned
+976262	976344	11662	11580	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_77429	100.0		True
+CONTIG	k105_77429	24405	correct_unaligned
+2548545	2549107	598	38	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_121392	95.38		True
+CONTIG	k105_121392	598	correct
+401812	401897	435	520	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_88730	97.67		True
+CONTIG	k105_88730	838	correct
+CONTIG	k105_2519	871	unaligned
+976262	976344	16586	16668	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_47259	100.0		True
+CONTIG	k105_47259	33683	correct_unaligned
+1015433	1015509	266	342	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_80959	97.4		True
+CONTIG	k105_80959	1536	correct_unaligned
+1076352	1076459	140089	139982	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_48908	95.37		True
+CONTIG	k105_48908	266140	correct_unaligned
+2549383	2549496	114	1	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_60415	96.49		True
+CONTIG	k105_60415	597	correct
+2545829	2545949	577	459	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_8248	96.69		True
+CONTIG	k105_8248	577	correct
+2545103	2545292	326	515	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_115100	96.32		True
+CONTIG	k105_115100	515	correct
+2462113	2462186	567	494	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_95329	98.65		True
+CONTIG	k105_95329	792	correct
+976262	976344	1136	1218	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_161249	98.8		True
+CONTIG	k105_161249	1282	correct_unaligned
+2928126	2928202	997	921	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_74315	100.0		True
+CONTIG	k105_74315	1135	correct_unaligned
+2547166	2547336	171	1	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_107192	95.32		True
+CONTIG	k105_107192	758	correct_unaligned
+2548246	2548327	257	338	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_42120	95.12		True
+CONTIG	k105_42120	901	correct_unaligned
+1015536	1015615	1214	1135	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_173372	98.75		True
+CONTIG	k105_173372	1865	correct_unaligned
+2445120	2445208	521	433	Thioalkalivibrio_sulfidiphilus_HL_EbGr7_NC_011901.1	k105_130297	95.51		True
+CONTIG	k105_130297	780	correct

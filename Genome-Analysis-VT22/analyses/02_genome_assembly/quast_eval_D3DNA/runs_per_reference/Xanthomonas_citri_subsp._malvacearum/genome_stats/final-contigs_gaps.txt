@@ -1,0 +1,8 @@
+Xanthomonas_citri_subsp._malvacearum_NZ_CP013006.1
+1 1967454
+1967528 5114966
+5115074 5115800
+5115916 5118570
+5118676 5218607
+Xanthomonas_citri_subsp._malvacearum_NZ_CP013007.1
+1 59644

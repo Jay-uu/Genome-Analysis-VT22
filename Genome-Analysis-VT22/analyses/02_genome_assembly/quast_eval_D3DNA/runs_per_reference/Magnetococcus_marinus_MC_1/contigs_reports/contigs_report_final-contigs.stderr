@@ -1,0 +1,10 @@
+[M::mm_idx_gen::0.459*0.40] collected minimizers
+[M::mm_idx_gen::0.580*0.39] sorted minimizers
+[M::main::0.580*0.39] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.587*0.40] mid_occ = 200
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::0.612*0.39] distinct minimizers: 433033 (96.20% are singletons); average occurrences: 1.088; average spacing: 10.013
+[M::worker_pipeline::0.648*0.38] mapped 7 sequences
+[M::main] Version: 2.11-r797
+[M::main] CMD: /sw/bioinfo/quast/5.0.2/rackham/lib/python3.7/site-packages/quast_libs/minimap2/minimap2 -c -x asm5 -B5 -O4,16 --no-long-join -r 85 -N 50 -s 65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D3DNA/quast_corrected_input/Magnetococcus_marinus_MC_1.fasta /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D3DNA/quast_corrected_input/final-contigs_to_Magnetococcus_marinus_MC_1.fasta
+[M::main] Real time: 0.652 sec; CPU: 0.251 sec

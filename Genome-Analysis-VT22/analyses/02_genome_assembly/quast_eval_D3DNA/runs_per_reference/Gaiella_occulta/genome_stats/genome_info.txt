@@ -1,0 +1,47 @@
+reference chromosomes:
+	Gaiella_occulta_NZ_QQZY01000001.1 (total length: 674176 bp, total length without N's: 674176 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000002.1 (total length: 640692 bp, total length without N's: 640692 bp, maximal covered length: 451 bp)
+	Gaiella_occulta_NZ_QQZY01000003.1 (total length: 401372 bp, total length without N's: 401372 bp, maximal covered length: 182 bp)
+	Gaiella_occulta_NZ_QQZY01000004.1 (total length: 285390 bp, total length without N's: 285390 bp, maximal covered length: 74 bp)
+	Gaiella_occulta_NZ_QQZY01000005.1 (total length: 225628 bp, total length without N's: 225628 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000006.1 (total length: 204124 bp, total length without N's: 204124 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000007.1 (total length: 130509 bp, total length without N's: 130509 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000008.1 (total length: 126431 bp, total length without N's: 126431 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000009.1 (total length: 120150 bp, total length without N's: 120150 bp, maximal covered length: 78 bp)
+	Gaiella_occulta_NZ_QQZY01000010.1 (total length: 100208 bp, total length without N's: 100208 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000011.1 (total length: 56861 bp, total length without N's: 56861 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000012.1 (total length: 9179 bp, total length without N's: 9179 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000013.1 (total length: 6046 bp, total length without N's: 6046 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000014.1 (total length: 5826 bp, total length without N's: 5826 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000015.1 (total length: 5229 bp, total length without N's: 5229 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000016.1 (total length: 4894 bp, total length without N's: 4894 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000017.1 (total length: 4727 bp, total length without N's: 4727 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000018.1 (total length: 3712 bp, total length without N's: 3712 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000019.1 (total length: 3285 bp, total length without N's: 3285 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000020.1 (total length: 3037 bp, total length without N's: 3037 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000021.1 (total length: 2602 bp, total length without N's: 2602 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000022.1 (total length: 1838 bp, total length without N's: 1838 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000023.1 (total length: 1532 bp, total length without N's: 1532 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000024.1 (total length: 1513 bp, total length without N's: 1513 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000025.1 (total length: 1460 bp, total length without N's: 1460 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000026.1 (total length: 1426 bp, total length without N's: 1426 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000027.1 (total length: 1037 bp, total length without N's: 1037 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000028.1 (total length: 996 bp, total length without N's: 996 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000029.1 (total length: 942 bp, total length without N's: 942 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000030.1 (total length: 843 bp, total length without N's: 843 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000031.1 (total length: 810 bp, total length without N's: 810 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000032.1 (total length: 749 bp, total length without N's: 749 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000033.1 (total length: 691 bp, total length without N's: 691 bp, maximal covered length: 0 bp)
+	Gaiella_occulta_NZ_QQZY01000034.1 (total length: 614 bp, total length without N's: 614 bp, maximal covered length: 0 bp)
+
+total genome size: 3028529
+
+gap min size: 50
+partial gene/operon min size: 100
+
+
+
+assembly                 | genome    | duplication | gaps      | genes     | partial   | operons   | partial   |
+                         | fraction  | ratio       | number    |           | genes     |           | operons   |
+========================================================================================================================
+final-contigs_to_Gaiella | 0.026     | 4.559       | 41        | -         | -         | -         | -         |
