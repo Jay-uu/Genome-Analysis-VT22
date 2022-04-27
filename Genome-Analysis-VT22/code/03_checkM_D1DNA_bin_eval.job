@@ -1,0 +1,29 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -J 03_checkM_D1DNA_bin_eval
+#SBATCH -t 02:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+cat $0
+echo QOS = $SLURM_JOB_QOS
+
+#work in node-local storage
+cd $SNIC_TMP
+export GAVT22=$HOME/genome_analysis_project/Genome-Analysis-VT22/
+mkdir CheckM_data
+cd CheckM_data
+
+module load bioinfo-tools CheckM/1.1.3
+#setup of local database
+cp -av $CHECKM_DATA/checkm_data_2015_01_16.tar.gz .
+mkdir 2015_01_16
+cd 2015_01_16
+tar xzf ../checkm_data_2015_01_16.tar.gz
+#tell CheckM where the data is
+checkm data setRoot $PWD
+
+cd ..
+checkm lineage_wf -t 2 -x fa $GAVT22/analyses/03_binning/D1DNA_bins/final.contigs.fa.metabat-bins/ $GAVT22/analyses/03_binning/D1DNA_bins/bins_eval

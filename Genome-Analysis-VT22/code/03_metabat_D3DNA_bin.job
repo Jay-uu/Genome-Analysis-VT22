@@ -1,0 +1,25 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -J 03_metabat_D3DNA_bin
+#SBATCH -t 30:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+
+#for troubleshooting
+set -x
+
+cat $0
+echo QOS = $SLURM_JOB_QOS
+
+#work in node-local storage
+cd $SNIC_TMP
+export GAVT22=$HOME/genome_analysis_project/Genome-Analysis-VT22
+module load bioinfo-tools MetaBat
+
+runMetaBat.sh $GAVT22/data/assembly/D3DNA_assembly/megahit_04-18/final.contigs.fa $GAVT22/data/assembly/D3DNA_assembly/read_map/D3DNA_map_sorted.bam
+
+//need to copy the output to my own folder
+cp -r *.* $GAVT22/analyses/03_binning/D3DNA_bins
