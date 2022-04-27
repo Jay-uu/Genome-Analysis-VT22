@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #SBATCH -A uppmax2022-2-5 -M snowy
 #SBATCH -p core
-#SBATCH -n 2
+#SBATCH -n 4
 #SBATCH -J 03_checkM_D3DNA_bin_eval
 #SBATCH -t 02:00:00
 #SBATCH --mail-type=ALL
@@ -26,4 +26,4 @@ tar xzf ../checkm_data_2015_01_16.tar.gz
 checkm data setRoot $PWD
 
 cd ..
-checkm lineage_wf -t 2 -x fa $GAVT22/analyses/03_binning/D3DNA_bins/final.contigs.fa.metabat-bins/ $GAVT22/analyses/03_binning/D3DNA_bins/bins_eval
+checkm lineage_wf -t 4 -x fa --reduced_tree $GAVT22/analyses/03_binning/D3DNA_bins/final.contigs.fa.metabat-bins/ $GAVT22/analyses/03_binning/D3DNA_bins/bins_eval
