@@ -1,0 +1,49 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -J prokka_bin_annotation
+#SBATCH -t 02:30:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+#for troubleshooting
+set -x
+
+cat $0
+echo QOS = $SLURM_JOB_QOS
+
+export GAVT22=$HOME/genome_analysis_project/Genome-Analysis-VT22/
+export D3BINS=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/03_binning/D3DNA_bins/final.contigs.fa.metabat-bins
+export D1BINS=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/03_binning/D1DNA_bins/final.contigs.fa.metabat-bins
+
+#work in node-local storage
+cd $SNIC_TMP
+#The dependencies load automatically with prokka
+module load bioinfo-tools prokka
+
+#Try the script for only D3 bacteria just to see if it works, then  uncomment everything else and comment away D3 bac
+
+#D3 bacteria
+for i in 21 4 10 17 13 31 2 28 5 23 18 25 9 16 7 15 27 24 26 1 19 11 3
+do
+ prokka -outdir $GAVT22/analyses/04_annotation/D3_${i} -prefix bin_${i}_genome $D3BINS/bin.${i}.fa
+done
+
+#D1 bacteria
+#for b in 8 2 12 15 10 16 3 7 14
+#do
+# prokka -outdir $GAVT22/analyses/04_annotation/D1_${b} -prefix bin_${b}_genome $D1BINS/bin.${b}.fa
+#done
+
+#D3 archea
+#for c in 14 12 6 20 29 8 22 30
+#do
+# prokka --kingdom Archaea -outdir $GAVT22/analyses/04_annotation/D3_${c} -prefix bin_${c}_genome_arch $D3BINS/bin.${c}.fa
+#done
+
+#D1 archea
+#for d in 1 6 9 5 4 13 11
+#do
+# prokka --kingdom Archaea -outdir $GAVT22/analyses/04_annotation/D1_${d} -prefix bin_${d}_genome_arch $D1BINS/bin.${d}.fa
+#done
