@@ -13,6 +13,7 @@ Genome-Analysis-VT22/analyses/01_preprocessing/fastqc_trim/RNA_08-04/*.zip
 Genome-Analysis-VT22/analyses/01_preprocessing/fastqc_trim/DNA_08-04/*.zip
 Genome-Analysis-VT22/analyses/01_preprocessing/fastqc_trim/RNA_12-04/*.zip
 
-#These are from an interrupted analysis that I haven't removed yet
-Genome-Analysis-VT22/analyses/03_binning/D3DNA_bins/bins_eval/interrupted
+#Too much here to copy to github
+Genome-Analysis-VT22/analyses/03_binning/
+Genome-Analysis-VT22/analyses/06_phylogenetic_placement/
 
