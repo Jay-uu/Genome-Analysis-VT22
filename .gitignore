@@ -15,5 +15,6 @@ Genome-Analysis-VT22/analyses/01_preprocessing/fastqc_trim/RNA_12-04/*.zip
 
 #Too much here to copy to github
 Genome-Analysis-VT22/analyses/03_binning/
+Genome-Analysis-VT22/analyses/04_annotation
 Genome-Analysis-VT22/analyses/06_phylogenetic_placement/
 
