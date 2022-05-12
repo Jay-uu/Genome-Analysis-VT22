@@ -25,4 +25,4 @@ tar xzf ../checkm_data_2015_01_16.tar.gz
 checkm data setRoot $PWD
 
 cd $SNIC_TMP
-checkm lineage_wf -t 4 -x fa --reduced_tree $GAVT22/analyses/03_binning/D3DNA_bins/final.contigs.fa.metabat-bins/ $GAVT22/analyses/03_binning/D3DNA_bins/bins_eval_04-28
+checkm lineage_wf -t 4 -x fa --reduced_tree $GAVT22/analyses/03_binning/D3DNA_bins/final.contigs.fa.metabat-bins/ $GAVT22/analyses/03_binning/D3DNA_bins/bins_eval_05-12
