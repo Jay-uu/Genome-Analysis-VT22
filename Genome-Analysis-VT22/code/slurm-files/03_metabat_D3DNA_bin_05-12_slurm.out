@@ -1,0 +1,85 @@
++ cat /var/spool/slurmd/job6204562/slurm_script
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -J 03_metabat_D3DNA_bin
+#SBATCH -t 30:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+
+#for troubleshooting
+set -x
+
+cat $0
+echo QOS = $SLURM_JOB_QOS
+
+#work in node-local storage
+cd $SNIC_TMP
+export GAVT22=$HOME/genome_analysis_project/Genome-Analysis-VT22
+module load bioinfo-tools MetaBat
+
+runMetaBat.sh $GAVT22/data/assembly/D3DNA_assembly/megahit_04-18/final.contigs.fa $GAVT22/data/assembly/D3DNA_assembly/read_map/D3DNA_map_sorted.bam
+
+#need to copy the output to my own folder
+cp -r *.* $GAVT22/analyses/03_binning/D3DNA_bins/
+
++ echo QOS = normal
+QOS = normal
++ cd /scratch/6204562
++ export GAVT22=/home/jay/genome_analysis_project/Genome-Analysis-VT22
++ GAVT22=/home/jay/genome_analysis_project/Genome-Analysis-VT22
++ module load bioinfo-tools MetaBat
+++ /usr/share/lmod/lmod/libexec/lmod bash load bioinfo-tools MetaBat
++ eval '__LMOD_REF_COUNT_LOADEDMODULES=uppmax:2\;bioinfo-tools:1\;MetaBat/2.12.1:1;' export '__LMOD_REF_COUNT_LOADEDMODULES;' 'LOADEDMODULES=uppmax:bioinfo-tools:MetaBat/2.12.1;' export 'LOADEDMODULES;' '__LMOD_REF_COUNT_MODULEPATH=/sw/mf/snowy/bioinfo-tools/annotation:1\;/sw/mf/snowy/bioinfo-tools/alignment:1\;/sw/mf/snowy/bioinfo-tools/assembly:1\;/sw/mf/snowy/bioinfo-tools/misc:1\;/sw/mf/snowy/bioinfo-tools/phylogeny:1\;/sw/mf/snowy/bioinfo-tools/pipelines:1\;/sw/mf/snowy/bioinfo-tools/sw_collections:1\;/sw/mf/snowy/applications:1\;/sw/mf/snowy/build-tools:1\;/sw/mf/snowy/compilers:1\;/sw/mf/snowy/data:1\;/sw/mf/snowy/environment:1\;/sw/mf/snowy/libraries:1\;/sw/mf/snowy/parallel:1;' export '__LMOD_REF_COUNT_MODULEPATH;' 'MODULEPATH=/sw/mf/snowy/bioinfo-tools/annotation:/sw/mf/snowy/bioinfo-tools/alignment:/sw/mf/snowy/bioinfo-tools/assembly:/sw/mf/snowy/bioinfo-tools/misc:/sw/mf/snowy/bioinfo-tools/phylogeny:/sw/mf/snowy/bioinfo-tools/pipelines:/sw/mf/snowy/bioinfo-tools/sw_collections:/sw/mf/snowy/applications:/sw/mf/snowy/build-tools:/sw/mf/snowy/compilers:/sw/mf/snowy/data:/sw/mf/snowy/environment:/sw/mf/snowy/libraries:/sw/mf/snowy/parallel;' export 'MODULEPATH;' '__LMOD_REF_COUNT_PATH=/sw/apps/bioinfo/MetaBat/2.12.1/snowy:1\;/home/jay/bin:2\;/usr/local/bin:1\;/usr/bin:1\;/usr/local/sbin:1\;/usr/sbin:1\;/sw/uppmax/bin:2;' export '__LMOD_REF_COUNT_PATH;' 'PATH=/sw/apps/bioinfo/MetaBat/2.12.1/snowy:/home/jay/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sw/uppmax/bin;' export 'PATH;' '__LMOD_REF_COUNT__LMFILES_=/sw/mf/snowy/environment/bioinfo-tools:1\;/sw/mf/snowy/bioinfo-tools/misc/MetaBat/2.12.1:1;' export '__LMOD_REF_COUNT__LMFILES_;' '_LMFILES_=/sw/mf/snowy/environment/bioinfo-tools:/sw/mf/snowy/bioinfo-tools/misc/MetaBat/2.12.1;' export '_LMFILES_;' '_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXt9LG1UPXtNZXRhQmF0PXtbImZuIl09Ii9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL21pc2MvTWV0YUJhdC8yLjEyLjEiLFsiZnVsbE5hbWUiXT0iTWV0YUJhdC8yLjEyLjEiLFsibG9hZE9yZGVyIl09Mixwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJNZXRhQmF0Iix9LFsiYmlvaW5mby10b29scyJdPXtbImZuIl09Ii9zdy9tZi9zbm93eS9lbnZpcm9ubWVudC9iaW9pbmZvLXRvb2xzIixbImZ1bGxOYW1lIl09ImJpb2luZm8tdG9vbHMiLFsibG9h;' export '_ModuleTable001_;' '_ModuleTable002_=ZE9yZGVyIl09MSxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJiaW9pbmZvLXRvb2xzIix9LH0sbXBhdGhBPXsiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvYW5ub3RhdGlvbiIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL2FsaWdubWVudCIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL2Fzc2VtYmx5IiwiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvbWlzYyIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL3BoeWxvZ2VueSIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL3BpcGVsaW5lcyIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL3N3X2NvbGxlY3Rpb25zIiwiL3N3L21mL3Nub3d5;' export '_ModuleTable002_;' '_ModuleTable003_=L2FwcGxpY2F0aW9ucyIsIi9zdy9tZi9zbm93eS9idWlsZC10b29scyIsIi9zdy9tZi9zbm93eS9jb21waWxlcnMiLCIvc3cvbWYvc25vd3kvZGF0YSIsIi9zdy9tZi9zbm93eS9lbnZpcm9ubWVudCIsIi9zdy9tZi9zbm93eS9saWJyYXJpZXMiLCIvc3cvbWYvc25vd3kvcGFyYWxsZWwiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL3N3L21mL3Nub3d5L2FwcGxpY2F0aW9uczovc3cvbWYvc25vd3kvYnVpbGQtdG9vbHM6L3N3L21mL3Nub3d5L2NvbXBpbGVyczovc3cvbWYvc25vd3kvZGF0YTovc3cvbWYvc25vd3kvZW52aXJvbm1lbnQ6L3N3L21mL3Nub3d5L2xpYnJhcmllczovc3cvbWYvc25vd3kvcGFyYWxsZWwiLH0=;' export '_ModuleTable003_;' '_ModuleTable_Sz_=3;' export '_ModuleTable_Sz_;'
+++ __LMOD_REF_COUNT_LOADEDMODULES='uppmax:2;bioinfo-tools:1;MetaBat/2.12.1:1'
+++ export __LMOD_REF_COUNT_LOADEDMODULES
+++ LOADEDMODULES=uppmax:bioinfo-tools:MetaBat/2.12.1
+++ export LOADEDMODULES
+++ __LMOD_REF_COUNT_MODULEPATH='/sw/mf/snowy/bioinfo-tools/annotation:1;/sw/mf/snowy/bioinfo-tools/alignment:1;/sw/mf/snowy/bioinfo-tools/assembly:1;/sw/mf/snowy/bioinfo-tools/misc:1;/sw/mf/snowy/bioinfo-tools/phylogeny:1;/sw/mf/snowy/bioinfo-tools/pipelines:1;/sw/mf/snowy/bioinfo-tools/sw_collections:1;/sw/mf/snowy/applications:1;/sw/mf/snowy/build-tools:1;/sw/mf/snowy/compilers:1;/sw/mf/snowy/data:1;/sw/mf/snowy/environment:1;/sw/mf/snowy/libraries:1;/sw/mf/snowy/parallel:1'
+++ export __LMOD_REF_COUNT_MODULEPATH
+++ MODULEPATH=/sw/mf/snowy/bioinfo-tools/annotation:/sw/mf/snowy/bioinfo-tools/alignment:/sw/mf/snowy/bioinfo-tools/assembly:/sw/mf/snowy/bioinfo-tools/misc:/sw/mf/snowy/bioinfo-tools/phylogeny:/sw/mf/snowy/bioinfo-tools/pipelines:/sw/mf/snowy/bioinfo-tools/sw_collections:/sw/mf/snowy/applications:/sw/mf/snowy/build-tools:/sw/mf/snowy/compilers:/sw/mf/snowy/data:/sw/mf/snowy/environment:/sw/mf/snowy/libraries:/sw/mf/snowy/parallel
+++ export MODULEPATH
+++ __LMOD_REF_COUNT_PATH='/sw/apps/bioinfo/MetaBat/2.12.1/snowy:1;/home/jay/bin:2;/usr/local/bin:1;/usr/bin:1;/usr/local/sbin:1;/usr/sbin:1;/sw/uppmax/bin:2'
+++ export __LMOD_REF_COUNT_PATH
+++ PATH=/sw/apps/bioinfo/MetaBat/2.12.1/snowy:/home/jay/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sw/uppmax/bin
+++ export PATH
+++ __LMOD_REF_COUNT__LMFILES_='/sw/mf/snowy/environment/bioinfo-tools:1;/sw/mf/snowy/bioinfo-tools/misc/MetaBat/2.12.1:1'
+++ export __LMOD_REF_COUNT__LMFILES_
+++ _LMFILES_=/sw/mf/snowy/environment/bioinfo-tools:/sw/mf/snowy/bioinfo-tools/misc/MetaBat/2.12.1
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXt9LG1UPXtNZXRhQmF0PXtbImZuIl09Ii9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL21pc2MvTWV0YUJhdC8yLjEyLjEiLFsiZnVsbE5hbWUiXT0iTWV0YUJhdC8yLjEyLjEiLFsibG9hZE9yZGVyIl09Mixwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJNZXRhQmF0Iix9LFsiYmlvaW5mby10b29scyJdPXtbImZuIl09Ii9zdy9tZi9zbm93eS9lbnZpcm9ubWVudC9iaW9pbmZvLXRvb2xzIixbImZ1bGxOYW1lIl09ImJpb2luZm8tdG9vbHMiLFsibG9h
+++ export _ModuleTable001_
+++ _ModuleTable002_=ZE9yZGVyIl09MSxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJiaW9pbmZvLXRvb2xzIix9LH0sbXBhdGhBPXsiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvYW5ub3RhdGlvbiIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL2FsaWdubWVudCIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL2Fzc2VtYmx5IiwiL3N3L21mL3Nub3d5L2Jpb2luZm8tdG9vbHMvbWlzYyIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL3BoeWxvZ2VueSIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL3BpcGVsaW5lcyIsIi9zdy9tZi9zbm93eS9iaW9pbmZvLXRvb2xzL3N3X2NvbGxlY3Rpb25zIiwiL3N3L21mL3Nub3d5
+++ export _ModuleTable002_
+++ _ModuleTable003_=L2FwcGxpY2F0aW9ucyIsIi9zdy9tZi9zbm93eS9idWlsZC10b29scyIsIi9zdy9tZi9zbm93eS9jb21waWxlcnMiLCIvc3cvbWYvc25vd3kvZGF0YSIsIi9zdy9tZi9zbm93eS9lbnZpcm9ubWVudCIsIi9zdy9tZi9zbm93eS9saWJyYXJpZXMiLCIvc3cvbWYvc25vd3kvcGFyYWxsZWwiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL3N3L21mL3Nub3d5L2FwcGxpY2F0aW9uczovc3cvbWYvc25vd3kvYnVpbGQtdG9vbHM6L3N3L21mL3Nub3d5L2NvbXBpbGVyczovc3cvbWYvc25vd3kvZGF0YTovc3cvbWYvc25vd3kvZW52aXJvbm1lbnQ6L3N3L21mL3Nub3d5L2xpYnJhcmllczovc3cvbWYvc25vd3kvcGFyYWxsZWwiLH0=
+++ export _ModuleTable003_
+++ _ModuleTable_Sz_=3
+++ export _ModuleTable_Sz_
+++ : -s sh
++ eval
++ runMetaBat.sh /home/jay/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D3DNA_assembly/megahit_04-18/final.contigs.fa /home/jay/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D3DNA_assembly/read_map/D3DNA_map_sorted.bam
+Executing: 'jgi_summarize_bam_contig_depths --outputDepth final.contigs.fa.depth.txt --pairedContigs final.contigs.fa.paired.txt --minContigLength 1000 --minContigDepth 1  /home/jay/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D3DNA_assembly/read_map/D3DNA_map_sorted.bam' at Thu May 12 13:29:57 CEST 2022
+Output depth matrix to final.contigs.fa.depth.txt
+Output pairedContigs lower triangle to final.contigs.fa.paired.txt
+minContigLength: 1000
+minContigDepth: 1
+Output matrix to final.contigs.fa.depth.txt
+Opening 1 bams
+Consolidating headers
+Allocating pairedContigs matrix: 7 MB over 1 threads
+Processing bam files
+Thread 0 finished: D3DNA_map_sorted.bam with 60004884 reads and 32117616 readsWellMapped
+Creating depth matrix file: final.contigs.fa.depth.txt
+Closing most bam files
+Creating pairedContigs matrix file: final.contigs.fa.paired.txt
+Closing last bam file
+Finished
+Finished jgi_summarize_bam_contig_depths at Thu May 12 13:35:12 CEST 2022
+Creating depth file for metabat at Thu May 12 13:35:12 CEST 2022
+Executing: 'metabat2  --inFile /home/jay/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D3DNA_assembly/megahit_04-18/final.contigs.fa --outFile final.contigs.fa.metabat-bins/bin --abdFile final.contigs.fa.depth.txt' at Thu May 12 13:35:12 CEST 2022
+MetaBAT 2 (v2.12.1) using minContig 2500, minCV 1.0, minCVSum 1.0, maxP 95%, minS 60, and maxEdges 200. 
+30 bins (40134799 bases in total) formed.
+Finished metabat2 at Thu May 12 13:42:15 CEST 2022
++ cp -r final.contigs.fa.depth.txt final.contigs.fa.metabat-bins final.contigs.fa.paired.txt /home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/03_binning/D3DNA_bins/
