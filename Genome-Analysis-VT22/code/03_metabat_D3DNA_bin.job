@@ -21,5 +21,6 @@ module load bioinfo-tools MetaBat
 
 runMetaBat.sh $GAVT22/data/assembly/D3DNA_assembly/megahit_04-18/final.contigs.fa $GAVT22/data/assembly/D3DNA_assembly/read_map/D3DNA_map_sorted.bam
 
-//need to copy the output to my own folder
-cp -r *.* $GAVT22/analyses/03_binning/D3DNA_bins
+#need to copy the output to my own folder
+cp -r *.* $GAVT22/analyses/03_binning/D3DNA_bins/
+
