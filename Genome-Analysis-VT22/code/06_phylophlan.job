@@ -1,0 +1,54 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -J phylophlan_
+#SBATCH -t 06:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+#print script
+cat $0
+
+#Phylophlan is a little messy to use so need to load modules in a weird way.
+module load bioinfo-tools
+module load phylophlan/0.99
+module unload python
+module load biopython/1.73 usearch/5.2.32 muscle/3.8.31
+module load FastTree
+
+#store results here
+outdir=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/06_phylogenetic_placement
+export annotated_bins=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/04_annotation
+
+#Since this is sort of published: credit to Emil Hägglund for this part of the script
+
+#create directories that phylophlan will look for:
+# when you run phylophlan you specify a project name, which it looks for in the "input" directory
+# in this case the project name is "metagenome"
+# this is also where you should put symlinks to your input files
+#need to link the prokka output in here, and rename to represent which sample site they are from
+#mkdir -p $outdir/input/metagenome
+#mkdir -p $outdir/output
+#mkdir -p $outdir/data/ppaalns
+# symlink phylophlan data files
+#ln -sf /sw/apps/bioinfo/phylophlan/0.99/rackham/bin/data/*.bz2 $outdir/data/
+#ln -sf /sw/apps/bioinfo/phylophlan/0.99/rackham/bin/data/ppaalns/*.bz2 $outdir/data/ppaalns/
+#ln -sf /sw/apps/bioinfo/phylophlan/0.99/rackham/bin/data/ppafull.tax.txt $outdir/data/
+#ln -sf /sw/apps/bioinfo/phylophlan/0.99/rackham/bin/taxcuration/ $outdir/taxcuration
+#End of Emil's part
+
+#move .faa files with proteins from D1 site into metagenome folder
+for i in {1..16}
+do
+ ln -sf $annotated_bins/D1_${i}/*.faa $outdir/input/metagenome/D1bin${i}_prot.faa
+done
+
+for j in {1..30}
+do
+ ln -sf $annotated_bins/D3_${j}/*.faa $outdir/input/metagenome/D3bin${j}_prot.faa
+done
+
+#Should run phylophlan from outdir
+cd $outdir
+phylophlan.py metagenome --nproc 2
