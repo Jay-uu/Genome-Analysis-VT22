@@ -1,0 +1,103 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -J phylophlan_
+#SBATCH -t 06:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+#print script
+cat $0
+
+#Phylophlan is a little messy to use so need to load modules in a weird way.
+module load bioinfo-tools
+module load phylophlan/0.99
+module unload python
+module load biopython/1.73 usearch/5.2.32 muscle/3.8.31
+module load FastTree
+
+#store results here
+outdir=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/06_phylogenetic_placement
+export annotated_bins=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/04_annotation
+
+#Since this is sort of published: credit to Emil Hägglund for this part of the script
+
+#create directories that phylophlan will look for:
+# when you run phylophlan you specify a project name, which it looks for in the "input" directory
+# in this case the project name is "metagenome"
+# this is also where you should put symlinks to your input files
+#need to link the prokka output in here, and rename to represent which sample site they are from
+#mkdir -p $outdir/input/metagenome
+#mkdir -p $outdir/output
+#mkdir -p $outdir/data/ppaalns
+# symlink phylophlan data files
+#ln -sf /sw/apps/bioinfo/phylophlan/0.99/rackham/bin/data/*.bz2 $outdir/data/
+#ln -sf /sw/apps/bioinfo/phylophlan/0.99/rackham/bin/data/ppaalns/*.bz2 $outdir/data/ppaalns/
+#ln -sf /sw/apps/bioinfo/phylophlan/0.99/rackham/bin/data/ppafull.tax.txt $outdir/data/
+#ln -sf /sw/apps/bioinfo/phylophlan/0.99/rackham/bin/taxcuration/ $outdir/taxcuration
+#End of Emil's part
+
+#move .faa files with proteins from D1 site into metagenome folder
+for i in {1..16}
+do
+ ln -sf $annotated_bins/D1_${i}/*.faa $outdir/input/metagenome/D1bin${i}_prot.faa
+done
+
+for j in {1..30}
+do
+ ln -sf $annotated_bins/D3_${j}/*.faa $outdir/input/metagenome/D3bin${j}_prot.faa
+done
+
+#Should run phylophlan from outdir
+cd $outdir
+phylophlan.py metagenome --nproc 2
+All usearch runs already performed!
+Mapping finished in 0 secs.
+
+All alignments already computed!
+Aligning finished in 0 secs (0 total time).
+
+All alignments already merged!
+Start building the tree with FastTree ... 
+FastTree Version 2.1.10 SSE3
+Alignment: standard input
+Amino acid distances: BLOSUM45 Joins: weighted Support: SH-like 1000
+Search: Normal +NNI +SPR (4 rounds range 10) +ML-NNI opt-each=2
+TopHits: 1.00*sqrtN close=default refresh=0.80
+ML Model: Jones-Taylor-Thorton, CAT approximation with 20 rate categories
+Initial topology in 0.14 seconds
+Refining topology: 22 rounds ME-NNIs, 4 rounds ME-SPRs, 11 rounds ML-NNIs
+      0.14 seconds: ME NNI round 1 of 22, 1 of 45 splits
+      0.28 seconds: ME NNI round 4 of 22, 1 of 45 splits
+      3.02 seconds: ME NNI round 5 of 22, 1 of 45 splits
+      5.74 seconds: ME NNI round 9 of 22, 1 of 45 splits
+      8.47 seconds: ME NNI round 13 of 22, 1 of 45 splits
+     11.20 seconds: ME NNI round 17 of 22, 1 of 45 splits
+Total branch-length 32.491 after 11.29 sec
+     11.95 seconds: ML NNI round 1 of 11, 1 of 45 splits
+ML-NNI round 1: LogLk = -166266.337 NNIs 9 max delta 9.20 Time 15.62
+     15.66 seconds: Site likelihoods with rate category 1 of 20
+     15.79 seconds: Site likelihoods with rate category 4 of 20
+     15.93 seconds: Site likelihoods with rate category 7 of 20
+     16.07 seconds: Site likelihoods with rate category 10 of 20
+     16.20 seconds: Site likelihoods with rate category 13 of 20
+     16.34 seconds: Site likelihoods with rate category 16 of 20
+     16.45 seconds: Site likelihoods with rate category 18 of 20
+     16.60 seconds: Site likelihoods with rate category 20 of 20
+Switched to using 20 rate categories (CAT approximation)
+Rate categories were divided by 0.937 so that average rate = 1.0
+CAT-based log-likelihoods may not be comparable across runs
+Use -gamma for approximate but comparable Gamma(20) log-likelihoods
+ML-NNI round 2: LogLk = -163171.950 NNIs 6 max delta 6.48 Time 20.49
+     20.49 seconds: ML NNI round 3 of 11, 1 of 45 splits
+ML-NNI round 3: LogLk = -163168.958 NNIs 0 max delta 0.00 Time 24.24
+Turning off heuristics for final round of ML NNIs (converged)
+     24.23 seconds: ML NNI round 4 of 11, 1 of 45 splits
+ML-NNI round 4: LogLk = -163167.656 NNIs 0 max delta 0.00 Time 27.97 (final)
+     27.96 seconds: ML Lengths 1 of 45 splits
+Optimize all lengths: LogLk = -163167.036 Time 28.58
+Total time: 31.10 seconds Unique: 47/47 Bad splits: 0/44
+Tree built! The output newick file is in output/metagenome/metagenome.tree.nwk
+Tree building finished in 31 secs (31 total time).
+
