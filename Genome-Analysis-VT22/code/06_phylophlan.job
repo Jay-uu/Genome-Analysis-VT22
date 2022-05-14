@@ -51,4 +51,4 @@ done
 
 #Should run phylophlan from outdir
 cd $outdir
-phylophlan.py metagenome --nproc 2
+phylophlan.py --nproc 2 -i -t metagenome
