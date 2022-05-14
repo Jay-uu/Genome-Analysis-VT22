@@ -15,9 +15,6 @@ export D1BINS=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/03_bin
 export RNA=$HOME/genome_analysis_project/Genome-Analysis-VT22/data/trimmed_data/RNA_trimmed_12-04
 export OUT=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/05_RNA_mapping
 
-
-#work in node-local storage
-#cd $SNIC_TMP
 #Load modules
 module load bioinfo-tools bwa samtools
 
