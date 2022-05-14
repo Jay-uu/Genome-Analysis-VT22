@@ -1,0 +1,2258 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -J phylophlan_
+#SBATCH -t 06:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+#print script
+cat $0
+
+#Phylophlan is a little messy to use so need to load modules in a weird way.
+module load bioinfo-tools
+module load phylophlan/0.99
+module unload python
+module load biopython/1.73 usearch/5.2.32 muscle/3.8.31
+module load FastTree
+
+#store results here
+outdir=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/06_phylogenetic_placement
+export annotated_bins=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/04_annotation
+
+#Since this is sort of published: credit to Emil Hägglund for this part of the script
+
+#create directories that phylophlan will look for:
+# when you run phylophlan you specify a project name, which it looks for in the "input" directory
+# in this case the project name is "metagenome"
+# this is also where you should put symlinks to your input files
+#need to link the prokka output in here, and rename to represent which sample site they are from
+#mkdir -p $outdir/input/metagenome
+#mkdir -p $outdir/output
+#mkdir -p $outdir/data/ppaalns
+# symlink phylophlan data files
+#ln -sf /sw/apps/bioinfo/phylophlan/0.99/rackham/bin/data/*.bz2 $outdir/data/
+#ln -sf /sw/apps/bioinfo/phylophlan/0.99/rackham/bin/data/ppaalns/*.bz2 $outdir/data/ppaalns/
+#ln -sf /sw/apps/bioinfo/phylophlan/0.99/rackham/bin/data/ppafull.tax.txt $outdir/data/
+#ln -sf /sw/apps/bioinfo/phylophlan/0.99/rackham/bin/taxcuration/ $outdir/taxcuration
+#End of Emil's part
+
+#move .faa files with proteins from D1 site into metagenome folder
+for i in {1..16}
+do
+ ln -sf $annotated_bins/D1_${i}/*.faa $outdir/input/metagenome/D1bin${i}_prot.faa
+done
+
+for j in {1..30}
+do
+ ln -sf $annotated_bins/D3_${j}/*.faa $outdir/input/metagenome/D3bin${j}_prot.faa
+done
+
+#Should run phylophlan from outdir
+cd $outdir
+phylophlan.py --nproc 2 -i -t metagenome
+All usearch runs already performed!
+Mapping finished in 0 secs.
+
+Merging alignments from user genomes with all the PhyloPhlAn alignments
+395 alignments to be merged
+Running muscle on data/metagenome/p0000.aln and data/ppaalns/p0000.aln...
+Running muscle on data/metagenome/p0050.aln and data/ppaalns/p0050.aln...
+data/metagenome/p0050.int.sub.aln generated (from data/metagenome/p0050.aln and data/ppaalns/p0050.aln)!
+Running muscle on data/metagenome/p0051.aln and data/ppaalns/p0051.aln...
+data/metagenome/p0051.int.sub.aln generated (from data/metagenome/p0051.aln and data/ppaalns/p0051.aln)!
+Running muscle on data/metagenome/p0052.aln and data/ppaalns/p0052.aln...
+data/metagenome/p0052.int.sub.aln generated (from data/metagenome/p0052.aln and data/ppaalns/p0052.aln)!
+Running muscle on data/metagenome/p0053.aln and data/ppaalns/p0053.aln...
+data/metagenome/p0000.int.sub.aln generated (from data/metagenome/p0000.aln and data/ppaalns/p0000.aln)!
+Running muscle on data/metagenome/p0001.aln and data/ppaalns/p0001.aln...
+data/metagenome/p0053.int.sub.aln generated (from data/metagenome/p0053.aln and data/ppaalns/p0053.aln)!
+Running muscle on data/metagenome/p0054.aln and data/ppaalns/p0054.aln...
+data/metagenome/p0001.int.sub.aln generated (from data/metagenome/p0001.aln and data/ppaalns/p0001.aln)!
+Running muscle on data/metagenome/p0002.aln and data/ppaalns/p0002.aln...
+data/metagenome/p0054.int.sub.aln generated (from data/metagenome/p0054.aln and data/ppaalns/p0054.aln)!
+Running muscle on data/metagenome/p0055.aln and data/ppaalns/p0055.aln...
+data/metagenome/p0002.int.sub.aln generated (from data/metagenome/p0002.aln and data/ppaalns/p0002.aln)!
+Running muscle on data/metagenome/p0003.aln and data/ppaalns/p0003.aln...
+data/metagenome/p0055.int.sub.aln generated (from data/metagenome/p0055.aln and data/ppaalns/p0055.aln)!
+Running muscle on data/metagenome/p0056.aln and data/ppaalns/p0056.aln...
+data/metagenome/p0056.int.sub.aln generated (from data/metagenome/p0056.aln and data/ppaalns/p0056.aln)!
+Running muscle on data/metagenome/p0057.aln and data/ppaalns/p0057.aln...
+data/metagenome/p0057.int.sub.aln generated (from data/metagenome/p0057.aln and data/ppaalns/p0057.aln)!
+Running muscle on data/metagenome/p0058.aln and data/ppaalns/p0058.aln...
+data/metagenome/p0058.int.sub.aln generated (from data/metagenome/p0058.aln and data/ppaalns/p0058.aln)!
+Running muscle on data/metagenome/p0059.aln and data/ppaalns/p0059.aln...
+data/metagenome/p0059.int.sub.aln generated (from data/metagenome/p0059.aln and data/ppaalns/p0059.aln)!
+Running muscle on data/metagenome/p0060.aln and data/ppaalns/p0060.aln...
+data/metagenome/p0003.int.sub.aln generated (from data/metagenome/p0003.aln and data/ppaalns/p0003.aln)!
+Running muscle on data/metagenome/p0004.aln and data/ppaalns/p0004.aln...
+data/metagenome/p0004.int.sub.aln generated (from data/metagenome/p0004.aln and data/ppaalns/p0004.aln)!
+Running muscle on data/metagenome/p0005.aln and data/ppaalns/p0005.aln...
+data/metagenome/p0060.int.sub.aln generated (from data/metagenome/p0060.aln and data/ppaalns/p0060.aln)!
+Running muscle on data/metagenome/p0061.aln and data/ppaalns/p0061.aln...
+data/metagenome/p0061.int.sub.aln generated (from data/metagenome/p0061.aln and data/ppaalns/p0061.aln)!
+Running muscle on data/metagenome/p0062.aln and data/ppaalns/p0062.aln...
+data/metagenome/p0062.int.sub.aln generated (from data/metagenome/p0062.aln and data/ppaalns/p0062.aln)!
+Running muscle on data/metagenome/p0063.aln and data/ppaalns/p0063.aln...
+data/metagenome/p0005.int.sub.aln generated (from data/metagenome/p0005.aln and data/ppaalns/p0005.aln)!
+Running muscle on data/metagenome/p0006.aln and data/ppaalns/p0006.aln...
+data/metagenome/p0063.int.sub.aln generated (from data/metagenome/p0063.aln and data/ppaalns/p0063.aln)!
+Running muscle on data/metagenome/p0064.aln and data/ppaalns/p0064.aln...
+data/metagenome/p0006.int.sub.aln generated (from data/metagenome/p0006.aln and data/ppaalns/p0006.aln)!
+Running muscle on data/metagenome/p0007.aln and data/ppaalns/p0007.aln...
+data/metagenome/p0007.int.sub.aln generated (from data/metagenome/p0007.aln and data/ppaalns/p0007.aln)!
+Running muscle on data/metagenome/p0008.aln and data/ppaalns/p0008.aln...
+data/metagenome/p0008.int.sub.aln generated (from data/metagenome/p0008.aln and data/ppaalns/p0008.aln)!
+Running muscle on data/metagenome/p0009.aln and data/ppaalns/p0009.aln...
+data/metagenome/p0064.int.sub.aln generated (from data/metagenome/p0064.aln and data/ppaalns/p0064.aln)!
+Running muscle on data/metagenome/p0065.aln and data/ppaalns/p0065.aln...
+data/metagenome/p0009.int.sub.aln generated (from data/metagenome/p0009.aln and data/ppaalns/p0009.aln)!
+Running muscle on data/metagenome/p0010.aln and data/ppaalns/p0010.aln...
+data/metagenome/p0065.int.sub.aln generated (from data/metagenome/p0065.aln and data/ppaalns/p0065.aln)!
+Running muscle on data/metagenome/p0066.aln and data/ppaalns/p0066.aln...
+data/metagenome/p0066.int.sub.aln generated (from data/metagenome/p0066.aln and data/ppaalns/p0066.aln)!
+Running muscle on data/metagenome/p0067.aln and data/ppaalns/p0067.aln...
+data/metagenome/p0067.int.sub.aln generated (from data/metagenome/p0067.aln and data/ppaalns/p0067.aln)!
+Running muscle on data/metagenome/p0068.aln and data/ppaalns/p0068.aln...
+data/metagenome/p0068.int.sub.aln generated (from data/metagenome/p0068.aln and data/ppaalns/p0068.aln)!
+Running muscle on data/metagenome/p0069.aln and data/ppaalns/p0069.aln...
+data/metagenome/p0069.int.sub.aln generated (from data/metagenome/p0069.aln and data/ppaalns/p0069.aln)!
+Running muscle on data/metagenome/p0070.aln and data/ppaalns/p0070.aln...
+data/metagenome/p0010.int.sub.aln generated (from data/metagenome/p0010.aln and data/ppaalns/p0010.aln)!
+Running muscle on data/metagenome/p0011.aln and data/ppaalns/p0011.aln...
+data/metagenome/p0070.int.sub.aln generated (from data/metagenome/p0070.aln and data/ppaalns/p0070.aln)!
+Running muscle on data/metagenome/p0071.aln and data/ppaalns/p0071.aln...
+data/metagenome/p0011.int.sub.aln generated (from data/metagenome/p0011.aln and data/ppaalns/p0011.aln)!
+Running muscle on data/metagenome/p0012.aln and data/ppaalns/p0012.aln...
+data/metagenome/p0012.int.sub.aln generated (from data/metagenome/p0012.aln and data/ppaalns/p0012.aln)!
+Running muscle on data/metagenome/p0013.aln and data/ppaalns/p0013.aln...
+data/metagenome/p0071.int.sub.aln generated (from data/metagenome/p0071.aln and data/ppaalns/p0071.aln)!
+Running muscle on data/metagenome/p0072.aln and data/ppaalns/p0072.aln...
+data/metagenome/p0013.int.sub.aln generated (from data/metagenome/p0013.aln and data/ppaalns/p0013.aln)!
+Running muscle on data/metagenome/p0014.aln and data/ppaalns/p0014.aln...
+data/metagenome/p0072.int.sub.aln generated (from data/metagenome/p0072.aln and data/ppaalns/p0072.aln)!
+Running muscle on data/metagenome/p0073.aln and data/ppaalns/p0073.aln...
+data/metagenome/p0014.int.sub.aln generated (from data/metagenome/p0014.aln and data/ppaalns/p0014.aln)!
+Running muscle on data/metagenome/p0015.aln and data/ppaalns/p0015.aln...
+data/metagenome/p0073.int.sub.aln generated (from data/metagenome/p0073.aln and data/ppaalns/p0073.aln)!
+Running muscle on data/metagenome/p0074.aln and data/ppaalns/p0074.aln...
+data/metagenome/p0015.int.sub.aln generated (from data/metagenome/p0015.aln and data/ppaalns/p0015.aln)!
+Running muscle on data/metagenome/p0016.aln and data/ppaalns/p0016.aln...
+data/metagenome/p0074.int.sub.aln generated (from data/metagenome/p0074.aln and data/ppaalns/p0074.aln)!
+Running muscle on data/metagenome/p0075.aln and data/ppaalns/p0075.aln...
+data/metagenome/p0016.int.sub.aln generated (from data/metagenome/p0016.aln and data/ppaalns/p0016.aln)!
+Running muscle on data/metagenome/p0017.aln and data/ppaalns/p0017.aln...
+data/metagenome/p0075.int.sub.aln generated (from data/metagenome/p0075.aln and data/ppaalns/p0075.aln)!
+Running muscle on data/metagenome/p0076.aln and data/ppaalns/p0076.aln...
+data/metagenome/p0076.int.sub.aln generated (from data/metagenome/p0076.aln and data/ppaalns/p0076.aln)!
+Running muscle on data/metagenome/p0077.aln and data/ppaalns/p0077.aln...
+data/metagenome/p0077.int.sub.aln generated (from data/metagenome/p0077.aln and data/ppaalns/p0077.aln)!
+Running muscle on data/metagenome/p0078.aln and data/ppaalns/p0078.aln...
+data/metagenome/p0017.int.sub.aln generated (from data/metagenome/p0017.aln and data/ppaalns/p0017.aln)!
+Running muscle on data/metagenome/p0018.aln and data/ppaalns/p0018.aln...
+data/metagenome/p0078.int.sub.aln generated (from data/metagenome/p0078.aln and data/ppaalns/p0078.aln)!
+Running muscle on data/metagenome/p0079.aln and data/ppaalns/p0079.aln...
+data/metagenome/p0018.int.sub.aln generated (from data/metagenome/p0018.aln and data/ppaalns/p0018.aln)!
+Running muscle on data/metagenome/p0019.aln and data/ppaalns/p0019.aln...
+data/metagenome/p0079.int.sub.aln generated (from data/metagenome/p0079.aln and data/ppaalns/p0079.aln)!
+Running muscle on data/metagenome/p0080.aln and data/ppaalns/p0080.aln...
+data/metagenome/p0080.int.sub.aln generated (from data/metagenome/p0080.aln and data/ppaalns/p0080.aln)!
+Running muscle on data/metagenome/p0081.aln and data/ppaalns/p0081.aln...
+data/metagenome/p0081.int.sub.aln generated (from data/metagenome/p0081.aln and data/ppaalns/p0081.aln)!
+Running muscle on data/metagenome/p0082.aln and data/ppaalns/p0082.aln...
+data/metagenome/p0082.int.sub.aln generated (from data/metagenome/p0082.aln and data/ppaalns/p0082.aln)!
+Running muscle on data/metagenome/p0083.aln and data/ppaalns/p0083.aln...
+data/metagenome/p0083.int.sub.aln generated (from data/metagenome/p0083.aln and data/ppaalns/p0083.aln)!
+Running muscle on data/metagenome/p0084.aln and data/ppaalns/p0084.aln...
+data/metagenome/p0019.int.sub.aln generated (from data/metagenome/p0019.aln and data/ppaalns/p0019.aln)!
+Running muscle on data/metagenome/p0020.aln and data/ppaalns/p0020.aln...
+data/metagenome/p0084.int.sub.aln generated (from data/metagenome/p0084.aln and data/ppaalns/p0084.aln)!
+Running muscle on data/metagenome/p0085.aln and data/ppaalns/p0085.aln...
+data/metagenome/p0085.int.sub.aln generated (from data/metagenome/p0085.aln and data/ppaalns/p0085.aln)!
+Running muscle on data/metagenome/p0086.aln and data/ppaalns/p0086.aln...
+data/metagenome/p0020.int.sub.aln generated (from data/metagenome/p0020.aln and data/ppaalns/p0020.aln)!
+Running muscle on data/metagenome/p0021.aln and data/ppaalns/p0021.aln...
+data/metagenome/p0086.int.sub.aln generated (from data/metagenome/p0086.aln and data/ppaalns/p0086.aln)!
+Running muscle on data/metagenome/p0087.aln and data/ppaalns/p0087.aln...
+data/metagenome/p0021.int.sub.aln generated (from data/metagenome/p0021.aln and data/ppaalns/p0021.aln)!
+Running muscle on data/metagenome/p0022.aln and data/ppaalns/p0022.aln...
+data/metagenome/p0087.int.sub.aln generated (from data/metagenome/p0087.aln and data/ppaalns/p0087.aln)!
+Running muscle on data/metagenome/p0088.aln and data/ppaalns/p0088.aln...
+data/metagenome/p0088.int.sub.aln generated (from data/metagenome/p0088.aln and data/ppaalns/p0088.aln)!
+Running muscle on data/metagenome/p0089.aln and data/ppaalns/p0089.aln...
+data/metagenome/p0089.int.sub.aln generated (from data/metagenome/p0089.aln and data/ppaalns/p0089.aln)!
+Running muscle on data/metagenome/p0090.aln and data/ppaalns/p0090.aln...
+data/metagenome/p0022.int.sub.aln generated (from data/metagenome/p0022.aln and data/ppaalns/p0022.aln)!
+Running muscle on data/metagenome/p0023.aln and data/ppaalns/p0023.aln...
+data/metagenome/p0090.int.sub.aln generated (from data/metagenome/p0090.aln and data/ppaalns/p0090.aln)!
+Running muscle on data/metagenome/p0091.aln and data/ppaalns/p0091.aln...
+data/metagenome/p0091.int.sub.aln generated (from data/metagenome/p0091.aln and data/ppaalns/p0091.aln)!
+Running muscle on data/metagenome/p0092.aln and data/ppaalns/p0092.aln...
+data/metagenome/p0023.int.sub.aln generated (from data/metagenome/p0023.aln and data/ppaalns/p0023.aln)!
+Running muscle on data/metagenome/p0024.aln and data/ppaalns/p0024.aln...
+data/metagenome/p0092.int.sub.aln generated (from data/metagenome/p0092.aln and data/ppaalns/p0092.aln)!
+Running muscle on data/metagenome/p0093.aln and data/ppaalns/p0093.aln...
+data/metagenome/p0024.int.sub.aln generated (from data/metagenome/p0024.aln and data/ppaalns/p0024.aln)!
+Running muscle on data/metagenome/p0025.aln and data/ppaalns/p0025.aln...
+data/metagenome/p0093.int.sub.aln generated (from data/metagenome/p0093.aln and data/ppaalns/p0093.aln)!
+Running muscle on data/metagenome/p0094.aln and data/ppaalns/p0094.aln...
+data/metagenome/p0094.int.sub.aln generated (from data/metagenome/p0094.aln and data/ppaalns/p0094.aln)!
+Running muscle on data/metagenome/p0095.aln and data/ppaalns/p0095.aln...
+data/metagenome/p0095.int.sub.aln generated (from data/metagenome/p0095.aln and data/ppaalns/p0095.aln)!
+Running muscle on data/metagenome/p0096.aln and data/ppaalns/p0096.aln...
+data/metagenome/p0025.int.sub.aln generated (from data/metagenome/p0025.aln and data/ppaalns/p0025.aln)!
+Running muscle on data/metagenome/p0026.aln and data/ppaalns/p0026.aln...
+data/metagenome/p0096.int.sub.aln generated (from data/metagenome/p0096.aln and data/ppaalns/p0096.aln)!
+Running muscle on data/metagenome/p0097.aln and data/ppaalns/p0097.aln...
+data/metagenome/p0026.int.sub.aln generated (from data/metagenome/p0026.aln and data/ppaalns/p0026.aln)!
+Running muscle on data/metagenome/p0027.aln and data/ppaalns/p0027.aln...
+data/metagenome/p0097.int.sub.aln generated (from data/metagenome/p0097.aln and data/ppaalns/p0097.aln)!
+Running muscle on data/metagenome/p0098.aln and data/ppaalns/p0098.aln...
+data/metagenome/p0098.int.sub.aln generated (from data/metagenome/p0098.aln and data/ppaalns/p0098.aln)!
+Running muscle on data/metagenome/p0099.aln and data/ppaalns/p0099.aln...
+data/metagenome/p0099.int.sub.aln generated (from data/metagenome/p0099.aln and data/ppaalns/p0099.aln)!
+Running muscle on data/metagenome/p0100.aln and data/ppaalns/p0100.aln...
+data/metagenome/p0027.int.sub.aln generated (from data/metagenome/p0027.aln and data/ppaalns/p0027.aln)!
+Running muscle on data/metagenome/p0028.aln and data/ppaalns/p0028.aln...
+data/metagenome/p0028.int.sub.aln generated (from data/metagenome/p0028.aln and data/ppaalns/p0028.aln)!
+Running muscle on data/metagenome/p0029.aln and data/ppaalns/p0029.aln...
+data/metagenome/p0100.int.sub.aln generated (from data/metagenome/p0100.aln and data/ppaalns/p0100.aln)!
+Running muscle on data/metagenome/p0101.aln and data/ppaalns/p0101.aln...
+data/metagenome/p0029.int.sub.aln generated (from data/metagenome/p0029.aln and data/ppaalns/p0029.aln)!
+Running muscle on data/metagenome/p0030.aln and data/ppaalns/p0030.aln...
+data/metagenome/p0101.int.sub.aln generated (from data/metagenome/p0101.aln and data/ppaalns/p0101.aln)!
+Running muscle on data/metagenome/p0102.aln and data/ppaalns/p0102.aln...
+data/metagenome/p0102.int.sub.aln generated (from data/metagenome/p0102.aln and data/ppaalns/p0102.aln)!
+Running muscle on data/metagenome/p0103.aln and data/ppaalns/p0103.aln...
+data/metagenome/p0103.int.sub.aln generated (from data/metagenome/p0103.aln and data/ppaalns/p0103.aln)!
+Running muscle on data/metagenome/p0104.aln and data/ppaalns/p0104.aln...
+data/metagenome/p0030.int.sub.aln generated (from data/metagenome/p0030.aln and data/ppaalns/p0030.aln)!
+Running muscle on data/metagenome/p0031.aln and data/ppaalns/p0031.aln...
+data/metagenome/p0104.int.sub.aln generated (from data/metagenome/p0104.aln and data/ppaalns/p0104.aln)!
+Running muscle on data/metagenome/p0105.aln and data/ppaalns/p0105.aln...
+data/metagenome/p0031.int.sub.aln generated (from data/metagenome/p0031.aln and data/ppaalns/p0031.aln)!
+Running muscle on data/metagenome/p0032.aln and data/ppaalns/p0032.aln...
+data/metagenome/p0105.int.sub.aln generated (from data/metagenome/p0105.aln and data/ppaalns/p0105.aln)!
+Running muscle on data/metagenome/p0106.aln and data/ppaalns/p0106.aln...
+data/metagenome/p0106.int.sub.aln generated (from data/metagenome/p0106.aln and data/ppaalns/p0106.aln)!
+Running muscle on data/metagenome/p0107.aln and data/ppaalns/p0107.aln...
+data/metagenome/p0107.int.sub.aln generated (from data/metagenome/p0107.aln and data/ppaalns/p0107.aln)!
+Running muscle on data/metagenome/p0108.aln and data/ppaalns/p0108.aln...
+data/metagenome/p0108.int.sub.aln generated (from data/metagenome/p0108.aln and data/ppaalns/p0108.aln)!
+Running muscle on data/metagenome/p0109.aln and data/ppaalns/p0109.aln...
+data/metagenome/p0032.int.sub.aln generated (from data/metagenome/p0032.aln and data/ppaalns/p0032.aln)!
+Running muscle on data/metagenome/p0033.aln and data/ppaalns/p0033.aln...
+data/metagenome/p0109.int.sub.aln generated (from data/metagenome/p0109.aln and data/ppaalns/p0109.aln)!
+Running muscle on data/metagenome/p0110.aln and data/ppaalns/p0110.aln...
+data/metagenome/p0110.int.sub.aln generated (from data/metagenome/p0110.aln and data/ppaalns/p0110.aln)!
+Running muscle on data/metagenome/p0111.aln and data/ppaalns/p0111.aln...
+data/metagenome/p0033.int.sub.aln generated (from data/metagenome/p0033.aln and data/ppaalns/p0033.aln)!
+Running muscle on data/metagenome/p0034.aln and data/ppaalns/p0034.aln...
+data/metagenome/p0034.int.sub.aln generated (from data/metagenome/p0034.aln and data/ppaalns/p0034.aln)!
+Running muscle on data/metagenome/p0035.aln and data/ppaalns/p0035.aln...
+data/metagenome/p0111.int.sub.aln generated (from data/metagenome/p0111.aln and data/ppaalns/p0111.aln)!
+Running muscle on data/metagenome/p0112.aln and data/ppaalns/p0112.aln...
+data/metagenome/p0112.int.sub.aln generated (from data/metagenome/p0112.aln and data/ppaalns/p0112.aln)!
+Running muscle on data/metagenome/p0113.aln and data/ppaalns/p0113.aln...
+data/metagenome/p0113.int.sub.aln generated (from data/metagenome/p0113.aln and data/ppaalns/p0113.aln)!
+Running muscle on data/metagenome/p0114.aln and data/ppaalns/p0114.aln...
+data/metagenome/p0114.int.sub.aln generated (from data/metagenome/p0114.aln and data/ppaalns/p0114.aln)!
+Running muscle on data/metagenome/p0115.aln and data/ppaalns/p0115.aln...
+data/metagenome/p0035.int.sub.aln generated (from data/metagenome/p0035.aln and data/ppaalns/p0035.aln)!
+Running muscle on data/metagenome/p0036.aln and data/ppaalns/p0036.aln...
+data/metagenome/p0115.int.sub.aln generated (from data/metagenome/p0115.aln and data/ppaalns/p0115.aln)!
+Running muscle on data/metagenome/p0116.aln and data/ppaalns/p0116.aln...
+data/metagenome/p0036.int.sub.aln generated (from data/metagenome/p0036.aln and data/ppaalns/p0036.aln)!
+Running muscle on data/metagenome/p0037.aln and data/ppaalns/p0037.aln...
+data/metagenome/p0116.int.sub.aln generated (from data/metagenome/p0116.aln and data/ppaalns/p0116.aln)!
+Running muscle on data/metagenome/p0117.aln and data/ppaalns/p0117.aln...
+data/metagenome/p0037.int.sub.aln generated (from data/metagenome/p0037.aln and data/ppaalns/p0037.aln)!
+Running muscle on data/metagenome/p0038.aln and data/ppaalns/p0038.aln...
+data/metagenome/p0117.int.sub.aln generated (from data/metagenome/p0117.aln and data/ppaalns/p0117.aln)!
+Running muscle on data/metagenome/p0118.aln and data/ppaalns/p0118.aln...
+data/metagenome/p0038.int.sub.aln generated (from data/metagenome/p0038.aln and data/ppaalns/p0038.aln)!
+Running muscle on data/metagenome/p0039.aln and data/ppaalns/p0039.aln...
+data/metagenome/p0118.int.sub.aln generated (from data/metagenome/p0118.aln and data/ppaalns/p0118.aln)!
+Running muscle on data/metagenome/p0119.aln and data/ppaalns/p0119.aln...
+data/metagenome/p0039.int.sub.aln generated (from data/metagenome/p0039.aln and data/ppaalns/p0039.aln)!
+Running muscle on data/metagenome/p0040.aln and data/ppaalns/p0040.aln...
+data/metagenome/p0119.int.sub.aln generated (from data/metagenome/p0119.aln and data/ppaalns/p0119.aln)!
+Running muscle on data/metagenome/p0120.aln and data/ppaalns/p0120.aln...
+data/metagenome/p0120.int.sub.aln generated (from data/metagenome/p0120.aln and data/ppaalns/p0120.aln)!
+Running muscle on data/metagenome/p0121.aln and data/ppaalns/p0121.aln...
+data/metagenome/p0121.int.sub.aln generated (from data/metagenome/p0121.aln and data/ppaalns/p0121.aln)!
+Running muscle on data/metagenome/p0122.aln and data/ppaalns/p0122.aln...
+data/metagenome/p0122.int.sub.aln generated (from data/metagenome/p0122.aln and data/ppaalns/p0122.aln)!
+Running muscle on data/metagenome/p0123.aln and data/ppaalns/p0123.aln...
+data/metagenome/p0123.int.sub.aln generated (from data/metagenome/p0123.aln and data/ppaalns/p0123.aln)!
+Running muscle on data/metagenome/p0124.aln and data/ppaalns/p0124.aln...
+data/metagenome/p0040.int.sub.aln generated (from data/metagenome/p0040.aln and data/ppaalns/p0040.aln)!
+Running muscle on data/metagenome/p0041.aln and data/ppaalns/p0041.aln...
+data/metagenome/p0124.int.sub.aln generated (from data/metagenome/p0124.aln and data/ppaalns/p0124.aln)!
+Running muscle on data/metagenome/p0125.aln and data/ppaalns/p0125.aln...
+data/metagenome/p0125.int.sub.aln generated (from data/metagenome/p0125.aln and data/ppaalns/p0125.aln)!
+Running muscle on data/metagenome/p0126.aln and data/ppaalns/p0126.aln...
+data/metagenome/p0041.int.sub.aln generated (from data/metagenome/p0041.aln and data/ppaalns/p0041.aln)!
+Running muscle on data/metagenome/p0042.aln and data/ppaalns/p0042.aln...
+data/metagenome/p0126.int.sub.aln generated (from data/metagenome/p0126.aln and data/ppaalns/p0126.aln)!
+Running muscle on data/metagenome/p0127.aln and data/ppaalns/p0127.aln...
+data/metagenome/p0127.int.sub.aln generated (from data/metagenome/p0127.aln and data/ppaalns/p0127.aln)!
+Running muscle on data/metagenome/p0128.aln and data/ppaalns/p0128.aln...
+data/metagenome/p0042.int.sub.aln generated (from data/metagenome/p0042.aln and data/ppaalns/p0042.aln)!
+Running muscle on data/metagenome/p0043.aln and data/ppaalns/p0043.aln...
+data/metagenome/p0128.int.sub.aln generated (from data/metagenome/p0128.aln and data/ppaalns/p0128.aln)!
+Running muscle on data/metagenome/p0129.aln and data/ppaalns/p0129.aln...
+data/metagenome/p0043.int.sub.aln generated (from data/metagenome/p0043.aln and data/ppaalns/p0043.aln)!
+Running muscle on data/metagenome/p0044.aln and data/ppaalns/p0044.aln...
+data/metagenome/p0129.int.sub.aln generated (from data/metagenome/p0129.aln and data/ppaalns/p0129.aln)!
+Running muscle on data/metagenome/p0130.aln and data/ppaalns/p0130.aln...
+data/metagenome/p0044.int.sub.aln generated (from data/metagenome/p0044.aln and data/ppaalns/p0044.aln)!
+Running muscle on data/metagenome/p0045.aln and data/ppaalns/p0045.aln...
+data/metagenome/p0130.int.sub.aln generated (from data/metagenome/p0130.aln and data/ppaalns/p0130.aln)!
+Running muscle on data/metagenome/p0131.aln and data/ppaalns/p0131.aln...
+data/metagenome/p0045.int.sub.aln generated (from data/metagenome/p0045.aln and data/ppaalns/p0045.aln)!
+Running muscle on data/metagenome/p0046.aln and data/ppaalns/p0046.aln...
+data/metagenome/p0131.int.sub.aln generated (from data/metagenome/p0131.aln and data/ppaalns/p0131.aln)!
+Running muscle on data/metagenome/p0132.aln and data/ppaalns/p0132.aln...
+data/metagenome/p0046.int.sub.aln generated (from data/metagenome/p0046.aln and data/ppaalns/p0046.aln)!
+Running muscle on data/metagenome/p0047.aln and data/ppaalns/p0047.aln...
+data/metagenome/p0132.int.sub.aln generated (from data/metagenome/p0132.aln and data/ppaalns/p0132.aln)!
+Running muscle on data/metagenome/p0133.aln and data/ppaalns/p0133.aln...
+data/metagenome/p0133.int.sub.aln generated (from data/metagenome/p0133.aln and data/ppaalns/p0133.aln)!
+Running muscle on data/metagenome/p0134.aln and data/ppaalns/p0134.aln...
+data/metagenome/p0134.int.sub.aln generated (from data/metagenome/p0134.aln and data/ppaalns/p0134.aln)!
+Running muscle on data/metagenome/p0135.aln and data/ppaalns/p0135.aln...
+data/metagenome/p0135.int.sub.aln generated (from data/metagenome/p0135.aln and data/ppaalns/p0135.aln)!
+Running muscle on data/metagenome/p0136.aln and data/ppaalns/p0136.aln...
+data/metagenome/p0047.int.sub.aln generated (from data/metagenome/p0047.aln and data/ppaalns/p0047.aln)!
+Running muscle on data/metagenome/p0048.aln and data/ppaalns/p0048.aln...
+data/metagenome/p0136.int.sub.aln generated (from data/metagenome/p0136.aln and data/ppaalns/p0136.aln)!
+Running muscle on data/metagenome/p0137.aln and data/ppaalns/p0137.aln...
+data/metagenome/p0137.int.sub.aln generated (from data/metagenome/p0137.aln and data/ppaalns/p0137.aln)!
+Running muscle on data/metagenome/p0138.aln and data/ppaalns/p0138.aln...
+data/metagenome/p0048.int.sub.aln generated (from data/metagenome/p0048.aln and data/ppaalns/p0048.aln)!
+Running muscle on data/metagenome/p0049.aln and data/ppaalns/p0049.aln...
+data/metagenome/p0138.int.sub.aln generated (from data/metagenome/p0138.aln and data/ppaalns/p0138.aln)!
+Running muscle on data/metagenome/p0139.aln and data/ppaalns/p0139.aln...
+data/metagenome/p0049.int.sub.aln generated (from data/metagenome/p0049.aln and data/ppaalns/p0049.aln)!
+Running muscle on data/metagenome/p0150.aln and data/ppaalns/p0150.aln...
+data/metagenome/p0139.int.sub.aln generated (from data/metagenome/p0139.aln and data/ppaalns/p0139.aln)!
+Running muscle on data/metagenome/p0140.aln and data/ppaalns/p0140.aln...
+data/metagenome/p0140.int.sub.aln generated (from data/metagenome/p0140.aln and data/ppaalns/p0140.aln)!
+Running muscle on data/metagenome/p0141.aln and data/ppaalns/p0141.aln...
+data/metagenome/p0141.int.sub.aln generated (from data/metagenome/p0141.aln and data/ppaalns/p0141.aln)!
+Running muscle on data/metagenome/p0142.aln and data/ppaalns/p0142.aln...
+data/metagenome/p0142.int.sub.aln generated (from data/metagenome/p0142.aln and data/ppaalns/p0142.aln)!
+Running muscle on data/metagenome/p0143.aln and data/ppaalns/p0143.aln...
+data/metagenome/p0150.int.sub.aln generated (from data/metagenome/p0150.aln and data/ppaalns/p0150.aln)!
+Running muscle on data/metagenome/p0151.aln and data/ppaalns/p0151.aln...
+data/metagenome/p0143.int.sub.aln generated (from data/metagenome/p0143.aln and data/ppaalns/p0143.aln)!
+Running muscle on data/metagenome/p0144.aln and data/ppaalns/p0144.aln...
+data/metagenome/p0151.int.sub.aln generated (from data/metagenome/p0151.aln and data/ppaalns/p0151.aln)!
+Running muscle on data/metagenome/p0152.aln and data/ppaalns/p0152.aln...
+data/metagenome/p0144.int.sub.aln generated (from data/metagenome/p0144.aln and data/ppaalns/p0144.aln)!
+Running muscle on data/metagenome/p0145.aln and data/ppaalns/p0145.aln...
+data/metagenome/p0152.int.sub.aln generated (from data/metagenome/p0152.aln and data/ppaalns/p0152.aln)!
+Running muscle on data/metagenome/p0153.aln and data/ppaalns/p0153.aln...
+data/metagenome/p0145.int.sub.aln generated (from data/metagenome/p0145.aln and data/ppaalns/p0145.aln)!
+Running muscle on data/metagenome/p0146.aln and data/ppaalns/p0146.aln...
+data/metagenome/p0153.int.sub.aln generated (from data/metagenome/p0153.aln and data/ppaalns/p0153.aln)!
+Running muscle on data/metagenome/p0154.aln and data/ppaalns/p0154.aln...
+data/metagenome/p0146.int.sub.aln generated (from data/metagenome/p0146.aln and data/ppaalns/p0146.aln)!
+Running muscle on data/metagenome/p0147.aln and data/ppaalns/p0147.aln...
+data/metagenome/p0154.int.sub.aln generated (from data/metagenome/p0154.aln and data/ppaalns/p0154.aln)!
+Running muscle on data/metagenome/p0155.aln and data/ppaalns/p0155.aln...
+data/metagenome/p0147.int.sub.aln generated (from data/metagenome/p0147.aln and data/ppaalns/p0147.aln)!
+Running muscle on data/metagenome/p0148.aln and data/ppaalns/p0148.aln...
+data/metagenome/p0155.int.sub.aln generated (from data/metagenome/p0155.aln and data/ppaalns/p0155.aln)!
+Running muscle on data/metagenome/p0156.aln and data/ppaalns/p0156.aln...
+data/metagenome/p0156.int.sub.aln generated (from data/metagenome/p0156.aln and data/ppaalns/p0156.aln)!
+Running muscle on data/metagenome/p0157.aln and data/ppaalns/p0157.aln...
+data/metagenome/p0148.int.sub.aln generated (from data/metagenome/p0148.aln and data/ppaalns/p0148.aln)!
+Running muscle on data/metagenome/p0149.aln and data/ppaalns/p0149.aln...
+data/metagenome/p0157.int.sub.aln generated (from data/metagenome/p0157.aln and data/ppaalns/p0157.aln)!
+Running muscle on data/metagenome/p0158.aln and data/ppaalns/p0158.aln...
+data/metagenome/p0149.int.sub.aln generated (from data/metagenome/p0149.aln and data/ppaalns/p0149.aln)!
+Running muscle on data/metagenome/p0200.aln and data/ppaalns/p0200.aln...
+data/metagenome/p0200.int.sub.aln generated (from data/metagenome/p0200.aln and data/ppaalns/p0200.aln)!
+Running muscle on data/metagenome/p0201.aln and data/ppaalns/p0201.aln...
+data/metagenome/p0201.int.sub.aln generated (from data/metagenome/p0201.aln and data/ppaalns/p0201.aln)!
+Running muscle on data/metagenome/p0202.aln and data/ppaalns/p0202.aln...
+data/metagenome/p0202.int.sub.aln generated (from data/metagenome/p0202.aln and data/ppaalns/p0202.aln)!
+Running muscle on data/metagenome/p0203.aln and data/ppaalns/p0203.aln...
+data/metagenome/p0203.int.sub.aln generated (from data/metagenome/p0203.aln and data/ppaalns/p0203.aln)!
+Running muscle on data/metagenome/p0204.aln and data/ppaalns/p0204.aln...
+data/metagenome/p0204.int.sub.aln generated (from data/metagenome/p0204.aln and data/ppaalns/p0204.aln)!
+Running muscle on data/metagenome/p0205.aln and data/ppaalns/p0205.aln...
+data/metagenome/p0205.int.sub.aln generated (from data/metagenome/p0205.aln and data/ppaalns/p0205.aln)!
+Running muscle on data/metagenome/p0206.aln and data/ppaalns/p0206.aln...
+data/metagenome/p0206.int.sub.aln generated (from data/metagenome/p0206.aln and data/ppaalns/p0206.aln)!
+Running muscle on data/metagenome/p0207.aln and data/ppaalns/p0207.aln...
+data/metagenome/p0207.int.sub.aln generated (from data/metagenome/p0207.aln and data/ppaalns/p0207.aln)!
+Running muscle on data/metagenome/p0208.aln and data/ppaalns/p0208.aln...
+data/metagenome/p0158.int.sub.aln generated (from data/metagenome/p0158.aln and data/ppaalns/p0158.aln)!
+Running muscle on data/metagenome/p0159.aln and data/ppaalns/p0159.aln...
+data/metagenome/p0208.int.sub.aln generated (from data/metagenome/p0208.aln and data/ppaalns/p0208.aln)!
+Running muscle on data/metagenome/p0209.aln and data/ppaalns/p0209.aln...
+data/metagenome/p0209.int.sub.aln generated (from data/metagenome/p0209.aln and data/ppaalns/p0209.aln)!
+Running muscle on data/metagenome/p0210.aln and data/ppaalns/p0210.aln...
+data/metagenome/p0159.int.sub.aln generated (from data/metagenome/p0159.aln and data/ppaalns/p0159.aln)!
+Running muscle on data/metagenome/p0160.aln and data/ppaalns/p0160.aln...
+data/metagenome/p0210.int.sub.aln generated (from data/metagenome/p0210.aln and data/ppaalns/p0210.aln)!
+Running muscle on data/metagenome/p0211.aln and data/ppaalns/p0211.aln...
+data/metagenome/p0211.int.sub.aln generated (from data/metagenome/p0211.aln and data/ppaalns/p0211.aln)!
+Running muscle on data/metagenome/p0212.aln and data/ppaalns/p0212.aln...
+data/metagenome/p0160.int.sub.aln generated (from data/metagenome/p0160.aln and data/ppaalns/p0160.aln)!
+Running muscle on data/metagenome/p0161.aln and data/ppaalns/p0161.aln...
+data/metagenome/p0161.int.sub.aln generated (from data/metagenome/p0161.aln and data/ppaalns/p0161.aln)!
+Running muscle on data/metagenome/p0162.aln and data/ppaalns/p0162.aln...
+data/metagenome/p0162.int.sub.aln generated (from data/metagenome/p0162.aln and data/ppaalns/p0162.aln)!
+Running muscle on data/metagenome/p0163.aln and data/ppaalns/p0163.aln...
+data/metagenome/p0212.int.sub.aln generated (from data/metagenome/p0212.aln and data/ppaalns/p0212.aln)!
+Running muscle on data/metagenome/p0213.aln and data/ppaalns/p0213.aln...
+data/metagenome/p0213.int.sub.aln generated (from data/metagenome/p0213.aln and data/ppaalns/p0213.aln)!
+Running muscle on data/metagenome/p0214.aln and data/ppaalns/p0214.aln...
+data/metagenome/p0163.int.sub.aln generated (from data/metagenome/p0163.aln and data/ppaalns/p0163.aln)!
+Running muscle on data/metagenome/p0164.aln and data/ppaalns/p0164.aln...
+data/metagenome/p0214.int.sub.aln generated (from data/metagenome/p0214.aln and data/ppaalns/p0214.aln)!
+Running muscle on data/metagenome/p0215.aln and data/ppaalns/p0215.aln...
+data/metagenome/p0215.int.sub.aln generated (from data/metagenome/p0215.aln and data/ppaalns/p0215.aln)!
+Running muscle on data/metagenome/p0216.aln and data/ppaalns/p0216.aln...
+data/metagenome/p0216.int.sub.aln generated (from data/metagenome/p0216.aln and data/ppaalns/p0216.aln)!
+Running muscle on data/metagenome/p0217.aln and data/ppaalns/p0217.aln...
+data/metagenome/p0164.int.sub.aln generated (from data/metagenome/p0164.aln and data/ppaalns/p0164.aln)!
+Running muscle on data/metagenome/p0165.aln and data/ppaalns/p0165.aln...
+data/metagenome/p0217.int.sub.aln generated (from data/metagenome/p0217.aln and data/ppaalns/p0217.aln)!
+Running muscle on data/metagenome/p0218.aln and data/ppaalns/p0218.aln...
+data/metagenome/p0165.int.sub.aln generated (from data/metagenome/p0165.aln and data/ppaalns/p0165.aln)!
+Running muscle on data/metagenome/p0166.aln and data/ppaalns/p0166.aln...
+data/metagenome/p0218.int.sub.aln generated (from data/metagenome/p0218.aln and data/ppaalns/p0218.aln)!
+Running muscle on data/metagenome/p0219.aln and data/ppaalns/p0219.aln...
+data/metagenome/p0219.int.sub.aln generated (from data/metagenome/p0219.aln and data/ppaalns/p0219.aln)!
+Running muscle on data/metagenome/p0220.aln and data/ppaalns/p0220.aln...
+data/metagenome/p0166.int.sub.aln generated (from data/metagenome/p0166.aln and data/ppaalns/p0166.aln)!
+Running muscle on data/metagenome/p0167.aln and data/ppaalns/p0167.aln...
+data/metagenome/p0167.int.sub.aln generated (from data/metagenome/p0167.aln and data/ppaalns/p0167.aln)!
+Running muscle on data/metagenome/p0168.aln and data/ppaalns/p0168.aln...
+data/metagenome/p0220.int.sub.aln generated (from data/metagenome/p0220.aln and data/ppaalns/p0220.aln)!
+Running muscle on data/metagenome/p0221.aln and data/ppaalns/p0221.aln...
+data/metagenome/p0168.int.sub.aln generated (from data/metagenome/p0168.aln and data/ppaalns/p0168.aln)!
+Running muscle on data/metagenome/p0169.aln and data/ppaalns/p0169.aln...
+data/metagenome/p0221.int.sub.aln generated (from data/metagenome/p0221.aln and data/ppaalns/p0221.aln)!
+Running muscle on data/metagenome/p0222.aln and data/ppaalns/p0222.aln...
+data/metagenome/p0169.int.sub.aln generated (from data/metagenome/p0169.aln and data/ppaalns/p0169.aln)!
+Running muscle on data/metagenome/p0170.aln and data/ppaalns/p0170.aln...
+data/metagenome/p0222.int.sub.aln generated (from data/metagenome/p0222.aln and data/ppaalns/p0222.aln)!
+Running muscle on data/metagenome/p0223.aln and data/ppaalns/p0223.aln...
+data/metagenome/p0170.int.sub.aln generated (from data/metagenome/p0170.aln and data/ppaalns/p0170.aln)!
+Running muscle on data/metagenome/p0171.aln and data/ppaalns/p0171.aln...
+data/metagenome/p0223.int.sub.aln generated (from data/metagenome/p0223.aln and data/ppaalns/p0223.aln)!
+Running muscle on data/metagenome/p0224.aln and data/ppaalns/p0224.aln...
+data/metagenome/p0171.int.sub.aln generated (from data/metagenome/p0171.aln and data/ppaalns/p0171.aln)!
+Running muscle on data/metagenome/p0172.aln and data/ppaalns/p0172.aln...
+data/metagenome/p0224.int.sub.aln generated (from data/metagenome/p0224.aln and data/ppaalns/p0224.aln)!
+Running muscle on data/metagenome/p0225.aln and data/ppaalns/p0225.aln...
+data/metagenome/p0225.int.sub.aln generated (from data/metagenome/p0225.aln and data/ppaalns/p0225.aln)!
+Running muscle on data/metagenome/p0226.aln and data/ppaalns/p0226.aln...
+data/metagenome/p0226.int.sub.aln generated (from data/metagenome/p0226.aln and data/ppaalns/p0226.aln)!
+Running muscle on data/metagenome/p0227.aln and data/ppaalns/p0227.aln...
+data/metagenome/p0227.int.sub.aln generated (from data/metagenome/p0227.aln and data/ppaalns/p0227.aln)!
+Running muscle on data/metagenome/p0228.aln and data/ppaalns/p0228.aln...
+data/metagenome/p0228.int.sub.aln generated (from data/metagenome/p0228.aln and data/ppaalns/p0228.aln)!
+Running muscle on data/metagenome/p0229.aln and data/ppaalns/p0229.aln...
+data/metagenome/p0172.int.sub.aln generated (from data/metagenome/p0172.aln and data/ppaalns/p0172.aln)!
+Running muscle on data/metagenome/p0173.aln and data/ppaalns/p0173.aln...
+data/metagenome/p0229.int.sub.aln generated (from data/metagenome/p0229.aln and data/ppaalns/p0229.aln)!
+Running muscle on data/metagenome/p0230.aln and data/ppaalns/p0230.aln...
+data/metagenome/p0173.int.sub.aln generated (from data/metagenome/p0173.aln and data/ppaalns/p0173.aln)!
+Running muscle on data/metagenome/p0174.aln and data/ppaalns/p0174.aln...
+data/metagenome/p0230.int.sub.aln generated (from data/metagenome/p0230.aln and data/ppaalns/p0230.aln)!
+Running muscle on data/metagenome/p0231.aln and data/ppaalns/p0231.aln...
+data/metagenome/p0174.int.sub.aln generated (from data/metagenome/p0174.aln and data/ppaalns/p0174.aln)!
+Running muscle on data/metagenome/p0175.aln and data/ppaalns/p0175.aln...
+data/metagenome/p0231.int.sub.aln generated (from data/metagenome/p0231.aln and data/ppaalns/p0231.aln)!
+Running muscle on data/metagenome/p0232.aln and data/ppaalns/p0232.aln...
+data/metagenome/p0175.int.sub.aln generated (from data/metagenome/p0175.aln and data/ppaalns/p0175.aln)!
+Running muscle on data/metagenome/p0176.aln and data/ppaalns/p0176.aln...
+data/metagenome/p0176.int.sub.aln generated (from data/metagenome/p0176.aln and data/ppaalns/p0176.aln)!
+Running muscle on data/metagenome/p0177.aln and data/ppaalns/p0177.aln...
+data/metagenome/p0232.int.sub.aln generated (from data/metagenome/p0232.aln and data/ppaalns/p0232.aln)!
+Running muscle on data/metagenome/p0233.aln and data/ppaalns/p0233.aln...
+data/metagenome/p0177.int.sub.aln generated (from data/metagenome/p0177.aln and data/ppaalns/p0177.aln)!
+Running muscle on data/metagenome/p0178.aln and data/ppaalns/p0178.aln...
+data/metagenome/p0178.int.sub.aln generated (from data/metagenome/p0178.aln and data/ppaalns/p0178.aln)!
+Running muscle on data/metagenome/p0179.aln and data/ppaalns/p0179.aln...
+data/metagenome/p0233.int.sub.aln generated (from data/metagenome/p0233.aln and data/ppaalns/p0233.aln)!
+Running muscle on data/metagenome/p0234.aln and data/ppaalns/p0234.aln...
+data/metagenome/p0179.int.sub.aln generated (from data/metagenome/p0179.aln and data/ppaalns/p0179.aln)!
+Running muscle on data/metagenome/p0180.aln and data/ppaalns/p0180.aln...
+data/metagenome/p0180.int.sub.aln generated (from data/metagenome/p0180.aln and data/ppaalns/p0180.aln)!
+Running muscle on data/metagenome/p0181.aln and data/ppaalns/p0181.aln...
+data/metagenome/p0181.int.sub.aln generated (from data/metagenome/p0181.aln and data/ppaalns/p0181.aln)!
+Running muscle on data/metagenome/p0182.aln and data/ppaalns/p0182.aln...
+data/metagenome/p0234.int.sub.aln generated (from data/metagenome/p0234.aln and data/ppaalns/p0234.aln)!
+Running muscle on data/metagenome/p0235.aln and data/ppaalns/p0235.aln...
+data/metagenome/p0182.int.sub.aln generated (from data/metagenome/p0182.aln and data/ppaalns/p0182.aln)!
+Running muscle on data/metagenome/p0183.aln and data/ppaalns/p0183.aln...
+data/metagenome/p0235.int.sub.aln generated (from data/metagenome/p0235.aln and data/ppaalns/p0235.aln)!
+Running muscle on data/metagenome/p0236.aln and data/ppaalns/p0236.aln...
+data/metagenome/p0183.int.sub.aln generated (from data/metagenome/p0183.aln and data/ppaalns/p0183.aln)!
+Running muscle on data/metagenome/p0184.aln and data/ppaalns/p0184.aln...
+data/metagenome/p0236.int.sub.aln generated (from data/metagenome/p0236.aln and data/ppaalns/p0236.aln)!
+Running muscle on data/metagenome/p0237.aln and data/ppaalns/p0237.aln...
+data/metagenome/p0184.int.sub.aln generated (from data/metagenome/p0184.aln and data/ppaalns/p0184.aln)!
+Running muscle on data/metagenome/p0185.aln and data/ppaalns/p0185.aln...
+data/metagenome/p0237.int.sub.aln generated (from data/metagenome/p0237.aln and data/ppaalns/p0237.aln)!
+Running muscle on data/metagenome/p0238.aln and data/ppaalns/p0238.aln...
+data/metagenome/p0185.int.sub.aln generated (from data/metagenome/p0185.aln and data/ppaalns/p0185.aln)!
+Running muscle on data/metagenome/p0186.aln and data/ppaalns/p0186.aln...
+data/metagenome/p0238.int.sub.aln generated (from data/metagenome/p0238.aln and data/ppaalns/p0238.aln)!
+Running muscle on data/metagenome/p0239.aln and data/ppaalns/p0239.aln...
+data/metagenome/p0239.int.sub.aln generated (from data/metagenome/p0239.aln and data/ppaalns/p0239.aln)!
+Running muscle on data/metagenome/p0240.aln and data/ppaalns/p0240.aln...
+data/metagenome/p0186.int.sub.aln generated (from data/metagenome/p0186.aln and data/ppaalns/p0186.aln)!
+Running muscle on data/metagenome/p0187.aln and data/ppaalns/p0187.aln...
+data/metagenome/p0187.int.sub.aln generated (from data/metagenome/p0187.aln and data/ppaalns/p0187.aln)!
+Running muscle on data/metagenome/p0188.aln and data/ppaalns/p0188.aln...
+data/metagenome/p0188.int.sub.aln generated (from data/metagenome/p0188.aln and data/ppaalns/p0188.aln)!
+Running muscle on data/metagenome/p0189.aln and data/ppaalns/p0189.aln...
+data/metagenome/p0240.int.sub.aln generated (from data/metagenome/p0240.aln and data/ppaalns/p0240.aln)!
+Running muscle on data/metagenome/p0241.aln and data/ppaalns/p0241.aln...
+data/metagenome/p0189.int.sub.aln generated (from data/metagenome/p0189.aln and data/ppaalns/p0189.aln)!
+Running muscle on data/metagenome/p0190.aln and data/ppaalns/p0190.aln...
+data/metagenome/p0241.int.sub.aln generated (from data/metagenome/p0241.aln and data/ppaalns/p0241.aln)!
+Running muscle on data/metagenome/p0242.aln and data/ppaalns/p0242.aln...
+data/metagenome/p0190.int.sub.aln generated (from data/metagenome/p0190.aln and data/ppaalns/p0190.aln)!
+Running muscle on data/metagenome/p0191.aln and data/ppaalns/p0191.aln...
+data/metagenome/p0242.int.sub.aln generated (from data/metagenome/p0242.aln and data/ppaalns/p0242.aln)!
+Running muscle on data/metagenome/p0243.aln and data/ppaalns/p0243.aln...
+data/metagenome/p0243.int.sub.aln generated (from data/metagenome/p0243.aln and data/ppaalns/p0243.aln)!
+Running muscle on data/metagenome/p0244.aln and data/ppaalns/p0244.aln...
+data/metagenome/p0191.int.sub.aln generated (from data/metagenome/p0191.aln and data/ppaalns/p0191.aln)!
+Running muscle on data/metagenome/p0192.aln and data/ppaalns/p0192.aln...
+data/metagenome/p0192.int.sub.aln generated (from data/metagenome/p0192.aln and data/ppaalns/p0192.aln)!
+Running muscle on data/metagenome/p0193.aln and data/ppaalns/p0193.aln...
+data/metagenome/p0244.int.sub.aln generated (from data/metagenome/p0244.aln and data/ppaalns/p0244.aln)!
+Running muscle on data/metagenome/p0245.aln and data/ppaalns/p0245.aln...
+data/metagenome/p0193.int.sub.aln generated (from data/metagenome/p0193.aln and data/ppaalns/p0193.aln)!
+Running muscle on data/metagenome/p0194.aln and data/ppaalns/p0194.aln...
+data/metagenome/p0194.int.sub.aln generated (from data/metagenome/p0194.aln and data/ppaalns/p0194.aln)!
+Running muscle on data/metagenome/p0195.aln and data/ppaalns/p0195.aln...
+data/metagenome/p0195.int.sub.aln generated (from data/metagenome/p0195.aln and data/ppaalns/p0195.aln)!
+Running muscle on data/metagenome/p0196.aln and data/ppaalns/p0196.aln...
+data/metagenome/p0196.int.sub.aln generated (from data/metagenome/p0196.aln and data/ppaalns/p0196.aln)!
+Running muscle on data/metagenome/p0197.aln and data/ppaalns/p0197.aln...
+data/metagenome/p0197.int.sub.aln generated (from data/metagenome/p0197.aln and data/ppaalns/p0197.aln)!
+Running muscle on data/metagenome/p0198.aln and data/ppaalns/p0198.aln...
+data/metagenome/p0198.int.sub.aln generated (from data/metagenome/p0198.aln and data/ppaalns/p0198.aln)!
+Running muscle on data/metagenome/p0199.aln and data/ppaalns/p0199.aln...
+data/metagenome/p0199.int.sub.aln generated (from data/metagenome/p0199.aln and data/ppaalns/p0199.aln)!
+Running muscle on data/metagenome/p0250.aln and data/ppaalns/p0250.aln...
+data/metagenome/p0250.int.sub.aln generated (from data/metagenome/p0250.aln and data/ppaalns/p0250.aln)!
+Running muscle on data/metagenome/p0251.aln and data/ppaalns/p0251.aln...
+data/metagenome/p0251.int.sub.aln generated (from data/metagenome/p0251.aln and data/ppaalns/p0251.aln)!
+Running muscle on data/metagenome/p0252.aln and data/ppaalns/p0252.aln...
+data/metagenome/p0245.int.sub.aln generated (from data/metagenome/p0245.aln and data/ppaalns/p0245.aln)!
+Running muscle on data/metagenome/p0246.aln and data/ppaalns/p0246.aln...
+data/metagenome/p0252.int.sub.aln generated (from data/metagenome/p0252.aln and data/ppaalns/p0252.aln)!
+Running muscle on data/metagenome/p0253.aln and data/ppaalns/p0253.aln...
+data/metagenome/p0246.int.sub.aln generated (from data/metagenome/p0246.aln and data/ppaalns/p0246.aln)!
+Running muscle on data/metagenome/p0247.aln and data/ppaalns/p0247.aln...
+data/metagenome/p0253.int.sub.aln generated (from data/metagenome/p0253.aln and data/ppaalns/p0253.aln)!
+Running muscle on data/metagenome/p0254.aln and data/ppaalns/p0254.aln...
+data/metagenome/p0254.int.sub.aln generated (from data/metagenome/p0254.aln and data/ppaalns/p0254.aln)!
+Running muscle on data/metagenome/p0255.aln and data/ppaalns/p0255.aln...
+data/metagenome/p0255.int.sub.aln generated (from data/metagenome/p0255.aln and data/ppaalns/p0255.aln)!
+Running muscle on data/metagenome/p0256.aln and data/ppaalns/p0256.aln...
+data/metagenome/p0247.int.sub.aln generated (from data/metagenome/p0247.aln and data/ppaalns/p0247.aln)!
+Running muscle on data/metagenome/p0248.aln and data/ppaalns/p0248.aln...
+data/metagenome/p0256.int.sub.aln generated (from data/metagenome/p0256.aln and data/ppaalns/p0256.aln)!
+Running muscle on data/metagenome/p0257.aln and data/ppaalns/p0257.aln...
+data/metagenome/p0248.int.sub.aln generated (from data/metagenome/p0248.aln and data/ppaalns/p0248.aln)!
+Running muscle on data/metagenome/p0249.aln and data/ppaalns/p0249.aln...
+data/metagenome/p0249.int.sub.aln generated (from data/metagenome/p0249.aln and data/ppaalns/p0249.aln)!
+Running muscle on data/metagenome/p0300.aln and data/ppaalns/p0300.aln...
+data/metagenome/p0300.int.sub.aln generated (from data/metagenome/p0300.aln and data/ppaalns/p0300.aln)!
+Running muscle on data/metagenome/p0301.aln and data/ppaalns/p0301.aln...
+data/metagenome/p0301.int.sub.aln generated (from data/metagenome/p0301.aln and data/ppaalns/p0301.aln)!
+Running muscle on data/metagenome/p0302.aln and data/ppaalns/p0302.aln...
+data/metagenome/p0257.int.sub.aln generated (from data/metagenome/p0257.aln and data/ppaalns/p0257.aln)!
+Running muscle on data/metagenome/p0258.aln and data/ppaalns/p0258.aln...
+data/metagenome/p0258.int.sub.aln generated (from data/metagenome/p0258.aln and data/ppaalns/p0258.aln)!
+Running muscle on data/metagenome/p0259.aln and data/ppaalns/p0259.aln...
+data/metagenome/p0302.int.sub.aln generated (from data/metagenome/p0302.aln and data/ppaalns/p0302.aln)!
+Running muscle on data/metagenome/p0303.aln and data/ppaalns/p0303.aln...
+data/metagenome/p0303.int.sub.aln generated (from data/metagenome/p0303.aln and data/ppaalns/p0303.aln)!
+Running muscle on data/metagenome/p0304.aln and data/ppaalns/p0304.aln...
+data/metagenome/p0259.int.sub.aln generated (from data/metagenome/p0259.aln and data/ppaalns/p0259.aln)!
+Running muscle on data/metagenome/p0260.aln and data/ppaalns/p0260.aln...
+data/metagenome/p0304.int.sub.aln generated (from data/metagenome/p0304.aln and data/ppaalns/p0304.aln)!
+Running muscle on data/metagenome/p0305.aln and data/ppaalns/p0305.aln...
+data/metagenome/p0305.int.sub.aln generated (from data/metagenome/p0305.aln and data/ppaalns/p0305.aln)!
+Running muscle on data/metagenome/p0306.aln and data/ppaalns/p0306.aln...
+data/metagenome/p0260.int.sub.aln generated (from data/metagenome/p0260.aln and data/ppaalns/p0260.aln)!
+Running muscle on data/metagenome/p0261.aln and data/ppaalns/p0261.aln...
+data/metagenome/p0261.int.sub.aln generated (from data/metagenome/p0261.aln and data/ppaalns/p0261.aln)!
+Running muscle on data/metagenome/p0262.aln and data/ppaalns/p0262.aln...
+data/metagenome/p0306.int.sub.aln generated (from data/metagenome/p0306.aln and data/ppaalns/p0306.aln)!
+Running muscle on data/metagenome/p0307.aln and data/ppaalns/p0307.aln...
+data/metagenome/p0262.int.sub.aln generated (from data/metagenome/p0262.aln and data/ppaalns/p0262.aln)!
+Running muscle on data/metagenome/p0263.aln and data/ppaalns/p0263.aln...
+data/metagenome/p0307.int.sub.aln generated (from data/metagenome/p0307.aln and data/ppaalns/p0307.aln)!
+Running muscle on data/metagenome/p0308.aln and data/ppaalns/p0308.aln...
+data/metagenome/p0308.int.sub.aln generated (from data/metagenome/p0308.aln and data/ppaalns/p0308.aln)!
+Running muscle on data/metagenome/p0309.aln and data/ppaalns/p0309.aln...
+data/metagenome/p0263.int.sub.aln generated (from data/metagenome/p0263.aln and data/ppaalns/p0263.aln)!
+Running muscle on data/metagenome/p0264.aln and data/ppaalns/p0264.aln...
+data/metagenome/p0309.int.sub.aln generated (from data/metagenome/p0309.aln and data/ppaalns/p0309.aln)!
+Running muscle on data/metagenome/p0310.aln and data/ppaalns/p0310.aln...
+data/metagenome/p0264.int.sub.aln generated (from data/metagenome/p0264.aln and data/ppaalns/p0264.aln)!
+Running muscle on data/metagenome/p0265.aln and data/ppaalns/p0265.aln...
+data/metagenome/p0310.int.sub.aln generated (from data/metagenome/p0310.aln and data/ppaalns/p0310.aln)!
+Running muscle on data/metagenome/p0311.aln and data/ppaalns/p0311.aln...
+data/metagenome/p0265.int.sub.aln generated (from data/metagenome/p0265.aln and data/ppaalns/p0265.aln)!
+Running muscle on data/metagenome/p0266.aln and data/ppaalns/p0266.aln...
+data/metagenome/p0311.int.sub.aln generated (from data/metagenome/p0311.aln and data/ppaalns/p0311.aln)!
+Running muscle on data/metagenome/p0312.aln and data/ppaalns/p0312.aln...
+data/metagenome/p0266.int.sub.aln generated (from data/metagenome/p0266.aln and data/ppaalns/p0266.aln)!
+Running muscle on data/metagenome/p0267.aln and data/ppaalns/p0267.aln...
+data/metagenome/p0312.int.sub.aln generated (from data/metagenome/p0312.aln and data/ppaalns/p0312.aln)!
+Running muscle on data/metagenome/p0313.aln and data/ppaalns/p0313.aln...
+data/metagenome/p0313.int.sub.aln generated (from data/metagenome/p0313.aln and data/ppaalns/p0313.aln)!
+Running muscle on data/metagenome/p0314.aln and data/ppaalns/p0314.aln...
+data/metagenome/p0267.int.sub.aln generated (from data/metagenome/p0267.aln and data/ppaalns/p0267.aln)!
+Running muscle on data/metagenome/p0268.aln and data/ppaalns/p0268.aln...
+data/metagenome/p0314.int.sub.aln generated (from data/metagenome/p0314.aln and data/ppaalns/p0314.aln)!
+Running muscle on data/metagenome/p0315.aln and data/ppaalns/p0315.aln...
+data/metagenome/p0268.int.sub.aln generated (from data/metagenome/p0268.aln and data/ppaalns/p0268.aln)!
+Running muscle on data/metagenome/p0269.aln and data/ppaalns/p0269.aln...
+data/metagenome/p0315.int.sub.aln generated (from data/metagenome/p0315.aln and data/ppaalns/p0315.aln)!
+Running muscle on data/metagenome/p0316.aln and data/ppaalns/p0316.aln...
+data/metagenome/p0269.int.sub.aln generated (from data/metagenome/p0269.aln and data/ppaalns/p0269.aln)!
+Running muscle on data/metagenome/p0270.aln and data/ppaalns/p0270.aln...
+data/metagenome/p0270.int.sub.aln generated (from data/metagenome/p0270.aln and data/ppaalns/p0270.aln)!
+Running muscle on data/metagenome/p0271.aln and data/ppaalns/p0271.aln...
+data/metagenome/p0316.int.sub.aln generated (from data/metagenome/p0316.aln and data/ppaalns/p0316.aln)!
+Running muscle on data/metagenome/p0317.aln and data/ppaalns/p0317.aln...
+data/metagenome/p0271.int.sub.aln generated (from data/metagenome/p0271.aln and data/ppaalns/p0271.aln)!
+Running muscle on data/metagenome/p0272.aln and data/ppaalns/p0272.aln...
+data/metagenome/p0272.int.sub.aln generated (from data/metagenome/p0272.aln and data/ppaalns/p0272.aln)!
+Running muscle on data/metagenome/p0273.aln and data/ppaalns/p0273.aln...
+data/metagenome/p0317.int.sub.aln generated (from data/metagenome/p0317.aln and data/ppaalns/p0317.aln)!
+Running muscle on data/metagenome/p0318.aln and data/ppaalns/p0318.aln...
+data/metagenome/p0273.int.sub.aln generated (from data/metagenome/p0273.aln and data/ppaalns/p0273.aln)!
+Running muscle on data/metagenome/p0274.aln and data/ppaalns/p0274.aln...
+data/metagenome/p0318.int.sub.aln generated (from data/metagenome/p0318.aln and data/ppaalns/p0318.aln)!
+Running muscle on data/metagenome/p0319.aln and data/ppaalns/p0319.aln...
+data/metagenome/p0319.int.sub.aln generated (from data/metagenome/p0319.aln and data/ppaalns/p0319.aln)!
+Running muscle on data/metagenome/p0320.aln and data/ppaalns/p0320.aln...
+data/metagenome/p0274.int.sub.aln generated (from data/metagenome/p0274.aln and data/ppaalns/p0274.aln)!
+Running muscle on data/metagenome/p0275.aln and data/ppaalns/p0275.aln...
+data/metagenome/p0320.int.sub.aln generated (from data/metagenome/p0320.aln and data/ppaalns/p0320.aln)!
+Running muscle on data/metagenome/p0321.aln and data/ppaalns/p0321.aln...
+data/metagenome/p0275.int.sub.aln generated (from data/metagenome/p0275.aln and data/ppaalns/p0275.aln)!
+Running muscle on data/metagenome/p0276.aln and data/ppaalns/p0276.aln...
+data/metagenome/p0321.int.sub.aln generated (from data/metagenome/p0321.aln and data/ppaalns/p0321.aln)!
+Running muscle on data/metagenome/p0322.aln and data/ppaalns/p0322.aln...
+data/metagenome/p0322.int.sub.aln generated (from data/metagenome/p0322.aln and data/ppaalns/p0322.aln)!
+Running muscle on data/metagenome/p0323.aln and data/ppaalns/p0323.aln...
+data/metagenome/p0276.int.sub.aln generated (from data/metagenome/p0276.aln and data/ppaalns/p0276.aln)!
+Running muscle on data/metagenome/p0277.aln and data/ppaalns/p0277.aln...
+data/metagenome/p0323.int.sub.aln generated (from data/metagenome/p0323.aln and data/ppaalns/p0323.aln)!
+Running muscle on data/metagenome/p0324.aln and data/ppaalns/p0324.aln...
+data/metagenome/p0324.int.sub.aln generated (from data/metagenome/p0324.aln and data/ppaalns/p0324.aln)!
+Running muscle on data/metagenome/p0325.aln and data/ppaalns/p0325.aln...
+data/metagenome/p0277.int.sub.aln generated (from data/metagenome/p0277.aln and data/ppaalns/p0277.aln)!
+Running muscle on data/metagenome/p0278.aln and data/ppaalns/p0278.aln...
+data/metagenome/p0278.int.sub.aln generated (from data/metagenome/p0278.aln and data/ppaalns/p0278.aln)!
+Running muscle on data/metagenome/p0279.aln and data/ppaalns/p0279.aln...
+data/metagenome/p0325.int.sub.aln generated (from data/metagenome/p0325.aln and data/ppaalns/p0325.aln)!
+Running muscle on data/metagenome/p0326.aln and data/ppaalns/p0326.aln...
+data/metagenome/p0279.int.sub.aln generated (from data/metagenome/p0279.aln and data/ppaalns/p0279.aln)!
+Running muscle on data/metagenome/p0280.aln and data/ppaalns/p0280.aln...
+data/metagenome/p0326.int.sub.aln generated (from data/metagenome/p0326.aln and data/ppaalns/p0326.aln)!
+Running muscle on data/metagenome/p0327.aln and data/ppaalns/p0327.aln...
+data/metagenome/p0327.int.sub.aln generated (from data/metagenome/p0327.aln and data/ppaalns/p0327.aln)!
+Running muscle on data/metagenome/p0328.aln and data/ppaalns/p0328.aln...
+data/metagenome/p0328.int.sub.aln generated (from data/metagenome/p0328.aln and data/ppaalns/p0328.aln)!
+Running muscle on data/metagenome/p0329.aln and data/ppaalns/p0329.aln...
+data/metagenome/p0280.int.sub.aln generated (from data/metagenome/p0280.aln and data/ppaalns/p0280.aln)!
+Running muscle on data/metagenome/p0281.aln and data/ppaalns/p0281.aln...
+data/metagenome/p0329.int.sub.aln generated (from data/metagenome/p0329.aln and data/ppaalns/p0329.aln)!
+Running muscle on data/metagenome/p0330.aln and data/ppaalns/p0330.aln...
+data/metagenome/p0330.int.sub.aln generated (from data/metagenome/p0330.aln and data/ppaalns/p0330.aln)!
+Running muscle on data/metagenome/p0331.aln and data/ppaalns/p0331.aln...
+data/metagenome/p0281.int.sub.aln generated (from data/metagenome/p0281.aln and data/ppaalns/p0281.aln)!
+Running muscle on data/metagenome/p0282.aln and data/ppaalns/p0282.aln...
+data/metagenome/p0331.int.sub.aln generated (from data/metagenome/p0331.aln and data/ppaalns/p0331.aln)!
+Running muscle on data/metagenome/p0332.aln and data/ppaalns/p0332.aln...
+data/metagenome/p0282.int.sub.aln generated (from data/metagenome/p0282.aln and data/ppaalns/p0282.aln)!
+Running muscle on data/metagenome/p0283.aln and data/ppaalns/p0283.aln...
+data/metagenome/p0332.int.sub.aln generated (from data/metagenome/p0332.aln and data/ppaalns/p0332.aln)!
+Running muscle on data/metagenome/p0333.aln and data/ppaalns/p0333.aln...
+data/metagenome/p0283.int.sub.aln generated (from data/metagenome/p0283.aln and data/ppaalns/p0283.aln)!
+Running muscle on data/metagenome/p0284.aln and data/ppaalns/p0284.aln...
+data/metagenome/p0333.int.sub.aln generated (from data/metagenome/p0333.aln and data/ppaalns/p0333.aln)!
+Running muscle on data/metagenome/p0334.aln and data/ppaalns/p0334.aln...
+data/metagenome/p0284.int.sub.aln generated (from data/metagenome/p0284.aln and data/ppaalns/p0284.aln)!
+Running muscle on data/metagenome/p0285.aln and data/ppaalns/p0285.aln...
+data/metagenome/p0285.int.sub.aln generated (from data/metagenome/p0285.aln and data/ppaalns/p0285.aln)!
+Running muscle on data/metagenome/p0286.aln and data/ppaalns/p0286.aln...
+data/metagenome/p0334.int.sub.aln generated (from data/metagenome/p0334.aln and data/ppaalns/p0334.aln)!
+Running muscle on data/metagenome/p0335.aln and data/ppaalns/p0335.aln...
+data/metagenome/p0286.int.sub.aln generated (from data/metagenome/p0286.aln and data/ppaalns/p0286.aln)!
+Running muscle on data/metagenome/p0287.aln and data/ppaalns/p0287.aln...
+data/metagenome/p0335.int.sub.aln generated (from data/metagenome/p0335.aln and data/ppaalns/p0335.aln)!
+Running muscle on data/metagenome/p0336.aln and data/ppaalns/p0336.aln...
+data/metagenome/p0287.int.sub.aln generated (from data/metagenome/p0287.aln and data/ppaalns/p0287.aln)!
+Running muscle on data/metagenome/p0288.aln and data/ppaalns/p0288.aln...
+data/metagenome/p0288.int.sub.aln generated (from data/metagenome/p0288.aln and data/ppaalns/p0288.aln)!
+Running muscle on data/metagenome/p0289.aln and data/ppaalns/p0289.aln...
+data/metagenome/p0289.int.sub.aln generated (from data/metagenome/p0289.aln and data/ppaalns/p0289.aln)!
+Running muscle on data/metagenome/p0290.aln and data/ppaalns/p0290.aln...
+data/metagenome/p0290.int.sub.aln generated (from data/metagenome/p0290.aln and data/ppaalns/p0290.aln)!
+Running muscle on data/metagenome/p0291.aln and data/ppaalns/p0291.aln...
+data/metagenome/p0336.int.sub.aln generated (from data/metagenome/p0336.aln and data/ppaalns/p0336.aln)!
+Running muscle on data/metagenome/p0337.aln and data/ppaalns/p0337.aln...
+data/metagenome/p0337.int.sub.aln generated (from data/metagenome/p0337.aln and data/ppaalns/p0337.aln)!
+Running muscle on data/metagenome/p0338.aln and data/ppaalns/p0338.aln...
+data/metagenome/p0291.int.sub.aln generated (from data/metagenome/p0291.aln and data/ppaalns/p0291.aln)!
+Running muscle on data/metagenome/p0292.aln and data/ppaalns/p0292.aln...
+data/metagenome/p0338.int.sub.aln generated (from data/metagenome/p0338.aln and data/ppaalns/p0338.aln)!
+Running muscle on data/metagenome/p0339.aln and data/ppaalns/p0339.aln...
+data/metagenome/p0339.int.sub.aln generated (from data/metagenome/p0339.aln and data/ppaalns/p0339.aln)!
+Running muscle on data/metagenome/p0340.aln and data/ppaalns/p0340.aln...
+data/metagenome/p0292.int.sub.aln generated (from data/metagenome/p0292.aln and data/ppaalns/p0292.aln)!
+Running muscle on data/metagenome/p0293.aln and data/ppaalns/p0293.aln...
+data/metagenome/p0340.int.sub.aln generated (from data/metagenome/p0340.aln and data/ppaalns/p0340.aln)!
+Running muscle on data/metagenome/p0341.aln and data/ppaalns/p0341.aln...
+data/metagenome/p0341.int.sub.aln generated (from data/metagenome/p0341.aln and data/ppaalns/p0341.aln)!
+Running muscle on data/metagenome/p0342.aln and data/ppaalns/p0342.aln...
+data/metagenome/p0342.int.sub.aln generated (from data/metagenome/p0342.aln and data/ppaalns/p0342.aln)!
+Running muscle on data/metagenome/p0343.aln and data/ppaalns/p0343.aln...
+data/metagenome/p0293.int.sub.aln generated (from data/metagenome/p0293.aln and data/ppaalns/p0293.aln)!
+Running muscle on data/metagenome/p0294.aln and data/ppaalns/p0294.aln...
+data/metagenome/p0294.int.sub.aln generated (from data/metagenome/p0294.aln and data/ppaalns/p0294.aln)!
+Running muscle on data/metagenome/p0295.aln and data/ppaalns/p0295.aln...
+data/metagenome/p0343.int.sub.aln generated (from data/metagenome/p0343.aln and data/ppaalns/p0343.aln)!
+Running muscle on data/metagenome/p0344.aln and data/ppaalns/p0344.aln...
+data/metagenome/p0295.int.sub.aln generated (from data/metagenome/p0295.aln and data/ppaalns/p0295.aln)!
+Running muscle on data/metagenome/p0296.aln and data/ppaalns/p0296.aln...
+data/metagenome/p0344.int.sub.aln generated (from data/metagenome/p0344.aln and data/ppaalns/p0344.aln)!
+Running muscle on data/metagenome/p0345.aln and data/ppaalns/p0345.aln...
+data/metagenome/p0296.int.sub.aln generated (from data/metagenome/p0296.aln and data/ppaalns/p0296.aln)!
+Running muscle on data/metagenome/p0297.aln and data/ppaalns/p0297.aln...
+data/metagenome/p0345.int.sub.aln generated (from data/metagenome/p0345.aln and data/ppaalns/p0345.aln)!
+Running muscle on data/metagenome/p0346.aln and data/ppaalns/p0346.aln...
+data/metagenome/p0346.int.sub.aln generated (from data/metagenome/p0346.aln and data/ppaalns/p0346.aln)!
+Running muscle on data/metagenome/p0347.aln and data/ppaalns/p0347.aln...
+data/metagenome/p0347.int.sub.aln generated (from data/metagenome/p0347.aln and data/ppaalns/p0347.aln)!
+Running muscle on data/metagenome/p0348.aln and data/ppaalns/p0348.aln...
+data/metagenome/p0297.int.sub.aln generated (from data/metagenome/p0297.aln and data/ppaalns/p0297.aln)!
+Running muscle on data/metagenome/p0298.aln and data/ppaalns/p0298.aln...
+data/metagenome/p0348.int.sub.aln generated (from data/metagenome/p0348.aln and data/ppaalns/p0348.aln)!
+Running muscle on data/metagenome/p0349.aln and data/ppaalns/p0349.aln...
+data/metagenome/p0298.int.sub.aln generated (from data/metagenome/p0298.aln and data/ppaalns/p0298.aln)!
+Running muscle on data/metagenome/p0299.aln and data/ppaalns/p0299.aln...
+data/metagenome/p0349.int.sub.aln generated (from data/metagenome/p0349.aln and data/ppaalns/p0349.aln)!
+Running muscle on data/metagenome/p0350.aln and data/ppaalns/p0350.aln...
+data/metagenome/p0350.int.sub.aln generated (from data/metagenome/p0350.aln and data/ppaalns/p0350.aln)!
+Running muscle on data/metagenome/p0351.aln and data/ppaalns/p0351.aln...
+data/metagenome/p0351.int.sub.aln generated (from data/metagenome/p0351.aln and data/ppaalns/p0351.aln)!
+Running muscle on data/metagenome/p0352.aln and data/ppaalns/p0352.aln...
+data/metagenome/p0299.int.sub.aln generated (from data/metagenome/p0299.aln and data/ppaalns/p0299.aln)!
+data/metagenome/p0352.int.sub.aln generated (from data/metagenome/p0352.aln and data/ppaalns/p0352.aln)!
+Running muscle on data/metagenome/p0353.aln and data/ppaalns/p0353.aln...
+data/metagenome/p0353.int.sub.aln generated (from data/metagenome/p0353.aln and data/ppaalns/p0353.aln)!
+Running muscle on data/metagenome/p0354.aln and data/ppaalns/p0354.aln...
+data/metagenome/p0354.int.sub.aln generated (from data/metagenome/p0354.aln and data/ppaalns/p0354.aln)!
+Running muscle on data/metagenome/p0355.aln and data/ppaalns/p0355.aln...
+data/metagenome/p0355.int.sub.aln generated (from data/metagenome/p0355.aln and data/ppaalns/p0355.aln)!
+Running muscle on data/metagenome/p0356.aln and data/ppaalns/p0356.aln...
+data/metagenome/p0356.int.sub.aln generated (from data/metagenome/p0356.aln and data/ppaalns/p0356.aln)!
+Running muscle on data/metagenome/p0357.aln and data/ppaalns/p0357.aln...
+data/metagenome/p0357.int.sub.aln generated (from data/metagenome/p0357.aln and data/ppaalns/p0357.aln)!
+Running muscle on data/metagenome/p0358.aln and data/ppaalns/p0358.aln...
+data/metagenome/p0358.int.sub.aln generated (from data/metagenome/p0358.aln and data/ppaalns/p0358.aln)!
+Running muscle on data/metagenome/p0359.aln and data/ppaalns/p0359.aln...
+data/metagenome/p0359.int.sub.aln generated (from data/metagenome/p0359.aln and data/ppaalns/p0359.aln)!
+Running muscle on data/metagenome/p0360.aln and data/ppaalns/p0360.aln...
+data/metagenome/p0360.int.sub.aln generated (from data/metagenome/p0360.aln and data/ppaalns/p0360.aln)!
+Running muscle on data/metagenome/p0361.aln and data/ppaalns/p0361.aln...
+data/metagenome/p0361.int.sub.aln generated (from data/metagenome/p0361.aln and data/ppaalns/p0361.aln)!
+Running muscle on data/metagenome/p0362.aln and data/ppaalns/p0362.aln...
+data/metagenome/p0362.int.sub.aln generated (from data/metagenome/p0362.aln and data/ppaalns/p0362.aln)!
+Running muscle on data/metagenome/p0363.aln and data/ppaalns/p0363.aln...
+data/metagenome/p0363.int.sub.aln generated (from data/metagenome/p0363.aln and data/ppaalns/p0363.aln)!
+Running muscle on data/metagenome/p0364.aln and data/ppaalns/p0364.aln...
+data/metagenome/p0364.int.sub.aln generated (from data/metagenome/p0364.aln and data/ppaalns/p0364.aln)!
+Running muscle on data/metagenome/p0365.aln and data/ppaalns/p0365.aln...
+data/metagenome/p0365.int.sub.aln generated (from data/metagenome/p0365.aln and data/ppaalns/p0365.aln)!
+Running muscle on data/metagenome/p0366.aln and data/ppaalns/p0366.aln...
+data/metagenome/p0366.int.sub.aln generated (from data/metagenome/p0366.aln and data/ppaalns/p0366.aln)!
+Running muscle on data/metagenome/p0367.aln and data/ppaalns/p0367.aln...
+data/metagenome/p0367.int.sub.aln generated (from data/metagenome/p0367.aln and data/ppaalns/p0367.aln)!
+Running muscle on data/metagenome/p0368.aln and data/ppaalns/p0368.aln...
+data/metagenome/p0368.int.sub.aln generated (from data/metagenome/p0368.aln and data/ppaalns/p0368.aln)!
+Running muscle on data/metagenome/p0369.aln and data/ppaalns/p0369.aln...
+data/metagenome/p0369.int.sub.aln generated (from data/metagenome/p0369.aln and data/ppaalns/p0369.aln)!
+Running muscle on data/metagenome/p0370.aln and data/ppaalns/p0370.aln...
+data/metagenome/p0370.int.sub.aln generated (from data/metagenome/p0370.aln and data/ppaalns/p0370.aln)!
+Running muscle on data/metagenome/p0371.aln and data/ppaalns/p0371.aln...
+data/metagenome/p0371.int.sub.aln generated (from data/metagenome/p0371.aln and data/ppaalns/p0371.aln)!
+Running muscle on data/metagenome/p0373.aln and data/ppaalns/p0373.aln...
+data/metagenome/p0373.int.sub.aln generated (from data/metagenome/p0373.aln and data/ppaalns/p0373.aln)!
+Running muscle on data/metagenome/p0374.aln and data/ppaalns/p0374.aln...
+data/metagenome/p0374.int.sub.aln generated (from data/metagenome/p0374.aln and data/ppaalns/p0374.aln)!
+Running muscle on data/metagenome/p0375.aln and data/ppaalns/p0375.aln...
+data/metagenome/p0375.int.sub.aln generated (from data/metagenome/p0375.aln and data/ppaalns/p0375.aln)!
+Running muscle on data/metagenome/p0376.aln and data/ppaalns/p0376.aln...
+data/metagenome/p0376.int.sub.aln generated (from data/metagenome/p0376.aln and data/ppaalns/p0376.aln)!
+Running muscle on data/metagenome/p0377.aln and data/ppaalns/p0377.aln...
+data/metagenome/p0377.int.sub.aln generated (from data/metagenome/p0377.aln and data/ppaalns/p0377.aln)!
+Running muscle on data/metagenome/p0378.aln and data/ppaalns/p0378.aln...
+data/metagenome/p0378.int.sub.aln generated (from data/metagenome/p0378.aln and data/ppaalns/p0378.aln)!
+Running muscle on data/metagenome/p0379.aln and data/ppaalns/p0379.aln...
+data/metagenome/p0379.int.sub.aln generated (from data/metagenome/p0379.aln and data/ppaalns/p0379.aln)!
+Running muscle on data/metagenome/p0380.aln and data/ppaalns/p0380.aln...
+data/metagenome/p0380.int.sub.aln generated (from data/metagenome/p0380.aln and data/ppaalns/p0380.aln)!
+Running muscle on data/metagenome/p0381.aln and data/ppaalns/p0381.aln...
+data/metagenome/p0381.int.sub.aln generated (from data/metagenome/p0381.aln and data/ppaalns/p0381.aln)!
+Running muscle on data/metagenome/p0382.aln and data/ppaalns/p0382.aln...
+data/metagenome/p0382.int.sub.aln generated (from data/metagenome/p0382.aln and data/ppaalns/p0382.aln)!
+Running muscle on data/metagenome/p0383.aln and data/ppaalns/p0383.aln...
+data/metagenome/p0383.int.sub.aln generated (from data/metagenome/p0383.aln and data/ppaalns/p0383.aln)!
+Running muscle on data/metagenome/p0384.aln and data/ppaalns/p0384.aln...
+data/metagenome/p0384.int.sub.aln generated (from data/metagenome/p0384.aln and data/ppaalns/p0384.aln)!
+Running muscle on data/metagenome/p0385.aln and data/ppaalns/p0385.aln...
+data/metagenome/p0385.int.sub.aln generated (from data/metagenome/p0385.aln and data/ppaalns/p0385.aln)!
+Running muscle on data/metagenome/p0386.aln and data/ppaalns/p0386.aln...
+data/metagenome/p0386.int.sub.aln generated (from data/metagenome/p0386.aln and data/ppaalns/p0386.aln)!
+Running muscle on data/metagenome/p0387.aln and data/ppaalns/p0387.aln...
+data/metagenome/p0387.int.sub.aln generated (from data/metagenome/p0387.aln and data/ppaalns/p0387.aln)!
+Running muscle on data/metagenome/p0389.aln and data/ppaalns/p0389.aln...
+data/metagenome/p0389.int.sub.aln generated (from data/metagenome/p0389.aln and data/ppaalns/p0389.aln)!
+Running muscle on data/metagenome/p0390.aln and data/ppaalns/p0390.aln...
+data/metagenome/p0390.int.sub.aln generated (from data/metagenome/p0390.aln and data/ppaalns/p0390.aln)!
+Running muscle on data/metagenome/p0392.aln and data/ppaalns/p0392.aln...
+data/metagenome/p0392.int.sub.aln generated (from data/metagenome/p0392.aln and data/ppaalns/p0392.aln)!
+Running muscle on data/metagenome/p0393.aln and data/ppaalns/p0393.aln...
+data/metagenome/p0393.int.sub.aln generated (from data/metagenome/p0393.aln and data/ppaalns/p0393.aln)!
+Running muscle on data/metagenome/p0394.aln and data/ppaalns/p0394.aln...
+data/metagenome/p0394.int.sub.aln generated (from data/metagenome/p0394.aln and data/ppaalns/p0394.aln)!
+Running muscle on data/metagenome/p0396.aln and data/ppaalns/p0396.aln...
+data/metagenome/p0396.int.sub.aln generated (from data/metagenome/p0396.aln and data/ppaalns/p0396.aln)!
+Running muscle on data/metagenome/p0397.aln and data/ppaalns/p0397.aln...
+data/metagenome/p0397.int.sub.aln generated (from data/metagenome/p0397.aln and data/ppaalns/p0397.aln)!
+Running muscle on data/metagenome/p0399.aln and data/ppaalns/p0399.aln...
+data/metagenome/p0399.int.sub.aln generated (from data/metagenome/p0399.aln and data/ppaalns/p0399.aln)!
+All alignments already merged with PhyloPhlAn alignments!
+All alignments already computed!
+Aligning finished in 17633 secs (17633 total time).
+
+All alignments merged into data/metagenome/aln.int.fna!
+Start building the tree with FastTree ... 
+FastTree Version 2.1.10 SSE3
+Alignment: standard input
+Amino acid distances: BLOSUM45 Joins: weighted Support: SH-like 1000
+Search: Normal +NNI +SPR (4 rounds range 10) +ML-NNI opt-each=2
+TopHits: 1.00*sqrtN close=default refresh=0.80
+ML Model: Jones-Taylor-Thorton, CAT approximation with 20 rate categories
+Ignored unknown character B (seen 1 times)
+Ignored unknown character X (seen 80 times)
+      1.47 seconds: Top hits for    351 of   3186 seqs (at seed    100)
+      1.93 seconds: Top hits for    550 of   3186 seqs (at seed    200)
+      2.43 seconds: Top hits for    683 of   3186 seqs (at seed    300)
+      2.85 seconds: Top hits for    809 of   3186 seqs (at seed    400)
+      3.29 seconds: Top hits for    882 of   3186 seqs (at seed    500)
+      3.71 seconds: Top hits for    948 of   3186 seqs (at seed    600)
+      4.08 seconds: Top hits for   1047 of   3186 seqs (at seed    700)
+      4.64 seconds: Top hits for   1160 of   3186 seqs (at seed    800)
+      5.38 seconds: Top hits for   1480 of   3186 seqs (at seed    900)
+      5.86 seconds: Top hits for   1545 of   3186 seqs (at seed   1000)
+      6.36 seconds: Top hits for   1711 of   3186 seqs (at seed   1100)
+      6.75 seconds: Top hits for   1761 of   3186 seqs (at seed   1200)
+      7.24 seconds: Top hits for   1998 of   3186 seqs (at seed   1300)
+      7.40 seconds: Top hits for   2057 of   3186 seqs (at seed   1400)
+      7.80 seconds: Top hits for   2124 of   3186 seqs (at seed   1500)
+      8.09 seconds: Top hits for   2173 of   3186 seqs (at seed   1600)
+      8.31 seconds: Top hits for   2249 of   3186 seqs (at seed   1700)
+      8.88 seconds: Top hits for   2427 of   3186 seqs (at seed   1800)
+      9.19 seconds: Top hits for   2467 of   3186 seqs (at seed   1900)
+      9.70 seconds: Top hits for   2607 of   3186 seqs (at seed   2000)
+      9.87 seconds: Top hits for   2620 of   3186 seqs (at seed   2100)
+     10.17 seconds: Top hits for   2706 of   3186 seqs (at seed   2300)
+     10.31 seconds: Top hits for   2715 of   3186 seqs (at seed   2400)
+     10.66 seconds: Top hits for   2794 of   3186 seqs (at seed   2500)
+     11.03 seconds: Top hits for   2873 of   3186 seqs (at seed   2600)
+     11.21 seconds: Top hits for   2883 of   3186 seqs (at seed   2700)
+     11.49 seconds: Top hits for   2920 of   3186 seqs (at seed   2800)
+     11.89 seconds: Top hits for   2971 of   3186 seqs (at seed   2900)
+     12.25 seconds: Top hits for   3069 of   3186 seqs (at seed   3000)
+     12.56 seconds: Top hits for   3169 of   3186 seqs (at seed   3100)
+     12.73 seconds: Checking top hits for      1 of   3186 seqs
+     13.87 seconds: Joined    100 of   3183
+     15.94 seconds: Joined    200 of   3183
+     17.22 seconds: Joined    300 of   3183
+     18.84 seconds: Joined    400 of   3183
+     20.16 seconds: Joined    500 of   3183
+     23.07 seconds: Joined    600 of   3183
+     24.70 seconds: Joined    700 of   3183
+     26.78 seconds: Joined    800 of   3183
+     28.57 seconds: Joined    900 of   3183
+     30.67 seconds: Joined   1000 of   3183
+     32.43 seconds: Joined   1100 of   3183
+     34.82 seconds: Joined   1200 of   3183
+     36.67 seconds: Joined   1300 of   3183
+     38.81 seconds: Joined   1400 of   3183
+     40.77 seconds: Joined   1500 of   3183
+     43.51 seconds: Joined   1600 of   3183
+     45.91 seconds: Joined   1700 of   3183
+     47.16 seconds: Joined   1800 of   3183
+     49.32 seconds: Joined   1900 of   3183
+     51.60 seconds: Joined   2000 of   3183
+     54.01 seconds: Joined   2100 of   3183
+     57.04 seconds: Joined   2200 of   3183
+     59.35 seconds: Joined   2300 of   3183
+     61.58 seconds: Joined   2400 of   3183
+     64.60 seconds: Joined   2500 of   3183
+     66.88 seconds: Joined   2600 of   3183
+     69.74 seconds: Joined   2700 of   3183
+     72.52 seconds: Joined   2800 of   3183
+     74.47 seconds: Joined   2900 of   3183
+     75.64 seconds: Joined   3000 of   3183
+     76.35 seconds: Joined   3100 of   3183
+Initial topology in 76.85 seconds
+Refining topology: 47 rounds ME-NNIs, 4 rounds ME-SPRs, 23 rounds ML-NNIs
+     76.84 seconds: ME NNI round 1 of 47, 1 of 3184 splits
+     76.98 seconds: ME NNI round 1 of 47, 101 of 3184 splits, 14 changes (max delta 0.050)
+     77.13 seconds: ME NNI round 1 of 47, 201 of 3184 splits, 53 changes (max delta 0.050)
+     77.27 seconds: ME NNI round 1 of 47, 301 of 3184 splits, 70 changes (max delta 0.050)
+     77.43 seconds: ME NNI round 1 of 47, 401 of 3184 splits, 98 changes (max delta 0.132)
+     77.58 seconds: ME NNI round 1 of 47, 501 of 3184 splits, 117 changes (max delta 0.132)
+     77.73 seconds: ME NNI round 1 of 47, 601 of 3184 splits, 145 changes (max delta 0.536)
+     77.84 seconds: ME NNI round 1 of 47, 701 of 3184 splits, 161 changes (max delta 0.536)
+     77.99 seconds: ME NNI round 1 of 47, 801 of 3184 splits, 181 changes (max delta 0.536)
+     78.13 seconds: ME NNI round 1 of 47, 901 of 3184 splits, 204 changes (max delta 0.536)
+     78.29 seconds: ME NNI round 1 of 47, 1001 of 3184 splits, 230 changes (max delta 0.536)
+     78.43 seconds: ME NNI round 1 of 47, 1101 of 3184 splits, 254 changes (max delta 0.536)
+     78.58 seconds: ME NNI round 1 of 47, 1201 of 3184 splits, 269 changes (max delta 0.536)
+     78.74 seconds: ME NNI round 1 of 47, 1301 of 3184 splits, 304 changes (max delta 0.536)
+     78.88 seconds: ME NNI round 1 of 47, 1401 of 3184 splits, 324 changes (max delta 0.536)
+     79.03 seconds: ME NNI round 1 of 47, 1501 of 3184 splits, 343 changes (max delta 0.536)
+     79.17 seconds: ME NNI round 1 of 47, 1601 of 3184 splits, 370 changes (max delta 0.536)
+     79.32 seconds: ME NNI round 1 of 47, 1701 of 3184 splits, 405 changes (max delta 0.536)
+     79.46 seconds: ME NNI round 1 of 47, 1801 of 3184 splits, 438 changes (max delta 0.536)
+     79.61 seconds: ME NNI round 1 of 47, 1901 of 3184 splits, 467 changes (max delta 0.536)
+     79.77 seconds: ME NNI round 1 of 47, 2001 of 3184 splits, 498 changes (max delta 0.536)
+     79.92 seconds: ME NNI round 1 of 47, 2101 of 3184 splits, 525 changes (max delta 0.536)
+     80.09 seconds: ME NNI round 1 of 47, 2201 of 3184 splits, 542 changes (max delta 0.536)
+     80.23 seconds: ME NNI round 1 of 47, 2301 of 3184 splits, 558 changes (max delta 0.536)
+     80.38 seconds: ME NNI round 1 of 47, 2401 of 3184 splits, 583 changes (max delta 0.536)
+     80.52 seconds: ME NNI round 1 of 47, 2501 of 3184 splits, 619 changes (max delta 0.536)
+     80.64 seconds: ME NNI round 1 of 47, 2601 of 3184 splits, 636 changes (max delta 0.536)
+     80.77 seconds: ME NNI round 1 of 47, 2701 of 3184 splits, 653 changes (max delta 0.536)
+     80.91 seconds: ME NNI round 1 of 47, 2801 of 3184 splits, 663 changes (max delta 0.536)
+     81.05 seconds: ME NNI round 1 of 47, 2901 of 3184 splits, 690 changes (max delta 0.536)
+     81.20 seconds: ME NNI round 1 of 47, 3001 of 3184 splits, 714 changes (max delta 0.536)
+     81.32 seconds: ME NNI round 1 of 47, 3101 of 3184 splits, 745 changes (max delta 0.536)
+     81.53 seconds: ME NNI round 2 of 47, 101 of 3184 splits, 10 changes (max delta 0.005)
+     81.65 seconds: ME NNI round 2 of 47, 201 of 3184 splits, 20 changes (max delta 0.011)
+     81.78 seconds: ME NNI round 2 of 47, 301 of 3184 splits, 34 changes (max delta 0.041)
+     81.91 seconds: ME NNI round 2 of 47, 401 of 3184 splits, 54 changes (max delta 0.066)
+     82.05 seconds: ME NNI round 2 of 47, 501 of 3184 splits, 68 changes (max delta 0.288)
+     82.17 seconds: ME NNI round 2 of 47, 601 of 3184 splits, 79 changes (max delta 0.288)
+     82.28 seconds: ME NNI round 2 of 47, 701 of 3184 splits, 89 changes (max delta 0.758)
+     82.38 seconds: ME NNI round 2 of 47, 801 of 3184 splits, 105 changes (max delta 0.758)
+     82.53 seconds: ME NNI round 2 of 47, 901 of 3184 splits, 119 changes (max delta 0.758)
+     82.65 seconds: ME NNI round 2 of 47, 1001 of 3184 splits, 126 changes (max delta 0.758)
+     82.78 seconds: ME NNI round 2 of 47, 1101 of 3184 splits, 135 changes (max delta 0.758)
+     82.93 seconds: ME NNI round 2 of 47, 1201 of 3184 splits, 151 changes (max delta 0.758)
+     83.07 seconds: ME NNI round 2 of 47, 1301 of 3184 splits, 167 changes (max delta 0.758)
+     83.21 seconds: ME NNI round 2 of 47, 1401 of 3184 splits, 177 changes (max delta 0.758)
+     83.32 seconds: ME NNI round 2 of 47, 1501 of 3184 splits, 184 changes (max delta 0.758)
+     83.46 seconds: ME NNI round 2 of 47, 1601 of 3184 splits, 193 changes (max delta 0.758)
+     83.61 seconds: ME NNI round 2 of 47, 1701 of 3184 splits, 203 changes (max delta 0.758)
+     83.75 seconds: ME NNI round 2 of 47, 1801 of 3184 splits, 230 changes (max delta 0.758)
+     83.91 seconds: ME NNI round 2 of 47, 1901 of 3184 splits, 261 changes (max delta 0.758)
+     84.05 seconds: ME NNI round 2 of 47, 2001 of 3184 splits, 279 changes (max delta 0.758)
+     84.19 seconds: ME NNI round 2 of 47, 2101 of 3184 splits, 308 changes (max delta 0.758)
+     84.31 seconds: ME NNI round 2 of 47, 2201 of 3184 splits, 317 changes (max delta 0.758)
+     84.43 seconds: ME NNI round 2 of 47, 2301 of 3184 splits, 331 changes (max delta 0.758)
+     84.58 seconds: ME NNI round 2 of 47, 2401 of 3184 splits, 340 changes (max delta 0.758)
+     84.70 seconds: ME NNI round 2 of 47, 2501 of 3184 splits, 357 changes (max delta 0.758)
+     84.84 seconds: ME NNI round 2 of 47, 2601 of 3184 splits, 366 changes (max delta 0.758)
+     84.98 seconds: ME NNI round 2 of 47, 2701 of 3184 splits, 383 changes (max delta 0.758)
+     85.10 seconds: ME NNI round 2 of 47, 2801 of 3184 splits, 388 changes (max delta 0.758)
+     85.23 seconds: ME NNI round 2 of 47, 2901 of 3184 splits, 396 changes (max delta 0.758)
+     85.35 seconds: ME NNI round 2 of 47, 3001 of 3184 splits, 410 changes (max delta 0.758)
+     85.49 seconds: ME NNI round 2 of 47, 3101 of 3184 splits, 430 changes (max delta 0.758)
+     85.69 seconds: ME NNI round 3 of 47, 101 of 3184 splits, 5 changes (max delta 0.002)
+     85.81 seconds: ME NNI round 3 of 47, 201 of 3184 splits, 15 changes (max delta 0.009)
+     85.92 seconds: ME NNI round 3 of 47, 301 of 3184 splits, 20 changes (max delta 0.009)
+     86.05 seconds: ME NNI round 3 of 47, 401 of 3184 splits, 28 changes (max delta 0.083)
+     86.17 seconds: ME NNI round 3 of 47, 501 of 3184 splits, 30 changes (max delta 0.083)
+     86.30 seconds: ME NNI round 3 of 47, 601 of 3184 splits, 39 changes (max delta 0.152)
+     86.42 seconds: ME NNI round 3 of 47, 701 of 3184 splits, 48 changes (max delta 0.152)
+     86.60 seconds: ME NNI round 3 of 47, 901 of 3184 splits, 59 changes (max delta 0.475)
+     86.74 seconds: ME NNI round 3 of 47, 1001 of 3184 splits, 64 changes (max delta 0.475)
+     86.86 seconds: ME NNI round 3 of 47, 1101 of 3184 splits, 73 changes (max delta 0.475)
+     86.99 seconds: ME NNI round 3 of 47, 1201 of 3184 splits, 79 changes (max delta 0.475)
+     87.13 seconds: ME NNI round 3 of 47, 1301 of 3184 splits, 88 changes (max delta 0.475)
+     87.27 seconds: ME NNI round 3 of 47, 1401 of 3184 splits, 93 changes (max delta 0.475)
+     87.40 seconds: ME NNI round 3 of 47, 1501 of 3184 splits, 107 changes (max delta 0.475)
+     87.54 seconds: ME NNI round 3 of 47, 1601 of 3184 splits, 124 changes (max delta 0.475)
+     87.67 seconds: ME NNI round 3 of 47, 1701 of 3184 splits, 140 changes (max delta 0.475)
+     87.80 seconds: ME NNI round 3 of 47, 1801 of 3184 splits, 154 changes (max delta 0.475)
+     87.91 seconds: ME NNI round 3 of 47, 1901 of 3184 splits, 160 changes (max delta 0.475)
+     88.02 seconds: ME NNI round 3 of 47, 2001 of 3184 splits, 164 changes (max delta 0.475)
+     88.15 seconds: ME NNI round 3 of 47, 2101 of 3184 splits, 169 changes (max delta 0.475)
+     88.27 seconds: ME NNI round 3 of 47, 2201 of 3184 splits, 173 changes (max delta 0.475)
+     88.41 seconds: ME NNI round 3 of 47, 2301 of 3184 splits, 183 changes (max delta 0.475)
+     88.53 seconds: ME NNI round 3 of 47, 2401 of 3184 splits, 187 changes (max delta 0.475)
+     88.65 seconds: ME NNI round 3 of 47, 2501 of 3184 splits, 192 changes (max delta 0.475)
+     88.77 seconds: ME NNI round 3 of 47, 2601 of 3184 splits, 200 changes (max delta 0.475)
+     88.92 seconds: ME NNI round 3 of 47, 2701 of 3184 splits, 210 changes (max delta 0.475)
+     89.04 seconds: ME NNI round 3 of 47, 2801 of 3184 splits, 220 changes (max delta 0.475)
+     89.16 seconds: ME NNI round 3 of 47, 2901 of 3184 splits, 220 changes (max delta 0.475)
+     89.28 seconds: ME NNI round 3 of 47, 3001 of 3184 splits, 227 changes (max delta 0.475)
+     89.40 seconds: ME NNI round 3 of 47, 3101 of 3184 splits, 240 changes (max delta 0.475)
+     89.59 seconds: ME NNI round 4 of 47, 101 of 3184 splits, 2 changes (max delta 0.000)
+     89.71 seconds: ME NNI round 4 of 47, 201 of 3184 splits, 10 changes (max delta 0.004)
+     89.83 seconds: ME NNI round 4 of 47, 301 of 3184 splits, 17 changes (max delta 0.008)
+     89.95 seconds: ME NNI round 4 of 47, 401 of 3184 splits, 21 changes (max delta 0.014)
+     90.07 seconds: ME NNI round 4 of 47, 501 of 3184 splits, 26 changes (max delta 0.032)
+     90.20 seconds: ME NNI round 4 of 47, 601 of 3184 splits, 28 changes (max delta 0.033)
+     90.32 seconds: ME NNI round 4 of 47, 701 of 3184 splits, 33 changes (max delta 0.051)
+     90.44 seconds: ME NNI round 4 of 47, 801 of 3184 splits, 36 changes (max delta 0.051)
+     90.58 seconds: ME NNI round 4 of 47, 901 of 3184 splits, 39 changes (max delta 0.051)
+     90.71 seconds: ME NNI round 4 of 47, 1001 of 3184 splits, 43 changes (max delta 0.051)
+     90.84 seconds: ME NNI round 4 of 47, 1101 of 3184 splits, 50 changes (max delta 0.072)
+     90.97 seconds: ME NNI round 4 of 47, 1201 of 3184 splits, 55 changes (max delta 0.072)
+     91.08 seconds: ME NNI round 4 of 47, 1301 of 3184 splits, 56 changes (max delta 0.072)
+     91.20 seconds: ME NNI round 4 of 47, 1401 of 3184 splits, 60 changes (max delta 0.072)
+     91.33 seconds: ME NNI round 4 of 47, 1501 of 3184 splits, 75 changes (max delta 0.080)
+     91.45 seconds: ME NNI round 4 of 47, 1601 of 3184 splits, 83 changes (max delta 0.080)
+     91.58 seconds: ME NNI round 4 of 47, 1701 of 3184 splits, 96 changes (max delta 0.080)
+     91.71 seconds: ME NNI round 4 of 47, 1801 of 3184 splits, 105 changes (max delta 0.182)
+     91.84 seconds: ME NNI round 4 of 47, 1901 of 3184 splits, 114 changes (max delta 0.182)
+     91.97 seconds: ME NNI round 4 of 47, 2001 of 3184 splits, 115 changes (max delta 0.182)
+     92.10 seconds: ME NNI round 4 of 47, 2101 of 3184 splits, 124 changes (max delta 0.182)
+     92.23 seconds: ME NNI round 4 of 47, 2201 of 3184 splits, 128 changes (max delta 0.182)
+     92.36 seconds: ME NNI round 4 of 47, 2301 of 3184 splits, 132 changes (max delta 0.182)
+     92.54 seconds: ME NNI round 4 of 47, 2501 of 3184 splits, 138 changes (max delta 0.182)
+     92.67 seconds: ME NNI round 4 of 47, 2601 of 3184 splits, 138 changes (max delta 0.182)
+     92.78 seconds: ME NNI round 4 of 47, 2701 of 3184 splits, 140 changes (max delta 0.182)
+     92.89 seconds: ME NNI round 4 of 47, 2801 of 3184 splits, 140 changes (max delta 0.182)
+     93.01 seconds: ME NNI round 4 of 47, 2901 of 3184 splits, 142 changes (max delta 0.182)
+     93.12 seconds: ME NNI round 4 of 47, 3001 of 3184 splits, 144 changes (max delta 0.182)
+     93.23 seconds: ME NNI round 4 of 47, 3101 of 3184 splits, 145 changes (max delta 0.182)
+     93.42 seconds: ME NNI round 5 of 47, 101 of 3184 splits, 1 changes (max delta 0.000)
+     93.53 seconds: ME NNI round 5 of 47, 201 of 3184 splits, 4 changes (max delta 0.001)
+     93.64 seconds: ME NNI round 5 of 47, 301 of 3184 splits, 7 changes (max delta 0.004)
+     93.75 seconds: ME NNI round 5 of 47, 401 of 3184 splits, 7 changes (max delta 0.004)
+     93.87 seconds: ME NNI round 5 of 47, 501 of 3184 splits, 8 changes (max delta 0.004)
+     94.01 seconds: ME NNI round 5 of 47, 601 of 3184 splits, 8 changes (max delta 0.004)
+     94.13 seconds: ME NNI round 5 of 47, 701 of 3184 splits, 8 changes (max delta 0.004)
+     94.26 seconds: ME NNI round 5 of 47, 801 of 3184 splits, 10 changes (max delta 0.100)
+     94.40 seconds: ME NNI round 5 of 47, 901 of 3184 splits, 14 changes (max delta 0.100)
+     94.52 seconds: ME NNI round 5 of 47, 1001 of 3184 splits, 16 changes (max delta 0.100)
+     94.66 seconds: ME NNI round 5 of 47, 1101 of 3184 splits, 18 changes (max delta 0.147)
+     94.78 seconds: ME NNI round 5 of 47, 1201 of 3184 splits, 24 changes (max delta 0.147)
+     94.89 seconds: ME NNI round 5 of 47, 1301 of 3184 splits, 24 changes (max delta 0.147)
+     95.01 seconds: ME NNI round 5 of 47, 1401 of 3184 splits, 30 changes (max delta 0.147)
+     95.14 seconds: ME NNI round 5 of 47, 1501 of 3184 splits, 35 changes (max delta 0.147)
+     95.26 seconds: ME NNI round 5 of 47, 1601 of 3184 splits, 43 changes (max delta 0.147)
+     95.37 seconds: ME NNI round 5 of 47, 1701 of 3184 splits, 55 changes (max delta 0.147)
+     95.50 seconds: ME NNI round 5 of 47, 1801 of 3184 splits, 62 changes (max delta 0.147)
+     95.62 seconds: ME NNI round 5 of 47, 1901 of 3184 splits, 62 changes (max delta 0.147)
+     95.76 seconds: ME NNI round 5 of 47, 2001 of 3184 splits, 69 changes (max delta 0.147)
+     95.87 seconds: ME NNI round 5 of 47, 2101 of 3184 splits, 72 changes (max delta 0.147)
+     95.98 seconds: ME NNI round 5 of 47, 2201 of 3184 splits, 75 changes (max delta 0.147)
+     96.09 seconds: ME NNI round 5 of 47, 2301 of 3184 splits, 78 changes (max delta 0.147)
+     96.27 seconds: ME NNI round 5 of 47, 2501 of 3184 splits, 83 changes (max delta 0.147)
+     96.39 seconds: ME NNI round 5 of 47, 2601 of 3184 splits, 83 changes (max delta 0.147)
+     96.51 seconds: ME NNI round 5 of 47, 2701 of 3184 splits, 85 changes (max delta 0.147)
+     96.62 seconds: ME NNI round 5 of 47, 2801 of 3184 splits, 85 changes (max delta 0.147)
+     96.73 seconds: ME NNI round 5 of 47, 2901 of 3184 splits, 85 changes (max delta 0.147)
+     96.84 seconds: ME NNI round 5 of 47, 3001 of 3184 splits, 86 changes (max delta 0.147)
+     96.95 seconds: ME NNI round 5 of 47, 3101 of 3184 splits, 86 changes (max delta 0.147)
+     97.14 seconds: ME NNI round 6 of 47, 101 of 3184 splits, 0 changes
+     97.24 seconds: ME NNI round 6 of 47, 201 of 3184 splits, 4 changes (max delta 0.000)
+     97.35 seconds: ME NNI round 6 of 47, 301 of 3184 splits, 5 changes (max delta 0.006)
+     97.46 seconds: ME NNI round 6 of 47, 401 of 3184 splits, 5 changes (max delta 0.006)
+     97.58 seconds: ME NNI round 6 of 47, 501 of 3184 splits, 5 changes (max delta 0.006)
+     97.72 seconds: ME NNI round 6 of 47, 601 of 3184 splits, 5 changes (max delta 0.006)
+     97.83 seconds: ME NNI round 6 of 47, 701 of 3184 splits, 5 changes (max delta 0.006)
+     97.94 seconds: ME NNI round 6 of 47, 801 of 3184 splits, 6 changes (max delta 0.006)
+     98.06 seconds: ME NNI round 6 of 47, 901 of 3184 splits, 9 changes (max delta 0.013)
+     98.18 seconds: ME NNI round 6 of 47, 1001 of 3184 splits, 10 changes (max delta 0.013)
+     98.30 seconds: ME NNI round 6 of 47, 1101 of 3184 splits, 12 changes (max delta 0.023)
+     98.43 seconds: ME NNI round 6 of 47, 1201 of 3184 splits, 16 changes (max delta 0.023)
+     98.55 seconds: ME NNI round 6 of 47, 1301 of 3184 splits, 17 changes (max delta 0.023)
+     98.66 seconds: ME NNI round 6 of 47, 1401 of 3184 splits, 23 changes (max delta 0.115)
+     98.78 seconds: ME NNI round 6 of 47, 1501 of 3184 splits, 27 changes (max delta 0.115)
+     98.88 seconds: ME NNI round 6 of 47, 1601 of 3184 splits, 27 changes (max delta 0.115)
+     99.01 seconds: ME NNI round 6 of 47, 1701 of 3184 splits, 35 changes (max delta 0.115)
+     99.14 seconds: ME NNI round 6 of 47, 1801 of 3184 splits, 44 changes (max delta 0.115)
+     99.26 seconds: ME NNI round 6 of 47, 1901 of 3184 splits, 45 changes (max delta 0.115)
+     99.39 seconds: ME NNI round 6 of 47, 2001 of 3184 splits, 45 changes (max delta 0.115)
+     99.51 seconds: ME NNI round 6 of 47, 2101 of 3184 splits, 53 changes (max delta 0.115)
+     99.63 seconds: ME NNI round 6 of 47, 2201 of 3184 splits, 53 changes (max delta 0.115)
+     99.76 seconds: ME NNI round 6 of 47, 2301 of 3184 splits, 57 changes (max delta 0.115)
+     99.93 seconds: ME NNI round 6 of 47, 2501 of 3184 splits, 59 changes (max delta 0.115)
+    100.05 seconds: ME NNI round 6 of 47, 2601 of 3184 splits, 59 changes (max delta 0.115)
+    100.17 seconds: ME NNI round 6 of 47, 2701 of 3184 splits, 60 changes (max delta 0.115)
+    100.28 seconds: ME NNI round 6 of 47, 2801 of 3184 splits, 60 changes (max delta 0.115)
+    100.39 seconds: ME NNI round 6 of 47, 2901 of 3184 splits, 60 changes (max delta 0.115)
+    100.50 seconds: ME NNI round 6 of 47, 3001 of 3184 splits, 61 changes (max delta 0.115)
+    100.61 seconds: ME NNI round 6 of 47, 3101 of 3184 splits, 61 changes (max delta 0.115)
+    100.80 seconds: ME NNI round 7 of 47, 101 of 3184 splits, 0 changes
+    100.91 seconds: ME NNI round 7 of 47, 201 of 3184 splits, 2 changes (max delta 0.006)
+    101.01 seconds: ME NNI round 7 of 47, 301 of 3184 splits, 2 changes (max delta 0.006)
+    101.13 seconds: ME NNI round 7 of 47, 401 of 3184 splits, 2 changes (max delta 0.006)
+    101.24 seconds: ME NNI round 7 of 47, 501 of 3184 splits, 2 changes (max delta 0.006)
+    101.38 seconds: ME NNI round 7 of 47, 601 of 3184 splits, 4 changes (max delta 0.044)
+    101.50 seconds: ME NNI round 7 of 47, 701 of 3184 splits, 5 changes (max delta 0.044)
+    101.63 seconds: ME NNI round 7 of 47, 801 of 3184 splits, 5 changes (max delta 0.044)
+    101.76 seconds: ME NNI round 7 of 47, 901 of 3184 splits, 5 changes (max delta 0.044)
+    101.88 seconds: ME NNI round 7 of 47, 1001 of 3184 splits, 7 changes (max delta 0.044)
+    101.99 seconds: ME NNI round 7 of 47, 1101 of 3184 splits, 9 changes (max delta 0.044)
+    102.11 seconds: ME NNI round 7 of 47, 1201 of 3184 splits, 13 changes (max delta 0.136)
+    102.21 seconds: ME NNI round 7 of 47, 1301 of 3184 splits, 14 changes (max delta 0.136)
+    102.33 seconds: ME NNI round 7 of 47, 1401 of 3184 splits, 16 changes (max delta 0.136)
+    102.45 seconds: ME NNI round 7 of 47, 1501 of 3184 splits, 24 changes (max delta 0.136)
+    102.57 seconds: ME NNI round 7 of 47, 1601 of 3184 splits, 24 changes (max delta 0.136)
+    102.70 seconds: ME NNI round 7 of 47, 1701 of 3184 splits, 24 changes (max delta 0.136)
+    102.83 seconds: ME NNI round 7 of 47, 1801 of 3184 splits, 28 changes (max delta 0.136)
+    102.94 seconds: ME NNI round 7 of 47, 1901 of 3184 splits, 29 changes (max delta 0.136)
+    103.06 seconds: ME NNI round 7 of 47, 2001 of 3184 splits, 30 changes (max delta 0.136)
+    103.24 seconds: ME NNI round 7 of 47, 2201 of 3184 splits, 32 changes (max delta 0.136)
+    103.37 seconds: ME NNI round 7 of 47, 2301 of 3184 splits, 33 changes (max delta 0.136)
+    103.48 seconds: ME NNI round 7 of 47, 2401 of 3184 splits, 33 changes (max delta 0.136)
+    103.72 seconds: ME NNI round 7 of 47, 2601 of 3184 splits, 36 changes (max delta 0.136)
+    103.83 seconds: ME NNI round 7 of 47, 2701 of 3184 splits, 37 changes (max delta 0.136)
+    103.95 seconds: ME NNI round 7 of 47, 2801 of 3184 splits, 37 changes (max delta 0.136)
+    104.06 seconds: ME NNI round 7 of 47, 2901 of 3184 splits, 37 changes (max delta 0.136)
+    104.17 seconds: ME NNI round 7 of 47, 3001 of 3184 splits, 37 changes (max delta 0.136)
+    104.28 seconds: ME NNI round 7 of 47, 3101 of 3184 splits, 37 changes (max delta 0.136)
+    104.48 seconds: ME NNI round 8 of 47, 101 of 3184 splits, 1 changes (max delta 0.000)
+    104.59 seconds: ME NNI round 8 of 47, 201 of 3184 splits, 3 changes (max delta 0.003)
+    104.70 seconds: ME NNI round 8 of 47, 301 of 3184 splits, 3 changes (max delta 0.003)
+    104.81 seconds: ME NNI round 8 of 47, 401 of 3184 splits, 3 changes (max delta 0.003)
+    104.93 seconds: ME NNI round 8 of 47, 501 of 3184 splits, 3 changes (max delta 0.003)
+    105.08 seconds: ME NNI round 8 of 47, 601 of 3184 splits, 7 changes (max delta 0.145)
+    105.20 seconds: ME NNI round 8 of 47, 701 of 3184 splits, 7 changes (max delta 0.145)
+    105.33 seconds: ME NNI round 8 of 47, 801 of 3184 splits, 7 changes (max delta 0.145)
+    105.46 seconds: ME NNI round 8 of 47, 901 of 3184 splits, 7 changes (max delta 0.145)
+    105.56 seconds: ME NNI round 8 of 47, 1001 of 3184 splits, 8 changes (max delta 0.145)
+    105.67 seconds: ME NNI round 8 of 47, 1101 of 3184 splits, 8 changes (max delta 0.145)
+    105.79 seconds: ME NNI round 8 of 47, 1201 of 3184 splits, 16 changes (max delta 0.145)
+    105.91 seconds: ME NNI round 8 of 47, 1301 of 3184 splits, 17 changes (max delta 0.145)
+    106.04 seconds: ME NNI round 8 of 47, 1401 of 3184 splits, 20 changes (max delta 0.145)
+    106.15 seconds: ME NNI round 8 of 47, 1501 of 3184 splits, 23 changes (max delta 0.150)
+    106.27 seconds: ME NNI round 8 of 47, 1601 of 3184 splits, 23 changes (max delta 0.150)
+    106.40 seconds: ME NNI round 8 of 47, 1701 of 3184 splits, 23 changes (max delta 0.150)
+    106.53 seconds: ME NNI round 8 of 47, 1801 of 3184 splits, 29 changes (max delta 0.150)
+    106.65 seconds: ME NNI round 8 of 47, 1901 of 3184 splits, 29 changes (max delta 0.150)
+    106.78 seconds: ME NNI round 8 of 47, 2001 of 3184 splits, 31 changes (max delta 0.297)
+    106.91 seconds: ME NNI round 8 of 47, 2101 of 3184 splits, 31 changes (max delta 0.297)
+    107.12 seconds: ME NNI round 8 of 47, 2301 of 3184 splits, 33 changes (max delta 0.297)
+    107.29 seconds: ME NNI round 8 of 47, 2501 of 3184 splits, 33 changes (max delta 0.297)
+    107.42 seconds: ME NNI round 8 of 47, 2601 of 3184 splits, 34 changes (max delta 0.297)
+    107.54 seconds: ME NNI round 8 of 47, 2701 of 3184 splits, 34 changes (max delta 0.297)
+    107.64 seconds: ME NNI round 8 of 47, 2801 of 3184 splits, 34 changes (max delta 0.297)
+    107.76 seconds: ME NNI round 8 of 47, 2901 of 3184 splits, 34 changes (max delta 0.297)
+    107.87 seconds: ME NNI round 8 of 47, 3001 of 3184 splits, 36 changes (max delta 0.297)
+    107.98 seconds: ME NNI round 8 of 47, 3101 of 3184 splits, 36 changes (max delta 0.297)
+    108.18 seconds: ME NNI round 9 of 47, 101 of 3184 splits, 5 changes (max delta 0.004)
+    108.28 seconds: ME NNI round 9 of 47, 201 of 3184 splits, 6 changes (max delta 0.004)
+    108.39 seconds: ME NNI round 9 of 47, 301 of 3184 splits, 6 changes (max delta 0.004)
+    108.50 seconds: ME NNI round 9 of 47, 401 of 3184 splits, 6 changes (max delta 0.004)
+    108.62 seconds: ME NNI round 9 of 47, 501 of 3184 splits, 6 changes (max delta 0.004)
+    108.75 seconds: ME NNI round 9 of 47, 601 of 3184 splits, 6 changes (max delta 0.004)
+    108.86 seconds: ME NNI round 9 of 47, 701 of 3184 splits, 6 changes (max delta 0.004)
+    108.98 seconds: ME NNI round 9 of 47, 801 of 3184 splits, 6 changes (max delta 0.004)
+    109.10 seconds: ME NNI round 9 of 47, 901 of 3184 splits, 6 changes (max delta 0.004)
+    109.25 seconds: ME NNI round 9 of 47, 1001 of 3184 splits, 6 changes (max delta 0.004)
+    109.39 seconds: ME NNI round 9 of 47, 1101 of 3184 splits, 6 changes (max delta 0.004)
+    109.53 seconds: ME NNI round 9 of 47, 1201 of 3184 splits, 6 changes (max delta 0.004)
+    109.66 seconds: ME NNI round 9 of 47, 1301 of 3184 splits, 7 changes (max delta 0.108)
+    109.77 seconds: ME NNI round 9 of 47, 1401 of 3184 splits, 8 changes (max delta 0.108)
+    109.88 seconds: ME NNI round 9 of 47, 1501 of 3184 splits, 8 changes (max delta 0.108)
+    110.01 seconds: ME NNI round 9 of 47, 1601 of 3184 splits, 12 changes (max delta 0.108)
+    110.12 seconds: ME NNI round 9 of 47, 1701 of 3184 splits, 13 changes (max delta 0.108)
+    110.25 seconds: ME NNI round 9 of 47, 1801 of 3184 splits, 14 changes (max delta 0.161)
+    110.38 seconds: ME NNI round 9 of 47, 1901 of 3184 splits, 14 changes (max delta 0.161)
+    110.52 seconds: ME NNI round 9 of 47, 2001 of 3184 splits, 15 changes (max delta 0.161)
+    110.65 seconds: ME NNI round 9 of 47, 2101 of 3184 splits, 16 changes (max delta 0.161)
+    110.77 seconds: ME NNI round 9 of 47, 2201 of 3184 splits, 17 changes (max delta 0.161)
+    110.87 seconds: ME NNI round 9 of 47, 2301 of 3184 splits, 17 changes (max delta 0.161)
+    111.08 seconds: ME NNI round 9 of 47, 2501 of 3184 splits, 20 changes (max delta 0.161)
+    111.23 seconds: ME NNI round 9 of 47, 2601 of 3184 splits, 22 changes (max delta 0.164)
+    111.35 seconds: ME NNI round 9 of 47, 2701 of 3184 splits, 22 changes (max delta 0.164)
+    111.46 seconds: ME NNI round 9 of 47, 2801 of 3184 splits, 22 changes (max delta 0.164)
+    111.59 seconds: ME NNI round 9 of 47, 2901 of 3184 splits, 22 changes (max delta 0.164)
+    111.71 seconds: ME NNI round 9 of 47, 3001 of 3184 splits, 23 changes (max delta 0.164)
+    111.82 seconds: ME NNI round 9 of 47, 3101 of 3184 splits, 23 changes (max delta 0.164)
+    114.70 seconds: SPR round   1 of   4, 101 of 6370 nodes
+    117.49 seconds: SPR round   1 of   4, 201 of 6370 nodes
+    120.57 seconds: SPR round   1 of   4, 301 of 6370 nodes
+    123.38 seconds: SPR round   1 of   4, 401 of 6370 nodes
+    126.62 seconds: SPR round   1 of   4, 501 of 6370 nodes
+    129.92 seconds: SPR round   1 of   4, 601 of 6370 nodes
+    132.94 seconds: SPR round   1 of   4, 701 of 6370 nodes
+    136.34 seconds: SPR round   1 of   4, 801 of 6370 nodes
+    139.41 seconds: SPR round   1 of   4, 901 of 6370 nodes
+    142.50 seconds: SPR round   1 of   4, 1001 of 6370 nodes
+    146.52 seconds: SPR round   1 of   4, 1101 of 6370 nodes
+    150.10 seconds: SPR round   1 of   4, 1201 of 6370 nodes
+    154.38 seconds: SPR round   1 of   4, 1301 of 6370 nodes
+    158.01 seconds: SPR round   1 of   4, 1401 of 6370 nodes
+    160.94 seconds: SPR round   1 of   4, 1501 of 6370 nodes
+    164.45 seconds: SPR round   1 of   4, 1601 of 6370 nodes
+    168.36 seconds: SPR round   1 of   4, 1701 of 6370 nodes
+    171.98 seconds: SPR round   1 of   4, 1801 of 6370 nodes
+    175.63 seconds: SPR round   1 of   4, 1901 of 6370 nodes
+    179.29 seconds: SPR round   1 of   4, 2001 of 6370 nodes
+    182.84 seconds: SPR round   1 of   4, 2101 of 6370 nodes
+    186.91 seconds: SPR round   1 of   4, 2201 of 6370 nodes
+    190.98 seconds: SPR round   1 of   4, 2301 of 6370 nodes
+    193.56 seconds: SPR round   1 of   4, 2401 of 6370 nodes
+    196.60 seconds: SPR round   1 of   4, 2501 of 6370 nodes
+    200.02 seconds: SPR round   1 of   4, 2601 of 6370 nodes
+    202.75 seconds: SPR round   1 of   4, 2701 of 6370 nodes
+    205.87 seconds: SPR round   1 of   4, 2801 of 6370 nodes
+    209.62 seconds: SPR round   1 of   4, 2901 of 6370 nodes
+    212.75 seconds: SPR round   1 of   4, 3001 of 6370 nodes
+    216.22 seconds: SPR round   1 of   4, 3101 of 6370 nodes
+    219.61 seconds: SPR round   1 of   4, 3201 of 6370 nodes
+    223.29 seconds: SPR round   1 of   4, 3301 of 6370 nodes
+    226.45 seconds: SPR round   1 of   4, 3401 of 6370 nodes
+    229.59 seconds: SPR round   1 of   4, 3501 of 6370 nodes
+    233.89 seconds: SPR round   1 of   4, 3601 of 6370 nodes
+    237.91 seconds: SPR round   1 of   4, 3701 of 6370 nodes
+    241.56 seconds: SPR round   1 of   4, 3801 of 6370 nodes
+    245.03 seconds: SPR round   1 of   4, 3901 of 6370 nodes
+    248.61 seconds: SPR round   1 of   4, 4001 of 6370 nodes
+    251.80 seconds: SPR round   1 of   4, 4101 of 6370 nodes
+    254.83 seconds: SPR round   1 of   4, 4201 of 6370 nodes
+    259.09 seconds: SPR round   1 of   4, 4301 of 6370 nodes
+    262.92 seconds: SPR round   1 of   4, 4401 of 6370 nodes
+    266.62 seconds: SPR round   1 of   4, 4501 of 6370 nodes
+    269.97 seconds: SPR round   1 of   4, 4601 of 6370 nodes
+    272.63 seconds: SPR round   1 of   4, 4701 of 6370 nodes
+    275.34 seconds: SPR round   1 of   4, 4801 of 6370 nodes
+    278.54 seconds: SPR round   1 of   4, 4901 of 6370 nodes
+    281.47 seconds: SPR round   1 of   4, 5001 of 6370 nodes
+    285.83 seconds: SPR round   1 of   4, 5101 of 6370 nodes
+    289.63 seconds: SPR round   1 of   4, 5201 of 6370 nodes
+    292.77 seconds: SPR round   1 of   4, 5301 of 6370 nodes
+    296.50 seconds: SPR round   1 of   4, 5401 of 6370 nodes
+    300.04 seconds: SPR round   1 of   4, 5501 of 6370 nodes
+    303.35 seconds: SPR round   1 of   4, 5601 of 6370 nodes
+    306.94 seconds: SPR round   1 of   4, 5701 of 6370 nodes
+    310.41 seconds: SPR round   1 of   4, 5801 of 6370 nodes
+    314.37 seconds: SPR round   1 of   4, 5901 of 6370 nodes
+    317.79 seconds: SPR round   1 of   4, 6001 of 6370 nodes
+    321.45 seconds: SPR round   1 of   4, 6101 of 6370 nodes
+    325.03 seconds: SPR round   1 of   4, 6201 of 6370 nodes
+    329.08 seconds: SPR round   1 of   4, 6301 of 6370 nodes
+    331.04 seconds: ME NNI round 10 of 47, 1 of 3184 splits
+    331.16 seconds: ME NNI round 10 of 47, 101 of 3184 splits, 2 changes (max delta 0.001)
+    331.26 seconds: ME NNI round 10 of 47, 201 of 3184 splits, 3 changes (max delta 0.001)
+    331.38 seconds: ME NNI round 10 of 47, 301 of 3184 splits, 5 changes (max delta 0.010)
+    331.50 seconds: ME NNI round 10 of 47, 401 of 3184 splits, 5 changes (max delta 0.010)
+    331.61 seconds: ME NNI round 10 of 47, 501 of 3184 splits, 5 changes (max delta 0.010)
+    331.71 seconds: ME NNI round 10 of 47, 601 of 3184 splits, 5 changes (max delta 0.010)
+    331.84 seconds: ME NNI round 10 of 47, 701 of 3184 splits, 5 changes (max delta 0.010)
+    331.98 seconds: ME NNI round 10 of 47, 801 of 3184 splits, 6 changes (max delta 0.010)
+    332.10 seconds: ME NNI round 10 of 47, 901 of 3184 splits, 8 changes (max delta 0.012)
+    332.22 seconds: ME NNI round 10 of 47, 1001 of 3184 splits, 8 changes (max delta 0.012)
+    332.34 seconds: ME NNI round 10 of 47, 1101 of 3184 splits, 8 changes (max delta 0.012)
+    332.47 seconds: ME NNI round 10 of 47, 1201 of 3184 splits, 9 changes (max delta 0.012)
+    332.60 seconds: ME NNI round 10 of 47, 1301 of 3184 splits, 11 changes (max delta 0.025)
+    332.71 seconds: ME NNI round 10 of 47, 1401 of 3184 splits, 12 changes (max delta 0.025)
+    332.83 seconds: ME NNI round 10 of 47, 1501 of 3184 splits, 14 changes (max delta 0.025)
+    332.95 seconds: ME NNI round 10 of 47, 1601 of 3184 splits, 14 changes (max delta 0.025)
+    333.06 seconds: ME NNI round 10 of 47, 1701 of 3184 splits, 15 changes (max delta 0.025)
+    333.17 seconds: ME NNI round 10 of 47, 1801 of 3184 splits, 15 changes (max delta 0.025)
+    333.28 seconds: ME NNI round 10 of 47, 1901 of 3184 splits, 16 changes (max delta 0.025)
+    333.42 seconds: ME NNI round 10 of 47, 2001 of 3184 splits, 18 changes (max delta 0.025)
+    333.55 seconds: ME NNI round 10 of 47, 2101 of 3184 splits, 19 changes (max delta 0.025)
+    333.67 seconds: ME NNI round 10 of 47, 2201 of 3184 splits, 19 changes (max delta 0.025)
+    333.79 seconds: ME NNI round 10 of 47, 2301 of 3184 splits, 19 changes (max delta 0.025)
+    333.90 seconds: ME NNI round 10 of 47, 2401 of 3184 splits, 21 changes (max delta 0.025)
+    334.04 seconds: ME NNI round 10 of 47, 2501 of 3184 splits, 21 changes (max delta 0.025)
+    334.15 seconds: ME NNI round 10 of 47, 2601 of 3184 splits, 22 changes (max delta 0.025)
+    334.27 seconds: ME NNI round 10 of 47, 2701 of 3184 splits, 22 changes (max delta 0.025)
+    334.38 seconds: ME NNI round 10 of 47, 2801 of 3184 splits, 22 changes (max delta 0.025)
+    334.50 seconds: ME NNI round 10 of 47, 2901 of 3184 splits, 26 changes (max delta 0.025)
+    334.61 seconds: ME NNI round 10 of 47, 3001 of 3184 splits, 27 changes (max delta 0.025)
+    334.71 seconds: ME NNI round 10 of 47, 3101 of 3184 splits, 27 changes (max delta 0.025)
+    334.92 seconds: ME NNI round 11 of 47, 101 of 3184 splits, 0 changes
+    335.13 seconds: ME NNI round 11 of 47, 301 of 3184 splits, 1 changes (max delta 0.003)
+    335.25 seconds: ME NNI round 11 of 47, 401 of 3184 splits, 1 changes (max delta 0.003)
+    335.35 seconds: ME NNI round 11 of 47, 501 of 3184 splits, 1 changes (max delta 0.003)
+    335.56 seconds: ME NNI round 11 of 47, 701 of 3184 splits, 1 changes (max delta 0.003)
+    335.70 seconds: ME NNI round 11 of 47, 801 of 3184 splits, 1 changes (max delta 0.003)
+    335.81 seconds: ME NNI round 11 of 47, 901 of 3184 splits, 2 changes (max delta 0.003)
+    335.94 seconds: ME NNI round 11 of 47, 1001 of 3184 splits, 2 changes (max delta 0.003)
+    336.06 seconds: ME NNI round 11 of 47, 1101 of 3184 splits, 3 changes (max delta 0.010)
+    336.19 seconds: ME NNI round 11 of 47, 1201 of 3184 splits, 3 changes (max delta 0.010)
+    336.32 seconds: ME NNI round 11 of 47, 1301 of 3184 splits, 4 changes (max delta 0.010)
+    336.43 seconds: ME NNI round 11 of 47, 1401 of 3184 splits, 4 changes (max delta 0.010)
+    336.55 seconds: ME NNI round 11 of 47, 1501 of 3184 splits, 4 changes (max delta 0.010)
+    336.66 seconds: ME NNI round 11 of 47, 1601 of 3184 splits, 5 changes (max delta 0.010)
+    336.76 seconds: ME NNI round 11 of 47, 1701 of 3184 splits, 5 changes (max delta 0.010)
+    336.88 seconds: ME NNI round 11 of 47, 1801 of 3184 splits, 5 changes (max delta 0.010)
+    336.99 seconds: ME NNI round 11 of 47, 1901 of 3184 splits, 6 changes (max delta 0.010)
+    337.21 seconds: ME NNI round 11 of 47, 2101 of 3184 splits, 6 changes (max delta 0.010)
+    337.34 seconds: ME NNI round 11 of 47, 2201 of 3184 splits, 6 changes (max delta 0.010)
+    337.45 seconds: ME NNI round 11 of 47, 2301 of 3184 splits, 6 changes (max delta 0.010)
+    337.56 seconds: ME NNI round 11 of 47, 2401 of 3184 splits, 9 changes (max delta 0.010)
+    337.70 seconds: ME NNI round 11 of 47, 2501 of 3184 splits, 9 changes (max delta 0.010)
+    337.81 seconds: ME NNI round 11 of 47, 2601 of 3184 splits, 9 changes (max delta 0.010)
+    337.93 seconds: ME NNI round 11 of 47, 2701 of 3184 splits, 9 changes (max delta 0.010)
+    338.04 seconds: ME NNI round 11 of 47, 2801 of 3184 splits, 9 changes (max delta 0.010)
+    338.15 seconds: ME NNI round 11 of 47, 2901 of 3184 splits, 9 changes (max delta 0.010)
+    338.26 seconds: ME NNI round 11 of 47, 3001 of 3184 splits, 10 changes (max delta 0.010)
+    338.37 seconds: ME NNI round 11 of 47, 3101 of 3184 splits, 10 changes (max delta 0.010)
+    338.57 seconds: ME NNI round 12 of 47, 101 of 3184 splits, 0 changes
+    338.78 seconds: ME NNI round 12 of 47, 301 of 3184 splits, 0 changes
+    338.90 seconds: ME NNI round 12 of 47, 401 of 3184 splits, 0 changes
+    339.00 seconds: ME NNI round 12 of 47, 501 of 3184 splits, 0 changes
+    339.22 seconds: ME NNI round 12 of 47, 701 of 3184 splits, 0 changes
+    339.35 seconds: ME NNI round 12 of 47, 801 of 3184 splits, 0 changes
+    339.47 seconds: ME NNI round 12 of 47, 901 of 3184 splits, 0 changes
+    339.59 seconds: ME NNI round 12 of 47, 1001 of 3184 splits, 1 changes (max delta 0.007)
+    339.72 seconds: ME NNI round 12 of 47, 1101 of 3184 splits, 1 changes (max delta 0.007)
+    339.84 seconds: ME NNI round 12 of 47, 1201 of 3184 splits, 1 changes (max delta 0.007)
+    339.99 seconds: ME NNI round 12 of 47, 1301 of 3184 splits, 1 changes (max delta 0.007)
+    340.09 seconds: ME NNI round 12 of 47, 1401 of 3184 splits, 1 changes (max delta 0.007)
+    340.20 seconds: ME NNI round 12 of 47, 1501 of 3184 splits, 1 changes (max delta 0.007)
+    340.32 seconds: ME NNI round 12 of 47, 1601 of 3184 splits, 1 changes (max delta 0.007)
+    340.42 seconds: ME NNI round 12 of 47, 1701 of 3184 splits, 1 changes (max delta 0.007)
+    340.53 seconds: ME NNI round 12 of 47, 1801 of 3184 splits, 1 changes (max delta 0.007)
+    340.64 seconds: ME NNI round 12 of 47, 1901 of 3184 splits, 1 changes (max delta 0.007)
+    340.86 seconds: ME NNI round 12 of 47, 2101 of 3184 splits, 1 changes (max delta 0.007)
+    340.98 seconds: ME NNI round 12 of 47, 2201 of 3184 splits, 1 changes (max delta 0.007)
+    341.10 seconds: ME NNI round 12 of 47, 2301 of 3184 splits, 1 changes (max delta 0.007)
+    341.21 seconds: ME NNI round 12 of 47, 2401 of 3184 splits, 1 changes (max delta 0.007)
+    341.34 seconds: ME NNI round 12 of 47, 2501 of 3184 splits, 1 changes (max delta 0.007)
+    341.45 seconds: ME NNI round 12 of 47, 2601 of 3184 splits, 1 changes (max delta 0.007)
+    341.57 seconds: ME NNI round 12 of 47, 2701 of 3184 splits, 1 changes (max delta 0.007)
+    341.68 seconds: ME NNI round 12 of 47, 2801 of 3184 splits, 1 changes (max delta 0.007)
+    341.79 seconds: ME NNI round 12 of 47, 2901 of 3184 splits, 1 changes (max delta 0.007)
+    341.90 seconds: ME NNI round 12 of 47, 3001 of 3184 splits, 1 changes (max delta 0.007)
+    342.00 seconds: ME NNI round 12 of 47, 3101 of 3184 splits, 1 changes (max delta 0.007)
+    342.20 seconds: ME NNI round 13 of 47, 101 of 3184 splits, 0 changes
+    342.41 seconds: ME NNI round 13 of 47, 301 of 3184 splits, 0 changes
+    342.53 seconds: ME NNI round 13 of 47, 401 of 3184 splits, 0 changes
+    342.63 seconds: ME NNI round 13 of 47, 501 of 3184 splits, 0 changes
+    342.85 seconds: ME NNI round 13 of 47, 701 of 3184 splits, 0 changes
+    342.98 seconds: ME NNI round 13 of 47, 801 of 3184 splits, 0 changes
+    343.10 seconds: ME NNI round 13 of 47, 901 of 3184 splits, 0 changes
+    343.23 seconds: ME NNI round 13 of 47, 1001 of 3184 splits, 0 changes
+    343.35 seconds: ME NNI round 13 of 47, 1101 of 3184 splits, 0 changes
+    343.47 seconds: ME NNI round 13 of 47, 1201 of 3184 splits, 0 changes
+    343.61 seconds: ME NNI round 13 of 47, 1301 of 3184 splits, 0 changes
+    343.72 seconds: ME NNI round 13 of 47, 1401 of 3184 splits, 0 changes
+    343.83 seconds: ME NNI round 13 of 47, 1501 of 3184 splits, 0 changes
+    343.94 seconds: ME NNI round 13 of 47, 1601 of 3184 splits, 0 changes
+    344.05 seconds: ME NNI round 13 of 47, 1701 of 3184 splits, 0 changes
+    344.16 seconds: ME NNI round 13 of 47, 1801 of 3184 splits, 0 changes
+    344.27 seconds: ME NNI round 13 of 47, 1901 of 3184 splits, 0 changes
+    344.49 seconds: ME NNI round 13 of 47, 2101 of 3184 splits, 0 changes
+    344.62 seconds: ME NNI round 13 of 47, 2201 of 3184 splits, 0 changes
+    344.74 seconds: ME NNI round 13 of 47, 2301 of 3184 splits, 0 changes
+    344.84 seconds: ME NNI round 13 of 47, 2401 of 3184 splits, 0 changes
+    344.98 seconds: ME NNI round 13 of 47, 2501 of 3184 splits, 0 changes
+    345.09 seconds: ME NNI round 13 of 47, 2601 of 3184 splits, 0 changes
+    345.21 seconds: ME NNI round 13 of 47, 2701 of 3184 splits, 0 changes
+    345.32 seconds: ME NNI round 13 of 47, 2801 of 3184 splits, 0 changes
+    345.43 seconds: ME NNI round 13 of 47, 2901 of 3184 splits, 0 changes
+    345.55 seconds: ME NNI round 13 of 47, 3001 of 3184 splits, 0 changes
+    345.65 seconds: ME NNI round 13 of 47, 3101 of 3184 splits, 0 changes
+    345.86 seconds: ME NNI round 14 of 47, 101 of 3184 splits, 0 changes
+    346.07 seconds: ME NNI round 14 of 47, 301 of 3184 splits, 0 changes
+    346.19 seconds: ME NNI round 14 of 47, 401 of 3184 splits, 0 changes
+    346.29 seconds: ME NNI round 14 of 47, 501 of 3184 splits, 0 changes
+    346.51 seconds: ME NNI round 14 of 47, 701 of 3184 splits, 0 changes
+    346.64 seconds: ME NNI round 14 of 47, 801 of 3184 splits, 0 changes
+    346.76 seconds: ME NNI round 14 of 47, 901 of 3184 splits, 0 changes
+    346.89 seconds: ME NNI round 14 of 47, 1001 of 3184 splits, 0 changes
+    347.01 seconds: ME NNI round 14 of 47, 1101 of 3184 splits, 0 changes
+    347.14 seconds: ME NNI round 14 of 47, 1201 of 3184 splits, 0 changes
+    347.27 seconds: ME NNI round 14 of 47, 1301 of 3184 splits, 0 changes
+    347.39 seconds: ME NNI round 14 of 47, 1401 of 3184 splits, 0 changes
+    347.50 seconds: ME NNI round 14 of 47, 1501 of 3184 splits, 0 changes
+    347.61 seconds: ME NNI round 14 of 47, 1601 of 3184 splits, 0 changes
+    347.72 seconds: ME NNI round 14 of 47, 1701 of 3184 splits, 0 changes
+    347.83 seconds: ME NNI round 14 of 47, 1801 of 3184 splits, 0 changes
+    347.94 seconds: ME NNI round 14 of 47, 1901 of 3184 splits, 0 changes
+    348.16 seconds: ME NNI round 14 of 47, 2101 of 3184 splits, 0 changes
+    348.28 seconds: ME NNI round 14 of 47, 2201 of 3184 splits, 0 changes
+    348.40 seconds: ME NNI round 14 of 47, 2301 of 3184 splits, 0 changes
+    348.50 seconds: ME NNI round 14 of 47, 2401 of 3184 splits, 0 changes
+    348.63 seconds: ME NNI round 14 of 47, 2501 of 3184 splits, 0 changes
+    348.74 seconds: ME NNI round 14 of 47, 2601 of 3184 splits, 0 changes
+    348.86 seconds: ME NNI round 14 of 47, 2701 of 3184 splits, 0 changes
+    348.97 seconds: ME NNI round 14 of 47, 2801 of 3184 splits, 0 changes
+    349.08 seconds: ME NNI round 14 of 47, 2901 of 3184 splits, 0 changes
+    349.19 seconds: ME NNI round 14 of 47, 3001 of 3184 splits, 0 changes
+    349.30 seconds: ME NNI round 14 of 47, 3101 of 3184 splits, 0 changes
+    352.00 seconds: SPR round   2 of   4, 101 of 6370 nodes
+    354.98 seconds: SPR round   2 of   4, 201 of 6370 nodes
+    357.76 seconds: SPR round   2 of   4, 301 of 6370 nodes
+    360.82 seconds: SPR round   2 of   4, 401 of 6370 nodes
+    363.74 seconds: SPR round   2 of   4, 501 of 6370 nodes
+    367.22 seconds: SPR round   2 of   4, 601 of 6370 nodes
+    370.04 seconds: SPR round   2 of   4, 701 of 6370 nodes
+    373.43 seconds: SPR round   2 of   4, 801 of 6370 nodes
+    377.31 seconds: SPR round   2 of   4, 901 of 6370 nodes
+    379.71 seconds: SPR round   2 of   4, 1001 of 6370 nodes
+    382.27 seconds: SPR round   2 of   4, 1101 of 6370 nodes
+    385.34 seconds: SPR round   2 of   4, 1201 of 6370 nodes
+    388.91 seconds: SPR round   2 of   4, 1301 of 6370 nodes
+    392.28 seconds: SPR round   2 of   4, 1401 of 6370 nodes
+    396.00 seconds: SPR round   2 of   4, 1501 of 6370 nodes
+    399.23 seconds: SPR round   2 of   4, 1601 of 6370 nodes
+    402.02 seconds: SPR round   2 of   4, 1701 of 6370 nodes
+    405.37 seconds: SPR round   2 of   4, 1801 of 6370 nodes
+    409.47 seconds: SPR round   2 of   4, 1901 of 6370 nodes
+    413.71 seconds: SPR round   2 of   4, 2001 of 6370 nodes
+    417.23 seconds: SPR round   2 of   4, 2101 of 6370 nodes
+    420.72 seconds: SPR round   2 of   4, 2201 of 6370 nodes
+    424.37 seconds: SPR round   2 of   4, 2301 of 6370 nodes
+    428.23 seconds: SPR round   2 of   4, 2401 of 6370 nodes
+    432.14 seconds: SPR round   2 of   4, 2501 of 6370 nodes
+    435.56 seconds: SPR round   2 of   4, 2601 of 6370 nodes
+    438.31 seconds: SPR round   2 of   4, 2701 of 6370 nodes
+    441.59 seconds: SPR round   2 of   4, 2801 of 6370 nodes
+    443.95 seconds: SPR round   2 of   4, 2901 of 6370 nodes
+    446.95 seconds: SPR round   2 of   4, 3001 of 6370 nodes
+    450.37 seconds: SPR round   2 of   4, 3101 of 6370 nodes
+    453.33 seconds: SPR round   2 of   4, 3201 of 6370 nodes
+    456.25 seconds: SPR round   2 of   4, 3301 of 6370 nodes
+    459.68 seconds: SPR round   2 of   4, 3401 of 6370 nodes
+    462.35 seconds: SPR round   2 of   4, 3501 of 6370 nodes
+    465.77 seconds: SPR round   2 of   4, 3601 of 6370 nodes
+    469.28 seconds: SPR round   2 of   4, 3701 of 6370 nodes
+    472.98 seconds: SPR round   2 of   4, 3801 of 6370 nodes
+    477.23 seconds: SPR round   2 of   4, 3901 of 6370 nodes
+    479.74 seconds: SPR round   2 of   4, 4001 of 6370 nodes
+    483.07 seconds: SPR round   2 of   4, 4101 of 6370 nodes
+    486.96 seconds: SPR round   2 of   4, 4201 of 6370 nodes
+    490.57 seconds: SPR round   2 of   4, 4301 of 6370 nodes
+    493.67 seconds: SPR round   2 of   4, 4401 of 6370 nodes
+    497.06 seconds: SPR round   2 of   4, 4501 of 6370 nodes
+    501.07 seconds: SPR round   2 of   4, 4601 of 6370 nodes
+    504.57 seconds: SPR round   2 of   4, 4701 of 6370 nodes
+    507.48 seconds: SPR round   2 of   4, 4801 of 6370 nodes
+    511.67 seconds: SPR round   2 of   4, 4901 of 6370 nodes
+    515.79 seconds: SPR round   2 of   4, 5001 of 6370 nodes
+    519.20 seconds: SPR round   2 of   4, 5101 of 6370 nodes
+    522.33 seconds: SPR round   2 of   4, 5201 of 6370 nodes
+    526.11 seconds: SPR round   2 of   4, 5301 of 6370 nodes
+    529.86 seconds: SPR round   2 of   4, 5401 of 6370 nodes
+    533.36 seconds: SPR round   2 of   4, 5501 of 6370 nodes
+    536.15 seconds: SPR round   2 of   4, 5601 of 6370 nodes
+    539.60 seconds: SPR round   2 of   4, 5701 of 6370 nodes
+    543.22 seconds: SPR round   2 of   4, 5801 of 6370 nodes
+    546.66 seconds: SPR round   2 of   4, 5901 of 6370 nodes
+    550.51 seconds: SPR round   2 of   4, 6001 of 6370 nodes
+    554.39 seconds: SPR round   2 of   4, 6101 of 6370 nodes
+    557.91 seconds: SPR round   2 of   4, 6201 of 6370 nodes
+    560.38 seconds: SPR round   2 of   4, 6301 of 6370 nodes
+    562.40 seconds: ME NNI round 19 of 47, 1 of 3184 splits
+    562.51 seconds: ME NNI round 19 of 47, 101 of 3184 splits, 2 changes (max delta 0.003)
+    562.61 seconds: ME NNI round 19 of 47, 201 of 3184 splits, 3 changes (max delta 0.003)
+    562.73 seconds: ME NNI round 19 of 47, 301 of 3184 splits, 4 changes (max delta 0.003)
+    562.85 seconds: ME NNI round 19 of 47, 401 of 3184 splits, 4 changes (max delta 0.003)
+    562.97 seconds: ME NNI round 19 of 47, 501 of 3184 splits, 4 changes (max delta 0.003)
+    563.09 seconds: ME NNI round 19 of 47, 601 of 3184 splits, 4 changes (max delta 0.003)
+    563.30 seconds: ME NNI round 19 of 47, 801 of 3184 splits, 4 changes (max delta 0.003)
+    563.43 seconds: ME NNI round 19 of 47, 901 of 3184 splits, 4 changes (max delta 0.003)
+    563.56 seconds: ME NNI round 19 of 47, 1001 of 3184 splits, 4 changes (max delta 0.003)
+    563.70 seconds: ME NNI round 19 of 47, 1101 of 3184 splits, 5 changes (max delta 0.003)
+    563.82 seconds: ME NNI round 19 of 47, 1201 of 3184 splits, 5 changes (max delta 0.003)
+    563.93 seconds: ME NNI round 19 of 47, 1301 of 3184 splits, 5 changes (max delta 0.003)
+    564.04 seconds: ME NNI round 19 of 47, 1401 of 3184 splits, 5 changes (max delta 0.003)
+    564.15 seconds: ME NNI round 19 of 47, 1501 of 3184 splits, 5 changes (max delta 0.003)
+    564.27 seconds: ME NNI round 19 of 47, 1601 of 3184 splits, 5 changes (max delta 0.003)
+    564.39 seconds: ME NNI round 19 of 47, 1701 of 3184 splits, 6 changes (max delta 0.008)
+    564.50 seconds: ME NNI round 19 of 47, 1801 of 3184 splits, 6 changes (max delta 0.008)
+    564.64 seconds: ME NNI round 19 of 47, 1901 of 3184 splits, 6 changes (max delta 0.008)
+    564.76 seconds: ME NNI round 19 of 47, 2001 of 3184 splits, 6 changes (max delta 0.008)
+    564.89 seconds: ME NNI round 19 of 47, 2101 of 3184 splits, 6 changes (max delta 0.008)
+    565.01 seconds: ME NNI round 19 of 47, 2201 of 3184 splits, 6 changes (max delta 0.008)
+    565.13 seconds: ME NNI round 19 of 47, 2301 of 3184 splits, 6 changes (max delta 0.008)
+    565.25 seconds: ME NNI round 19 of 47, 2401 of 3184 splits, 6 changes (max delta 0.008)
+    565.36 seconds: ME NNI round 19 of 47, 2501 of 3184 splits, 6 changes (max delta 0.008)
+    565.49 seconds: ME NNI round 19 of 47, 2601 of 3184 splits, 6 changes (max delta 0.008)
+    565.61 seconds: ME NNI round 19 of 47, 2701 of 3184 splits, 7 changes (max delta 0.008)
+    565.72 seconds: ME NNI round 19 of 47, 2801 of 3184 splits, 7 changes (max delta 0.008)
+    565.84 seconds: ME NNI round 19 of 47, 2901 of 3184 splits, 7 changes (max delta 0.008)
+    565.95 seconds: ME NNI round 19 of 47, 3001 of 3184 splits, 8 changes (max delta 0.008)
+    566.06 seconds: ME NNI round 19 of 47, 3101 of 3184 splits, 9 changes (max delta 0.008)
+    566.26 seconds: ME NNI round 20 of 47, 101 of 3184 splits, 2 changes (max delta 0.000)
+    566.36 seconds: ME NNI round 20 of 47, 201 of 3184 splits, 2 changes (max delta 0.000)
+    566.47 seconds: ME NNI round 20 of 47, 301 of 3184 splits, 2 changes (max delta 0.000)
+    566.59 seconds: ME NNI round 20 of 47, 401 of 3184 splits, 2 changes (max delta 0.000)
+    566.71 seconds: ME NNI round 20 of 47, 501 of 3184 splits, 2 changes (max delta 0.000)
+    566.82 seconds: ME NNI round 20 of 47, 601 of 3184 splits, 2 changes (max delta 0.000)
+    566.94 seconds: ME NNI round 20 of 47, 701 of 3184 splits, 2 changes (max delta 0.000)
+    567.06 seconds: ME NNI round 20 of 47, 801 of 3184 splits, 2 changes (max delta 0.000)
+    567.19 seconds: ME NNI round 20 of 47, 901 of 3184 splits, 2 changes (max delta 0.000)
+    567.31 seconds: ME NNI round 20 of 47, 1001 of 3184 splits, 2 changes (max delta 0.000)
+    567.42 seconds: ME NNI round 20 of 47, 1101 of 3184 splits, 2 changes (max delta 0.000)
+    567.54 seconds: ME NNI round 20 of 47, 1201 of 3184 splits, 2 changes (max delta 0.000)
+    567.64 seconds: ME NNI round 20 of 47, 1301 of 3184 splits, 2 changes (max delta 0.000)
+    567.75 seconds: ME NNI round 20 of 47, 1401 of 3184 splits, 2 changes (max delta 0.000)
+    567.86 seconds: ME NNI round 20 of 47, 1501 of 3184 splits, 2 changes (max delta 0.000)
+    567.96 seconds: ME NNI round 20 of 47, 1601 of 3184 splits, 3 changes (max delta 0.013)
+    568.16 seconds: ME NNI round 20 of 47, 1801 of 3184 splits, 3 changes (max delta 0.013)
+    568.30 seconds: ME NNI round 20 of 47, 1901 of 3184 splits, 3 changes (max delta 0.013)
+    568.41 seconds: ME NNI round 20 of 47, 2001 of 3184 splits, 3 changes (max delta 0.013)
+    568.54 seconds: ME NNI round 20 of 47, 2101 of 3184 splits, 3 changes (max delta 0.013)
+    568.66 seconds: ME NNI round 20 of 47, 2201 of 3184 splits, 3 changes (max delta 0.013)
+    568.78 seconds: ME NNI round 20 of 47, 2301 of 3184 splits, 3 changes (max delta 0.013)
+    568.89 seconds: ME NNI round 20 of 47, 2401 of 3184 splits, 3 changes (max delta 0.013)
+    569.00 seconds: ME NNI round 20 of 47, 2501 of 3184 splits, 3 changes (max delta 0.013)
+    569.12 seconds: ME NNI round 20 of 47, 2601 of 3184 splits, 3 changes (max delta 0.013)
+    569.24 seconds: ME NNI round 20 of 47, 2701 of 3184 splits, 3 changes (max delta 0.013)
+    569.35 seconds: ME NNI round 20 of 47, 2801 of 3184 splits, 3 changes (max delta 0.013)
+    569.46 seconds: ME NNI round 20 of 47, 2901 of 3184 splits, 3 changes (max delta 0.013)
+    569.57 seconds: ME NNI round 20 of 47, 3001 of 3184 splits, 4 changes (max delta 0.013)
+    569.68 seconds: ME NNI round 20 of 47, 3101 of 3184 splits, 5 changes (max delta 0.013)
+    569.88 seconds: ME NNI round 21 of 47, 101 of 3184 splits, 1 changes (max delta 0.000)
+    569.98 seconds: ME NNI round 21 of 47, 201 of 3184 splits, 1 changes (max delta 0.000)
+    570.08 seconds: ME NNI round 21 of 47, 301 of 3184 splits, 1 changes (max delta 0.000)
+    570.20 seconds: ME NNI round 21 of 47, 401 of 3184 splits, 1 changes (max delta 0.000)
+    570.32 seconds: ME NNI round 21 of 47, 501 of 3184 splits, 1 changes (max delta 0.000)
+    570.44 seconds: ME NNI round 21 of 47, 601 of 3184 splits, 1 changes (max delta 0.000)
+    570.63 seconds: ME NNI round 21 of 47, 801 of 3184 splits, 1 changes (max delta 0.000)
+    570.74 seconds: ME NNI round 21 of 47, 901 of 3184 splits, 1 changes (max delta 0.000)
+    570.87 seconds: ME NNI round 21 of 47, 1001 of 3184 splits, 1 changes (max delta 0.000)
+    570.99 seconds: ME NNI round 21 of 47, 1101 of 3184 splits, 1 changes (max delta 0.000)
+    571.11 seconds: ME NNI round 21 of 47, 1201 of 3184 splits, 1 changes (max delta 0.000)
+    571.22 seconds: ME NNI round 21 of 47, 1301 of 3184 splits, 1 changes (max delta 0.000)
+    571.33 seconds: ME NNI round 21 of 47, 1401 of 3184 splits, 1 changes (max delta 0.000)
+    571.43 seconds: ME NNI round 21 of 47, 1501 of 3184 splits, 1 changes (max delta 0.000)
+    571.55 seconds: ME NNI round 21 of 47, 1601 of 3184 splits, 1 changes (max delta 0.000)
+    571.66 seconds: ME NNI round 21 of 47, 1701 of 3184 splits, 1 changes (max delta 0.000)
+    571.77 seconds: ME NNI round 21 of 47, 1801 of 3184 splits, 1 changes (max delta 0.000)
+    571.90 seconds: ME NNI round 21 of 47, 1901 of 3184 splits, 1 changes (max delta 0.000)
+    572.02 seconds: ME NNI round 21 of 47, 2001 of 3184 splits, 1 changes (max delta 0.000)
+    572.15 seconds: ME NNI round 21 of 47, 2101 of 3184 splits, 1 changes (max delta 0.000)
+    572.27 seconds: ME NNI round 21 of 47, 2201 of 3184 splits, 1 changes (max delta 0.000)
+    572.39 seconds: ME NNI round 21 of 47, 2301 of 3184 splits, 1 changes (max delta 0.000)
+    572.50 seconds: ME NNI round 21 of 47, 2401 of 3184 splits, 1 changes (max delta 0.000)
+    572.61 seconds: ME NNI round 21 of 47, 2501 of 3184 splits, 1 changes (max delta 0.000)
+    572.73 seconds: ME NNI round 21 of 47, 2601 of 3184 splits, 1 changes (max delta 0.000)
+    572.85 seconds: ME NNI round 21 of 47, 2701 of 3184 splits, 1 changes (max delta 0.000)
+    572.96 seconds: ME NNI round 21 of 47, 2801 of 3184 splits, 1 changes (max delta 0.000)
+    573.08 seconds: ME NNI round 21 of 47, 2901 of 3184 splits, 1 changes (max delta 0.000)
+    573.18 seconds: ME NNI round 21 of 47, 3001 of 3184 splits, 1 changes (max delta 0.000)
+    573.29 seconds: ME NNI round 21 of 47, 3101 of 3184 splits, 1 changes (max delta 0.000)
+    573.48 seconds: ME NNI round 22 of 47, 101 of 3184 splits, 0 changes
+    573.58 seconds: ME NNI round 22 of 47, 201 of 3184 splits, 0 changes
+    573.69 seconds: ME NNI round 22 of 47, 301 of 3184 splits, 0 changes
+    573.81 seconds: ME NNI round 22 of 47, 401 of 3184 splits, 0 changes
+    573.93 seconds: ME NNI round 22 of 47, 501 of 3184 splits, 0 changes
+    574.04 seconds: ME NNI round 22 of 47, 601 of 3184 splits, 0 changes
+    574.23 seconds: ME NNI round 22 of 47, 801 of 3184 splits, 0 changes
+    574.35 seconds: ME NNI round 22 of 47, 901 of 3184 splits, 0 changes
+    574.48 seconds: ME NNI round 22 of 47, 1001 of 3184 splits, 0 changes
+    574.60 seconds: ME NNI round 22 of 47, 1101 of 3184 splits, 0 changes
+    574.72 seconds: ME NNI round 22 of 47, 1201 of 3184 splits, 0 changes
+    574.83 seconds: ME NNI round 22 of 47, 1301 of 3184 splits, 0 changes
+    574.94 seconds: ME NNI round 22 of 47, 1401 of 3184 splits, 0 changes
+    575.04 seconds: ME NNI round 22 of 47, 1501 of 3184 splits, 0 changes
+    575.16 seconds: ME NNI round 22 of 47, 1601 of 3184 splits, 0 changes
+    575.27 seconds: ME NNI round 22 of 47, 1701 of 3184 splits, 0 changes
+    575.38 seconds: ME NNI round 22 of 47, 1801 of 3184 splits, 0 changes
+    575.51 seconds: ME NNI round 22 of 47, 1901 of 3184 splits, 0 changes
+    575.63 seconds: ME NNI round 22 of 47, 2001 of 3184 splits, 0 changes
+    575.76 seconds: ME NNI round 22 of 47, 2101 of 3184 splits, 0 changes
+    575.88 seconds: ME NNI round 22 of 47, 2201 of 3184 splits, 0 changes
+    575.99 seconds: ME NNI round 22 of 47, 2301 of 3184 splits, 0 changes
+    576.11 seconds: ME NNI round 22 of 47, 2401 of 3184 splits, 0 changes
+    576.21 seconds: ME NNI round 22 of 47, 2501 of 3184 splits, 0 changes
+    576.34 seconds: ME NNI round 22 of 47, 2601 of 3184 splits, 0 changes
+    576.46 seconds: ME NNI round 22 of 47, 2701 of 3184 splits, 0 changes
+    576.57 seconds: ME NNI round 22 of 47, 2801 of 3184 splits, 0 changes
+    576.69 seconds: ME NNI round 22 of 47, 2901 of 3184 splits, 0 changes
+    576.79 seconds: ME NNI round 22 of 47, 3001 of 3184 splits, 0 changes
+    576.90 seconds: ME NNI round 22 of 47, 3101 of 3184 splits, 0 changes
+    579.56 seconds: SPR round   3 of   4, 101 of 6370 nodes
+    582.30 seconds: SPR round   3 of   4, 201 of 6370 nodes
+    585.08 seconds: SPR round   3 of   4, 301 of 6370 nodes
+    587.93 seconds: SPR round   3 of   4, 401 of 6370 nodes
+    591.17 seconds: SPR round   3 of   4, 501 of 6370 nodes
+    594.07 seconds: SPR round   3 of   4, 601 of 6370 nodes
+    597.57 seconds: SPR round   3 of   4, 701 of 6370 nodes
+    600.41 seconds: SPR round   3 of   4, 801 of 6370 nodes
+    603.87 seconds: SPR round   3 of   4, 901 of 6370 nodes
+    607.40 seconds: SPR round   3 of   4, 1001 of 6370 nodes
+    611.71 seconds: SPR round   3 of   4, 1101 of 6370 nodes
+    614.78 seconds: SPR round   3 of   4, 1201 of 6370 nodes
+    617.79 seconds: SPR round   3 of   4, 1301 of 6370 nodes
+    620.19 seconds: SPR round   3 of   4, 1401 of 6370 nodes
+    622.90 seconds: SPR round   3 of   4, 1501 of 6370 nodes
+    626.04 seconds: SPR round   3 of   4, 1601 of 6370 nodes
+    629.43 seconds: SPR round   3 of   4, 1701 of 6370 nodes
+    633.04 seconds: SPR round   3 of   4, 1801 of 6370 nodes
+    636.60 seconds: SPR round   3 of   4, 1901 of 6370 nodes
+    640.66 seconds: SPR round   3 of   4, 2001 of 6370 nodes
+    644.69 seconds: SPR round   3 of   4, 2101 of 6370 nodes
+    647.74 seconds: SPR round   3 of   4, 2201 of 6370 nodes
+    650.32 seconds: SPR round   3 of   4, 2301 of 6370 nodes
+    653.60 seconds: SPR round   3 of   4, 2401 of 6370 nodes
+    655.94 seconds: SPR round   3 of   4, 2501 of 6370 nodes
+    659.40 seconds: SPR round   3 of   4, 2601 of 6370 nodes
+    662.62 seconds: SPR round   3 of   4, 2701 of 6370 nodes
+    665.08 seconds: SPR round   3 of   4, 2801 of 6370 nodes
+    668.05 seconds: SPR round   3 of   4, 2901 of 6370 nodes
+    671.33 seconds: SPR round   3 of   4, 3001 of 6370 nodes
+    674.35 seconds: SPR round   3 of   4, 3101 of 6370 nodes
+    678.11 seconds: SPR round   3 of   4, 3201 of 6370 nodes
+    680.59 seconds: SPR round   3 of   4, 3301 of 6370 nodes
+    685.31 seconds: SPR round   3 of   4, 3401 of 6370 nodes
+    688.98 seconds: SPR round   3 of   4, 3501 of 6370 nodes
+    692.14 seconds: SPR round   3 of   4, 3601 of 6370 nodes
+    695.68 seconds: SPR round   3 of   4, 3701 of 6370 nodes
+    698.95 seconds: SPR round   3 of   4, 3801 of 6370 nodes
+    702.10 seconds: SPR round   3 of   4, 3901 of 6370 nodes
+    705.01 seconds: SPR round   3 of   4, 4001 of 6370 nodes
+    709.09 seconds: SPR round   3 of   4, 4101 of 6370 nodes
+    712.93 seconds: SPR round   3 of   4, 4201 of 6370 nodes
+    716.20 seconds: SPR round   3 of   4, 4301 of 6370 nodes
+    720.17 seconds: SPR round   3 of   4, 4401 of 6370 nodes
+    723.86 seconds: SPR round   3 of   4, 4501 of 6370 nodes
+    726.85 seconds: SPR round   3 of   4, 4601 of 6370 nodes
+    730.17 seconds: SPR round   3 of   4, 4701 of 6370 nodes
+    734.38 seconds: SPR round   3 of   4, 4801 of 6370 nodes
+    737.66 seconds: SPR round   3 of   4, 4901 of 6370 nodes
+    740.91 seconds: SPR round   3 of   4, 5001 of 6370 nodes
+    745.10 seconds: SPR round   3 of   4, 5101 of 6370 nodes
+    748.83 seconds: SPR round   3 of   4, 5201 of 6370 nodes
+    751.70 seconds: SPR round   3 of   4, 5301 of 6370 nodes
+    755.39 seconds: SPR round   3 of   4, 5401 of 6370 nodes
+    759.28 seconds: SPR round   3 of   4, 5501 of 6370 nodes
+    762.52 seconds: SPR round   3 of   4, 5601 of 6370 nodes
+    765.19 seconds: SPR round   3 of   4, 5701 of 6370 nodes
+    768.56 seconds: SPR round   3 of   4, 5801 of 6370 nodes
+    771.51 seconds: SPR round   3 of   4, 5901 of 6370 nodes
+    775.08 seconds: SPR round   3 of   4, 6001 of 6370 nodes
+    779.07 seconds: SPR round   3 of   4, 6101 of 6370 nodes
+    782.42 seconds: SPR round   3 of   4, 6201 of 6370 nodes
+    786.17 seconds: SPR round   3 of   4, 6301 of 6370 nodes
+    788.14 seconds: ME NNI round 28 of 47, 1 of 3184 splits
+    788.25 seconds: ME NNI round 28 of 47, 101 of 3184 splits, 3 changes (max delta 0.001)
+    788.36 seconds: ME NNI round 28 of 47, 201 of 3184 splits, 4 changes (max delta 0.001)
+    788.47 seconds: ME NNI round 28 of 47, 301 of 3184 splits, 5 changes (max delta 0.001)
+    788.59 seconds: ME NNI round 28 of 47, 401 of 3184 splits, 5 changes (max delta 0.001)
+    788.71 seconds: ME NNI round 28 of 47, 501 of 3184 splits, 5 changes (max delta 0.001)
+    788.83 seconds: ME NNI round 28 of 47, 601 of 3184 splits, 5 changes (max delta 0.001)
+    788.94 seconds: ME NNI round 28 of 47, 701 of 3184 splits, 5 changes (max delta 0.001)
+    789.05 seconds: ME NNI round 28 of 47, 801 of 3184 splits, 5 changes (max delta 0.001)
+    789.18 seconds: ME NNI round 28 of 47, 901 of 3184 splits, 5 changes (max delta 0.001)
+    789.31 seconds: ME NNI round 28 of 47, 1001 of 3184 splits, 5 changes (max delta 0.001)
+    789.45 seconds: ME NNI round 28 of 47, 1101 of 3184 splits, 6 changes (max delta 0.001)
+    789.56 seconds: ME NNI round 28 of 47, 1201 of 3184 splits, 6 changes (max delta 0.001)
+    789.67 seconds: ME NNI round 28 of 47, 1301 of 3184 splits, 6 changes (max delta 0.001)
+    789.79 seconds: ME NNI round 28 of 47, 1401 of 3184 splits, 6 changes (max delta 0.001)
+    789.89 seconds: ME NNI round 28 of 47, 1501 of 3184 splits, 6 changes (max delta 0.001)
+    790.01 seconds: ME NNI round 28 of 47, 1601 of 3184 splits, 6 changes (max delta 0.001)
+    790.12 seconds: ME NNI round 28 of 47, 1701 of 3184 splits, 7 changes (max delta 0.001)
+    790.24 seconds: ME NNI round 28 of 47, 1801 of 3184 splits, 7 changes (max delta 0.001)
+    790.37 seconds: ME NNI round 28 of 47, 1901 of 3184 splits, 7 changes (max delta 0.001)
+    790.49 seconds: ME NNI round 28 of 47, 2001 of 3184 splits, 7 changes (max delta 0.001)
+    790.62 seconds: ME NNI round 28 of 47, 2101 of 3184 splits, 7 changes (max delta 0.001)
+    790.75 seconds: ME NNI round 28 of 47, 2201 of 3184 splits, 7 changes (max delta 0.001)
+    790.87 seconds: ME NNI round 28 of 47, 2301 of 3184 splits, 7 changes (max delta 0.001)
+    790.99 seconds: ME NNI round 28 of 47, 2401 of 3184 splits, 7 changes (max delta 0.001)
+    791.09 seconds: ME NNI round 28 of 47, 2501 of 3184 splits, 7 changes (max delta 0.001)
+    791.22 seconds: ME NNI round 28 of 47, 2601 of 3184 splits, 8 changes (max delta 0.001)
+    791.33 seconds: ME NNI round 28 of 47, 2701 of 3184 splits, 8 changes (max delta 0.001)
+    791.45 seconds: ME NNI round 28 of 47, 2801 of 3184 splits, 8 changes (max delta 0.001)
+    791.56 seconds: ME NNI round 28 of 47, 2901 of 3184 splits, 8 changes (max delta 0.001)
+    791.67 seconds: ME NNI round 28 of 47, 3001 of 3184 splits, 8 changes (max delta 0.001)
+    791.78 seconds: ME NNI round 28 of 47, 3101 of 3184 splits, 9 changes (max delta 0.001)
+    791.97 seconds: ME NNI round 29 of 47, 101 of 3184 splits, 1 changes (max delta 0.002)
+    792.07 seconds: ME NNI round 29 of 47, 201 of 3184 splits, 1 changes (max delta 0.002)
+    792.18 seconds: ME NNI round 29 of 47, 301 of 3184 splits, 1 changes (max delta 0.002)
+    792.30 seconds: ME NNI round 29 of 47, 401 of 3184 splits, 1 changes (max delta 0.002)
+    792.42 seconds: ME NNI round 29 of 47, 501 of 3184 splits, 1 changes (max delta 0.002)
+    792.53 seconds: ME NNI round 29 of 47, 601 of 3184 splits, 1 changes (max delta 0.002)
+    792.72 seconds: ME NNI round 29 of 47, 801 of 3184 splits, 1 changes (max delta 0.002)
+    792.85 seconds: ME NNI round 29 of 47, 901 of 3184 splits, 1 changes (max delta 0.002)
+    792.97 seconds: ME NNI round 29 of 47, 1001 of 3184 splits, 1 changes (max delta 0.002)
+    793.08 seconds: ME NNI round 29 of 47, 1101 of 3184 splits, 1 changes (max delta 0.002)
+    793.19 seconds: ME NNI round 29 of 47, 1201 of 3184 splits, 1 changes (max delta 0.002)
+    793.29 seconds: ME NNI round 29 of 47, 1301 of 3184 splits, 1 changes (max delta 0.002)
+    793.40 seconds: ME NNI round 29 of 47, 1401 of 3184 splits, 1 changes (max delta 0.002)
+    793.52 seconds: ME NNI round 29 of 47, 1501 of 3184 splits, 1 changes (max delta 0.002)
+    793.63 seconds: ME NNI round 29 of 47, 1601 of 3184 splits, 1 changes (max delta 0.002)
+    793.75 seconds: ME NNI round 29 of 47, 1701 of 3184 splits, 1 changes (max delta 0.002)
+    793.86 seconds: ME NNI round 29 of 47, 1801 of 3184 splits, 1 changes (max delta 0.002)
+    793.99 seconds: ME NNI round 29 of 47, 1901 of 3184 splits, 1 changes (max delta 0.002)
+    794.11 seconds: ME NNI round 29 of 47, 2001 of 3184 splits, 1 changes (max delta 0.002)
+    794.23 seconds: ME NNI round 29 of 47, 2101 of 3184 splits, 1 changes (max delta 0.002)
+    794.36 seconds: ME NNI round 29 of 47, 2201 of 3184 splits, 1 changes (max delta 0.002)
+    794.47 seconds: ME NNI round 29 of 47, 2301 of 3184 splits, 1 changes (max delta 0.002)
+    794.58 seconds: ME NNI round 29 of 47, 2401 of 3184 splits, 1 changes (max delta 0.002)
+    794.69 seconds: ME NNI round 29 of 47, 2501 of 3184 splits, 1 changes (max delta 0.002)
+    794.82 seconds: ME NNI round 29 of 47, 2601 of 3184 splits, 1 changes (max delta 0.002)
+    794.93 seconds: ME NNI round 29 of 47, 2701 of 3184 splits, 1 changes (max delta 0.002)
+    795.05 seconds: ME NNI round 29 of 47, 2801 of 3184 splits, 1 changes (max delta 0.002)
+    795.16 seconds: ME NNI round 29 of 47, 2901 of 3184 splits, 1 changes (max delta 0.002)
+    795.26 seconds: ME NNI round 29 of 47, 3001 of 3184 splits, 2 changes (max delta 0.002)
+    795.37 seconds: ME NNI round 29 of 47, 3101 of 3184 splits, 3 changes (max delta 0.002)
+    795.57 seconds: ME NNI round 30 of 47, 101 of 3184 splits, 0 changes
+    795.68 seconds: ME NNI round 30 of 47, 201 of 3184 splits, 0 changes
+    795.79 seconds: ME NNI round 30 of 47, 301 of 3184 splits, 0 changes
+    795.91 seconds: ME NNI round 30 of 47, 401 of 3184 splits, 0 changes
+    796.03 seconds: ME NNI round 30 of 47, 501 of 3184 splits, 0 changes
+    796.15 seconds: ME NNI round 30 of 47, 601 of 3184 splits, 0 changes
+    796.34 seconds: ME NNI round 30 of 47, 801 of 3184 splits, 0 changes
+    796.47 seconds: ME NNI round 30 of 47, 901 of 3184 splits, 0 changes
+    796.59 seconds: ME NNI round 30 of 47, 1001 of 3184 splits, 0 changes
+    796.70 seconds: ME NNI round 30 of 47, 1101 of 3184 splits, 0 changes
+    796.81 seconds: ME NNI round 30 of 47, 1201 of 3184 splits, 0 changes
+    796.92 seconds: ME NNI round 30 of 47, 1301 of 3184 splits, 0 changes
+    797.03 seconds: ME NNI round 30 of 47, 1401 of 3184 splits, 0 changes
+    797.15 seconds: ME NNI round 30 of 47, 1501 of 3184 splits, 0 changes
+    797.27 seconds: ME NNI round 30 of 47, 1601 of 3184 splits, 0 changes
+    797.39 seconds: ME NNI round 30 of 47, 1701 of 3184 splits, 0 changes
+    797.51 seconds: ME NNI round 30 of 47, 1801 of 3184 splits, 0 changes
+    797.64 seconds: ME NNI round 30 of 47, 1901 of 3184 splits, 0 changes
+    797.76 seconds: ME NNI round 30 of 47, 2001 of 3184 splits, 0 changes
+    797.88 seconds: ME NNI round 30 of 47, 2101 of 3184 splits, 0 changes
+    798.01 seconds: ME NNI round 30 of 47, 2201 of 3184 splits, 0 changes
+    798.13 seconds: ME NNI round 30 of 47, 2301 of 3184 splits, 0 changes
+    798.24 seconds: ME NNI round 30 of 47, 2401 of 3184 splits, 0 changes
+    798.35 seconds: ME NNI round 30 of 47, 2501 of 3184 splits, 0 changes
+    798.48 seconds: ME NNI round 30 of 47, 2601 of 3184 splits, 0 changes
+    798.60 seconds: ME NNI round 30 of 47, 2701 of 3184 splits, 0 changes
+    798.71 seconds: ME NNI round 30 of 47, 2801 of 3184 splits, 0 changes
+    798.83 seconds: ME NNI round 30 of 47, 2901 of 3184 splits, 0 changes
+    798.93 seconds: ME NNI round 30 of 47, 3001 of 3184 splits, 0 changes
+    799.04 seconds: ME NNI round 30 of 47, 3101 of 3184 splits, 0 changes
+    801.54 seconds: SPR round   4 of   4, 101 of 6370 nodes
+    804.35 seconds: SPR round   4 of   4, 201 of 6370 nodes
+    807.17 seconds: SPR round   4 of   4, 301 of 6370 nodes
+    810.02 seconds: SPR round   4 of   4, 401 of 6370 nodes
+    813.26 seconds: SPR round   4 of   4, 501 of 6370 nodes
+    816.14 seconds: SPR round   4 of   4, 601 of 6370 nodes
+    819.63 seconds: SPR round   4 of   4, 701 of 6370 nodes
+    822.47 seconds: SPR round   4 of   4, 801 of 6370 nodes
+    825.93 seconds: SPR round   4 of   4, 901 of 6370 nodes
+    829.45 seconds: SPR round   4 of   4, 1001 of 6370 nodes
+    833.85 seconds: SPR round   4 of   4, 1101 of 6370 nodes
+    837.17 seconds: SPR round   4 of   4, 1201 of 6370 nodes
+    840.36 seconds: SPR round   4 of   4, 1301 of 6370 nodes
+    842.85 seconds: SPR round   4 of   4, 1401 of 6370 nodes
+    845.58 seconds: SPR round   4 of   4, 1501 of 6370 nodes
+    848.65 seconds: SPR round   4 of   4, 1601 of 6370 nodes
+    852.84 seconds: SPR round   4 of   4, 1701 of 6370 nodes
+    855.62 seconds: SPR round   4 of   4, 1801 of 6370 nodes
+    858.46 seconds: SPR round   4 of   4, 1901 of 6370 nodes
+    861.47 seconds: SPR round   4 of   4, 2001 of 6370 nodes
+    863.95 seconds: SPR round   4 of   4, 2101 of 6370 nodes
+    867.44 seconds: SPR round   4 of   4, 2201 of 6370 nodes
+    871.03 seconds: SPR round   4 of   4, 2301 of 6370 nodes
+    873.23 seconds: SPR round   4 of   4, 2401 of 6370 nodes
+    876.45 seconds: SPR round   4 of   4, 2501 of 6370 nodes
+    879.79 seconds: SPR round   4 of   4, 2601 of 6370 nodes
+    882.99 seconds: SPR round   4 of   4, 2701 of 6370 nodes
+    886.45 seconds: SPR round   4 of   4, 2801 of 6370 nodes
+    889.14 seconds: SPR round   4 of   4, 2901 of 6370 nodes
+    893.60 seconds: SPR round   4 of   4, 3001 of 6370 nodes
+    897.20 seconds: SPR round   4 of   4, 3101 of 6370 nodes
+    900.74 seconds: SPR round   4 of   4, 3201 of 6370 nodes
+    904.34 seconds: SPR round   4 of   4, 3301 of 6370 nodes
+    908.62 seconds: SPR round   4 of   4, 3401 of 6370 nodes
+    912.32 seconds: SPR round   4 of   4, 3501 of 6370 nodes
+    915.48 seconds: SPR round   4 of   4, 3601 of 6370 nodes
+    919.03 seconds: SPR round   4 of   4, 3701 of 6370 nodes
+    922.30 seconds: SPR round   4 of   4, 3801 of 6370 nodes
+    925.48 seconds: SPR round   4 of   4, 3901 of 6370 nodes
+    928.40 seconds: SPR round   4 of   4, 4001 of 6370 nodes
+    932.47 seconds: SPR round   4 of   4, 4101 of 6370 nodes
+    936.29 seconds: SPR round   4 of   4, 4201 of 6370 nodes
+    939.58 seconds: SPR round   4 of   4, 4301 of 6370 nodes
+    943.56 seconds: SPR round   4 of   4, 4401 of 6370 nodes
+    947.27 seconds: SPR round   4 of   4, 4501 of 6370 nodes
+    950.31 seconds: SPR round   4 of   4, 4601 of 6370 nodes
+    953.63 seconds: SPR round   4 of   4, 4701 of 6370 nodes
+    957.86 seconds: SPR round   4 of   4, 4801 of 6370 nodes
+    961.15 seconds: SPR round   4 of   4, 4901 of 6370 nodes
+    964.49 seconds: SPR round   4 of   4, 5001 of 6370 nodes
+    968.94 seconds: SPR round   4 of   4, 5101 of 6370 nodes
+    972.70 seconds: SPR round   4 of   4, 5201 of 6370 nodes
+    975.58 seconds: SPR round   4 of   4, 5301 of 6370 nodes
+    979.26 seconds: SPR round   4 of   4, 5401 of 6370 nodes
+    983.17 seconds: SPR round   4 of   4, 5501 of 6370 nodes
+    986.42 seconds: SPR round   4 of   4, 5601 of 6370 nodes
+    989.10 seconds: SPR round   4 of   4, 5701 of 6370 nodes
+    992.46 seconds: SPR round   4 of   4, 5801 of 6370 nodes
+    995.40 seconds: SPR round   4 of   4, 5901 of 6370 nodes
+    998.99 seconds: SPR round   4 of   4, 6001 of 6370 nodes
+   1002.99 seconds: SPR round   4 of   4, 6101 of 6370 nodes
+   1006.31 seconds: SPR round   4 of   4, 6201 of 6370 nodes
+   1010.09 seconds: SPR round   4 of   4, 6301 of 6370 nodes
+   1012.05 seconds: ME NNI round 37 of 47, 1 of 3184 splits
+   1012.17 seconds: ME NNI round 37 of 47, 101 of 3184 splits, 0 changes
+   1012.27 seconds: ME NNI round 37 of 47, 201 of 3184 splits, 1 changes (max delta 0.000)
+   1012.38 seconds: ME NNI round 37 of 47, 301 of 3184 splits, 2 changes (max delta 0.000)
+   1012.51 seconds: ME NNI round 37 of 47, 401 of 3184 splits, 2 changes (max delta 0.000)
+   1012.63 seconds: ME NNI round 37 of 47, 501 of 3184 splits, 2 changes (max delta 0.000)
+   1012.75 seconds: ME NNI round 37 of 47, 601 of 3184 splits, 2 changes (max delta 0.000)
+   1012.86 seconds: ME NNI round 37 of 47, 701 of 3184 splits, 2 changes (max delta 0.000)
+   1012.97 seconds: ME NNI round 37 of 47, 801 of 3184 splits, 3 changes (max delta 0.000)
+   1013.10 seconds: ME NNI round 37 of 47, 901 of 3184 splits, 3 changes (max delta 0.000)
+   1013.22 seconds: ME NNI round 37 of 47, 1001 of 3184 splits, 3 changes (max delta 0.000)
+   1013.34 seconds: ME NNI round 37 of 47, 1101 of 3184 splits, 3 changes (max delta 0.000)
+   1013.45 seconds: ME NNI round 37 of 47, 1201 of 3184 splits, 3 changes (max delta 0.000)
+   1013.55 seconds: ME NNI round 37 of 47, 1301 of 3184 splits, 3 changes (max delta 0.000)
+   1013.67 seconds: ME NNI round 37 of 47, 1401 of 3184 splits, 3 changes (max delta 0.000)
+   1013.80 seconds: ME NNI round 37 of 47, 1501 of 3184 splits, 3 changes (max delta 0.000)
+   1013.92 seconds: ME NNI round 37 of 47, 1601 of 3184 splits, 3 changes (max delta 0.000)
+   1014.05 seconds: ME NNI round 37 of 47, 1701 of 3184 splits, 3 changes (max delta 0.000)
+   1014.17 seconds: ME NNI round 37 of 47, 1801 of 3184 splits, 3 changes (max delta 0.000)
+   1014.31 seconds: ME NNI round 37 of 47, 1901 of 3184 splits, 3 changes (max delta 0.000)
+   1014.43 seconds: ME NNI round 37 of 47, 2001 of 3184 splits, 3 changes (max delta 0.000)
+   1014.56 seconds: ME NNI round 37 of 47, 2101 of 3184 splits, 3 changes (max delta 0.000)
+   1014.70 seconds: ME NNI round 37 of 47, 2201 of 3184 splits, 3 changes (max delta 0.000)
+   1014.82 seconds: ME NNI round 37 of 47, 2301 of 3184 splits, 3 changes (max delta 0.000)
+   1014.94 seconds: ME NNI round 37 of 47, 2401 of 3184 splits, 3 changes (max delta 0.000)
+   1015.05 seconds: ME NNI round 37 of 47, 2501 of 3184 splits, 3 changes (max delta 0.000)
+   1015.18 seconds: ME NNI round 37 of 47, 2601 of 3184 splits, 4 changes (max delta 0.000)
+   1015.30 seconds: ME NNI round 37 of 47, 2701 of 3184 splits, 4 changes (max delta 0.000)
+   1015.42 seconds: ME NNI round 37 of 47, 2801 of 3184 splits, 4 changes (max delta 0.000)
+   1015.54 seconds: ME NNI round 37 of 47, 2901 of 3184 splits, 4 changes (max delta 0.000)
+   1015.64 seconds: ME NNI round 37 of 47, 3001 of 3184 splits, 4 changes (max delta 0.000)
+   1015.75 seconds: ME NNI round 37 of 47, 3101 of 3184 splits, 5 changes (max delta 0.001)
+   1015.95 seconds: ME NNI round 38 of 47, 101 of 3184 splits, 0 changes
+   1016.05 seconds: ME NNI round 38 of 47, 201 of 3184 splits, 0 changes
+   1016.15 seconds: ME NNI round 38 of 47, 301 of 3184 splits, 0 changes
+   1016.27 seconds: ME NNI round 38 of 47, 401 of 3184 splits, 0 changes
+   1016.39 seconds: ME NNI round 38 of 47, 501 of 3184 splits, 0 changes
+   1016.51 seconds: ME NNI round 38 of 47, 601 of 3184 splits, 0 changes
+   1016.71 seconds: ME NNI round 38 of 47, 801 of 3184 splits, 0 changes
+   1016.84 seconds: ME NNI round 38 of 47, 901 of 3184 splits, 0 changes
+   1016.96 seconds: ME NNI round 38 of 47, 1001 of 3184 splits, 0 changes
+   1017.07 seconds: ME NNI round 38 of 47, 1101 of 3184 splits, 0 changes
+   1017.18 seconds: ME NNI round 38 of 47, 1201 of 3184 splits, 0 changes
+   1017.28 seconds: ME NNI round 38 of 47, 1301 of 3184 splits, 0 changes
+   1017.39 seconds: ME NNI round 38 of 47, 1401 of 3184 splits, 0 changes
+   1017.52 seconds: ME NNI round 38 of 47, 1501 of 3184 splits, 0 changes
+   1017.64 seconds: ME NNI round 38 of 47, 1601 of 3184 splits, 0 changes
+   1017.76 seconds: ME NNI round 38 of 47, 1701 of 3184 splits, 0 changes
+   1017.88 seconds: ME NNI round 38 of 47, 1801 of 3184 splits, 0 changes
+   1018.01 seconds: ME NNI round 38 of 47, 1901 of 3184 splits, 0 changes
+   1018.13 seconds: ME NNI round 38 of 47, 2001 of 3184 splits, 0 changes
+   1018.26 seconds: ME NNI round 38 of 47, 2101 of 3184 splits, 0 changes
+   1018.39 seconds: ME NNI round 38 of 47, 2201 of 3184 splits, 0 changes
+   1018.51 seconds: ME NNI round 38 of 47, 2301 of 3184 splits, 0 changes
+   1018.63 seconds: ME NNI round 38 of 47, 2401 of 3184 splits, 0 changes
+   1018.73 seconds: ME NNI round 38 of 47, 2501 of 3184 splits, 0 changes
+   1018.86 seconds: ME NNI round 38 of 47, 2601 of 3184 splits, 0 changes
+   1018.98 seconds: ME NNI round 38 of 47, 2701 of 3184 splits, 0 changes
+   1019.10 seconds: ME NNI round 38 of 47, 2801 of 3184 splits, 0 changes
+   1019.21 seconds: ME NNI round 38 of 47, 2901 of 3184 splits, 0 changes
+   1019.32 seconds: ME NNI round 38 of 47, 3001 of 3184 splits, 1 changes (max delta 0.001)
+   1019.43 seconds: ME NNI round 38 of 47, 3101 of 3184 splits, 2 changes (max delta 0.001)
+   1019.62 seconds: ME NNI round 39 of 47, 101 of 3184 splits, 0 changes
+   1019.73 seconds: ME NNI round 39 of 47, 201 of 3184 splits, 0 changes
+   1019.83 seconds: ME NNI round 39 of 47, 301 of 3184 splits, 0 changes
+   1019.95 seconds: ME NNI round 39 of 47, 401 of 3184 splits, 0 changes
+   1020.07 seconds: ME NNI round 39 of 47, 501 of 3184 splits, 0 changes
+   1020.19 seconds: ME NNI round 39 of 47, 601 of 3184 splits, 0 changes
+   1020.39 seconds: ME NNI round 39 of 47, 801 of 3184 splits, 0 changes
+   1020.52 seconds: ME NNI round 39 of 47, 901 of 3184 splits, 0 changes
+   1020.63 seconds: ME NNI round 39 of 47, 1001 of 3184 splits, 0 changes
+   1020.75 seconds: ME NNI round 39 of 47, 1101 of 3184 splits, 0 changes
+   1020.86 seconds: ME NNI round 39 of 47, 1201 of 3184 splits, 0 changes
+   1020.96 seconds: ME NNI round 39 of 47, 1301 of 3184 splits, 0 changes
+   1021.07 seconds: ME NNI round 39 of 47, 1401 of 3184 splits, 0 changes
+   1021.20 seconds: ME NNI round 39 of 47, 1501 of 3184 splits, 0 changes
+   1021.32 seconds: ME NNI round 39 of 47, 1601 of 3184 splits, 0 changes
+   1021.44 seconds: ME NNI round 39 of 47, 1701 of 3184 splits, 0 changes
+   1021.56 seconds: ME NNI round 39 of 47, 1801 of 3184 splits, 0 changes
+   1021.69 seconds: ME NNI round 39 of 47, 1901 of 3184 splits, 0 changes
+   1021.81 seconds: ME NNI round 39 of 47, 2001 of 3184 splits, 0 changes
+   1021.94 seconds: ME NNI round 39 of 47, 2101 of 3184 splits, 0 changes
+   1022.07 seconds: ME NNI round 39 of 47, 2201 of 3184 splits, 0 changes
+   1022.19 seconds: ME NNI round 39 of 47, 2301 of 3184 splits, 0 changes
+   1022.31 seconds: ME NNI round 39 of 47, 2401 of 3184 splits, 0 changes
+   1022.41 seconds: ME NNI round 39 of 47, 2501 of 3184 splits, 0 changes
+   1022.55 seconds: ME NNI round 39 of 47, 2601 of 3184 splits, 0 changes
+   1022.66 seconds: ME NNI round 39 of 47, 2701 of 3184 splits, 0 changes
+   1022.78 seconds: ME NNI round 39 of 47, 2801 of 3184 splits, 0 changes
+   1022.89 seconds: ME NNI round 39 of 47, 2901 of 3184 splits, 0 changes
+   1023.00 seconds: ME NNI round 39 of 47, 3001 of 3184 splits, 0 changes
+   1023.11 seconds: ME NNI round 39 of 47, 3101 of 3184 splits, 0 changes
+Total branch-length 581.475 after 1026.63 sec
+   1026.99 seconds: ML Lengths 1 of 3184 splits
+   1028.43 seconds: ML Lengths 101 of 3184 splits
+   1029.89 seconds: ML Lengths 201 of 3184 splits
+   1031.34 seconds: ML Lengths 301 of 3184 splits
+   1032.86 seconds: ML Lengths 401 of 3184 splits
+   1034.35 seconds: ML Lengths 501 of 3184 splits
+   1035.78 seconds: ML Lengths 601 of 3184 splits
+   1037.12 seconds: ML Lengths 701 of 3184 splits
+   1038.48 seconds: ML Lengths 801 of 3184 splits
+   1039.96 seconds: ML Lengths 901 of 3184 splits
+   1041.41 seconds: ML Lengths 1001 of 3184 splits
+   1042.82 seconds: ML Lengths 1101 of 3184 splits
+   1044.23 seconds: ML Lengths 1201 of 3184 splits
+   1045.62 seconds: ML Lengths 1301 of 3184 splits
+   1047.02 seconds: ML Lengths 1401 of 3184 splits
+   1048.47 seconds: ML Lengths 1501 of 3184 splits
+   1049.93 seconds: ML Lengths 1601 of 3184 splits
+   1051.39 seconds: ML Lengths 1701 of 3184 splits
+   1052.83 seconds: ML Lengths 1801 of 3184 splits
+   1054.33 seconds: ML Lengths 1901 of 3184 splits
+   1055.78 seconds: ML Lengths 2001 of 3184 splits
+   1057.27 seconds: ML Lengths 2101 of 3184 splits
+   1058.73 seconds: ML Lengths 2201 of 3184 splits
+   1060.19 seconds: ML Lengths 2301 of 3184 splits
+   1061.62 seconds: ML Lengths 2401 of 3184 splits
+   1063.03 seconds: ML Lengths 2501 of 3184 splits
+   1064.54 seconds: ML Lengths 2601 of 3184 splits
+   1066.03 seconds: ML Lengths 2701 of 3184 splits
+   1067.48 seconds: ML Lengths 2801 of 3184 splits
+   1068.96 seconds: ML Lengths 2901 of 3184 splits
+   1070.40 seconds: ML Lengths 3001 of 3184 splits
+   1071.87 seconds: ML Lengths 3101 of 3184 splits
+   1073.05 seconds: ML NNI round 1 of 23, 1 of 3184 splits
+   1080.86 seconds: ML NNI round 1 of 23, 101 of 3184 splits, 22 changes (max delta 31.676)
+   1088.85 seconds: ML NNI round 1 of 23, 201 of 3184 splits, 41 changes (max delta 46.921)
+   1096.70 seconds: ML NNI round 1 of 23, 301 of 3184 splits, 56 changes (max delta 48.721)
+   1104.87 seconds: ML NNI round 1 of 23, 401 of 3184 splits, 66 changes (max delta 48.721)
+   1113.03 seconds: ML NNI round 1 of 23, 501 of 3184 splits, 74 changes (max delta 48.721)
+   1120.76 seconds: ML NNI round 1 of 23, 601 of 3184 splits, 79 changes (max delta 48.721)
+   1127.83 seconds: ML NNI round 1 of 23, 701 of 3184 splits, 87 changes (max delta 48.721)
+   1135.26 seconds: ML NNI round 1 of 23, 801 of 3184 splits, 101 changes (max delta 48.721)
+   1143.29 seconds: ML NNI round 1 of 23, 901 of 3184 splits, 113 changes (max delta 57.876)
+   1151.13 seconds: ML NNI round 1 of 23, 1001 of 3184 splits, 133 changes (max delta 57.876)
+   1158.91 seconds: ML NNI round 1 of 23, 1101 of 3184 splits, 147 changes (max delta 57.876)
+   1166.53 seconds: ML NNI round 1 of 23, 1201 of 3184 splits, 162 changes (max delta 57.876)
+   1174.12 seconds: ML NNI round 1 of 23, 1301 of 3184 splits, 176 changes (max delta 57.876)
+   1181.72 seconds: ML NNI round 1 of 23, 1401 of 3184 splits, 192 changes (max delta 57.876)
+   1189.59 seconds: ML NNI round 1 of 23, 1501 of 3184 splits, 205 changes (max delta 57.876)
+   1197.51 seconds: ML NNI round 1 of 23, 1601 of 3184 splits, 213 changes (max delta 57.876)
+   1205.48 seconds: ML NNI round 1 of 23, 1701 of 3184 splits, 222 changes (max delta 82.892)
+   1213.24 seconds: ML NNI round 1 of 23, 1801 of 3184 splits, 232 changes (max delta 82.892)
+   1221.23 seconds: ML NNI round 1 of 23, 1901 of 3184 splits, 240 changes (max delta 82.892)
+   1229.03 seconds: ML NNI round 1 of 23, 2001 of 3184 splits, 262 changes (max delta 82.892)
+   1237.05 seconds: ML NNI round 1 of 23, 2101 of 3184 splits, 269 changes (max delta 82.892)
+   1244.70 seconds: ML NNI round 1 of 23, 2201 of 3184 splits, 283 changes (max delta 82.892)
+   1252.58 seconds: ML NNI round 1 of 23, 2301 of 3184 splits, 295 changes (max delta 82.892)
+   1260.28 seconds: ML NNI round 1 of 23, 2401 of 3184 splits, 307 changes (max delta 82.892)
+   1268.00 seconds: ML NNI round 1 of 23, 2501 of 3184 splits, 316 changes (max delta 82.892)
+   1275.99 seconds: ML NNI round 1 of 23, 2601 of 3184 splits, 321 changes (max delta 82.892)
+   1284.07 seconds: ML NNI round 1 of 23, 2701 of 3184 splits, 331 changes (max delta 82.892)
+   1291.84 seconds: ML NNI round 1 of 23, 2801 of 3184 splits, 339 changes (max delta 82.892)
+   1299.75 seconds: ML NNI round 1 of 23, 2901 of 3184 splits, 350 changes (max delta 82.892)
+   1307.74 seconds: ML NNI round 1 of 23, 3001 of 3184 splits, 358 changes (max delta 82.892)
+   1315.67 seconds: ML NNI round 1 of 23, 3101 of 3184 splits, 372 changes (max delta 82.892)
+ML-NNI round 1: LogLk = -8196985.767 NNIs 388 max delta 181.02 Time 1322.62
+   1326.70 seconds: Site likelihoods with rate category 1 of 20
+   1330.72 seconds: Site likelihoods with rate category 2 of 20
+   1334.75 seconds: Site likelihoods with rate category 3 of 20
+   1338.80 seconds: Site likelihoods with rate category 4 of 20
+   1342.80 seconds: Site likelihoods with rate category 5 of 20
+   1346.79 seconds: Site likelihoods with rate category 6 of 20
+   1350.85 seconds: Site likelihoods with rate category 7 of 20
+   1354.83 seconds: Site likelihoods with rate category 8 of 20
+   1358.83 seconds: Site likelihoods with rate category 9 of 20
+   1362.84 seconds: Site likelihoods with rate category 10 of 20
+   1366.83 seconds: Site likelihoods with rate category 11 of 20
+   1370.81 seconds: Site likelihoods with rate category 12 of 20
+   1374.89 seconds: Site likelihoods with rate category 13 of 20
+   1378.87 seconds: Site likelihoods with rate category 14 of 20
+   1382.88 seconds: Site likelihoods with rate category 15 of 20
+   1386.93 seconds: Site likelihoods with rate category 16 of 20
+   1390.93 seconds: Site likelihoods with rate category 17 of 20
+   1394.92 seconds: Site likelihoods with rate category 18 of 20
+   1398.97 seconds: Site likelihoods with rate category 19 of 20
+   1402.97 seconds: Site likelihoods with rate category 20 of 20
+Switched to using 20 rate categories (CAT approximation)
+Rate categories were divided by 1.134 so that average rate = 1.0
+CAT-based log-likelihoods may not be comparable across runs
+Use -gamma for approximate but comparable Gamma(20) log-likelihoods
+   1410.44 seconds: ML NNI round 2 of 23, 1 of 3184 splits
+   1418.86 seconds: ML NNI round 2 of 23, 101 of 3184 splits, 7 changes (max delta 31.722)
+   1427.11 seconds: ML NNI round 2 of 23, 201 of 3184 splits, 8 changes (max delta 31.722)
+   1435.69 seconds: ML NNI round 2 of 23, 301 of 3184 splits, 11 changes (max delta 44.996)
+   1444.19 seconds: ML NNI round 2 of 23, 401 of 3184 splits, 17 changes (max delta 44.996)
+   1452.90 seconds: ML NNI round 2 of 23, 501 of 3184 splits, 21 changes (max delta 44.996)
+   1461.34 seconds: ML NNI round 2 of 23, 601 of 3184 splits, 24 changes (max delta 44.996)
+   1469.19 seconds: ML NNI round 2 of 23, 701 of 3184 splits, 33 changes (max delta 44.996)
+   1477.49 seconds: ML NNI round 2 of 23, 801 of 3184 splits, 37 changes (max delta 44.996)
+   1486.04 seconds: ML NNI round 2 of 23, 901 of 3184 splits, 41 changes (max delta 44.996)
+   1494.62 seconds: ML NNI round 2 of 23, 1001 of 3184 splits, 43 changes (max delta 44.996)
+   1502.57 seconds: ML NNI round 2 of 23, 1101 of 3184 splits, 56 changes (max delta 44.996)
+   1510.79 seconds: ML NNI round 2 of 23, 1201 of 3184 splits, 62 changes (max delta 44.996)
+   1518.81 seconds: ML NNI round 2 of 23, 1301 of 3184 splits, 67 changes (max delta 62.429)
+   1526.66 seconds: ML NNI round 2 of 23, 1401 of 3184 splits, 71 changes (max delta 62.429)
+   1534.85 seconds: ML NNI round 2 of 23, 1501 of 3184 splits, 77 changes (max delta 62.429)
+   1543.21 seconds: ML NNI round 2 of 23, 1601 of 3184 splits, 89 changes (max delta 62.429)
+   1551.64 seconds: ML NNI round 2 of 23, 1701 of 3184 splits, 93 changes (max delta 62.429)
+   1559.21 seconds: ML NNI round 2 of 23, 1801 of 3184 splits, 95 changes (max delta 62.429)
+   1566.82 seconds: ML NNI round 2 of 23, 1901 of 3184 splits, 102 changes (max delta 62.429)
+   1575.29 seconds: ML NNI round 2 of 23, 2001 of 3184 splits, 106 changes (max delta 62.429)
+   1583.69 seconds: ML NNI round 2 of 23, 2101 of 3184 splits, 112 changes (max delta 62.429)
+   1591.95 seconds: ML NNI round 2 of 23, 2201 of 3184 splits, 127 changes (max delta 62.429)
+   1600.52 seconds: ML NNI round 2 of 23, 2301 of 3184 splits, 128 changes (max delta 62.429)
+   1608.76 seconds: ML NNI round 2 of 23, 2401 of 3184 splits, 133 changes (max delta 62.429)
+   1617.41 seconds: ML NNI round 2 of 23, 2501 of 3184 splits, 134 changes (max delta 62.429)
+   1625.75 seconds: ML NNI round 2 of 23, 2601 of 3184 splits, 140 changes (max delta 62.429)
+   1634.03 seconds: ML NNI round 2 of 23, 2701 of 3184 splits, 142 changes (max delta 62.429)
+   1642.46 seconds: ML NNI round 2 of 23, 2801 of 3184 splits, 143 changes (max delta 79.174)
+   1650.83 seconds: ML NNI round 2 of 23, 2901 of 3184 splits, 151 changes (max delta 79.174)
+   1659.16 seconds: ML NNI round 2 of 23, 3001 of 3184 splits, 160 changes (max delta 79.174)
+   1667.32 seconds: ML NNI round 2 of 23, 3101 of 3184 splits, 168 changes (max delta 79.174)
+ML-NNI round 2: LogLk = -8027416.654 NNIs 174 max delta 79.17 Time 1674.47
+   1674.47 seconds: ML NNI round 3 of 23, 1 of 3184 splits
+   1682.50 seconds: ML NNI round 3 of 23, 101 of 3184 splits, 2 changes (max delta 1.185)
+   1690.79 seconds: ML NNI round 3 of 23, 201 of 3184 splits, 4 changes (max delta 11.749)
+   1699.12 seconds: ML NNI round 3 of 23, 301 of 3184 splits, 4 changes (max delta 11.749)
+   1707.56 seconds: ML NNI round 3 of 23, 401 of 3184 splits, 4 changes (max delta 11.749)
+   1715.99 seconds: ML NNI round 3 of 23, 501 of 3184 splits, 5 changes (max delta 11.749)
+   1724.47 seconds: ML NNI round 3 of 23, 601 of 3184 splits, 5 changes (max delta 11.749)
+   1732.57 seconds: ML NNI round 3 of 23, 701 of 3184 splits, 6 changes (max delta 11.749)
+   1740.36 seconds: ML NNI round 3 of 23, 801 of 3184 splits, 7 changes (max delta 11.749)
+   1747.79 seconds: ML NNI round 3 of 23, 901 of 3184 splits, 10 changes (max delta 11.749)
+   1755.17 seconds: ML NNI round 3 of 23, 1001 of 3184 splits, 13 changes (max delta 11.749)
+   1763.44 seconds: ML NNI round 3 of 23, 1101 of 3184 splits, 15 changes (max delta 12.557)
+   1771.92 seconds: ML NNI round 3 of 23, 1201 of 3184 splits, 15 changes (max delta 12.557)
+   1780.07 seconds: ML NNI round 3 of 23, 1301 of 3184 splits, 25 changes (max delta 30.642)
+   1788.08 seconds: ML NNI round 3 of 23, 1401 of 3184 splits, 28 changes (max delta 30.642)
+   1795.90 seconds: ML NNI round 3 of 23, 1501 of 3184 splits, 31 changes (max delta 30.642)
+   1803.66 seconds: ML NNI round 3 of 23, 1601 of 3184 splits, 34 changes (max delta 30.642)
+   1811.63 seconds: ML NNI round 3 of 23, 1701 of 3184 splits, 36 changes (max delta 30.642)
+   1819.89 seconds: ML NNI round 3 of 23, 1801 of 3184 splits, 39 changes (max delta 30.642)
+   1828.36 seconds: ML NNI round 3 of 23, 1901 of 3184 splits, 40 changes (max delta 30.642)
+   1836.81 seconds: ML NNI round 3 of 23, 2001 of 3184 splits, 41 changes (max delta 30.642)
+   1844.93 seconds: ML NNI round 3 of 23, 2101 of 3184 splits, 44 changes (max delta 30.642)
+   1853.27 seconds: ML NNI round 3 of 23, 2201 of 3184 splits, 47 changes (max delta 30.642)
+   1861.50 seconds: ML NNI round 3 of 23, 2301 of 3184 splits, 56 changes (max delta 30.642)
+   1869.63 seconds: ML NNI round 3 of 23, 2401 of 3184 splits, 58 changes (max delta 30.642)
+   1878.01 seconds: ML NNI round 3 of 23, 2501 of 3184 splits, 59 changes (max delta 34.179)
+   1886.29 seconds: ML NNI round 3 of 23, 2601 of 3184 splits, 63 changes (max delta 53.001)
+   1894.69 seconds: ML NNI round 3 of 23, 2701 of 3184 splits, 63 changes (max delta 53.001)
+   1902.88 seconds: ML NNI round 3 of 23, 2801 of 3184 splits, 64 changes (max delta 53.001)
+   1911.33 seconds: ML NNI round 3 of 23, 2901 of 3184 splits, 66 changes (max delta 53.001)
+   1919.56 seconds: ML NNI round 3 of 23, 3001 of 3184 splits, 67 changes (max delta 53.001)
+   1927.61 seconds: ML NNI round 3 of 23, 3101 of 3184 splits, 71 changes (max delta 53.001)
+ML-NNI round 3: LogLk = -8027051.633 NNIs 73 max delta 53.00 Time 1934.87
+   1934.86 seconds: ML NNI round 4 of 23, 1 of 3184 splits
+   1942.86 seconds: ML NNI round 4 of 23, 101 of 3184 splits, 1 changes (max delta 0.762)
+   1951.02 seconds: ML NNI round 4 of 23, 201 of 3184 splits, 2 changes (max delta 0.762)
+   1959.37 seconds: ML NNI round 4 of 23, 301 of 3184 splits, 2 changes (max delta 0.762)
+   1967.67 seconds: ML NNI round 4 of 23, 401 of 3184 splits, 2 changes (max delta 0.762)
+   1976.15 seconds: ML NNI round 4 of 23, 501 of 3184 splits, 2 changes (max delta 0.762)
+   1984.48 seconds: ML NNI round 4 of 23, 601 of 3184 splits, 2 changes (max delta 0.762)
+   1992.42 seconds: ML NNI round 4 of 23, 701 of 3184 splits, 3 changes (max delta 0.762)
+   2000.33 seconds: ML NNI round 4 of 23, 801 of 3184 splits, 3 changes (max delta 0.762)
+   2008.14 seconds: ML NNI round 4 of 23, 901 of 3184 splits, 4 changes (max delta 0.762)
+   2016.52 seconds: ML NNI round 4 of 23, 1001 of 3184 splits, 7 changes (max delta 18.416)
+   2024.81 seconds: ML NNI round 4 of 23, 1101 of 3184 splits, 7 changes (max delta 18.416)
+   2032.63 seconds: ML NNI round 4 of 23, 1201 of 3184 splits, 13 changes (max delta 18.416)
+   2040.55 seconds: ML NNI round 4 of 23, 1301 of 3184 splits, 14 changes (max delta 18.416)
+   2048.41 seconds: ML NNI round 4 of 23, 1401 of 3184 splits, 17 changes (max delta 18.416)
+   2056.19 seconds: ML NNI round 4 of 23, 1501 of 3184 splits, 17 changes (max delta 18.416)
+   2064.42 seconds: ML NNI round 4 of 23, 1601 of 3184 splits, 18 changes (max delta 18.416)
+   2072.66 seconds: ML NNI round 4 of 23, 1701 of 3184 splits, 19 changes (max delta 18.416)
+   2080.77 seconds: ML NNI round 4 of 23, 1801 of 3184 splits, 20 changes (max delta 18.416)
+   2088.11 seconds: ML NNI round 4 of 23, 1901 of 3184 splits, 21 changes (max delta 18.416)
+   2096.49 seconds: ML NNI round 4 of 23, 2001 of 3184 splits, 21 changes (max delta 18.416)
+   2104.61 seconds: ML NNI round 4 of 23, 2101 of 3184 splits, 22 changes (max delta 18.416)
+   2112.84 seconds: ML NNI round 4 of 23, 2201 of 3184 splits, 28 changes (max delta 18.416)
+   2121.24 seconds: ML NNI round 4 of 23, 2301 of 3184 splits, 29 changes (max delta 18.416)
+   2129.31 seconds: ML NNI round 4 of 23, 2401 of 3184 splits, 30 changes (max delta 18.416)
+   2137.83 seconds: ML NNI round 4 of 23, 2501 of 3184 splits, 30 changes (max delta 18.416)
+   2146.06 seconds: ML NNI round 4 of 23, 2601 of 3184 splits, 31 changes (max delta 18.416)
+   2154.32 seconds: ML NNI round 4 of 23, 2701 of 3184 splits, 32 changes (max delta 18.416)
+   2162.59 seconds: ML NNI round 4 of 23, 2801 of 3184 splits, 32 changes (max delta 18.416)
+   2170.90 seconds: ML NNI round 4 of 23, 2901 of 3184 splits, 32 changes (max delta 18.416)
+   2179.15 seconds: ML NNI round 4 of 23, 3001 of 3184 splits, 33 changes (max delta 18.416)
+   2187.34 seconds: ML NNI round 4 of 23, 3101 of 3184 splits, 35 changes (max delta 18.416)
+ML-NNI round 4: LogLk = -8027005.342 NNIs 35 max delta 18.42 Time 2194.54
+   2194.53 seconds: ML NNI round 5 of 23, 1 of 3184 splits
+   2202.55 seconds: ML NNI round 5 of 23, 101 of 3184 splits, 2 changes (max delta 0.115)
+   2210.72 seconds: ML NNI round 5 of 23, 201 of 3184 splits, 3 changes (max delta 0.115)
+   2219.06 seconds: ML NNI round 5 of 23, 301 of 3184 splits, 3 changes (max delta 0.115)
+   2227.37 seconds: ML NNI round 5 of 23, 401 of 3184 splits, 3 changes (max delta 0.115)
+   2235.86 seconds: ML NNI round 5 of 23, 501 of 3184 splits, 3 changes (max delta 0.115)
+   2244.16 seconds: ML NNI round 5 of 23, 601 of 3184 splits, 3 changes (max delta 0.115)
+   2252.07 seconds: ML NNI round 5 of 23, 701 of 3184 splits, 4 changes (max delta 0.115)
+   2259.98 seconds: ML NNI round 5 of 23, 801 of 3184 splits, 4 changes (max delta 0.115)
+   2267.83 seconds: ML NNI round 5 of 23, 901 of 3184 splits, 4 changes (max delta 0.115)
+   2276.19 seconds: ML NNI round 5 of 23, 1001 of 3184 splits, 8 changes (max delta 13.124)
+   2284.49 seconds: ML NNI round 5 of 23, 1101 of 3184 splits, 8 changes (max delta 13.124)
+   2292.30 seconds: ML NNI round 5 of 23, 1201 of 3184 splits, 13 changes (max delta 13.124)
+   2300.20 seconds: ML NNI round 5 of 23, 1301 of 3184 splits, 13 changes (max delta 13.124)
+   2308.06 seconds: ML NNI round 5 of 23, 1401 of 3184 splits, 16 changes (max delta 13.124)
+   2315.83 seconds: ML NNI round 5 of 23, 1501 of 3184 splits, 16 changes (max delta 13.124)
+   2324.05 seconds: ML NNI round 5 of 23, 1601 of 3184 splits, 17 changes (max delta 13.124)
+   2332.31 seconds: ML NNI round 5 of 23, 1701 of 3184 splits, 18 changes (max delta 13.124)
+   2340.44 seconds: ML NNI round 5 of 23, 1801 of 3184 splits, 18 changes (max delta 13.124)
+   2347.77 seconds: ML NNI round 5 of 23, 1901 of 3184 splits, 18 changes (max delta 13.124)
+   2356.17 seconds: ML NNI round 5 of 23, 2001 of 3184 splits, 18 changes (max delta 13.124)
+   2364.29 seconds: ML NNI round 5 of 23, 2101 of 3184 splits, 18 changes (max delta 13.124)
+   2372.51 seconds: ML NNI round 5 of 23, 2201 of 3184 splits, 20 changes (max delta 13.124)
+   2380.94 seconds: ML NNI round 5 of 23, 2301 of 3184 splits, 21 changes (max delta 13.124)
+   2389.03 seconds: ML NNI round 5 of 23, 2401 of 3184 splits, 21 changes (max delta 13.124)
+   2397.54 seconds: ML NNI round 5 of 23, 2501 of 3184 splits, 21 changes (max delta 13.124)
+   2405.79 seconds: ML NNI round 5 of 23, 2601 of 3184 splits, 21 changes (max delta 13.124)
+   2414.09 seconds: ML NNI round 5 of 23, 2701 of 3184 splits, 22 changes (max delta 13.124)
+   2422.43 seconds: ML NNI round 5 of 23, 2801 of 3184 splits, 22 changes (max delta 13.124)
+   2430.77 seconds: ML NNI round 5 of 23, 2901 of 3184 splits, 22 changes (max delta 13.124)
+   2439.07 seconds: ML NNI round 5 of 23, 3001 of 3184 splits, 22 changes (max delta 13.124)
+   2447.30 seconds: ML NNI round 5 of 23, 3101 of 3184 splits, 23 changes (max delta 13.124)
+ML-NNI round 5: LogLk = -8026990.577 NNIs 23 max delta 13.12 Time 2454.54
+   2454.53 seconds: ML NNI round 6 of 23, 1 of 3184 splits
+   2462.59 seconds: ML NNI round 6 of 23, 101 of 3184 splits, 2 changes (max delta 0.773)
+   2470.78 seconds: ML NNI round 6 of 23, 201 of 3184 splits, 3 changes (max delta 0.773)
+   2479.12 seconds: ML NNI round 6 of 23, 301 of 3184 splits, 3 changes (max delta 0.773)
+   2487.45 seconds: ML NNI round 6 of 23, 401 of 3184 splits, 3 changes (max delta 0.773)
+   2495.92 seconds: ML NNI round 6 of 23, 501 of 3184 splits, 3 changes (max delta 0.773)
+   2504.25 seconds: ML NNI round 6 of 23, 601 of 3184 splits, 3 changes (max delta 0.773)
+   2512.19 seconds: ML NNI round 6 of 23, 701 of 3184 splits, 4 changes (max delta 0.773)
+   2520.10 seconds: ML NNI round 6 of 23, 801 of 3184 splits, 4 changes (max delta 0.773)
+   2527.95 seconds: ML NNI round 6 of 23, 901 of 3184 splits, 5 changes (max delta 0.773)
+   2536.32 seconds: ML NNI round 6 of 23, 1001 of 3184 splits, 7 changes (max delta 0.773)
+   2544.61 seconds: ML NNI round 6 of 23, 1101 of 3184 splits, 7 changes (max delta 0.773)
+   2552.38 seconds: ML NNI round 6 of 23, 1201 of 3184 splits, 11 changes (max delta 0.773)
+   2560.30 seconds: ML NNI round 6 of 23, 1301 of 3184 splits, 12 changes (max delta 0.773)
+   2568.16 seconds: ML NNI round 6 of 23, 1401 of 3184 splits, 15 changes (max delta 0.773)
+   2575.94 seconds: ML NNI round 6 of 23, 1501 of 3184 splits, 15 changes (max delta 0.773)
+   2584.18 seconds: ML NNI round 6 of 23, 1601 of 3184 splits, 16 changes (max delta 0.773)
+   2592.46 seconds: ML NNI round 6 of 23, 1701 of 3184 splits, 17 changes (max delta 0.773)
+   2600.60 seconds: ML NNI round 6 of 23, 1801 of 3184 splits, 17 changes (max delta 0.773)
+   2607.93 seconds: ML NNI round 6 of 23, 1901 of 3184 splits, 17 changes (max delta 0.773)
+   2616.33 seconds: ML NNI round 6 of 23, 2001 of 3184 splits, 17 changes (max delta 0.773)
+   2624.46 seconds: ML NNI round 6 of 23, 2101 of 3184 splits, 17 changes (max delta 0.773)
+   2632.67 seconds: ML NNI round 6 of 23, 2201 of 3184 splits, 19 changes (max delta 0.773)
+   2641.05 seconds: ML NNI round 6 of 23, 2301 of 3184 splits, 20 changes (max delta 0.773)
+   2649.14 seconds: ML NNI round 6 of 23, 2401 of 3184 splits, 20 changes (max delta 0.773)
+   2657.67 seconds: ML NNI round 6 of 23, 2501 of 3184 splits, 20 changes (max delta 0.773)
+   2665.94 seconds: ML NNI round 6 of 23, 2601 of 3184 splits, 20 changes (max delta 0.773)
+   2674.22 seconds: ML NNI round 6 of 23, 2701 of 3184 splits, 21 changes (max delta 0.773)
+   2682.57 seconds: ML NNI round 6 of 23, 2801 of 3184 splits, 21 changes (max delta 0.773)
+   2690.99 seconds: ML NNI round 6 of 23, 2901 of 3184 splits, 21 changes (max delta 0.773)
+   2699.28 seconds: ML NNI round 6 of 23, 3001 of 3184 splits, 21 changes (max delta 0.773)
+   2707.52 seconds: ML NNI round 6 of 23, 3101 of 3184 splits, 22 changes (max delta 0.773)
+ML-NNI round 6: LogLk = -8026990.863 NNIs 22 max delta 0.77 Time 2714.80
+Turning off heuristics for final round of ML NNIs (converged)
+   2714.80 seconds: ML NNI round 7 of 23, 1 of 3184 splits
+   2722.83 seconds: ML NNI round 7 of 23, 101 of 3184 splits, 1 changes (max delta 0.101)
+   2731.01 seconds: ML NNI round 7 of 23, 201 of 3184 splits, 2 changes (max delta 0.101)
+   2739.38 seconds: ML NNI round 7 of 23, 301 of 3184 splits, 2 changes (max delta 0.101)
+   2747.70 seconds: ML NNI round 7 of 23, 401 of 3184 splits, 2 changes (max delta 0.101)
+   2756.15 seconds: ML NNI round 7 of 23, 501 of 3184 splits, 2 changes (max delta 0.101)
+   2764.44 seconds: ML NNI round 7 of 23, 601 of 3184 splits, 2 changes (max delta 0.101)
+   2772.35 seconds: ML NNI round 7 of 23, 701 of 3184 splits, 3 changes (max delta 0.101)
+   2780.25 seconds: ML NNI round 7 of 23, 801 of 3184 splits, 3 changes (max delta 0.101)
+   2788.09 seconds: ML NNI round 7 of 23, 901 of 3184 splits, 3 changes (max delta 0.101)
+   2796.42 seconds: ML NNI round 7 of 23, 1001 of 3184 splits, 4 changes (max delta 0.101)
+   2804.72 seconds: ML NNI round 7 of 23, 1101 of 3184 splits, 4 changes (max delta 0.101)
+   2812.53 seconds: ML NNI round 7 of 23, 1201 of 3184 splits, 8 changes (max delta 0.110)
+   2820.44 seconds: ML NNI round 7 of 23, 1301 of 3184 splits, 9 changes (max delta 0.110)
+   2828.29 seconds: ML NNI round 7 of 23, 1401 of 3184 splits, 12 changes (max delta 0.352)
+   2836.06 seconds: ML NNI round 7 of 23, 1501 of 3184 splits, 12 changes (max delta 0.352)
+   2844.30 seconds: ML NNI round 7 of 23, 1601 of 3184 splits, 14 changes (max delta 0.352)
+   2852.54 seconds: ML NNI round 7 of 23, 1701 of 3184 splits, 15 changes (max delta 0.352)
+   2860.67 seconds: ML NNI round 7 of 23, 1801 of 3184 splits, 15 changes (max delta 0.352)
+   2868.00 seconds: ML NNI round 7 of 23, 1901 of 3184 splits, 15 changes (max delta 0.352)
+   2876.41 seconds: ML NNI round 7 of 23, 2001 of 3184 splits, 15 changes (max delta 0.352)
+   2884.55 seconds: ML NNI round 7 of 23, 2101 of 3184 splits, 15 changes (max delta 0.352)
+   2892.78 seconds: ML NNI round 7 of 23, 2201 of 3184 splits, 17 changes (max delta 0.352)
+   2901.15 seconds: ML NNI round 7 of 23, 2301 of 3184 splits, 18 changes (max delta 0.352)
+   2909.21 seconds: ML NNI round 7 of 23, 2401 of 3184 splits, 18 changes (max delta 0.352)
+   2917.71 seconds: ML NNI round 7 of 23, 2501 of 3184 splits, 18 changes (max delta 0.352)
+   2925.94 seconds: ML NNI round 7 of 23, 2601 of 3184 splits, 18 changes (max delta 0.352)
+   2934.22 seconds: ML NNI round 7 of 23, 2701 of 3184 splits, 19 changes (max delta 0.352)
+   2942.58 seconds: ML NNI round 7 of 23, 2801 of 3184 splits, 19 changes (max delta 0.352)
+   2950.93 seconds: ML NNI round 7 of 23, 2901 of 3184 splits, 19 changes (max delta 0.352)
+   2959.22 seconds: ML NNI round 7 of 23, 3001 of 3184 splits, 19 changes (max delta 0.352)
+   2967.46 seconds: ML NNI round 7 of 23, 3101 of 3184 splits, 20 changes (max delta 0.352)
+ML-NNI round 7: LogLk = -8026990.542 NNIs 20 max delta 0.35 Time 2974.70 (final)
+   2974.69 seconds: ML Lengths 1 of 3184 splits
+   2976.14 seconds: ML Lengths 101 of 3184 splits
+   2977.58 seconds: ML Lengths 201 of 3184 splits
+   2979.06 seconds: ML Lengths 301 of 3184 splits
+   2980.52 seconds: ML Lengths 401 of 3184 splits
+   2981.99 seconds: ML Lengths 501 of 3184 splits
+   2983.44 seconds: ML Lengths 601 of 3184 splits
+   2984.82 seconds: ML Lengths 701 of 3184 splits
+   2986.19 seconds: ML Lengths 801 of 3184 splits
+   2987.56 seconds: ML Lengths 901 of 3184 splits
+   2989.01 seconds: ML Lengths 1001 of 3184 splits
+   2990.45 seconds: ML Lengths 1101 of 3184 splits
+   2991.85 seconds: ML Lengths 1201 of 3184 splits
+   2993.25 seconds: ML Lengths 1301 of 3184 splits
+   2994.63 seconds: ML Lengths 1401 of 3184 splits
+   2995.98 seconds: ML Lengths 1501 of 3184 splits
+   2997.42 seconds: ML Lengths 1601 of 3184 splits
+   2998.83 seconds: ML Lengths 1701 of 3184 splits
+   3000.23 seconds: ML Lengths 1801 of 3184 splits
+   3001.49 seconds: ML Lengths 1901 of 3184 splits
+   3002.93 seconds: ML Lengths 2001 of 3184 splits
+   3004.36 seconds: ML Lengths 2101 of 3184 splits
+   3005.81 seconds: ML Lengths 2201 of 3184 splits
+   3007.23 seconds: ML Lengths 2301 of 3184 splits
+   3008.64 seconds: ML Lengths 2401 of 3184 splits
+   3010.11 seconds: ML Lengths 2501 of 3184 splits
+   3011.55 seconds: ML Lengths 2601 of 3184 splits
+   3012.99 seconds: ML Lengths 2701 of 3184 splits
+   3014.44 seconds: ML Lengths 2801 of 3184 splits
+   3015.90 seconds: ML Lengths 2901 of 3184 splits
+   3017.32 seconds: ML Lengths 3001 of 3184 splits
+   3018.77 seconds: ML Lengths 3101 of 3184 splits
+Optimize all lengths: LogLk = -8026990.552 Time 3020.31
+   3025.64 seconds: ML split tests for    100 of   3183 internal splits
+   3031.05 seconds: ML split tests for    200 of   3183 internal splits
+   3036.57 seconds: ML split tests for    300 of   3183 internal splits
+   3042.07 seconds: ML split tests for    400 of   3183 internal splits
+   3047.69 seconds: ML split tests for    500 of   3183 internal splits
+   3053.21 seconds: ML split tests for    600 of   3183 internal splits
+   3058.54 seconds: ML split tests for    700 of   3183 internal splits
+   3063.88 seconds: ML split tests for    800 of   3183 internal splits
+   3069.21 seconds: ML split tests for    900 of   3183 internal splits
+   3074.74 seconds: ML split tests for   1000 of   3183 internal splits
+   3080.26 seconds: ML split tests for   1100 of   3183 internal splits
+   3085.51 seconds: ML split tests for   1200 of   3183 internal splits
+   3090.86 seconds: ML split tests for   1300 of   3183 internal splits
+   3096.23 seconds: ML split tests for   1400 of   3183 internal splits
+   3101.56 seconds: ML split tests for   1500 of   3183 internal splits
+   3107.05 seconds: ML split tests for   1600 of   3183 internal splits
+   3112.55 seconds: ML split tests for   1700 of   3183 internal splits
+   3117.98 seconds: ML split tests for   1800 of   3183 internal splits
+   3123.08 seconds: ML split tests for   1900 of   3183 internal splits
+   3128.65 seconds: ML split tests for   2000 of   3183 internal splits
+   3134.08 seconds: ML split tests for   2100 of   3183 internal splits
+   3139.54 seconds: ML split tests for   2200 of   3183 internal splits
+   3145.08 seconds: ML split tests for   2300 of   3183 internal splits
+   3150.47 seconds: ML split tests for   2400 of   3183 internal splits
+   3156.07 seconds: ML split tests for   2500 of   3183 internal splits
+   3161.54 seconds: ML split tests for   2600 of   3183 internal splits
+   3167.02 seconds: ML split tests for   2700 of   3183 internal splits
+   3172.53 seconds: ML split tests for   2800 of   3183 internal splits
+   3178.02 seconds: ML split tests for   2900 of   3183 internal splits
+   3183.49 seconds: ML split tests for   3000 of   3183 internal splits
+   3188.92 seconds: ML split tests for   3100 of   3183 internal splits
+Total time: 3193.35 seconds Unique: 3186/3218 Bad splits: 5/3183 Worst delta-LogLk 0.803
+Tree built! The output newick file is in output/metagenome/metagenome.tree.int.nwk
+Tree building finished in 3418 secs (21052 total time).
+
+Trying to impute taxonomic labels for taxa newly integrated into the tree... Done!
+Writing taxonomic imputation outputs ... Done!
