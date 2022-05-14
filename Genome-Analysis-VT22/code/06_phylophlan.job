@@ -3,7 +3,7 @@
 #SBATCH -p core
 #SBATCH -n 2
 #SBATCH -J phylophlan_
-#SBATCH -t 06:00:00
+#SBATCH -t 06:30:00
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user jay.hakansson.4449@student.uu.se
 
