@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+PHOPDMIJ_00518 tmRNA 356 ssrA transfer-messenger RNA, SsrA 156
+PHOPDMIJ_00658 CDS 2100 hypothetical protein 150
+PHOPDMIJ_01477 CDS 615 hypothetical protein 125
+PHOPDMIJ_01630 tRNA 75 tRNA-Asp(gtc) 19
+PHOPDMIJ_01702 tRNA 76 tRNA-Met(cat) 32

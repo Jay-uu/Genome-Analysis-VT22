@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+HOHCEMJB_00177 CDS 915 petE_2 Plastocyanin 1263
+HOHCEMJB_00289 CDS 915 petE_4 Plastocyanin 444
+HOHCEMJB_00344 CDS 294 hypothetical protein 1084
+HOHCEMJB_00405 CDS 402 hypothetical protein 376
+HOHCEMJB_00410 CDS 342 COG0347 putative nitrogen regulatory PII-like protein 516

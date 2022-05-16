@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+NHJFIHNB_00064 CDS 702 hypothetical protein 2
+NHJFIHNB_00080 CDS 1149 caiA 1.3.8.13 Crotonobetainyl-CoA reductase 1
+NHJFIHNB_00124 CDS 3531 hypothetical protein 2
+NHJFIHNB_00184 CDS 3189 hypothetical protein 2
+NHJFIHNB_00206 CDS 1413 hypothetical protein 2

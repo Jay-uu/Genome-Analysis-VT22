@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+CMMMGDEN_00387 CDS 633 rplC COG0087 50S ribosomal protein L3 20
+CMMMGDEN_00421 CDS 1278 rho 3.6.4.- COG1158 Transcription termination factor Rho 18
+CMMMGDEN_00481 CDS 972 glnII 6.3.1.2 COG0174 Glutamine synthetase 39
+CMMMGDEN_00540 CDS 1611 4.1.3.1 COG2224 Isocitrate lyase 29
+CMMMGDEN_00775 CDS 417 rbr COG1592 Rubrerythrin 32

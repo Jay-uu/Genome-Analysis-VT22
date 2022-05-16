@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+JNDNGLPN_01740 CDS 651 hypothetical protein 956
+JNDNGLPN_01742 CDS 564 hypothetical protein 954
+JNDNGLPN_01743 CDS 567 hypothetical protein 580
+JNDNGLPN_03283 tmRNA 397 ssrA transfer-messenger RNA, SsrA 920
+JNDNGLPN_03404 CDS 480 ibpA COG0071 Small heat shock protein IbpA 2099

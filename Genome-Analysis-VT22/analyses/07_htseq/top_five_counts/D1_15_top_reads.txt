@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+EIBDLKEJ_00219 rRNA 937 16S ribosomal RNA (partial) 1043
+EIBDLKEJ_00273 CDS 2328 topA 5.6.2.1 COG0550 DNA topoisomerase 1 22
+EIBDLKEJ_00427 CDS 810 hypothetical protein 14
+EIBDLKEJ_00997 CDS 504 hypothetical protein 28
+EIBDLKEJ_01121 CDS 1197 tuf COG0050 Elongation factor Tu 14

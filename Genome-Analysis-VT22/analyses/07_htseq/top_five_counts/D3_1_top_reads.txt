@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+HGEOEDEF_00334 CDS 615 yciB COG2917 putative intracellular septation protein A 28
+HGEOEDEF_00506 CDS 1596 4.1.3.1 COG2224 Isocitrate lyase 7
+HGEOEDEF_00535 CDS 483 hypothetical protein 36
+HGEOEDEF_00663 CDS 1140 bcd 1.3.8.1 COG1960 Acyl-CoA dehydrogenase, short-chain specific 1817
+HGEOEDEF_00743 CDS 876 rpoH COG0568 RNA polymerase sigma factor RpoH 17

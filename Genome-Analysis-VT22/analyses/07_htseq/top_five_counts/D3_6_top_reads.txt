@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+OGEOEPOE_00449 CDS 1089 hypothetical protein 15
+OGEOEPOE_00636 CDS 2427 pnp_2 2.7.7.8 Polyribonucleotide nucleotidyltransferase 126
+OGEOEPOE_00982 CDS 486 hypothetical protein 84
+OGEOEPOE_01287 CDS 2613 alaS 6.1.1.7 COG0013 Alanine--tRNA ligase 29
+OGEOEPOE_01309 CDS 1197 mdtA Multidrug resistance protein MdtA 36

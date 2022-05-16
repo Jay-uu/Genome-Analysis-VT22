@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+IOEOILBC_00103 CDS 1905 dnaK Chaperone protein DnaK 44
+IOEOILBC_00303 CDS 2397 lon2 3.4.21.53 COG0466 Lon protease 2 41
+IOEOILBC_00634 CDS 2760 btuB_3 Vitamin B12 transporter BtuB 65
+IOEOILBC_01080 CDS 423 hypothetical protein 89
+IOEOILBC_01263 CDS 3327 hypothetical protein 46

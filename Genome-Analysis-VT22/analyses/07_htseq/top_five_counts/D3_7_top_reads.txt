@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+FBDCOAEC_00265 CDS 3072 hypothetical protein 93
+FBDCOAEC_00372 CDS 1899 dnaK Chaperone protein DnaK 71
+FBDCOAEC_00596 rRNA 2872 23S ribosomal RNA 94
+FBDCOAEC_00748 CDS 210 hypothetical protein 173
+FBDCOAEC_00908 CDS 1284 tuf_1 COG5256 Elongation factor 1-alpha 79

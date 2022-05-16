@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+FJFHNCGK_00058 CDS 576 leuD1_1 4.2.1.33 COG0066 3-isopropylmalate dehydratase small subunit 1 259
+FJFHNCGK_00099 CDS 2388 btuB_1 Vitamin B12 transporter BtuB 31
+FJFHNCGK_00166 CDS 2721 btuB_2 Vitamin B12 transporter BtuB 41
+FJFHNCGK_00401 CDS 2583 btuB_4 Vitamin B12 transporter BtuB 52
+FJFHNCGK_00808 CDS 1293 aceB 2.3.3.9 COG2225 Malate synthase A 28

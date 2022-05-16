@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+BJPEFCGJ_00379 CDS 1188 tufA COG0050 Elongation factor Tu 20
+BJPEFCGJ_00545 rRNA 2871 23S ribosomal RNA 326
+BJPEFCGJ_00785 CDS 1815 dnaK COG0443 Chaperone protein DnaK 32
+BJPEFCGJ_00822 CDS 2532 clpC1 COG0542 ATP-dependent Clp protease ATP-binding subunit ClpC1 25
+BJPEFCGJ_00826 tRNA 75 tRNA-Met(cat) 42

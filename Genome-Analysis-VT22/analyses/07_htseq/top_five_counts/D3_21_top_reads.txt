@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+JMGJJPKL_00001 CDS 1212 hypothetical protein 51
+JMGJJPKL_00160 CDS 1080 hypothetical protein 359
+JMGJJPKL_00272 tmRNA 350 ssrA transfer-messenger RNA, SsrA 94
+JMGJJPKL_00296 CDS 195 rpmI COG0291 50S ribosomal protein L35 66
+JMGJJPKL_01309 CDS 1914 dnaK Chaperone protein DnaK 104

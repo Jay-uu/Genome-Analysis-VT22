@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+POAPKAEO_00648 CDS 1380 hypothetical protein 30
+POAPKAEO_00764 CDS 5520 hypothetical protein 21
+POAPKAEO_00789 tmRNA 356 ssrA transfer-messenger RNA, SsrA 82
+POAPKAEO_01524 CDS 1089 hypothetical protein 32
+POAPKAEO_02410 CDS 1188 nagC COG1940 N-acetylglucosamine repressor 31

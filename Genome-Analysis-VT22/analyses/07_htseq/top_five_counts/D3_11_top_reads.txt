@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+LFIGAFEO_00036 tRNA 74 tRNA-Thr(tgt) 10
+LFIGAFEO_00201 CDS 1626 groL1_2 COG0459 60 kDa chaperonin 1 14
+LFIGAFEO_00320 CDS 345 hypothetical protein 12
+LFIGAFEO_00834 CDS 1629 ndhB_2 7.1.1.- NAD(P)H-quinone oxidoreductase subunit 2, chloroplastic 11
+LFIGAFEO_02647 tmRNA 355 ssrA transfer-messenger RNA, SsrA 56

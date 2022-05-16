@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+GCKKMPIJ_00343 CDS 312 ndhI_1 7.1.1.- NAD(P)H-quinone oxidoreductase subunit I, chloroplastic 1331
+GCKKMPIJ_00412 CDS 912 hypothetical protein 768
+GCKKMPIJ_00730 CDS 363 hypothetical protein 690
+GCKKMPIJ_01141 CDS 1422 hypothetical protein 1369
+GCKKMPIJ_01386 CDS 1413 hypothetical protein 5112

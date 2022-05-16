@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+DPKAEAOL_00252 CDS 270 hypothetical protein 63
+DPKAEAOL_00577 CDS 384 hypothetical protein 82
+DPKAEAOL_01195 CDS 1644 groL COG0459 60 kDa chaperonin 140
+DPKAEAOL_01606 CDS 861 rpoH COG0568 RNA polymerase sigma factor RpoH 62
+DPKAEAOL_02196 CDS 1020 yhdW Putative amino-acid ABC transporter-binding protein YhdW 66

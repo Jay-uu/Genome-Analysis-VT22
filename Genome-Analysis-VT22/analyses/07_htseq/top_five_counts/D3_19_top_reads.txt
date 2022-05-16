@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+KCBFILPD_00339 tRNA 76 tRNA-Asn(gtt) 5
+KCBFILPD_00402 CDS 1050 recA COG0468 Protein RecA 5
+KCBFILPD_00526 CDS 1542 atpA 7.1.2.2 COG0056 ATP synthase subunit alpha 6
+KCBFILPD_00655 CDS 2139 hppA1 7.2.3.- COG3808 Putative K(+)-stimulated pyrophosphate-energized sodium pump 4
+KCBFILPD_00810 CDS 1389 3.2.1.- Glycosyl hydrolase family 109 protein 1 8

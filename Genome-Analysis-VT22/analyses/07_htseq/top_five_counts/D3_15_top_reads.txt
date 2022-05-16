@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+MEIOEMMG_00108 CDS 312 ndhI 7.1.1.- NAD(P)H-quinone oxidoreductase subunit I, chloroplastic 2449
+MEIOEMMG_00512 CDS 651 hypothetical protein 1257
+MEIOEMMG_01315 CDS 876 hypothetical protein 1212
+MEIOEMMG_01511 CDS 1422 hypothetical protein 1189
+MEIOEMMG_02176 CDS 570 hypothetical protein 1427

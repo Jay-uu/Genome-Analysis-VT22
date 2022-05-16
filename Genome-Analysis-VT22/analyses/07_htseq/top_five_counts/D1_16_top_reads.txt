@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+LBNIMAFF_00154 tmRNA 364 ssrA transfer-messenger RNA, SsrA 78
+LBNIMAFF_00395 tRNA 76 tRNA-Val(tac) 43
+LBNIMAFF_00419 CDS 1194 tuf COG0050 Elongation factor Tu 23
+LBNIMAFF_00491 CDS 663 hypothetical protein 16
+LBNIMAFF_00581 rRNA 932 16S ribosomal RNA (partial) 748

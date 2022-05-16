@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+AAMOBBBC_00064 CDS 1155 hypothetical protein 963
+AAMOBBBC_00119 CDS 402 hypothetical protein 1276
+AAMOBBBC_00250 CDS 384 hypothetical protein 1164
+AAMOBBBC_00330 CDS 93 hypothetical protein 1198
+AAMOBBBC_00441 CDS 942 tfb_2 Transcription initiation factor IIB 1124

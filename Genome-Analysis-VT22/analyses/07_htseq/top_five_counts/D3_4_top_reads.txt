@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+BANOKKCJ_00035 CDS 3633 rpoC 2.7.7.6 COG0086 DNA-directed RNA polymerase subunit beta' 17
+BANOKKCJ_00112 CDS 612 rpsD 30S ribosomal protein S4 15
+BANOKKCJ_00190 CDS 831 hypothetical protein 55
+BANOKKCJ_00193 CDS 2619 phsA 1.8.5.5 COG0243 Thiosulfate reductase molybdopterin-containing subunit PhsA 19
+BANOKKCJ_00245 CDS 2085 pnp 2.7.7.8 COG1185 Polyribonucleotide nucleotidyltransferase 23

@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+LAIDAOBL_00016 CDS 1197 tuf COG0050 Elongation factor Tu 29
+LAIDAOBL_00159 CDS 597 infC COG0290 Translation initiation factor IF-3 12
+LAIDAOBL_00408 CDS 504 hypothetical protein 60
+LAIDAOBL_00409 CDS 411 hypothetical protein 17
+LAIDAOBL_00593 CDS 1362 hypothetical protein 41

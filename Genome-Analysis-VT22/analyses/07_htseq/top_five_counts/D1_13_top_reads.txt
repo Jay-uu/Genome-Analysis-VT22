@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+AMPJIKIK_00134 CDS 2049 hcf136 Ycf48-like protein 183
+AMPJIKIK_00148 CDS 5199 hypothetical protein 51
+AMPJIKIK_00372 CDS 2088 hypothetical protein 41
+AMPJIKIK_00411 tRNA 77 tRNA-Met(cat) 42
+AMPJIKIK_00556 CDS 1359 hypothetical protein 38

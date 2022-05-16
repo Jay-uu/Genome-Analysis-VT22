@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+ABOMPAMF_00141 CDS 840 hypothetical protein 1402
+ABOMPAMF_00454 CDS 657 hypothetical protein 190
+ABOMPAMF_02039 CDS 1095 takP COG4663 Alpha-keto acid-binding periplasmic protein TakP 158
+ABOMPAMF_02483 CDS 552 hypothetical protein 214
+ABOMPAMF_02977 CDS 909 hypothetical protein 163

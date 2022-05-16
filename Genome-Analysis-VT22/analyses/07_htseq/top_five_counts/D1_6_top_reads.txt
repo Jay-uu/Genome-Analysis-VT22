@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+CHFDDJHE_00130 CDS 384 petE_2 Plastocyanin 370
+CHFDDJHE_00394 CDS 2655 1.17.4.1 COG0209 Vitamin B12-dependent ribonucleoside-diphosphate reductase 332
+CHFDDJHE_00417 CDS 1431 hypothetical protein 13260
+CHFDDJHE_00438 CDS 198 hypothetical protein 426
+CHFDDJHE_00563 CDS 1443 hypothetical protein 389

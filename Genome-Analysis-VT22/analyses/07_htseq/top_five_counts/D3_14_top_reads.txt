@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+IKJLMFHF_00587 CDS 441 hypothetical protein 97
+IKJLMFHF_00807 CDS 225 hypothetical protein 88
+IKJLMFHF_00883 CDS 507 hypothetical protein 66
+IKJLMFHF_00903 CDS 219 hypothetical protein 71
+IKJLMFHF_00944 CDS 2232 icd_1 1.1.1.42 COG2838 Isocitrate dehydrogenase [NADP] 67

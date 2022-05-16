@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+MCMEAMNA_00014 CDS 339 hypothetical protein 33
+MCMEAMNA_00025 CDS 2529 hypothetical protein 30
+MCMEAMNA_00034 CDS 2706 hypothetical protein 877
+MCMEAMNA_00130 CDS 249 hypothetical protein 30
+MCMEAMNA_00215 CDS 1140 htrA Putative serine protease HtrA 26

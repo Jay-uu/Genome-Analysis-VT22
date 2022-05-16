@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+OJFMKGKL_00001 CDS 2052 fusA COG0480 Elongation factor G 51
+OJFMKGKL_00407 CDS 861 rpoH COG0568 RNA polymerase sigma factor RpoH 55
+OJFMKGKL_00422 CDS 1254 htpG COG0326 Chaperone protein HtpG 36
+OJFMKGKL_00705 CDS 1641 groL COG0459 60 kDa chaperonin 176
+OJFMKGKL_00849 CDS 765 actP Cation/acetate symporter ActP 39

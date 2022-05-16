@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+AIALHFGO_00060 CDS 1485 hypothetical protein 21
+AIALHFGO_00073 CDS 717 fabG 1.1.1.100 3-oxoacyl-[acyl-carrier-protein] reductase FabG 13
+AIALHFGO_00078 CDS 699 ndhK 7.1.1.- NAD(P)H-quinone oxidoreductase subunit K, chloroplastic 18
+AIALHFGO_00079 CDS 534 ndhJ 7.1.1.- NAD(P)H-quinone oxidoreductase subunit J, chloroplastic 24
+AIALHFGO_00183 CDS 1125 hypothetical protein 13

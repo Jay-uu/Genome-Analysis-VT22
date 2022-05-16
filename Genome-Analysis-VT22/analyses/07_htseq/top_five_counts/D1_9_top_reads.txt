@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+ANBOKIND_00232 CDS 270 hypothetical protein 197
+ANBOKIND_00532 CDS 3072 hypothetical protein 52
+ANBOKIND_00799 CDS 210 hypothetical protein 473
+ANBOKIND_00831 CDS 1692 hypothetical protein 60
+ANBOKIND_00977 CDS 1899 dnaK Chaperone protein DnaK 73

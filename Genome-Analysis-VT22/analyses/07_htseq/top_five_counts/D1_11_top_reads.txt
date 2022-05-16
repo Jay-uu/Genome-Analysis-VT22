@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+GBFAJNGN_00003 CDS 3162 hypothetical protein 83
+GBFAJNGN_00231 CDS 978 tfb_1 Transcription initiation factor IIB 95
+GBFAJNGN_00284 CDS 927 tfb_2 COG1372 Transcription initiation factor IIB 74
+GBFAJNGN_00318 CDS 639 hypothetical protein 59
+GBFAJNGN_00319 CDS 1887 dnaK Chaperone protein DnaK 146

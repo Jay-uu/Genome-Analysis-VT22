@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+OGECAFBH_00113 CDS 1008 hypothetical protein 19
+OGECAFBH_00286 CDS 2253 hypothetical protein 15
+OGECAFBH_00317 CDS 2940 hypothetical protein 20
+OGECAFBH_00334 CDS 3099 hypothetical protein 85
+OGECAFBH_00426 CDS 3765 hypothetical protein 16

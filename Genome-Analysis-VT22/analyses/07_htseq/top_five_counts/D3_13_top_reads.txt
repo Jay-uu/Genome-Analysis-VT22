@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+CGDHDLJJ_00015 CDS 879 hypothetical protein 1579
+CGDHDLJJ_00139 CDS 201 hypothetical protein 560
+CGDHDLJJ_00504 CDS 399 hypothetical protein 2314
+CGDHDLJJ_00705 CDS 651 hypothetical protein 714
+CGDHDLJJ_00730 CDS 261 hypothetical protein 711

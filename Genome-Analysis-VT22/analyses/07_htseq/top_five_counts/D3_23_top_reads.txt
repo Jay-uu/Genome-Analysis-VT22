@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+DOINCDEI_00895 CDS 1176 fliC A-type flagellin 98
+DOINCDEI_00945 tmRNA 380 ssrA transfer-messenger RNA, SsrA 322
+DOINCDEI_02137 CDS 1083 takP COG4663 Alpha-keto acid-binding periplasmic protein TakP 58
+DOINCDEI_02443 CDS 1644 groL COG0459 60 kDa chaperonin 46
+DOINCDEI_02447 rRNA 1494 16S ribosomal RNA 276

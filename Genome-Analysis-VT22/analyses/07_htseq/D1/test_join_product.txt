@@ -1,0 +1,5 @@
+JAJJKDKG_00001	CDS	2583	btuB_1			Vitamin B12 transporter BtuB
+JAJJKDKG_00429	tmRNA	345	ssrA			transfer-messenger RNA, SsrA
+JAJJKDKG_00610	CDS	2691	btuB_5			Vitamin B12 transporter BtuB
+JAJJKDKG_00765	CDS	978				hypothetical protein
+JAJJKDKG_00806	CDS	576	leuD1_2	4.2.1.33	COG0066	3-isopropylmalate dehydratase small subunit 1

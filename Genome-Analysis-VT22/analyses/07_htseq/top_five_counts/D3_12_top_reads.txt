@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+BDEFLHIJ_00104 CDS 1908 ftsH 3.4.24.- COG0465 ATP-dependent zinc metalloprotease FtsH 3
+BDEFLHIJ_00114 CDS 1296 clpX COG1219 ATP-dependent Clp protease ATP-binding subunit ClpX 4
+BDEFLHIJ_00127 CDS 1410 rng 3.1.26.- COG1530 Ribonuclease G 4
+BDEFLHIJ_00150 CDS 2886 gcvP 1.4.4.2 COG0403 putative glycine dehydrogenase (decarboxylating) 3
+BDEFLHIJ_00252 CDS 2148 glnA 6.3.1.2 Glutamine synthetase 4

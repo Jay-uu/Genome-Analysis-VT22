@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+ENMEBMEN_00227 CDS 2814 btuB_1 Vitamin B12 transporter BtuB 80
+ENMEBMEN_00272 CDS 2979 btuB_3 Vitamin B12 transporter BtuB 213
+ENMEBMEN_00501 CDS 1191 tufA_1 COG0050 Elongation factor Tu 78
+ENMEBMEN_00770 CDS 1191 tufA_2 COG0050 Elongation factor Tu 73
+ENMEBMEN_00814 tmRNA 349 ssrA transfer-messenger RNA, SsrA 91

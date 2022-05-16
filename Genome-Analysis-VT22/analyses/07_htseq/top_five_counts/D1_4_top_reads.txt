@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+MEKIOKKC_00006 CDS 1026 tfb Transcription initiation factor IIB 63
+MEKIOKKC_00151 CDS 801 hypothetical protein 46
+MEKIOKKC_00212 CDS 639 hypothetical protein 45
+MEKIOKKC_00327 CDS 693 hypothetical protein 60
+MEKIOKKC_00410 CDS 1614 dnaK Chaperone protein DnaK 47

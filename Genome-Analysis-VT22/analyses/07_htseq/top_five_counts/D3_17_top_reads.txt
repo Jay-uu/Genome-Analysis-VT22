@@ -1,0 +1,6 @@
+locus_tag ftype length_bp gene EC_number COG product read_count
+PEELLAPJ_00098 tRNA 75 tRNA-Val(cac) 13
+PEELLAPJ_00659 CDS 459 hypothetical protein 22
+PEELLAPJ_00958 rRNA 886 16S ribosomal RNA (partial) 127
+PEELLAPJ_01391 CDS 1593 atpA 7.1.2.2 COG0056 ATP synthase subunit alpha 13
+PEELLAPJ_01401 CDS 2109 fusA COG0480 Elongation factor G 15
