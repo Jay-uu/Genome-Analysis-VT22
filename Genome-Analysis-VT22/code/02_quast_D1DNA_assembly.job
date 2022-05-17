@@ -18,4 +18,10 @@ echo QOS = $SLURM_JOB_QOS
 cd $SNIC_TMP
 module load bioinfo-tools quast
 
-metaquast.py $HOME/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D1DNA_assembly/megahit_04-18/final.contigs.fa -o $HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA
+#make output directory
+mkdir $HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA_05-17
+
+#import references
+metaquast.py --test-no-ref
+
+metaquast.py $HOME/genome_analysis_project/Genome-Analysis-VT22/data/assembly/D1DNA_assembly/megahit_04-18/final.contigs.fa -o $HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/02_genome_assembly/quast_eval_D1DNA_05-17
