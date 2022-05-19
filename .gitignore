@@ -18,3 +18,5 @@ Genome-Analysis-VT22/analyses/03_binning/
 Genome-Analysis-VT22/analyses/04_annotation
 Genome-Analysis-VT22/analyses/06_phylogenetic_placement/
 
+# Dont need to keep track of these anymore
+Genome-Analysis-VT22/analyses/02_genome_assembly
