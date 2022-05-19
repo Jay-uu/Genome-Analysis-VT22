@@ -9,8 +9,8 @@
 
 #do taxonomic placement directly on DNA reads
 
-mkdir $HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/09_kraken_taxonomy
-export output=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/09_kraken_taxonomy
+export output=/proj/genomeanalysis2022/nobackup/work/jay
+mkdir $output/09_kraken_taxonomy
 
 cd $SNIC_TMP
 module load bioinfo-tools Kraken2
