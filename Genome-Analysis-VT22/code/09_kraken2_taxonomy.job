@@ -1,0 +1,36 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 4
+#SBATCH -J 09_kraken_taxonomy
+#SBATCH -t 2:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+#do taxonomic placement directly on DNA reads
+
+mkdir $HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/09_kraken_taxonomy
+export output=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/09_kraken_taxonomy
+
+cd $SNIC_TMP
+module load bioinfo-tools Kraken2
+# Direct to the smaller Kraken2 database, Standard16
+MY_KDB=/proj/genomeanalysis2022/nobackup/standard-16
+
+#copy my DNA reads to node-local storage for efficiency
+cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342129_1.paired.trimmed.fastq.gz D1DNA_1.paired.trimmed.fastq.gz
+cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342129_2.paired.trimmed.fastq.gz D1DNA_2.paired.trimmed.fastq.gz
+cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342133_1.paired.trimmed.fastq.gz D3DNA_1.paired.trimmed.fastq.gz
+cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342133_2.paired.trimmed.fastq.gz D3DNA_2.paired.trimmed.fastq.gz
+
+
+#run kraken2 for D1
+kraken2 --db $MY_KDB --use-names --threads 4 --fastq-input --gzip-compressed --paired  --classified-out D1_cseqs#.fq D1DNA_1.paired.trimmed.fastq.gz D1DNA_2.paired.trimmed.fastq.gz > D1_sequences_translated.kraken
+
+#run kraken2 for D3
+kraken2 --db $MY_KDB --use-names --threads 4 --fastq-input --gzip-compressed --paired --classified-out D3_cseqs#.fq D3DNA_1.paired.trimmed.fastq.gz D3DNA_2.paired.trimmed.fastq.gz --output D3_sequences_translated.kraken
+
+#copy the standard output
+cp *.kraken $output/
+# copy the classified sequences
+cp *_cseqs*.fq $output/
