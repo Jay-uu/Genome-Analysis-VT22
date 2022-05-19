@@ -1,0 +1,45 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 4
+#SBATCH -J 09_kraken_taxonomy
+#SBATCH -t 12:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+#do taxonomic placement directly on DNA reads
+
+mkdir $HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/09_kraken_taxonomy
+export output=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/09_kraken_taxonomy
+
+cd $SNIC_TMP
+module load bioinfo-tools Kraken
+#copy the kraken database to node-local storage for efficiency (recommended)
+MY_KDB=$SNIC_TMP/Kraken
+mkdir $MY_KDB
+cp -av $KRAKEN_DB/* $MY_KDB
+
+#copy my DNA reads to node-local storage for efficiency
+cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342129_1.paired.trimmed.fastq.gz D1DNA_1.paired.trimmed.fastq.gz
+cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342129_2.paired.trimmed.fastq.gz D1DNA_2.paired.trimmed.fastq.gz
+cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342133_1.paired.trimmed.fastq.gz D3DNA_1.paired.trimmed.fastq.gz
+cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342133_2.paired.trimmed.fastq.gz D3DNA_1.paired.trimmed.fastq.gz
+
+
+#run kraken for D1
+kraken --preload --db $MY_KDB --threads 4 --fastq-input --gzip-compressed --paired D1DNA_1.paired.trimmed.fastq.gz D1DNA_2.paired.trimmed.fastq.gz --output D1_sequences.kraken
+kraken-translate --db $MY_KDB $SNIC_TMP/D1_sequences.kraken > D1_sequences.labels
+kraken-report --db $MY_KDB $SNIC_TMP/D1_sequences.kraken > D1_sequences_report.txt
+
+#run kraken for D3
+kraken --preload --db $MY_KDB --threads 4 --fastq-input --gzip-compressed --paired D3DNA_1.paired.trimmed.fastq.gz D3DNA_2.paired.trimmed.fastq.gz --output D3_sequences.kraken
+kraken-translate --db $MY_KDB $SNIC_TMP/D3_sequences.kraken > D3_sequences.labels
+kraken-report --db $MY_KDB $SNIC_TMP/D3_sequences.kraken > D3_sequences_report.txt
+
+
+#report of everything at once
+#kraken-mpa-report --db $MY_KDB $SNIC_TMP/D1_sequences.kraken $SNIC_TMP/D3_sequences.kraken > mpa_report.txt
+
+cp *.kraken $output/
+cp *.labels $output/
+cp *.txt $output/
