@@ -23,7 +23,7 @@ cp -av $KRAKEN_DB/* $MY_KDB
 cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342129_1.paired.trimmed.fastq.gz D1DNA_1.paired.trimmed.fastq.gz
 cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342129_2.paired.trimmed.fastq.gz D1DNA_2.paired.trimmed.fastq.gz
 cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342133_1.paired.trimmed.fastq.gz D3DNA_1.paired.trimmed.fastq.gz
-cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342133_2.paired.trimmed.fastq.gz D3DNA_1.paired.trimmed.fastq.gz
+cp /proj/genomeanalysis2022/Genome_Analysis/3_Thrash_2017/DNA_trimmed/SRR4342133_2.paired.trimmed.fastq.gz D3DNA_2.paired.trimmed.fastq.gz
 
 
 #run kraken for D1
