@@ -1,0 +1,29 @@
+I will keep data and code separate and work in individual folders for the specific analyses I'll be doing.
+
+This structure is not entirely accurate, but served as a guide during the project.
+
+Genome-Analysis-VT22
+ - data
+   - raw_data
+     - DNA_trimmed
+     - RNA_untrimmed
+   - meta_data
+   - trimmed_data
+     - DNA_trimmed
+     - RNA_trimmed_date
+ - code
+   - slurm-files
+ - analyses
+   - 01_preprocessing
+     - fastqc_raw
+     - fastqc_trim
+       - DNA_date
+       - RNA_date
+   - 02_genome_assembly
+   - 03_binning
+   - 04_structural_annotation
+   - 05_functional_annotation
+   - 06_RNA_mapping
+   - 07_phylogenetic_analysis
+   - 08_ORFs
+   - 09_read_count
