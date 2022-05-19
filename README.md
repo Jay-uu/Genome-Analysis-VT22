@@ -8,4 +8,4 @@ You can read their paper [here](https://journals.asm.org/doi/10.1128/mBio.01017-
 
 All my scripts and some of the data for the project can be found [here](https://github.com/Jay-uu/Genome-Analysis-VT22/tree/master) (or just change to branch master on this page).
 
-To really understand what I did and to have a look at my results I recommend you check out the [wiki)(https://github.com/Jay-uu/Genome-Analysis-VT22/wiki)
+To really understand what I did and to have a look at my results I recommend you check out the [wiki](https://github.com/Jay-uu/Genome-Analysis-VT22/wiki)
