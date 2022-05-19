@@ -1,0 +1,16 @@
+The location of the standard Kraken2 database is held in $KRAKEN2_DEFAULT_DB
+The latest_nt database is built with --fast-build
+Use node-local storage to build and access Kraken2 databases on Uppmax systems.
+For more information:  'module help Kraken2_data/latest'
+Use node-local temporary storage or vmtouch when building and accessing Kraken2 databases on Uppmax systems.
+For more information, see 'module help Kraken2/2.1.2-20211210-4f648f5' and 'module help Kraken2_data/latest'
+Unknown option: fastq-input
+Loading database information... done.
+24055346 sequences (4812.46 Mbp) processed in 167.234s (8630.6 Kseq/m, 1726.61 Mbp/m).
+  1648763 sequences classified (6.85%)
+  22406583 sequences unclassified (93.15%)
+Unknown option: fastq-input
+Loading database information... done.
+29977094 sequences (5996.01 Mbp) processed in 200.284s (8980.4 Kseq/m, 1796.25 Mbp/m).
+  3741853 sequences classified (12.48%)
+  26235241 sequences unclassified (87.52%)

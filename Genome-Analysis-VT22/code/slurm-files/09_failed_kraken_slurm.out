@@ -1,0 +1,56 @@
+jellyfish/1.1.11 : Use node-local storage when building and accessing jellyfish databases.  See 'module help jellyfish/1.1.11'.
+Kraken_data/latest : The location of the system Kraken database is held in $KRAKEN_DB.  See 'module help Kraken_data/latest'
+Kraken/1.1.1-20210927-375654f : Kraken uses jellyfish to build/access its database. Use node-local storate to hold the database. See 'module help Kraken/1.1.1-20210927-375654f' and 'module help Kraken_data/latest'
+‘/sw/data/Kraken_data/latest/accmap_file.tmp’ -> ‘/scratch/6222226/Kraken/accmap_file.tmp’
+‘/sw/data/Kraken_data/latest/database.idx’ -> ‘/scratch/6222226/Kraken/database.idx’
+‘/sw/data/Kraken_data/latest/database.jdb’ -> ‘/scratch/6222226/Kraken/database.jdb’
+‘/sw/data/Kraken_data/latest/database.kdb’ -> ‘/scratch/6222226/Kraken/database.kdb’
+‘/sw/data/Kraken_data/latest/lca.complete’ -> ‘/scratch/6222226/Kraken/lca.complete’
+‘/sw/data/Kraken_data/latest/library’ -> ‘/scratch/6222226/Kraken/library’
+‘/sw/data/Kraken_data/latest/library/viral’ -> ‘/scratch/6222226/Kraken/library/viral’
+‘/sw/data/Kraken_data/latest/library/viral/prelim_map.txt’ -> ‘/scratch/6222226/Kraken/library/viral/prelim_map.txt’
+‘/sw/data/Kraken_data/latest/library/viral/manifest.txt’ -> ‘/scratch/6222226/Kraken/library/viral/manifest.txt’
+‘/sw/data/Kraken_data/latest/library/viral/assembly_summary.txt’ -> ‘/scratch/6222226/Kraken/library/viral/assembly_summary.txt’
+‘/sw/data/Kraken_data/latest/library/viral/library.fna’ -> ‘/scratch/6222226/Kraken/library/viral/library.fna’
+‘/sw/data/Kraken_data/latest/library/viral/wget_manifest.txt’ -> ‘/scratch/6222226/Kraken/library/viral/wget_manifest.txt’
+‘/sw/data/Kraken_data/latest/library/viral/.completed’ -> ‘/scratch/6222226/Kraken/library/viral/.completed’
+‘/sw/data/Kraken_data/latest/library/bacteria’ -> ‘/scratch/6222226/Kraken/library/bacteria’
+‘/sw/data/Kraken_data/latest/library/bacteria/prelim_map.txt’ -> ‘/scratch/6222226/Kraken/library/bacteria/prelim_map.txt’
+‘/sw/data/Kraken_data/latest/library/bacteria/manifest.txt’ -> ‘/scratch/6222226/Kraken/library/bacteria/manifest.txt’
+‘/sw/data/Kraken_data/latest/library/bacteria/assembly_summary.txt’ -> ‘/scratch/6222226/Kraken/library/bacteria/assembly_summary.txt’
+‘/sw/data/Kraken_data/latest/library/bacteria/library.fna’ -> ‘/scratch/6222226/Kraken/library/bacteria/library.fna’
+‘/sw/data/Kraken_data/latest/library/bacteria/wget_manifest.txt’ -> ‘/scratch/6222226/Kraken/library/bacteria/wget_manifest.txt’
+‘/sw/data/Kraken_data/latest/library/bacteria/.completed’ -> ‘/scratch/6222226/Kraken/library/bacteria/.completed’
+‘/sw/data/Kraken_data/latest/library/archaea’ -> ‘/scratch/6222226/Kraken/library/archaea’
+‘/sw/data/Kraken_data/latest/library/archaea/prelim_map.txt’ -> ‘/scratch/6222226/Kraken/library/archaea/prelim_map.txt’
+‘/sw/data/Kraken_data/latest/library/archaea/manifest.txt’ -> ‘/scratch/6222226/Kraken/library/archaea/manifest.txt’
+‘/sw/data/Kraken_data/latest/library/archaea/assembly_summary.txt’ -> ‘/scratch/6222226/Kraken/library/archaea/assembly_summary.txt’
+‘/sw/data/Kraken_data/latest/library/archaea/library.fna’ -> ‘/scratch/6222226/Kraken/library/archaea/library.fna’
+‘/sw/data/Kraken_data/latest/library/archaea/wget_manifest.txt’ -> ‘/scratch/6222226/Kraken/library/archaea/wget_manifest.txt’
+‘/sw/data/Kraken_data/latest/library/archaea/.completed’ -> ‘/scratch/6222226/Kraken/library/archaea/.completed’
+‘/sw/data/Kraken_data/latest/seqid2taxid.map’ -> ‘/scratch/6222226/Kraken/seqid2taxid.map’
+‘/sw/data/Kraken_data/latest/taxonomy’ -> ‘/scratch/6222226/Kraken/taxonomy’
+‘/sw/data/Kraken_data/latest/taxonomy/prelim_map.txt’ -> ‘/scratch/6222226/Kraken/taxonomy/prelim_map.txt’
+‘/sw/data/Kraken_data/latest/taxonomy/gencode.dmp’ -> ‘/scratch/6222226/Kraken/taxonomy/gencode.dmp’
+‘/sw/data/Kraken_data/latest/taxonomy/taxdump.dlflag’ -> ‘/scratch/6222226/Kraken/taxonomy/taxdump.dlflag’
+‘/sw/data/Kraken_data/latest/taxonomy/delnodes.dmp’ -> ‘/scratch/6222226/Kraken/taxonomy/delnodes.dmp’
+‘/sw/data/Kraken_data/latest/taxonomy/taxdump.tar.gz’ -> ‘/scratch/6222226/Kraken/taxonomy/taxdump.tar.gz’
+‘/sw/data/Kraken_data/latest/taxonomy/nucl_wgs.accession2taxid’ -> ‘/scratch/6222226/Kraken/taxonomy/nucl_wgs.accession2taxid’
+‘/sw/data/Kraken_data/latest/taxonomy/division.dmp’ -> ‘/scratch/6222226/Kraken/taxonomy/division.dmp’
+‘/sw/data/Kraken_data/latest/taxonomy/taxdump.untarflag’ -> ‘/scratch/6222226/Kraken/taxonomy/taxdump.untarflag’
+‘/sw/data/Kraken_data/latest/taxonomy/readme.txt’ -> ‘/scratch/6222226/Kraken/taxonomy/readme.txt’
+‘/sw/data/Kraken_data/latest/taxonomy/nucl_gb.accession2taxid’ -> ‘/scratch/6222226/Kraken/taxonomy/nucl_gb.accession2taxid’
+‘/sw/data/Kraken_data/latest/taxonomy/citations.dmp’ -> ‘/scratch/6222226/Kraken/taxonomy/citations.dmp’
+‘/sw/data/Kraken_data/latest/taxonomy/accmap.dlflag’ -> ‘/scratch/6222226/Kraken/taxonomy/accmap.dlflag’
+‘/sw/data/Kraken_data/latest/taxonomy/nodes.dmp’ -> ‘/scratch/6222226/Kraken/taxonomy/nodes.dmp’
+‘/sw/data/Kraken_data/latest/taxonomy/merged.dmp’ -> ‘/scratch/6222226/Kraken/taxonomy/merged.dmp’
+‘/sw/data/Kraken_data/latest/taxonomy/names.dmp’ -> ‘/scratch/6222226/Kraken/taxonomy/names.dmp’
+‘/sw/data/Kraken_data/latest/taxonomy/gc.prt’ -> ‘/scratch/6222226/Kraken/taxonomy/gc.prt’
+Loading database... classify: unable to mmap /scratch/6222226/Kraken/database.kdb: Invalid argument
+Can't open /scratch/6222226/D1_sequences.kraken: No such file or directory at /sw/bioinfo/Kraken/1.1.1-20210927-375654f/snowy/kraken-translate line 78.
+Can't open /scratch/6222226/D1_sequences.kraken: No such file or directory at /sw/bioinfo/Kraken/1.1.1-20210927-375654f/snowy/kraken-report line 80.
+read_merger.pl: D3DNA_2.paired.trimmed.fastq.gz does not exist
+Loading database... classify: unable to mmap /scratch/6222226/Kraken/database.kdb: Invalid argument
+Can't open /scratch/6222226/D3_sequences.kraken: No such file or directory at /sw/bioinfo/Kraken/1.1.1-20210927-375654f/snowy/kraken-translate line 78.
+Can't open /scratch/6222226/D3_sequences.kraken: No such file or directory at /sw/bioinfo/Kraken/1.1.1-20210927-375654f/snowy/kraken-report line 80.
+cp: cannot stat ‘*.kraken’: No such file or directory

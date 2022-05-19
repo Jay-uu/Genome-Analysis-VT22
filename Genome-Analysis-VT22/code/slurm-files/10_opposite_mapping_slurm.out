@@ -1,0 +1,231 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2022-2-5 -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -J 10_opposite_mapping
+#SBATCH -t 3:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user jay.hakansson.4449@student.uu.se
+
+#Doing both the readmapping and htseq count in one script
+#Only mapping D3 reads to D1 bins because I somehow deleted the D3 bins .fa files...
+
+#print script
+cat $0
+
+#prepare directories
+cd $HOME/genome_analysis_project/Genome-Analysis-VT22/analyses
+mkdir 10_opposite_mapping
+cd 10_opposite_mapping
+mkdir read_maps
+mkdir htseq
+
+#set up variables
+export OUT=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping
+export D1BINS=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/03_binning/D1DNA_bins/final.contigs.fa.metabat-bins
+export RNA=$HOME/genome_analysis_project/Genome-Analysis-VT22/data/trimmed_data/RNA_trimmed_12-04
+export annotated_bins=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/04_annotation
+export mapped_RNA=$HOME/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps
+
+
+
+#Load modules
+module load bioinfo-tools bwa samtools htseq
+
+
+#Map the D3 reads to the D1 bins
+#cd $D1BINS
+#for infile in *.fa
+#do
+ #index already exists
+ #bwa index $infile
+ #bwa mem -t 2 $infile $RNA/D3RNA_trimmed_1P.fq.gz $RNA/D3RNA_trimmed_2P.fq.gz | samtools view -@ 2 -b - > $SNIC_TMP/${infile}_RNA_map.bam
+ #samtools sort $SNIC_TMP/${infile}_RNA_map.bam -o $mapped_RNA/${infile}_RNA_map_sorted.bam
+#done
+
+#move to output directory
+cd  $OUT/htseq
+for i in {1..16}
+do
+python -m HTSeq.scripts.count -f bam -r pos -t CDS $mapped_RNA/bin.${i}.*.bam $annotated_bins/D1_${i}/*.gtf > bin_${i}.count
+done
+
+mkdir: cannot create directory ‘10_opposite_mapping’: File exists
+mkdir: cannot create directory ‘read_maps’: File exists
+mkdir: cannot create directory ‘htseq’: File exists
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.1.fa_RNA_map_sorted.bam'
+1772 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.1.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.2.fa_RNA_map_sorted.bam'
+2214 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.2.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.3.fa_RNA_map_sorted.bam'
+432 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.3.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.4.fa_RNA_map_sorted.bam'
+535 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.4.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.5.fa_RNA_map_sorted.bam'
+766 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.5.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.6.fa_RNA_map_sorted.bam'
+1311 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.6.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.7.fa_RNA_map_sorted.bam'
+583 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.7.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.8.fa_RNA_map_sorted.bam'
+3704 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.8.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.9.fa_RNA_map_sorted.bam'
+1186 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.9.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.10.fa_RNA_map_sorted.bam'
+978 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.10.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.11.fa_RNA_map_sorted.bam'
+352 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.11.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.12.fa_RNA_map_sorted.bam'
+1239 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.12.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.13.fa_RNA_map_sorted.bam'
+623 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.13.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.14.fa_RNA_map_sorted.bam'
+205 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.14.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.15.fa_RNA_map_sorted.bam'
+1204 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.15.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.16.fa_RNA_map_sorted.bam'
+892 GFF lines processed.
+[E::idx_find_and_load] Could not retrieve index file for '/home/jay/genome_analysis_project/Genome-Analysis-VT22/analyses/10_opposite_mapping/read_maps/bin.16.fa_RNA_map_sorted.bam'
+100000 alignment record pairs processed.
+200000 alignment record pairs processed.
+300000 alignment record pairs processed.
+400000 alignment record pairs processed.
+500000 alignment record pairs processed.
+600000 alignment record pairs processed.
+700000 alignment record pairs processed.
+724229 alignment pairs processed.
